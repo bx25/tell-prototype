@@ -184,11 +184,11 @@ svg{display:block}
 
 /* footer */
 .footer{margin:var(--inset);background:var(--ink);color:var(--paper);border-radius:var(--r-xl);padding:clamp(64px,9vw,140px) var(--pad) 28px;overflow:hidden}
-.f-mark{display:flex;align-items:flex-end;gap:.04em;font-family:var(--serif);font-size:clamp(7rem,34vw,32rem);font-weight:400;line-height:.8;letter-spacing:-.05em;margin-left:-.03em;will-change:transform}
+.f-mark{pointer-events:none;display:flex;align-items:flex-end;gap:.04em;font-family:var(--serif);font-size:clamp(7rem,34vw,32rem);font-weight:400;line-height:.8;letter-spacing:-.05em;margin-left:-.03em;will-change:transform}
 .f-mark svg{width:.26em;height:.26em;margin-bottom:.06em;margin-left:.06em;flex:none}
-.f-row{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap,24px);margin-top:clamp(44px,5vw,84px);padding-top:26px;border-top:1px solid rgba(238,233,224,.2);font-size:.9375rem}
+.f-row{position:relative;z-index:2;display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap,24px);margin-top:clamp(44px,5vw,84px);padding-top:26px;border-top:1px solid rgba(238,233,224,.2);font-size:.9375rem}
 .f-links{grid-column:1/8;display:flex;flex-wrap:wrap;gap:8px 28px;list-style:none;padding:0}
-.f-links a{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .5s var(--ease);padding-bottom:2px}
+.f-links a{display:inline-block;padding:6px 0 4px;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .5s var(--ease);padding-bottom:2px}
 .f-links a:hover{background-size:100% 1px}
 .f-note{grid-column:8/13;color:rgba(238,233,224,.66)}
 .f-credit{grid-column:1/-1;color:rgba(238,233,224,.5);font-size:.8125rem;max-width:62em}
@@ -598,6 +598,9 @@ u:nth-child(2n){width:82%}u:nth-child(3n){width:64%}
 }
 
 
+
+.softnote{position:fixed;z-index:90;left:50%;bottom:26px;transform:translate(-50%,16px);max-width:min(92vw,520px);padding:13px 20px;border-radius:999px;background:var(--paper);color:var(--ink);font-size:.9375rem;line-height:1.35;text-align:center;box-shadow:0 18px 40px -16px rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .4s var(--ease),transform .5s var(--ease)}
+.softnote.on{opacity:1;transform:translate(-50%,0)}
 /* responsive */
 @media (max-width:900px){
   .notice{order:3;flex:1 0 100%;max-width:none;padding:7px 12px;font-size:.75rem}
@@ -899,7 +902,7 @@ de:{
   rows:["Einwohnerkontrolle","Krankenkasse","Post, Nachsendeauftrag","Serafe","Steueramt"],
   priv_title:"Ihre Fragen bleiben Ihre Sache.",
   priv:[{h:"Kein Konto",t:"Sie stellen Fragen, ohne sich anzumelden."},{h:"Kein Gesprächsverlauf",t:"Ihr Chat verschwindet, sobald Sie die Seite verlassen."},{h:"Daten in der Schweiz",t:"Betrieb und Speicherung in Schweizer Rechenzentren, nach dem Datenschutzgesetz."}],
-  f_links:["Datenschutz","Nutzungsbedingungen","Barrierefreiheit","Kontakt","Behördensicht"],
+  f_soon:"Nur im Prototyp: Diese Seite ist noch nicht ausgearbeitet.",f_links:["Datenschutz","Nutzungsbedingungen","Barrierefreiheit","Kontakt","Behördensicht"],
   f_note:"Konzeptprototyp. Alle Antworten sind Beispiele und ersetzen keine Auskunft einer Behörde.",
   think:"Tell prüft offizielle Quellen",who:"Zuständig",bund:"Bund",kanton:"Kanton",gemeinde:"Gemeinde",src:"Quellen (Beispiel)",newq:"Neue Frage",
   fb:{intro:"Dazu hat der Prototyp noch keine Antwort. Die echte Version würde hier offizielle Quellen von Bund, Kantonen und Gemeinden durchsuchen. Probieren Sie eines der Beispiele."},
@@ -943,7 +946,7 @@ fr:{
   rows:["Contrôle des habitants","Caisse maladie","La Poste, réexpédition","Serafe","Service des impôts"],
   priv_title:"Vos questions ne regardent que vous.",
   priv:[{h:"Pas de compte",t:"Vous posez vos questions sans vous connecter."},{h:"Pas d'historique",t:"Votre conversation disparaît dès que vous quittez la page."},{h:"Données en Suisse",t:"Exploitation et stockage dans des centres de calcul suisses, selon la loi sur la protection des données."}],
-  f_links:["Protection des données","Conditions d'utilisation","Accessibilité","Contact","Vue des autorités"],
+  f_soon:"Prototype uniquement : cette page n'est pas encore rédigée.",f_links:["Protection des données","Conditions d'utilisation","Accessibilité","Contact","Vue des autorités"],
   f_note:"Prototype conceptuel. Toutes les réponses sont des exemples et ne remplacent pas un renseignement officiel.",
   think:"Tell consulte les sources officielles",who:"Compétence",bund:"Confédération",kanton:"Canton",gemeinde:"Commune",src:"Sources (exemple)",newq:"Nouvelle question",
   fb:{intro:"Le prototype n'a pas encore de réponse à cette question. La version finale consulterait ici les sources officielles de la Confédération, des cantons et des communes. Essayez l'un des exemples."},
@@ -987,7 +990,7 @@ it:{
   rows:["Controllo abitanti","Cassa malati","Posta, inoltro","Serafe","Ufficio imposte"],
   priv_title:"Le vostre domande restano vostre.",
   priv:[{h:"Nessun account",t:"Fate domande senza registrarvi."},{h:"Nessuna cronologia",t:"La vostra conversazione scompare appena lasciate la pagina."},{h:"Dati in Svizzera",t:"Gestione e archiviazione in centri di calcolo svizzeri, secondo la legge sulla protezione dei dati."}],
-  f_links:["Protezione dei dati","Condizioni d'uso","Accessibilità","Contatto","Vista delle autorità"],
+  f_soon:"Solo prototipo: questa pagina non è ancora stata redatta.",f_links:["Protezione dei dati","Condizioni d'uso","Accessibilità","Contatto","Vista delle autorità"],
   f_note:"Prototipo concettuale. Tutte le risposte sono esempi e non sostituiscono l'informazione di un'autorità.",
   think:"Tell consulta le fonti ufficiali",who:"Competenza",bund:"Confederazione",kanton:"Cantone",gemeinde:"Comune",src:"Fonti (esempio)",newq:"Nuova domanda",
   fb:{intro:"Il prototipo non ha ancora una risposta a questa domanda. La versione definitiva consulterebbe qui le fonti ufficiali di Confederazione, cantoni e comuni. Provate uno degli esempi."},
@@ -1031,7 +1034,7 @@ en:{
   rows:["Residents' registry","Health insurer","Post, mail redirect","Serafe","Tax office"],
   priv_title:"Your questions stay yours.",
   priv:[{h:"No account",t:"Ask questions without signing in."},{h:"No chat history",t:"Your conversation disappears when you leave the page."},{h:"Data stays in Switzerland",t:"Operation and storage in Swiss data centres, under the Swiss data protection act."}],
-  f_links:["Privacy","Terms of use","Accessibility","Contact","Authority view"],
+  f_soon:"Prototype only: this page has not been written yet.",f_links:["Privacy","Terms of use","Accessibility","Contact","Authority view"],
   f_note:"Concept prototype. All answers are examples and do not replace information from an authority.",
   think:"Tell is checking official sources",who:"Responsible",bund:"Federal",kanton:"Canton",gemeinde:"Municipality",src:"Sources (example)",newq:"New question",
   fb:{intro:"The prototype has no answer to this yet. The real version would search official sources from federal, cantonal and municipal governments here. Try one of the examples."},
@@ -1099,9 +1102,11 @@ function buildStatement(){
   const p=$('#stmt'); p.textContent='';
   words=tx(T().stmt).split(' ').map(w=>{const s=document.createElement('span'); s.className='w'; s.textContent=w; p.append(s,' '); return s;});
 }
+let noteT=null;
+function softNote(msg){let n=$('#softnote');if(!n){n=document.createElement('div');n.id='softnote';n.className='softnote';n.setAttribute('role','status');document.body.append(n)}n.textContent=msg;void n.offsetWidth;n.classList.add('on');clearTimeout(noteT);noteT=setTimeout(()=>n.classList.remove('on'),3400)}
 function buildFooter(){
   const l=$('#fLinks'); l.textContent='';
-  T().f_links.forEach((t,i,arr)=>{const li=document.createElement('li'); const a=document.createElement('a'); const last=i===arr.length-1; a.href=last?'behoerdensicht.html':'#'; a.textContent=t; if(!last)a.addEventListener('click',e=>e.preventDefault()); li.append(a); l.append(li);});
+  T().f_links.forEach((t,i,arr)=>{const li=document.createElement('li'); const a=document.createElement('a'); const last=i===arr.length-1; a.href=last?'behoerdensicht.html':'#'; a.textContent=t; if(!last)a.addEventListener('click',e=>{e.preventDefault();softNote(T().f_soon)}); li.append(a); l.append(li);});
 }
 function resetAnswer(){
   hero.classList.remove('answering');
