@@ -683,45 +683,42 @@ u:nth-child(2n){width:82%}u:nth-child(3n){width:64%}
 .mn-main{flex:1;min-width:0;display:flex;flex-direction:column}
 .mn-main .cv-chat{padding-inline:1.6em}
 .mn-main .cv-q{font-size:1.05em}
-.mn-neck{width:46px;height:60px;margin:0 auto;background:linear-gradient(90deg,#1B2430,#2A3441 45%,#1B2430)}
-.mn-base{width:170px;height:14px;margin:0 auto;border-radius:99px 99px 4px 4px;background:linear-gradient(180deg,#2A3441,#141C26)}
+.mn-neck{width:46px;height:60px;margin:0 auto;background:linear-gradient(90deg,#CFC9BB,#F4F0E6 45%,#CFC9BB)}
+.mn-base{width:170px;height:14px;margin:0 auto;border-radius:99px 99px 4px 4px;background:linear-gradient(180deg,#F4F0E6,#C9C2B3);box-shadow:0 8px 14px -6px rgba(26,37,49,.4)}
 
 /* kiosk */
-.tm-kio{position:absolute;left:952px;top:10px;width:248px;height:520px}
-.ki-top{height:40px;border-radius:26px 26px 6px 6px;background:linear-gradient(180deg,#34404E,#2A3441);display:flex;align-items:center;justify-content:center;gap:9px;color:var(--paper);font-family:var(--serif);font-size:18px;font-weight:500;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
-.ki-top svg{width:20px;height:20px}
-.ki-bez{margin:4px 6px 0;height:262px;border-radius:18px;background:#141C26;padding:9px;box-shadow:0 0 0 1.5px #2C3744,inset 0 0 0 2px #0C1219}
-.ki-scr{position:relative;width:100%;height:100%;border-radius:11px;background:var(--snow);overflow:hidden;font-size:12.5px}
+.tm-kio{position:absolute;left:952px;top:10px;width:248px;height:520px;filter:drop-shadow(0 34px 34px rgba(26,37,49,.22))}
+.ki-body{position:absolute;inset:0;width:100%;height:100%}
+.ki-brand{position:absolute;left:0;right:0;top:17px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--serif);font-size:17px;font-weight:500;color:var(--ink)}
+.ki-brand svg{width:19px;height:19px}
+.ki-glass{position:absolute;left:14px;top:48px;width:220px;height:282px;border-radius:22px;background:linear-gradient(160deg,#18212B,#0C1218);padding:5px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 2px 0 rgba(255,255,255,.7)}
+.ki-scr{position:relative;width:100%;height:100%;border-radius:17px;background:var(--snow);overflow:hidden;font-size:12.5px}
 .ki-l{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;transition:opacity .45s var(--ease);pointer-events:none}
 .ki-scr[data-s="idle"] .ki-idle,.ki-scr[data-s="read"] .ki-read,.ki-scr[data-s="chat"] .ki-chat{opacity:1}
-.ki-idle,.ki-read{align-items:center;justify-content:center;text-align:center;gap:10px;padding:14px}
-.ki-idle b,.ki-read b{font-family:var(--serif);font-weight:500;font-size:1.5em;line-height:1.15;letter-spacing:-.01em}
-.ki-ic{width:66px;height:44px;border-radius:7px;background:#fff;box-shadow:0 0 0 1.5px rgba(26,37,49,.25);position:relative;animation:nudge 2.2s var(--ease) infinite}
-.ki-ic::before{content:"";position:absolute;left:6px;top:7px;width:16px;height:18px;border-radius:4px;background:#D8D1C3}
-.ki-ic::after{content:"";position:absolute;left:28px;right:6px;top:10px;height:5px;border-radius:3px;background:#D8D1C3;box-shadow:0 10px 0 #E3DDCF,0 20px 0 #E3DDCF}
+.ki-idle,.ki-read{align-items:center;justify-content:center;text-align:center;gap:13px;padding:16px}
+.ki-idle b,.ki-read b{font-family:var(--serif);font-weight:500;font-size:1.55em;line-height:1.15;letter-spacing:-.01em}
+.ki-ic{width:70px;height:46px;border-radius:8px;background:#fff;box-shadow:0 0 0 1.5px rgba(26,37,49,.22),0 10px 20px -10px rgba(26,37,49,.35);position:relative;animation:nudge 2.4s var(--ease) infinite}
+.ki-ic::before{content:"";position:absolute;left:7px;top:8px;width:17px;height:19px;border-radius:4px;background:#DAD3C5}
+.ki-ic::after{content:"";position:absolute;left:30px;right:7px;top:11px;height:5px;border-radius:3px;background:#DAD3C5;box-shadow:0 10px 0 #E6E0D3,0 20px 0 #E6E0D3}
 @keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
 .ki-tools{display:flex;gap:6px;margin-top:2px}
-.ki-tools span{padding:.2em .7em;border-radius:99px;background:var(--card);font-size:.85em;font-weight:500}
-.ki-spin{width:30px;height:30px;border-radius:50%;border:4px solid rgba(26,37,49,.15);border-top-color:var(--red);animation:rot .9s linear infinite}
+.ki-tools span{padding:.25em .8em;border-radius:99px;background:var(--card);font-size:.85em;font-weight:500}
+.ki-spin{width:32px;height:32px;border-radius:50%;border:4px solid rgba(26,37,49,.12);border-top-color:var(--red);animation:rot .9s linear infinite}
 @keyframes rot{to{transform:rotate(360deg)}}
-.ki-hi{display:flex;align-items:center;gap:8px;padding:7px 12px;background:#F1ECE2;flex:none}
-.ki-hi .cv-av{width:26px;height:26px;font-size:11px}
-.ki-hi b{font-family:var(--serif);font-weight:500;font-size:1.08em;line-height:1.1}
-.ki-chat .cv-chat{font-size:1em;gap:.35em;padding:.4em .7em .5em}
-.ki-chat .cv-q{font-size:.78em;padding:.35em .65em;max-width:96%}
-.ki-chat .cv-a{font-size:.77em;padding:.45em .65em;line-height:1.3}
-.ki-panel{position:relative;margin:6px 8px 0;height:118px;border-radius:12px 12px 26px 26px;background:linear-gradient(180deg,#3B4756,#2E3946);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -10px 20px rgba(0,0,0,.18);transform:perspective(500px) rotateX(-6deg);transform-origin:50% 0}
-.ki-slotwrap{position:absolute;left:0;right:0;top:12px;text-align:center}
-.ki-lbl{display:block;color:rgba(238,233,224,.75);font-size:10.5px;font-weight:500;margin-bottom:7px}
-.ki-slot{position:relative;width:150px;height:12px;margin:0 auto;border-radius:99px;background:#0B1016;box-shadow:0 0 0 3px #1D2733,0 1px 0 4px rgba(255,255,255,.08);overflow:hidden}
-.ki-slot i{position:absolute;left:0;top:0;bottom:0;width:100%;background:linear-gradient(90deg,#E3A12B,#58C27D);transform-origin:left;transform:scaleX(0)}
-.ki-btns{position:absolute;left:0;right:0;bottom:9px;display:flex;justify-content:center;gap:4px}
-.ki-btns span{display:grid;justify-items:center;gap:5px;width:66px;text-align:center;line-height:1.1;color:rgba(238,233,224,.75);font-size:9px;font-weight:500}
-.ki-btns b{width:34px;height:34px;border-radius:50%;background:#4A5766;box-shadow:0 3px 0 #1D2733,inset 0 1px 0 rgba(255,255,255,.18);display:grid;place-items:center;color:var(--paper);font-size:13px}
+.ki-hi{display:flex;align-items:center;gap:7px;padding:7px 10px;background:#F1ECE2;flex:none}
+.ki-hi .cv-av{width:24px;height:24px;font-size:10px;flex:none}
+.ki-hi b{font-family:var(--serif);font-weight:500;font-size:.98em;line-height:1.1;white-space:nowrap}
+.ki-chat .cv-chat{font-size:1em;gap:.4em;padding:.45em .7em .5em}
+.ki-chat .cv-q{font-size:.82em;padding:.35em .65em;max-width:96%}
+.ki-chat .cv-a{font-size:.76em;padding:.45em .65em;line-height:1.3}
+.ki-reader{position:absolute;left:38px;top:346px;width:172px;height:70px;border-radius:20px;background:linear-gradient(180deg,#E2DBCC,#ECE6DA);box-shadow:inset 0 3px 7px rgba(60,48,28,.2),inset 0 -1px 0 rgba(255,255,255,.8),0 0 0 calc(var(--g,0)*2px) rgba(88,194,125,calc(var(--g,0)*.9)),0 0 calc(var(--g,0)*22px) rgba(88,194,125,calc(var(--g,0)*.55));text-align:center;padding-top:12px}
+.ki-lbl{display:block;color:#6A645A;font-size:10px;font-weight:500;letter-spacing:.01em;margin-bottom:8px}
+.ki-slot{width:120px;height:10px;margin:0 auto;border-radius:6px;background:#10161D;box-shadow:inset 0 2px 3px rgba(0,0,0,.6),0 1px 0 rgba(255,255,255,.9)}
+.ki-led{position:relative;width:120px;height:3px;margin:9px auto 0;border-radius:2px;background:rgba(26,37,49,.12);overflow:hidden}
+.ki-led i{position:absolute;inset:0;background:linear-gradient(90deg,#E3A12B,#58C27D);transform-origin:left;transform:scaleX(0)}
+.ki-btns{position:absolute;left:0;right:0;top:432px;display:flex;justify-content:center;gap:12px}
+.ki-btns b{width:46px;height:34px;border-radius:17px;background:linear-gradient(180deg,#FFFFFF,#EEE9DE);box-shadow:0 1px 0 #fff inset,0 3px 6px -2px rgba(60,48,28,.35),0 0 0 1px rgba(26,37,49,.07);display:grid;place-items:center;color:var(--ink);font-size:12.5px;font-weight:600}
 .ki-btns svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.ki-body{height:56px;margin:0 14px;background:linear-gradient(180deg,#2A3441,#222B36);border-radius:0 0 14px 14px;position:relative}
-.ki-body::before{content:"";position:absolute;left:30px;right:30px;top:12px;height:24px;background:repeating-linear-gradient(180deg,rgba(0,0,0,.35) 0 3px,transparent 3px 8px);border-radius:4px}
-.ki-ped{height:34px;margin:0 -10px;border-radius:10px 10px 0 0;background:linear-gradient(180deg,#2A3441,#1A222C);box-shadow:0 20px 40px -20px rgba(26,37,49,.7)}
 
 /* id card */
 .tm-card{position:absolute;left:0;top:0;width:118px;height:74px;border-radius:10px;background:linear-gradient(135deg,#FFFFFF 0,#F6E7E4 100%);box-shadow:0 14px 28px -10px rgba(26,37,49,.55),0 0 0 1px rgba(26,37,49,.12);opacity:0;z-index:5;will-change:transform,opacity;overflow:hidden}
@@ -1028,18 +1025,30 @@ u:nth-child(2n){width:82%}u:nth-child(3n){width:64%}
             </div>
 
             <div class="tm-kio" id="tmKio">
-              <div class="ki-top"><svg viewBox="0 0 32 32"><use href="#cross"/></svg>Tell</div>
-              <div class="ki-bez"><div class="ki-scr" id="kiScr" data-s="idle">
+              <svg class="ki-body" viewBox="0 0 248 520" aria-hidden="true">
+                <defs>
+                  <linearGradient id="kbG" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#FFFEFB"/><stop offset=".5" stop-color="#F3EEE3"/><stop offset="1" stop-color="#DCD5C5"/></linearGradient>
+                  <linearGradient id="kbS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".22" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#4B3F2A" stop-opacity=".1"/></linearGradient>
+                  <linearGradient id="kpG" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#2A333E"/><stop offset=".45" stop-color="#4A5663"/><stop offset="1" stop-color="#262F39"/></linearGradient>
+                </defs>
+                <rect x="38" y="470" width="172" height="50" rx="10" fill="url(#kpG)"/>
+                <rect x="24" y="474" width="200" height="14" rx="7" fill="#1A2531" opacity=".22"/>
+                <rect x="0" y="0" width="248" height="484" rx="40" fill="url(#kbG)"/>
+                <rect x="0" y="0" width="248" height="484" rx="40" fill="url(#kbS)"/>
+                <rect x=".5" y=".5" width="247" height="483" rx="39.500" fill="none" stroke="#1A2531" stroke-opacity=".1"/>
+              </svg>
+              <div class="ki-brand"><svg viewBox="0 0 32 32"><use href="#cross"/></svg>Tell</div>
+              <div class="ki-glass"><div class="ki-scr" id="kiScr" data-s="idle">
                 <div class="ki-l ki-idle"><span class="ki-ic"></span><b id="kiIdleT"></b><div class="ki-tools" id="kiTools"></div></div>
                 <div class="ki-l ki-read"><span class="ki-spin"></span><b id="kiReadT"></b></div>
                 <div class="ki-l ki-chat"><div class="ki-hi"><span class="cv-av">LM</span><b id="kiHi"></b></div><div class="cv-chat" id="kiChat"></div></div>
               </div></div>
-              <div class="ki-panel">
-                <div class="ki-slotwrap"><span class="ki-lbl" id="kiLbl"></span><div class="ki-slot"><i id="kiLed"></i></div></div>
-                <div class="ki-btns" id="kiBtns"></div>
+              <div class="ki-reader" id="kiReader">
+                <span class="ki-lbl" id="kiLbl"></span>
+                <div class="ki-slot"></div>
+                <div class="ki-led"><i id="kiLed"></i></div>
               </div>
-              <div class="ki-body"></div>
-              <div class="ki-ped"></div>
+              <div class="ki-btns" id="kiBtns"></div>
             </div>
 
             <div class="tm-card" id="tmCard"><div class="cd-h"><svg viewBox="0 0 32 32"><use href="#cross"/></svg>ID · CARTE · CARTA</div><div class="cd-ph"></div><div class="cd-l"><u></u><u></u><u></u></div><span class="cd-c"></span></div>
@@ -1937,7 +1946,7 @@ function buildTerm(){
   const k=R.kio;
   $('#kiIdleT').textContent=tx(k.idle); $('#kiReadT').textContent=tx(k.read); $('#kiHi').textContent=tx(k.hi); $('#kiLbl').textContent=tx(k.slot);
   $('#kiTools').innerHTML='<span>A+ '+tx(k.big)+'</span>';
-  $('#kiBtns').innerHTML='<span><b>A+</b>'+tx(k.big)+'</span><span><b><svg viewBox="0 0 24 24"><path d="M4 10v4h3l5 4V6L7 10z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg></b>'+tx(k.speak)+'</span><span><b>?</b>'+tx(k.help)+'</span>';
+  $('#kiBtns').innerHTML='<b title="'+tx(k.big)+'">A+</b><b title="'+tx(k.speak)+'"><svg viewBox="0 0 24 24"><path d="M4 10v4h3l5 4V6L7 10z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg></b><b title="'+tx(k.help)+'">?</b>';
   const ans={q:tx(R.q),intro:tx(R.intro),steps:R.steps.map(tx),who:tx(R.who),chips:R.chips};
   tmQ=ans.q;
   tmChats={ph:chatNode($('#phChat'),ans),mn:chatNode($('#mnChat'),ans),ki:chatNode($('#kiChat'),ans)};
@@ -1975,12 +1984,12 @@ function updateTerm(force){
   setChat(tmChats.mn,smooth(seg(p,.40,.44)),seg(p,.44,.54));
   /* id card swipe */
   const cin=smooth(seg(p,.54,.62)), cout=smooth(seg(p,.64,.70));
-  const cardX=cout>0?986+(1260-986)*cout:1228-(1228-986)*cin;
-  const cardY=322+Math.sin(cin*Math.PI)*-6;
+  const cardX=cout>0?1014+(1260-1014)*cout:1228-(1228-1014)*cin;
+  const cardY=329+Math.sin(cin*Math.PI)*-6;
   tmCard.style.opacity=(p>.535&&p<.70)?(cout>0?1-cout:Math.min(1,seg(p,.535,.56)*1)).toFixed(3):0;
   tmCard.style.transform='translate('+cardX.toFixed(1)+'px,'+cardY.toFixed(1)+'px) rotate('+(-5+cin*5).toFixed(2)+'deg)';
   /* led */
-  $('#kiLed').style.transform='scaleX('+seg(p,.56,.62).toFixed(3)+')';
+  const led=seg(p,.56,.62); $('#kiLed').style.transform='scaleX('+led.toFixed(3)+')'; $('#kiReader').style.setProperty('--g',(smooth(seg(p,.60,.64))*(p<.88?1:.55)).toFixed(3));
   /* kiosk screen */
   const state=p<.62?'idle':(p<.69?'read':'chat');
   if($('#kiScr').dataset.s!==state)$('#kiScr').dataset.s=state;
