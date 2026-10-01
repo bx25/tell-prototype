@@ -601,6 +601,159 @@ u:nth-child(2n){width:82%}u:nth-child(3n){width:64%}
 
 .softnote{position:fixed;z-index:90;left:50%;bottom:26px;transform:translate(-50%,16px);max-width:min(92vw,520px);padding:13px 20px;border-radius:999px;background:var(--paper);color:var(--ink);font-size:.9375rem;line-height:1.35;text-align:center;box-shadow:0 18px 40px -16px rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .4s var(--ease),transform .5s var(--ease)}
 .softnote.on{opacity:1;transform:translate(-50%,0)}
+/* ============ terminal / alle Geräte ============ */
+.term{position:relative;margin:var(--inset);border-radius:var(--r-xl);background:linear-gradient(180deg,#F3EEE4 0%,#E6DFD0 100%);overflow:clip}
+.term-track{position:relative;height:560vh}
+.term-stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;align-items:center;gap:clamp(10px,2svh,22px);padding:clamp(84px,11svh,104px) var(--pad) 14px}
+.term-cap{position:relative;width:100%;max-width:1100px;display:grid;text-align:center;flex:none}
+.th{grid-area:1/1;opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease),transform .7s var(--ease);pointer-events:none}
+.th.on{opacity:1;transform:none}
+.th.out{transform:translateY(-14px)}
+.th h3{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.3vw,4.2rem);line-height:1.04;letter-spacing:-.035em;text-wrap:balance}
+.th p{margin:14px auto 0;max-width:36em;color:var(--granit);font-size:clamp(1rem,1.3vw,1.1875rem);line-height:1.45;text-wrap:balance}
+.term-pills{list-style:none;display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(255,255,255,.55);flex:none}
+.tp{display:inline-flex;align-items:center;gap:9px;border:0;background:transparent;padding:.65em 1.15em;border-radius:999px;font-size:.9375rem;font-weight:500;color:var(--granit);transition:background .4s var(--ease),color .3s,box-shadow .4s}
+.tp .ic{width:18px;height:18px}
+.tp:hover{color:var(--ink)}
+.tp.on{background:#fff;color:var(--ink);box-shadow:0 6px 18px -8px rgba(26,37,49,.35)}
+.tp.done{color:var(--ink)}
+.tp.done::after{content:"";width:16px;height:16px;border-radius:50%;background:var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/10px no-repeat}
+.tw{position:relative;flex:1;min-height:0;width:100%;overflow:visible}
+.tp .ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.term-note{flex:none;font-size:.8125rem;color:var(--granit);text-align:center}
+.tm-scene{position:absolute;left:0;top:0;width:1200px;height:560px;transform-origin:0 0;transform:translate(var(--tx,0px),var(--ty,0px)) scale(var(--k,1))}
+.tm-ground{position:absolute;left:-40px;right:-40px;top:512px;height:70px;background:radial-gradient(ellipse at 50% 0,rgba(26,37,49,.22),rgba(26,37,49,0) 70%);filter:blur(6px)}
+.tm-links{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.tm-links path{fill:none;stroke:rgba(26,37,49,.22);stroke-width:2.5;stroke-dasharray:3 9;stroke-linecap:round}
+.tm-links path.lit{stroke:var(--red);animation:dashmove 1s linear infinite}
+@keyframes dashmove{to{stroke-dashoffset:-24}}
+.tm-links circle{fill:#fff;stroke:var(--red);stroke-width:3;opacity:0;filter:drop-shadow(0 0 8px rgba(216,0,26,.7))}
+
+/* chat view (shared) */
+.cv-top{display:flex;align-items:center;justify-content:space-between;padding:0 1.1em;height:3.2em;flex:none}
+.cv-logo{display:inline-flex;align-items:center;gap:.5em;font-family:var(--serif);font-weight:500;font-size:1.35em}
+.cv-logo svg{width:1.5em;height:1.5em}
+.cv-av{width:2.1em;height:2.1em;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:.8em;font-weight:600}
+.cv-chat{flex:1;min-height:0;display:flex;flex-direction:column;gap:.75em;padding:.4em 1.1em .9em;overflow:hidden}
+.cv-q{align-self:flex-end;max-width:88%;background:var(--ink);color:var(--paper);padding:.7em 1em;border-radius:1.15em 1.15em .3em 1.15em;font-size:1em;line-height:1.35;opacity:0;transform:translateY(10px)}
+.cv-a{background:var(--card);border-radius:1.15em 1.15em 1.15em .3em;padding:.85em 1em;font-size:.94em;line-height:1.42;opacity:0}
+.cv-a .w{opacity:0;transition:opacity .25s}
+.cv-a .w.on{opacity:1}
+.cv-i{margin:0}
+.cv-s{list-style:none;padding:0;margin:.65em 0 0;display:flex;flex-direction:column;gap:.45em;counter-reset:cs}
+.cv-s li{display:grid;grid-template-columns:1.5em 1fr;opacity:0;transition:opacity .3s}
+.cv-s li.on{opacity:1}
+.cv-s li::before{counter-increment:cs;content:counter(cs);color:var(--red);font-weight:600}
+.cv-c{display:flex;align-items:center;flex-wrap:wrap;gap:.4em;margin-top:.7em;opacity:0;transition:opacity .35s}
+.cv-c.on{opacity:1}
+.cv-c small{font-size:.9em;color:var(--granit);margin-right:.2em}
+.cv-c span{padding:.2em .7em;border-radius:99px;background:var(--ink);color:var(--paper);font-size:.9em;font-weight:500}
+.cv-in{display:flex;align-items:center;gap:.6em;margin:0 .9em .9em;padding:.4em .4em .4em 1.1em;border-radius:999px;background:var(--card);flex:none;min-height:3em;font-size:.95em}
+.cv-ph{color:var(--granit)}
+.cv-tp{white-space:nowrap;overflow:hidden;text-overflow:clip;min-width:0}
+.cv-caret{width:2px;height:1.1em;background:var(--red);margin-left:-.45em;animation:caret 1s steps(1) infinite}
+.cv-caret.off{opacity:0;animation:none}
+@keyframes caret{50%{opacity:0}}
+.cv-send{margin-left:auto;width:2.2em;height:2.2em;border-radius:50%;background:var(--red);display:grid;place-items:center;flex:none;transition:transform .4s var(--ease)}
+.cv-send.go{transform:scale(1.18)}
+.cv-send svg{width:1.1em;height:1.1em;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* phone */
+.tm-phone{position:absolute;left:0;top:30px;width:230px;height:500px}
+.ph-bezel{position:relative;width:100%;height:100%;border-radius:38px;background:#141C26;padding:9px;box-shadow:0 0 0 1.5px #2C3744,0 40px 60px -28px rgba(26,37,49,.6),inset 0 0 0 2px #0C1219}
+.ph-isl{position:absolute;top:17px;left:50%;width:62px;height:18px;margin-left:-31px;border-radius:99px;background:#0B1016;z-index:3}
+.ph-scr{position:relative;width:100%;height:100%;border-radius:30px;background:#fff;overflow:hidden;display:flex;flex-direction:column;font-size:11px;padding-top:30px}
+.ph-scr::after,.mn-scr::after,.ki-scr::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.4) 0,rgba(255,255,255,0) 32%);pointer-events:none}
+
+/* monitor */
+.tm-mon{position:absolute;left:365px;top:128px;width:470px}
+.mn-bezel{width:100%;height:312px;border-radius:16px;background:#141C26;padding:10px 10px 18px;box-shadow:0 0 0 1.5px #2C3744,0 40px 60px -30px rgba(26,37,49,.6);position:relative}
+.mn-bezel::after{content:"";position:absolute;left:50%;bottom:6px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#2C3744}
+.mn-scr{position:relative;width:100%;height:100%;border-radius:8px;background:var(--snow);overflow:hidden;display:flex;flex-direction:column;font-size:10.5px}
+.mn-bar{display:flex;align-items:center;gap:6px;height:26px;padding:0 10px;background:#ECE7DD;flex:none}
+.mn-bar>i{width:8px;height:8px;border-radius:50%;background:rgba(26,37,49,.22)}
+.mn-url{flex:1;margin:0 10px;height:16px;border-radius:99px;background:rgba(255,255,255,.8);font-size:9px;line-height:16px;text-align:center;color:var(--granit)}
+.mn-conn{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:99px;background:var(--ok-bg,#DDE9DF);color:#2B5A3A;font-size:9px;font-weight:600;opacity:0;transform:scale(.9);transition:opacity .4s var(--ease),transform .5s var(--ease)}
+.mn-conn.on{opacity:1;transform:none}
+.mn-conn i{width:6px;height:6px;border-radius:50%;background:#2B5A3A}
+.mn-body{flex:1;min-height:0;display:flex}
+.mn-nav{width:46px;flex:none;background:#F1ECE2;display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px 0}
+.mn-nav b{width:22px;height:22px;border-radius:7px;background:var(--red)}
+.mn-nav u{width:20px;height:6px;border-radius:3px;background:rgba(26,37,49,.16);text-decoration:none}
+.mn-main{flex:1;min-width:0;display:flex;flex-direction:column}
+.mn-main .cv-chat{padding-inline:1.6em}
+.mn-main .cv-q{font-size:1.05em}
+.mn-neck{width:46px;height:60px;margin:0 auto;background:linear-gradient(90deg,#1B2430,#2A3441 45%,#1B2430)}
+.mn-base{width:170px;height:14px;margin:0 auto;border-radius:99px 99px 4px 4px;background:linear-gradient(180deg,#2A3441,#141C26)}
+
+/* kiosk */
+.tm-kio{position:absolute;left:952px;top:10px;width:248px;height:520px}
+.ki-top{height:40px;border-radius:26px 26px 6px 6px;background:linear-gradient(180deg,#34404E,#2A3441);display:flex;align-items:center;justify-content:center;gap:9px;color:var(--paper);font-family:var(--serif);font-size:18px;font-weight:500;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.ki-top svg{width:20px;height:20px}
+.ki-bez{margin:4px 6px 0;height:262px;border-radius:18px;background:#141C26;padding:9px;box-shadow:0 0 0 1.5px #2C3744,inset 0 0 0 2px #0C1219}
+.ki-scr{position:relative;width:100%;height:100%;border-radius:11px;background:var(--snow);overflow:hidden;font-size:12.5px}
+.ki-l{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;transition:opacity .45s var(--ease);pointer-events:none}
+.ki-scr[data-s="idle"] .ki-idle,.ki-scr[data-s="read"] .ki-read,.ki-scr[data-s="chat"] .ki-chat{opacity:1}
+.ki-idle,.ki-read{align-items:center;justify-content:center;text-align:center;gap:10px;padding:14px}
+.ki-idle b,.ki-read b{font-family:var(--serif);font-weight:500;font-size:1.5em;line-height:1.15;letter-spacing:-.01em}
+.ki-ic{width:66px;height:44px;border-radius:7px;background:#fff;box-shadow:0 0 0 1.5px rgba(26,37,49,.25);position:relative;animation:nudge 2.2s var(--ease) infinite}
+.ki-ic::before{content:"";position:absolute;left:6px;top:7px;width:16px;height:18px;border-radius:4px;background:#D8D1C3}
+.ki-ic::after{content:"";position:absolute;left:28px;right:6px;top:10px;height:5px;border-radius:3px;background:#D8D1C3;box-shadow:0 10px 0 #E3DDCF,0 20px 0 #E3DDCF}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+.ki-tools{display:flex;gap:6px;margin-top:2px}
+.ki-tools span{padding:.2em .7em;border-radius:99px;background:var(--card);font-size:.85em;font-weight:500}
+.ki-spin{width:30px;height:30px;border-radius:50%;border:4px solid rgba(26,37,49,.15);border-top-color:var(--red);animation:rot .9s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.ki-hi{display:flex;align-items:center;gap:8px;padding:7px 12px;background:#F1ECE2;flex:none}
+.ki-hi .cv-av{width:26px;height:26px;font-size:11px}
+.ki-hi b{font-family:var(--serif);font-weight:500;font-size:1.08em;line-height:1.1}
+.ki-chat .cv-chat{font-size:1em;gap:.35em;padding:.4em .7em .5em}
+.ki-chat .cv-q{font-size:.78em;padding:.35em .65em;max-width:96%}
+.ki-chat .cv-a{font-size:.77em;padding:.45em .65em;line-height:1.3}
+.ki-panel{position:relative;margin:6px 8px 0;height:118px;border-radius:12px 12px 26px 26px;background:linear-gradient(180deg,#3B4756,#2E3946);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -10px 20px rgba(0,0,0,.18);transform:perspective(500px) rotateX(-6deg);transform-origin:50% 0}
+.ki-slotwrap{position:absolute;left:0;right:0;top:12px;text-align:center}
+.ki-lbl{display:block;color:rgba(238,233,224,.75);font-size:10.5px;font-weight:500;margin-bottom:7px}
+.ki-slot{position:relative;width:150px;height:12px;margin:0 auto;border-radius:99px;background:#0B1016;box-shadow:0 0 0 3px #1D2733,0 1px 0 4px rgba(255,255,255,.08);overflow:hidden}
+.ki-slot i{position:absolute;left:0;top:0;bottom:0;width:100%;background:linear-gradient(90deg,#E3A12B,#58C27D);transform-origin:left;transform:scaleX(0)}
+.ki-btns{position:absolute;left:0;right:0;bottom:9px;display:flex;justify-content:center;gap:4px}
+.ki-btns span{display:grid;justify-items:center;gap:5px;width:66px;text-align:center;line-height:1.1;color:rgba(238,233,224,.75);font-size:9px;font-weight:500}
+.ki-btns b{width:34px;height:34px;border-radius:50%;background:#4A5766;box-shadow:0 3px 0 #1D2733,inset 0 1px 0 rgba(255,255,255,.18);display:grid;place-items:center;color:var(--paper);font-size:13px}
+.ki-btns svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ki-body{height:56px;margin:0 14px;background:linear-gradient(180deg,#2A3441,#222B36);border-radius:0 0 14px 14px;position:relative}
+.ki-body::before{content:"";position:absolute;left:30px;right:30px;top:12px;height:24px;background:repeating-linear-gradient(180deg,rgba(0,0,0,.35) 0 3px,transparent 3px 8px);border-radius:4px}
+.ki-ped{height:34px;margin:0 -10px;border-radius:10px 10px 0 0;background:linear-gradient(180deg,#2A3441,#1A222C);box-shadow:0 20px 40px -20px rgba(26,37,49,.7)}
+
+/* id card */
+.tm-card{position:absolute;left:0;top:0;width:118px;height:74px;border-radius:10px;background:linear-gradient(135deg,#FFFFFF 0,#F6E7E4 100%);box-shadow:0 14px 28px -10px rgba(26,37,49,.55),0 0 0 1px rgba(26,37,49,.12);opacity:0;z-index:5;will-change:transform,opacity;overflow:hidden}
+.tm-card .cd-h{display:flex;align-items:center;gap:5px;height:18px;padding:0 7px;background:var(--red);color:#fff;font-size:7px;font-weight:600;letter-spacing:.02em}
+.tm-card .cd-h svg{width:11px;height:11px}
+.tm-card .cd-ph{position:absolute;left:8px;top:25px;width:28px;height:36px;border-radius:4px;background:#D9D2C4;overflow:hidden}
+.tm-card .cd-ph::before{content:"";position:absolute;left:8px;top:6px;width:12px;height:12px;border-radius:50%;background:#B9B1A2}
+.tm-card .cd-ph::after{content:"";position:absolute;left:2px;right:2px;bottom:-6px;height:18px;border-radius:12px 12px 0 0;background:#B9B1A2}
+.tm-card .cd-l{position:absolute;left:44px;top:27px;right:8px}
+.tm-card .cd-l u{display:block;height:4px;border-radius:2px;background:#CFC7B8;margin-bottom:5px;text-decoration:none}
+.tm-card .cd-l u:nth-child(1){width:70%}.tm-card .cd-l u:nth-child(2){width:90%}.tm-card .cd-l u:nth-child(3){width:55%}
+.tm-card .cd-c{position:absolute;right:8px;bottom:7px;width:15px;height:11px;border-radius:3px;background:linear-gradient(135deg,#E8C46A,#C79A33)}
+
+/* glow when all connected */
+.tm-scene.all .ph-bezel,.tm-scene.all .mn-bezel,.tm-scene.all .ki-bez{box-shadow:0 0 0 1.5px #2C3744,0 0 0 4px rgba(216,0,26,.28),0 0 60px -6px rgba(216,0,26,.35)}
+.ph-bezel,.mn-bezel,.ki-bez{transition:box-shadow .8s var(--ease)}
+
+@media (max-width:900px){
+  .term-track{height:520vh}
+  .term-stage{padding-top:78px;gap:10px}
+  .th h3{font-size:clamp(1.7rem,8vw,2.6rem)}
+  .th p{font-size:.9375rem;margin-top:10px}
+  .tp{padding:.55em .85em;font-size:.8125rem}
+  .tp .ic{width:16px;height:16px}
+  .tp span{display:none}
+  .tp.on span{display:inline}
+}
+@media (prefers-reduced-motion:reduce){
+  .ki-ic,.cv-caret,.tm-links path.lit{animation:none}
+}
+
+
 /* responsive */
 @media (max-width:900px){
   .notice{order:3;flex:1 0 100%;max-width:none;padding:7px 12px;font-size:.75rem}
@@ -832,6 +985,67 @@ u:nth-child(2n){width:82%}u:nth-child(3n){width:64%}
           <div class="hs-cmp" id="hsCmp"><span class="old" id="hsOld"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="new" id="hsNew"></span></div>
         </div>
         <p class="hub-note" id="hubNote"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="term" id="term" aria-labelledby="termH">
+    <h2 class="sr-only" id="termH"></h2>
+    <div class="term-track" id="termTrack">
+      <div class="term-stage">
+        <div class="term-cap" id="termCap" aria-hidden="true"></div>
+        <ol class="term-pills" id="termPills"></ol>
+        <div class="tw" id="tw">
+          <div class="tm-scene" id="tmScene" aria-hidden="true">
+            <div class="tm-ground"></div>
+            <svg class="tm-links" viewBox="0 0 1200 560">
+              <path id="lk1" d="M240 292 C292 292 312 292 360 292"/>
+              <path id="lk2" d="M876 292 C900 292 920 292 946 292"/>
+              <circle id="pk1" r="6"/><circle id="pk2" r="6"/>
+            </svg>
+
+            <div class="tm-phone"><div class="ph-bezel"><span class="ph-isl"></span>
+              <div class="ph-scr">
+                <div class="cv-top"><span class="cv-logo"><svg viewBox="0 0 32 32"><use href="#cross"/></svg>Tell</span><span class="cv-av">LM</span></div>
+                <div class="cv-chat" id="phChat"></div>
+                <div class="cv-in"><span class="cv-ph" id="phPh"></span><span class="cv-tp" id="phTp"></span><i class="cv-caret" id="phCaret"></i><span class="cv-send" id="phSend"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              </div>
+            </div></div>
+
+            <div class="tm-mon">
+              <div class="mn-bezel"><div class="mn-scr">
+                <div class="mn-bar"><i></i><i></i><i></i><span class="mn-url">tell.example</span><span class="mn-conn" id="mnConn"><i></i><span id="mnConnT"></span></span></div>
+                <div class="mn-body">
+                  <nav class="mn-nav"><b></b><u></u><u></u><u></u><u></u></nav>
+                  <div class="mn-main">
+                    <div class="cv-top"><span class="cv-logo"><svg viewBox="0 0 32 32"><use href="#cross"/></svg>Tell</span><span class="cv-av">LM</span></div>
+                    <div class="cv-chat" id="mnChat"></div>
+                    <div class="cv-in"><span class="cv-ph" id="mnPh"></span><span class="cv-send"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                  </div>
+                </div>
+              </div></div>
+              <div class="mn-neck"></div><div class="mn-base"></div>
+            </div>
+
+            <div class="tm-kio" id="tmKio">
+              <div class="ki-top"><svg viewBox="0 0 32 32"><use href="#cross"/></svg>Tell</div>
+              <div class="ki-bez"><div class="ki-scr" id="kiScr" data-s="idle">
+                <div class="ki-l ki-idle"><span class="ki-ic"></span><b id="kiIdleT"></b><div class="ki-tools" id="kiTools"></div></div>
+                <div class="ki-l ki-read"><span class="ki-spin"></span><b id="kiReadT"></b></div>
+                <div class="ki-l ki-chat"><div class="ki-hi"><span class="cv-av">LM</span><b id="kiHi"></b></div><div class="cv-chat" id="kiChat"></div></div>
+              </div></div>
+              <div class="ki-panel">
+                <div class="ki-slotwrap"><span class="ki-lbl" id="kiLbl"></span><div class="ki-slot"><i id="kiLed"></i></div></div>
+                <div class="ki-btns" id="kiBtns"></div>
+              </div>
+              <div class="ki-body"></div>
+              <div class="ki-ped"></div>
+            </div>
+
+            <div class="tm-card" id="tmCard"><div class="cd-h"><svg viewBox="0 0 32 32"><use href="#cross"/></svg>ID · CARTE · CARTA</div><div class="cd-ph"></div><div class="cd-l"><u></u><u></u><u></u></div><span class="cd-c"></span></div>
+          </div>
+        </div>
+        <p class="term-note" id="termNote"></p>
       </div>
     </div>
   </section>
@@ -1122,7 +1336,7 @@ function setLang(l){
   $$('[data-i]').forEach(el=>{const v=T()[el.dataset.i]; if(typeof v==='string')el.textContent=tx(v);});
   $$('[data-ia]').forEach(el=>{const [a,k]=el.dataset.ia.split(':'); el.setAttribute(a,T()[k]);});
   $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)));
-  buildChips(); buildPh(); buildStatement(); buildRouter(); buildHub(); buildTrust(); buildFooter(); buildPlat(); curStep=-1; resetAnswer();
+  buildChips(); buildPh(); buildStatement(); buildRouter(); buildHub(); buildTrust(); buildTerm(); buildFooter(); buildPlat(); curStep=-1; resetAnswer();
   try{history.replaceState(null,'','?lang='+l);}catch(e){}
   update();
 }
@@ -1224,7 +1438,7 @@ function update(){
   const fr=footer.getBoundingClientRect();
   const fp=reduce?1:clamp((vh-fr.top)/fr.height,0,1);
   fMark.style.transform='translateY('+((1-fp)*14).toFixed(2)+'%)';
-  updateChaos(); updatePlat(); updateRoute(); updateHub(); updateTrust();
+  updateChaos(); updatePlat(); updateRoute(); updateHub(); updateTrust(); updateTerm();
 }
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
 addEventListener('resize',update);
@@ -1659,6 +1873,125 @@ function updateTrust(force){
   trBar.style.setProperty('--pp',(.08+.92*(i+1)/4).toFixed(3));
   const aw=tvWrap.parentElement.clientWidth, ah=vh-(innerWidth<900?330:130);
   tvEl.parentElement.style.setProperty('--k',Math.min(aw/560,ah/440,1.12).toFixed(3));
+}
+
+
+/* ---------- terminal / alle Geräte ---------- */
+const TERM={
+de:{sr:"Tell am Handy, am Computer und am Terminal mit der ID-Karte: ein System, für jeden zugänglich.",
+ caps:[["Am Handy fragen.","Tippen, senden, Antwort lesen."],["Am Computer weitermachen.","Dieselbe Unterhaltung, dasselbe Konto."],["Am Terminal mit der ID-Karte.","Für alle ohne Smartphone oder Internet. Karte durchziehen, fertig."],["Ein System. Für jeden zugänglich.","Wer kein Smartphone oder kein Internet hat, geht ans Terminal im Gemeindehaus, in der Bibliothek oder auf der Post. ID-Karte durchziehen, fertig."]],
+ pills:["Handy","Computer","Terminal"],ph:"Frage an Tell …",conn:"Verbunden",
+ q:"Ich ziehe nach Winterthur. Was muss ich tun?",intro:"Bei einem Umzug melden Sie sich bei der alten Gemeinde ab und bei der neuen an.",steps:["Bei der bisherigen Gemeinde abmelden.","Bei der neuen Gemeinde anmelden, mit Ausweis und Mietvertrag.","Krankenkasse und Post informieren."],who:"Zuständig",chips:["Gemeinde","Kanton"],
+ kio:{idle:"Bitte ID-Karte durchziehen",read:"Karte wird gelesen …",hi:"Willkommen, Lena Muster",big:"Grosse Schrift",speak:"Vorlesen",help:"Hilfe",slot:"ID-Karte hier durchziehen"},
+ note:"Beispiel. Geräte, Standorte und Person sind frei erfunden."},
+fr:{sr:"Tell sur mobile, sur ordinateur et au terminal avec la carte d'identité : un seul système, accessible à tous.",
+ caps:[["Poser sa question sur mobile.","Taper, envoyer, lire la réponse."],["Continuer sur l'ordinateur.","Même conversation, même compte."],["Au terminal avec la carte d'identité.","Pour toute personne sans smartphone ni internet. Passer la carte, c'est tout."],["Un seul système. Accessible à toutes et à tous.","Qui n'a ni smartphone ni internet utilise le terminal de la maison communale, de la bibliothèque ou de la poste. Passer la carte d'identité, c'est fait."]],
+ pills:["Mobile","Ordinateur","Terminal"],ph:"Question à Tell …",conn:"Connecté",
+ q:"Je déménage à Lausanne. Que dois-je faire ?",intro:"En cas de déménagement, vous vous annoncez à l'ancienne commune puis à la nouvelle.",steps:["Annoncer son départ à la commune actuelle.","S'inscrire à la nouvelle commune avec une pièce d'identité et le bail.","Informer la caisse maladie et La Poste."],who:"Compétence",chips:["Commune","Canton"],
+ kio:{idle:"Veuillez passer votre carte d'identité",read:"Lecture de la carte …",hi:"Bienvenue, Lena Muster",big:"Grande police",speak:"Lecture à voix haute",help:"Aide",slot:"Passer la carte ici"},
+ note:"Exemple. Appareils, lieux et personne sont fictifs."},
+it:{sr:"Tell sul telefono, sul computer e al terminale con la carta d'identità: un solo sistema, accessibile a tutti.",
+ caps:[["Chiedere dal telefono.","Scrivere, inviare, leggere la risposta."],["Continuare sul computer.","Stessa conversazione, stesso account."],["Al terminale con la carta d'identità.","Per chi non ha smartphone o internet. Basta strisciare la carta."],["Un solo sistema. Accessibile a tutti.","Chi non ha smartphone o internet usa il terminale in comune, in biblioteca o alla posta. Si striscia la carta d'identità e il gioco è fatto."]],
+ pills:["Telefono","Computer","Terminale"],ph:"Domanda a Tell …",conn:"Connesso",
+ q:"Mi trasferisco a Lugano. Cosa devo fare?",intro:"In caso di trasloco vi annunciate al vecchio comune e vi registrate nel nuovo.",steps:["Annunciare la partenza al comune attuale.","Registrarsi nel nuovo comune con documento d'identità e contratto d'affitto.","Informare la cassa malati e la Posta."],who:"Competenza",chips:["Comune","Cantone"],
+ kio:{idle:"Strisciare la carta d'identità",read:"Lettura della carta …",hi:"Benvenuta, Lena Muster",big:"Testo grande",speak:"Lettura vocale",help:"Aiuto",slot:"Striscia qui la carta"},
+ note:"Esempio. Dispositivi, sedi e persona sono inventati."},
+en:{sr:"Tell on the phone, on the computer and at the terminal with an ID card: one system, open to everyone.",
+ caps:[["Ask on your phone.","Type, send, read the answer."],["Carry on at the computer.","Same conversation, same account."],["At the terminal with your ID card.","For anyone without a smartphone or internet. Swipe the card, done."],["One system. Open to everyone.","Without a smartphone or internet, use the terminal at the town hall, the library or the post office. Swipe your ID card, done."]],
+ pills:["Phone","Computer","Terminal"],ph:"Ask Tell …",conn:"Connected",
+ q:"I'm moving to Zurich. What do I need to do?",intro:"When you move, you deregister from your old municipality and register with the new one.",steps:["Deregister from your current municipality.","Register with the new one, with ID and rental contract.","Tell your health insurer and the Post."],who:"Responsible",chips:["Municipality","Canton"],
+ kio:{idle:"Please swipe your ID card",read:"Reading card …",hi:"Welcome, Lena Muster",big:"Large text",speak:"Read aloud",help:"Help",slot:"Swipe card here"},
+ note:"Example. Devices, locations and person are made up."}
+};
+const TM_IC={phone:'<svg class="ic" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 18h2"/></svg>',monitor:'<svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M9 20h6M12 16v4"/></svg>',kiosk:'<svg class="ic" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2"/><rect x="8.5" y="5.5" width="7" height="5" rx="1"/><path d="M9 15h6"/></svg>'};
+const termTrack=$('#termTrack'), tmScene=$('#tmScene'), tw=$('#tw'), tmCard=$('#tmCard');
+let tmCap=[], tmPills=[], tmChats=null, tmCur=-1, tmQ='';
+const seg=(p,a,b)=>clamp((p-a)/(b-a),0,1);
+const smooth=t=>t*t*(3-2*t);
+function chatNode(host,ans){
+  host.innerHTML='<div class="cv-q"></div><div class="cv-a"><p class="cv-i"></p><ol class="cv-s"></ol><div class="cv-c"><small></small><span></span><span></span></div></div>';
+  const words=[],wrap=(el,t)=>{t.split(' ').forEach((w,i,a)=>{const s=document.createElement('span');s.className='w';s.textContent=w+(i<a.length-1?' ':'');el.append(s);words.push(s)})};
+  $('.cv-q',host).textContent=ans.q;
+  wrap($('.cv-i',host),ans.intro);
+  const lis=ans.steps.map(t=>{const li=document.createElement('li');const sp=document.createElement('span');li.append(sp);$('.cv-s',host).append(li);const first=words.length;wrap(sp,t);return {li,first}});
+  $('.cv-c small',host).textContent=ans.who+':'; const cs=$$('.cv-c span',host); ans.chips.forEach((c,i)=>cs[i].textContent=c);
+  return {q:$('.cv-q',host),a:$('.cv-a',host),words,lis,chips:$('.cv-c',host),shown:-1};
+}
+function setChat(c,bub,ans){
+  c.q.style.opacity=bub.toFixed(3); c.q.style.transform='translateY('+((1-bub)*10).toFixed(1)+'px)';
+  c.a.style.opacity=(ans>0?1:0);
+  const n=c.words.length, k=Math.floor(ans*n+(ans>0?.999:0));
+  if(k!==c.shown){c.words.forEach((w,i)=>w.classList.toggle('on',i<k));c.lis.forEach(l=>l.li.classList.toggle('on',k>l.first));c.chips.classList.toggle('on',k>=n);c.shown=k;const h=c.q.parentElement;h.scrollTop=h.scrollHeight>h.clientHeight+1?h.scrollHeight:0}
+}
+function buildTerm(){
+  const R=TERM[lang];
+  $('#termH').textContent=R.sr;
+  const capH=$('#termCap'); capH.innerHTML=R.caps.map(c=>'<div class="th"><h3></h3><p></p></div>').join('');
+  tmCap=$$('.th',capH); tmCap.forEach((el,i)=>{$('h3',el).textContent=tx(R.caps[i][0]);$('p',el).textContent=tx(R.caps[i][1])});
+  const pills=$('#termPills'); pills.innerHTML='';
+  tmPills=['phone','monitor','kiosk'].map((k,i)=>{const li=document.createElement('li');const b=document.createElement('button');b.type='button';b.className='tp';b.innerHTML=TM_IC[k]+'<span>'+R.pills[i]+'</span>';
+    b.addEventListener('click',()=>{const r=termTrack.getBoundingClientRect();const P=[.14,.42,.74][i];scrollTo({top:scrollY+r.top+(r.height-innerHeight)*P,behavior:reduce?'auto':'smooth'})});
+    li.append(b);pills.append(li);return b});
+  $('#termNote').textContent=tx(R.note);
+  $('#phPh').textContent=tx(R.ph); $('#mnPh').textContent=tx(R.ph); $('#mnConnT').textContent=R.conn;
+  const k=R.kio;
+  $('#kiIdleT').textContent=tx(k.idle); $('#kiReadT').textContent=tx(k.read); $('#kiHi').textContent=tx(k.hi); $('#kiLbl').textContent=tx(k.slot);
+  $('#kiTools').innerHTML='<span>A+ '+tx(k.big)+'</span>';
+  $('#kiBtns').innerHTML='<span><b>A+</b>'+tx(k.big)+'</span><span><b><svg viewBox="0 0 24 24"><path d="M4 10v4h3l5 4V6L7 10z"/><path d="M16 9a4 4 0 0 1 0 6"/></svg></b>'+tx(k.speak)+'</span><span><b>?</b>'+tx(k.help)+'</span>';
+  const ans={q:tx(R.q),intro:tx(R.intro),steps:R.steps.map(tx),who:tx(R.who),chips:R.chips};
+  tmQ=ans.q;
+  tmChats={ph:chatNode($('#phChat'),ans),mn:chatNode($('#mnChat'),ans),ki:chatNode($('#kiChat'),ans)};
+  tmCur=-1; updateTerm(true);
+}
+function updateTerm(force){
+  if(!tmChats)return;
+  const r=termTrack.getBoundingClientRect(), vh=innerHeight;
+  if(!force&&(r.bottom<-160||r.top>vh+160))return;
+  const p=reduce?1:clamp(-r.top/Math.max(1,r.height-vh),0,1);
+  const W=tw.clientWidth||1, H=tw.clientHeight||1, mob=innerWidth<900;
+  /* scale + camera */
+  let k,tx_=0;
+  if(!mob){k=Math.min(W/1200,H/560,1.15); tx_=(W-1200*k)/2}
+  else{
+    const kd=Math.min(W/300,H/540,1.0)*.9; const ko=Math.min(W/1240,H/560);
+    const K=[[0,125,kd],[.30,125,kd],[.37,600,kd*.58],[.52,600,kd*.58],[.60,1085,kd],[.86,1085,kd],[.95,600,ko]];
+    let a=K[0],b=K[K.length-1];
+    for(let i=0;i<K.length-1;i++){if(p>=K[i][0]&&p<=K[i+1][0]){a=K[i];b=K[i+1];break}}
+    const t=b[0]===a[0]?1:smooth((p-a[0])/(b[0]-a[0]));
+    const cx=a[1]+(b[1]-a[1])*t; k=a[2]+(b[2]-a[2])*t; tx_=W/2-cx*k;
+  }
+  tmScene.style.setProperty('--k',k.toFixed(4)); tmScene.style.setProperty('--tx',tx_.toFixed(1)+'px'); tmScene.style.setProperty('--ty',Math.max(0,(H-560*k)/2).toFixed(1)+'px');
+  /* phone */
+  const typed=seg(p,.04,.20), sent=p>=.20, n=tmQ.length, kc=Math.floor(typed*n);
+  $('#phTp').textContent=sent?'':tmQ.slice(0,kc);
+  $('#phPh').style.display=(kc===0&&!sent)?'':'none';
+  $('#phCaret').classList.toggle('off',sent||kc===0&&p<.02);
+  $('#phSend').classList.toggle('go',typed>=1&&!sent);
+  setChat(tmChats.ph,sent?smooth(seg(p,.20,.235)):0,seg(p,.235,.33));
+  /* link 1 + monitor */
+  const l1=seg(p,.32,.40), lk1=$('#lk1'), pk1=$('#pk1');
+  lk1.classList.toggle('lit',p>.32); const pt1=lk1.getPointAtLength(l1*lk1.getTotalLength()); pk1.setAttribute('cx',pt1.x); pk1.setAttribute('cy',pt1.y); pk1.style.opacity=(l1>0&&l1<1)?1:0;
+  $('#mnConn').classList.toggle('on',p>=.40);
+  setChat(tmChats.mn,smooth(seg(p,.40,.44)),seg(p,.44,.54));
+  /* id card swipe */
+  const cin=smooth(seg(p,.54,.62)), cout=smooth(seg(p,.64,.70));
+  const cardX=cout>0?986+(1260-986)*cout:1228-(1228-986)*cin;
+  const cardY=322+Math.sin(cin*Math.PI)*-6;
+  tmCard.style.opacity=(p>.535&&p<.70)?(cout>0?1-cout:Math.min(1,seg(p,.535,.56)*1)).toFixed(3):0;
+  tmCard.style.transform='translate('+cardX.toFixed(1)+'px,'+cardY.toFixed(1)+'px) rotate('+(-5+cin*5).toFixed(2)+'deg)';
+  /* led */
+  $('#kiLed').style.transform='scaleX('+seg(p,.56,.62).toFixed(3)+')';
+  /* kiosk screen */
+  const state=p<.62?'idle':(p<.69?'read':'chat');
+  if($('#kiScr').dataset.s!==state)$('#kiScr').dataset.s=state;
+  const l2=seg(p,.68,.76), lk2=$('#lk2'), pk2=$('#pk2');
+  lk2.classList.toggle('lit',p>.68); const pt2=lk2.getPointAtLength((1-l2)*lk2.getTotalLength()); pk2.setAttribute('cx',pt2.x); pk2.setAttribute('cy',pt2.y); pk2.style.opacity=(l2>0&&l2<1)?1:0;
+  setChat(tmChats.ki,smooth(seg(p,.76,.795)),seg(p,.795,.88));
+  /* captions + pills */
+  const idx=p<.32?0:p<.54?1:p<.88?2:3;
+  if(idx!==tmCur){tmCur=idx;tmCap.forEach((el,i)=>{el.classList.toggle('on',i===idx);el.classList.toggle('out',i<idx)});}
+  tmPills.forEach((b,i)=>{b.classList.toggle('on',idx<3&&i===idx);b.classList.toggle('done',idx===3||i<idx)});
+  tmScene.classList.toggle('all',p>=.9);
 }
 
 
