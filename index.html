@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#E6E2D8">
+<title>Tell, Auskunft von Bund, Kantonen und Gemeinden (Konzept)</title>
+<meta name="description" content="Konzeptprototyp: eine Frage, eine Antwort, für alle Behörden der Schweiz.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='2' fill='%23DC0018'/%3E%3Cpath fill='%23fff' d='M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E6E2D8;
+  --snow:#FAFAF8;
+  --ink:#0F2233;
+  --granit:#4F5A64;
+  --glacier:#A9BFCB;
+  --red:#DC0018;
+  --red-d:#B30014;
+  --rule:rgba(15,34,51,.16);
+  --guide:rgba(15,34,51,.075);
+  --pad:clamp(20px,4vw,64px);
+  --gap:clamp(12px,1.6vw,24px);
+  --sec:clamp(88px,13vw,208px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --ease-io:cubic-bezier(.76,0,.24,1);
+  font-family:"Switzer","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+[hidden]{display:none!important}
+html{background:var(--paper);color:var(--ink);-webkit-text-size-adjust:100%}
+body{font-size:1rem;line-height:1.5;font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;background:var(--paper)}
+button,input{font:inherit;color:inherit}
+a{color:inherit}
+svg{display:block}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:var(--pad);top:-60px;z-index:100;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:3px;transition:top .2s}
+.skip:focus{top:8px}
+
+/* banner + header */
+.banner{background:var(--ink);color:var(--paper);font-size:.8125rem;line-height:1.3;text-align:center;padding:8px var(--pad)}
+.site-header{position:sticky;top:0;z-index:40;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-inline:var(--pad);transition:background .35s,box-shadow .35s}
+.site-header.scrolled{background:color-mix(in srgb,var(--paper) 84%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--rule)}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:1.375rem;letter-spacing:-.03em}
+.brand svg{width:26px;height:26px}
+.head-r{display:flex;align-items:center;gap:clamp(12px,2vw,28px)}
+.lang{display:flex;gap:2px}
+.lang button{background:none;border:0;cursor:pointer;padding:8px 8px;font-size:.875rem;font-weight:500;color:var(--granit);position:relative;transition:color .2s}
+.lang button::after{content:"";position:absolute;left:8px;right:8px;bottom:3px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.lang button:hover{color:var(--ink)}
+.lang button[aria-pressed="true"]{color:var(--ink)}
+.lang button[aria-pressed="true"]::after{transform:scaleX(1)}
+.head-ask{opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.head-ask.show{opacity:1;transform:none;pointer-events:auto}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;gap:.6em;padding:.8em 1.25em;background:var(--ink);color:var(--paper);border:0;border-radius:3px;font-weight:500;font-size:.9375rem;line-height:1.2;cursor:pointer;overflow:hidden;isolation:isolate;text-decoration:none;transition:transform .25s var(--ease),color .3s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease);z-index:-1}
+.btn:hover::before,.btn:focus-visible::before{transform:scaleX(1)}
+.btn:active{transform:scale(.97)}
+.btn[disabled]{cursor:default;opacity:.7}
+.btn[disabled]::before{transform:scaleX(0)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule)}
+.btn.ghost:hover,.btn.ghost:focus-visible{color:#fff;box-shadow:none}
+
+/* hero */
+.hero{position:relative;min-height:calc(100svh - 96px);display:flex;flex-direction:column;justify-content:space-between;gap:clamp(40px,8vh,96px);padding:clamp(20px,5vh,64px) var(--pad) clamp(36px,6vh,72px)}
+.guides{position:absolute;inset:0 var(--pad);display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);pointer-events:none}
+.guides span{border-inline:1px solid var(--guide);transform:scaleY(0);transform-origin:top;transition:transform 1.3s var(--ease-io);transition-delay:calc(var(--i)*55ms)}
+.ready .guides span{transform:none}
+.greet-wrap{position:relative}
+.greet{font-weight:300;font-size:clamp(3.4rem,18.4vw,24rem);line-height:.9;letter-spacing:-.055em;margin-left:-.06em}
+.greet-stack{display:grid;overflow:hidden;padding:.14em .08em .5em;margin:-.14em -.08em 0}
+.gw{grid-area:1/1;display:block;transform:translateY(180%);transition:transform 1s var(--ease-io);will-change:transform}
+.gw.is-on{transform:translateY(0)}
+.gw.is-out{transform:translateY(-165%)}
+.gw.no-tr{transition:none!important}
+.ticks{display:flex;gap:8px;margin-top:clamp(4px,.8vw,12px);opacity:0;transition:opacity .8s var(--ease) .9s}
+.ready .ticks{opacity:1}
+.ticks i{display:block;width:36px;height:2px;background:var(--rule);position:relative;overflow:hidden}
+.ticks i::after{content:"";position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left}
+.ticks i.on::after{animation:fill 3.4s linear forwards}
+@keyframes fill{to{transform:scaleX(1)}}
+.hero-bottom{position:relative;display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:start}
+.lede{grid-column:1/5;font-size:clamp(1.25rem,1.85vw,1.75rem);line-height:1.25;letter-spacing:-.015em;max-width:19em;padding-top:6px;text-wrap:balance}
+.sec-title,.statement p{text-wrap:balance}
+.ask-col{grid-column:5/13;min-width:0}
+.lede,.ask-col{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease) .95s,transform 1s var(--ease) .95s}
+.ask-col{transition-delay:1.1s}
+.ready .lede,.ready .ask-col{opacity:1;transform:none}
+
+.ask{position:relative;display:grid;grid-template-columns:1fr auto;background:var(--snow);border:1px solid rgba(15,34,51,.22);border-radius:4px;overflow:hidden;transition:border-color .3s,box-shadow .3s}
+.ask::after{content:"";position:absolute;left:0;right:72px;bottom:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.ask:focus-within{border-color:var(--ink)}
+.ask:focus-within::after{transform:scaleX(1)}
+.ask.nudge{animation:nudge .45s var(--ease)}
+@keyframes nudge{20%{transform:translateX(-6px)}50%{transform:translateX(5px)}80%{transform:translateX(-2px)}}
+.ask-field{position:relative;min-width:0}
+.ask input{width:100%;height:76px;border:0;background:transparent;padding:0 clamp(16px,2vw,28px);font-size:clamp(1.05rem,1.5vw,1.375rem);letter-spacing:-.01em;outline:none}
+.ph{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.ph span{position:absolute;left:clamp(16px,2vw,28px);right:8px;top:50%;font-size:clamp(1.05rem,1.5vw,1.375rem);letter-spacing:-.01em;color:var(--granit);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;transform:translateY(40%);opacity:0;transition:transform .7s var(--ease),opacity .5s}
+.ph span{margin-top:-.7em}
+.ph span.on{transform:none;opacity:1}
+.ph span.off{transform:translateY(-140%);opacity:0}
+.ask.has-value .ph{opacity:0}
+.send{width:76px;background:var(--red);color:#fff;border:0;cursor:pointer;display:grid;place-items:center;transition:background .3s,transform .2s var(--ease)}
+.send svg{width:26px;height:26px;transition:transform .4s var(--ease)}
+.send:hover,.send:focus-visible{background:var(--red-d)}
+.send:hover svg{transform:translateX(5px)}
+.send:active{transform:scale(.96)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:transparent;border:1px solid var(--rule);border-radius:3px;padding:.6em .95em;font-size:.9375rem;cursor:pointer;transition:background .3s,color .3s,border-color .3s,transform .2s var(--ease)}
+.chip:hover,.chip:focus-visible{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip:active{transform:scale(.97)}
+
+/* answer */
+.answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .9s var(--ease)}
+.answer.open{grid-template-rows:1fr}
+.answer-in{overflow:hidden;min-height:0}
+.a-body{padding-top:40px}
+.a-q{font-size:.9375rem;color:var(--granit);margin-bottom:20px}
+.think{display:flex;align-items:center;gap:14px;color:var(--granit);font-size:.9375rem}
+.think svg{width:28px;height:28px}
+.think rect{fill:var(--red);transform-box:fill-box;transform-origin:center}
+.think .v{animation:growv 1.1s var(--ease-io) infinite alternate}
+.think .h{animation:growh 1.1s var(--ease-io) .25s infinite alternate}
+@keyframes growv{from{transform:scaleY(.1)}to{transform:scaleY(1)}}
+@keyframes growh{from{transform:scaleX(.1)}to{transform:scaleX(1)}}
+.a-text{font-size:clamp(1.2rem,1.7vw,1.5rem);line-height:1.42;letter-spacing:-.015em;max-width:44em}
+.sw{opacity:0;transition:opacity .35s}
+.sw.in{opacity:1}
+.a-steps{list-style:none;padding:0;margin-top:32px;max-width:44em;counter-reset:s}
+.a-steps li{display:grid;grid-template-columns:44px 1fr;padding:16px 0;border-top:1px solid var(--rule);opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.a-steps li:last-child{border-bottom:1px solid var(--rule)}
+.a-steps li::before{counter-increment:s;content:counter(s);color:var(--red);font-weight:500;font-feature-settings:"tnum"}
+.a-steps li.in{opacity:1;transform:none}
+.a-who{margin-top:32px}
+.who-lbl{font-size:.9375rem;color:var(--granit);margin-bottom:10px}
+.who-row{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0}
+.who-row li{display:inline-flex;align-items:center;gap:10px;padding:.65em 1em;border-radius:3px;font-weight:500;font-size:.9375rem;box-shadow:inset 0 0 0 1px var(--rule);color:var(--granit);transition:background .6s var(--ease),color .6s var(--ease),box-shadow .6s}
+.who-row li::before{content:"";width:8px;height:8px;background:var(--rule);transition:background .6s}
+.who-row li.on{background:var(--ink);color:var(--paper);box-shadow:none}
+.who-row li.on::before{background:var(--red)}
+.who-note{margin-top:12px;font-size:.9375rem;color:var(--granit);max-width:44em}
+.a-src{margin-top:28px;max-width:44em}
+.a-src ul{list-style:none;padding:0}
+.a-src li a{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--rule);text-decoration:none;font-size:.9375rem;transition:padding .35s var(--ease),color .25s}
+.a-src li:last-child a{border-bottom:1px solid var(--rule)}
+.a-src li a:hover{padding-left:8px;color:var(--red)}
+.a-src li a svg{width:16px;height:16px;flex:none;margin-top:3px}
+.a-src,.a-who,#newQ{opacity:0;transition:opacity .7s var(--ease)}
+.a-src.in,.a-who.in,#newQ.in{opacity:1}
+#newQ{margin-top:28px}
+
+/* statement */
+.statement{height:290vh;position:relative}
+.statement-in{position:sticky;top:64px;height:calc(100svh - 64px);display:flex;align-items:center;padding-inline:var(--pad)}
+.statement p{font-size:clamp(1.9rem,5vw,5.4rem);line-height:1.07;letter-spacing:-.04em;font-weight:400;max-width:17.5em}
+.w{opacity:.14;transition:opacity .25s linear}
+
+/* ladder */
+.ladder{background:var(--snow);padding:var(--sec) var(--pad)}
+.sec-title{font-size:clamp(2.2rem,5vw,4.8rem);line-height:1.03;letter-spacing:-.04em;font-weight:400;max-width:13em}
+.lad-rule{height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;margin-top:clamp(48px,7vw,104px)}
+.lad-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.lad-col{padding-top:clamp(24px,3vw,40px)}
+.vis{height:clamp(120px,13vw,184px);margin-bottom:clamp(20px,2.4vw,32px)}
+.flag{width:clamp(72px,8vw,112px);height:clamp(72px,8vw,112px);transform:scale(.6);opacity:0;transform-origin:left top;transition:transform .9s var(--ease),opacity .6s}
+.flag.on{transform:none;opacity:1}
+.cantons{display:grid;grid-template-columns:repeat(13,1fr);gap:3px}
+.cantons span{aspect-ratio:1;display:grid;place-items:center;font-size:clamp(.5rem,.62vw,.66rem);font-weight:500;background:rgba(15,34,51,.07);color:rgba(15,34,51,.32);border-radius:1px;transition:background .3s,color .3s}
+.cantons span.on{background:var(--ink);color:var(--paper)}
+.dots{height:100%;background-image:radial-gradient(circle,var(--ink) 1.1px,transparent 1.6px);background-size:7px 7px;clip-path:inset(0 100% 0 0);-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent);mask-image:linear-gradient(to bottom,#000 55%,transparent)}
+.lad-col h3{font-size:clamp(1.5rem,2.3vw,2.25rem);line-height:1.1;letter-spacing:-.025em;font-weight:500}
+.lad-col p{margin-top:12px;color:var(--granit);max-width:30ch}
+
+/* move */
+.move{padding:var(--sec) var(--pad)}
+.move-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:center}
+.move-copy{grid-column:1/6}
+.move-copy .sec-title{font-size:clamp(2.2rem,4.6vw,4.4rem)}
+.move-copy p{margin-top:24px;color:var(--granit);font-size:1.125rem;line-height:1.45;max-width:26em}
+.move-copy .btn{margin-top:32px}
+.move-card{grid-column:7/13;background:var(--snow);border:1px solid var(--rule);border-radius:6px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(15,34,51,.32)}
+.mv-head{padding:22px 24px}
+.mv-head b{display:block;font-weight:500;font-size:1.0625rem;letter-spacing:-.01em;margin-top:2px}
+.mv-head span{font-size:.875rem;color:var(--granit)}
+.mv-list{list-style:none;padding:0}
+.mv-row{display:grid;grid-template-columns:24px 1fr auto;align-items:center;gap:16px;padding:0 24px;height:64px;border-top:1px solid var(--rule)}
+.mv-dot{position:relative;width:24px;height:24px;border-radius:50%;border:1.5px solid rgba(15,34,51,.3);display:grid;place-items:center;transition:background .4s var(--ease),border-color .4s}
+.mv-dot svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:22;stroke-dashoffset:22;transition:stroke-dashoffset .5s var(--ease) .1s}
+.mv-dot::after{content:"";position:absolute;inset:-1.5px;border-radius:50%;border:1.5px solid var(--red);opacity:0}
+.mv-row[data-s="active"] .mv-dot{border-color:var(--red)}
+.mv-row[data-s="active"] .mv-dot::after{animation:ring 1s ease-out infinite}
+@keyframes ring{from{transform:scale(1);opacity:.7}to{transform:scale(1.9);opacity:0}}
+.mv-row[data-s="done"] .mv-dot{background:var(--red);border-color:var(--red)}
+.mv-row[data-s="done"] .mv-dot svg{stroke-dashoffset:0}
+.mv-name{font-size:1.0625rem;letter-spacing:-.01em}
+.mv-st{font-size:.875rem;color:var(--granit);transition:color .3s}
+.mv-row[data-s="done"] .mv-st{color:var(--ink)}
+.mv-foot{border-top:1px solid var(--rule);padding:18px 24px;font-size:.875rem;color:var(--granit)}
+.mv-bar{height:2px;background:var(--rule);margin-top:12px;overflow:hidden}
+.mv-bar i{display:block;height:100%;background:var(--red);transform-origin:left;transform:scaleX(0);transition:transform .8s var(--ease)}
+
+/* privacy */
+.privacy{background:var(--snow);padding:var(--sec) var(--pad)}
+.priv-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+.priv-grid .sec-title{grid-column:1/6}
+.p-list{grid-column:7/13;list-style:none;padding:0;align-self:end}
+.p-row{display:grid;grid-template-columns:1fr 1.5fr;gap:var(--gap);padding:26px 0;border-top:1px solid var(--rule)}
+.p-row:last-child{border-bottom:1px solid var(--rule)}
+.p-row h3{font-size:1.25rem;font-weight:500;letter-spacing:-.02em;line-height:1.2}
+.p-row p{color:var(--granit);max-width:32em}
+
+/* footer */
+.footer{background:var(--ink);color:var(--paper);padding:clamp(72px,10vw,150px) var(--pad) 28px;overflow:hidden}
+.f-mark{display:flex;align-items:flex-end;gap:.04em;font-size:clamp(7rem,43vw,40rem);font-weight:300;line-height:.74;letter-spacing:-.07em;margin-left:-.04em;will-change:transform}
+.f-mark svg{width:.27em;height:.27em;margin-bottom:.02em;margin-left:.05em;flex:none}
+.f-row{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);margin-top:clamp(48px,6vw,96px);padding-top:24px;border-top:1px solid rgba(230,226,216,.22);font-size:.9375rem}
+.f-links{grid-column:1/8;display:flex;flex-wrap:wrap;gap:8px 28px;list-style:none;padding:0}
+.f-links a{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .5s var(--ease);padding-bottom:2px}
+.f-links a:hover{background-size:100% 1px}
+.f-note{grid-column:8/13;color:rgba(230,226,216,.66);max-width:34em}
+.footer :focus-visible{outline-color:var(--paper)}
+
+/* responsive */
+@media (max-width:900px){
+  .guides{grid-template-columns:repeat(4,1fr)}
+  .guides span:nth-child(n+5){display:none}
+  .lede{grid-column:1/-1;max-width:none}
+  .ask-col{grid-column:1/-1}
+  .lad-cols{grid-template-columns:1fr;gap:56px}
+  .lad-col{border-top:1px solid var(--rule)}
+  .lad-col:first-child{border-top:0}
+  .move-copy,.move-card{grid-column:1/-1}
+  .move-card{margin-top:40px}
+  .priv-grid .sec-title,.p-list{grid-column:1/-1}
+  .p-list{margin-top:40px}
+  .p-row{grid-template-columns:1fr}
+  .f-links,.f-note{grid-column:1/-1}
+  .f-note{margin-top:16px}
+  .statement{height:260vh}
+  .lang button{padding:8px 5px}
+  .head-ask{display:none}
+}
+@media (max-width:520px){
+  .ask input,.send{height:64px}
+  .send{width:64px}
+  .ask::after{right:64px}
+  .banner{font-size:.75rem}
+  .greet{font-size:clamp(3.2rem,17.5vw,6rem)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+  .w{opacity:1}
+}
+</style>
+<noscript><style>.lede,.ask-col,.ticks{opacity:1;transform:none}.gw:first-child{transform:none}.guides span{transform:none}.w{opacity:1}.statement{height:auto}.statement-in{position:static;height:auto;padding-block:80px}</style></noscript>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="cross" viewBox="0 0 32 32"><rect width="32" height="32" rx="2" fill="#DC0018"/><path fill="#fff" d="M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z"/></symbol>
+</svg>
+
+<a class="skip" href="#main" data-i="skip">Zum Inhalt springen</a>
+<div class="banner" data-i="banner">Konzeptprototyp, keine offizielle Seite des Bundes, der Kantone oder der Gemeinden.</div>
+
+<header class="site-header" id="hdr">
+  <a class="brand" href="#" aria-label="Tell"><svg aria-hidden="true"><use href="#cross"/></svg>Tell</a>
+  <div class="head-r">
+    <button class="btn head-ask" id="headAsk" type="button" data-i="ask_cta">Frage stellen</button>
+    <div class="lang" role="group" aria-label="Sprache">
+      <button type="button" data-l="de" aria-pressed="true" lang="de" aria-label="Deutsch">DE</button>
+      <button type="button" data-l="fr" aria-pressed="false" lang="fr" aria-label="Français">FR</button>
+      <button type="button" data-l="it" aria-pressed="false" lang="it" aria-label="Italiano">IT</button>
+      <button type="button" data-l="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="guides" aria-hidden="true">
+      <span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span style="--i:11"></span>
+    </div>
+    <div class="greet-wrap">
+      <h1 class="greet">
+        <span class="sr-only" data-i="h1_sr">Tell, die Antwort auf Ihre Fragen an Bund, Kantone und Gemeinden</span>
+        <span class="greet-stack" aria-hidden="true">
+          <span class="gw" lang="de-CH">Grüezi.</span>
+          <span class="gw" lang="fr-CH">Bonjour.</span>
+          <span class="gw" lang="it-CH">Buongiorno.</span>
+          <span class="gw" lang="rm">Allegra.</span>
+        </span>
+      </h1>
+      <div class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    </div>
+
+    <div class="hero-bottom">
+      <p class="lede" data-i="lede">Alles, was Sie vom Staat brauchen. Eine Frage genügt.</p>
+      <div class="ask-col">
+        <form class="ask" id="askForm" autocomplete="off" novalidate>
+          <div class="ask-field">
+            <label class="sr-only" for="q" data-i="ask_label">Was möchten Sie wissen?</label>
+            <input id="q" name="q" type="text" enterkeyhint="send" spellcheck="false">
+            <div class="ph" id="ph" aria-hidden="true"></div>
+          </div>
+          <button class="send" type="submit" data-ia="aria-label:send" aria-label="Frage senden">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+        <div class="chips" id="chips"></div>
+
+        <div class="answer" id="answer">
+          <div class="answer-in">
+            <div class="a-body">
+              <p class="a-q" id="aQ"></p>
+              <div class="think" id="think" hidden>
+                <svg viewBox="0 0 32 32" aria-hidden="true"><rect class="v" x="13" y="4" width="6" height="24"/><rect class="h" x="4" y="13" width="24" height="6"/></svg>
+                <span id="thinkTxt"></span>
+              </div>
+              <p class="a-text" id="aText"></p>
+              <ol class="a-steps" id="aSteps"></ol>
+              <div class="a-who" id="aWho" hidden>
+                <p class="who-lbl" id="whoLbl"></p>
+                <ul class="who-row" id="whoRow"></ul>
+                <p class="who-note" id="whoNote"></p>
+              </div>
+              <div class="a-src" id="aSrc" hidden>
+                <p class="who-lbl" id="srcLbl"></p>
+                <ul id="srcList"></ul>
+              </div>
+              <button class="btn ghost" id="newQ" type="button" hidden></button>
+            </div>
+          </div>
+        </div>
+        <p class="sr-only" id="sr" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement" id="statement" aria-label="Tell">
+    <div class="statement-in"><p id="stmt"></p></div>
+  </section>
+
+  <section class="ladder" id="ladder">
+    <h2 class="sec-title" data-i="lad_title">Bund, Kanton oder Gemeinde? Das klären wir.</h2>
+    <div class="lad-rule" id="ladRule"></div>
+    <div class="lad-cols">
+      <div class="lad-col">
+        <div class="vis"><svg class="flag" id="ladFlag" aria-hidden="true"><use href="#cross"/></svg></div>
+        <h3 data-i="lad1_h"></h3><p data-i="lad1_t"></p>
+      </div>
+      <div class="lad-col">
+        <div class="vis"><div class="cantons" id="cantons" aria-hidden="true"></div></div>
+        <h3 data-i="lad2_h"></h3><p data-i="lad2_t"></p>
+      </div>
+      <div class="lad-col">
+        <div class="vis"><div class="dots" id="dots" aria-hidden="true"></div></div>
+        <h3 data-i="lad3_h"></h3><p data-i="lad3_t"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="move" id="move">
+    <div class="move-grid">
+      <div class="move-copy">
+        <h2 class="sec-title" data-i="move_title"></h2>
+        <p data-i="move_sub"></p>
+        <button class="btn" id="mvBtn" type="button"></button>
+      </div>
+      <div class="move-card">
+        <div class="mv-head"><span data-i="move_addr"></span><b>Beispielstrasse 1, 8400 Winterthur</b></div>
+        <ul class="mv-list" id="mvList"></ul>
+        <div class="mv-foot"><span id="mvCount"></span><div class="mv-bar"><i id="mvBar"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy" id="privacy">
+    <div class="priv-grid">
+      <h2 class="sec-title" data-i="priv_title"></h2>
+      <ul class="p-list" id="pList"></ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="f-mark" id="fMark" aria-hidden="true">Tell<svg><use href="#cross"/></svg></div>
+  <div class="f-row">
+    <ul class="f-links" id="fLinks"></ul>
+    <p class="f-note" data-i="f_note"></p>
+  </div>
+</footer>
+
+<script>
+const I18N={
+de:{
+  title:"Tell, Auskunft von Bund, Kantonen und Gemeinden (Konzept)",
+  skip:"Zum Inhalt springen",
+  banner:"Konzeptprototyp, keine offizielle Seite des Bundes, der Kantone oder der Gemeinden.",
+  ask_cta:"Frage stellen",
+  h1_sr:"Tell, die Antwort auf Ihre Fragen an Bund, Kantone und Gemeinden",
+  lede:"Alles, was Sie vom Staat brauchen. Eine Frage genügt.",
+  ask_label:"Was möchten Sie wissen?",
+  send:"Frage senden",
+  chips:[{l:"Umzug melden",q:"Ich ziehe nach Winterthur. Was muss ich tun?"},{l:"Pass beantragen",q:"Wie beantrage ich einen Pass?"},{l:"Steuererklärung",q:"Bis wann muss ich die Steuererklärung abgeben?"}],
+  stmt:"Die Schweiz hat 26 Kantone, rund 2'100 Gemeinden und vier Landessprachen. Wer wofür zuständig ist, müssen Sie nicht wissen. Fragen Sie einfach.",
+  lad_title:"Bund, Kanton oder Gemeinde? Das klären wir.",
+  lad1_h:"1 Bund",lad1_t:"Sozialversicherungen wie die AHV, Zoll, Armee, Aussenpolitik.",
+  lad2_h:"26 Kantone",lad2_t:"Steuern, Polizei, Schulen, Spitäler, Ausweise.",
+  lad3_h:"Rund 2'100 Gemeinden",lad3_t:"Einwohnerkontrolle, Abfall, lokale Bewilligungen, Gemeindesteuern.",
+  move_title:"Einmal angeben. Überall gemeldet.",
+  move_sub:"In der nächsten Phase erledigen Sie Ihren ganzen Umzug in einem Schritt. So könnte das aussehen.",
+  move_addr:"Neue Adresse",
+  move_btn:"Umzug simulieren",move_run:"Wird gemeldet",move_again:"Nochmals simulieren",
+  move_count:"{n} von 5 gemeldet",st0:"Offen",st1:"Gemeldet",
+  rows:["Einwohnerkontrolle","Krankenkasse","Post, Nachsendeauftrag","Serafe","Steueramt"],
+  priv_title:"Ihre Fragen bleiben Ihre Sache.",
+  priv:[{h:"Kein Konto",t:"Sie stellen Fragen, ohne sich anzumelden."},{h:"Kein Gesprächsverlauf",t:"Ihr Chat verschwindet, sobald Sie die Seite verlassen."},{h:"Daten in der Schweiz",t:"Betrieb und Speicherung in Schweizer Rechenzentren, nach dem Datenschutzgesetz."}],
+  f_links:["Datenschutz","Nutzungsbedingungen","Barrierefreiheit","Kontakt"],
+  f_note:"Konzeptprototyp. Alle Antworten sind Beispiele und ersetzen keine Auskunft einer Behörde.",
+  think:"Tell prüft offizielle Quellen",who:"Zuständig",bund:"Bund",kanton:"Kanton",gemeinde:"Gemeinde",src:"Quellen (Beispiel)",newq:"Neue Frage",
+  fb:{intro:"Dazu hat der Prototyp noch keine Antwort. Die echte Version würde hier offizielle Quellen von Bund, Kantonen und Gemeinden durchsuchen. Probieren Sie eines der Beispiele."},
+  ans:{
+    move:{intro:"Bei einem Umzug innerhalb der Schweiz melden Sie sich bei der alten Gemeinde ab und bei der neuen an. Die Anmeldung ist in der Regel innert 14 Tagen nötig.",
+      steps:["Bei der bisherigen Gemeinde abmelden. Das geht meist online.","Bei der neuen Gemeinde anmelden. Bringen Sie Ausweis, Mietvertrag und Krankenkassenkarte mit.","Krankenkasse, Post und Serafe informieren. Die Prämie hängt von der neuen Prämienregion ab."],
+      who:[0,1,1],note:"Die Gemeinde erfasst Ihren Umzug. Wechseln Sie den Kanton, gilt dort auch Ihr Steuerrecht.",
+      src:["Einwohnerkontrolle der Gemeinde","Kantonales Steueramt","Bundesamt für Gesundheit, Prämienregionen"]},
+    passport:{intro:"Pässe und Identitätskarten beantragen Sie bei der kantonalen Ausweisstelle. Sie müssen persönlich vorbeigehen, weil Foto und Fingerabdrücke direkt vor Ort erfasst werden.",
+      steps:["Online einen Termin bei der Ausweisstelle Ihres Wohnkantons buchen.","Bisherigen Ausweis und, falls nötig, einen Geburts- oder Heimatschein mitbringen.","Gebühr bezahlen: ungefähr CHF 70 für die ID, CHF 140 für den Pass und CHF 148 für das Kombiangebot. Die Lieferung dauert rund 10 Arbeitstage."],
+      who:[1,1,0],note:"Der Bund legt die Ausweise fest, der Kanton nimmt Ihren Antrag entgegen.",
+      src:["fedpol, Schweizer Ausweise","Ausweisstelle Ihres Kantons"]},
+    tax:{intro:"Die Steuererklärung ist Sache der Kantone. Die Frist liegt je nach Kanton zwischen Mitte und Ende März. Eine Fristverlängerung beantragen Sie meist online.",
+      steps:["Beim kantonalen Steueramt die Frist Ihres Wohnkantons prüfen.","Unterlagen sammeln: Lohnausweis, Kontoauszüge, Belege für Abzüge.","Bei Bedarf online eine Fristverlängerung beantragen, bevor die Frist abläuft."],
+      who:[1,1,1],note:"Bund, Kanton und Gemeinde erheben Steuern. Sie füllen nur eine Erklärung aus.",
+      src:["Kantonales Steueramt","Eidgenössische Steuerverwaltung"]}
+  }
+},
+fr:{
+  title:"Tell, renseignements de la Confédération, des cantons et des communes (concept)",
+  skip:"Aller au contenu",
+  banner:"Prototype conceptuel, pas un site officiel de la Confédération, des cantons ou des communes.",
+  ask_cta:"Poser une question",
+  h1_sr:"Tell, la réponse à vos questions à la Confédération, aux cantons et aux communes",
+  lede:"Tout ce dont vous avez besoin auprès de l'État. Une question suffit.",
+  ask_label:"Que souhaitez-vous savoir ?",
+  send:"Envoyer la question",
+  chips:[{l:"Annoncer un déménagement",q:"Je déménage à Lausanne. Que dois-je faire ?"},{l:"Demander un passeport",q:"Comment demander un passeport ?"},{l:"Déclaration d'impôt",q:"Quand dois-je remettre ma déclaration d'impôt ?"}],
+  stmt:"La Suisse compte 26 cantons, environ 2 100 communes et quatre langues nationales. Savoir qui est responsable de quoi n'est pas votre affaire. Posez simplement votre question.",
+  lad_title:"Confédération, canton ou commune ? Nous tranchons.",
+  lad1_h:"1 Confédération",lad1_t:"Assurances sociales comme l'AVS, douane, armée, politique étrangère.",
+  lad2_h:"26 cantons",lad2_t:"Impôts, police, écoles, hôpitaux, documents d'identité.",
+  lad3_h:"Environ 2 100 communes",lad3_t:"Contrôle des habitants, déchets, autorisations locales, impôts communaux.",
+  move_title:"Une seule fois. Annoncé partout.",
+  move_sub:"Dans la prochaine phase, vous réglerez tout votre déménagement en une seule étape. Voici à quoi cela pourrait ressembler.",
+  move_addr:"Nouvelle adresse",
+  move_btn:"Simuler le déménagement",move_run:"Annonce en cours",move_again:"Simuler à nouveau",
+  move_count:"{n} sur 5 annoncés",st0:"En attente",st1:"Annoncé",
+  rows:["Contrôle des habitants","Caisse maladie","La Poste, réexpédition","Serafe","Service des impôts"],
+  priv_title:"Vos questions ne regardent que vous.",
+  priv:[{h:"Pas de compte",t:"Vous posez vos questions sans vous connecter."},{h:"Pas d'historique",t:"Votre conversation disparaît dès que vous quittez la page."},{h:"Données en Suisse",t:"Exploitation et stockage dans des centres de calcul suisses, selon la loi sur la protection des données."}],
+  f_links:["Protection des données","Conditions d'utilisation","Accessibilité","Contact"],
+  f_note:"Prototype conceptuel. Toutes les réponses sont des exemples et ne remplacent pas un renseignement officiel.",
+  think:"Tell consulte les sources officielles",who:"Compétence",bund:"Confédération",kanton:"Canton",gemeinde:"Commune",src:"Sources (exemple)",newq:"Nouvelle question",
+  fb:{intro:"Le prototype n'a pas encore de réponse à cette question. La version finale consulterait ici les sources officielles de la Confédération, des cantons et des communes. Essayez l'un des exemples."},
+  ans:{
+    move:{intro:"En cas de déménagement en Suisse, vous vous annoncez à l'ancienne commune puis à la nouvelle. L'inscription doit en règle générale se faire dans les 14 jours.",
+      steps:["Annoncez votre départ à la commune actuelle, le plus souvent en ligne.","Inscrivez-vous à la nouvelle commune avec une pièce d'identité, le contrat de bail et la carte d'assurance maladie.","Informez la caisse maladie, La Poste et Serafe. La prime dépend de la nouvelle région de prime."],
+      who:[0,1,1],note:"La commune enregistre votre déménagement. Si vous changez de canton, le droit fiscal de ce canton s'applique aussi.",
+      src:["Contrôle des habitants de la commune","Administration fiscale cantonale","Office fédéral de la santé publique, régions de primes"]},
+    passport:{intro:"Les passeports et cartes d'identité se demandent auprès du service cantonal des documents d'identité. Vous devez vous présenter en personne, car la photo et les empreintes digitales sont saisies sur place.",
+      steps:["Réservez un rendez-vous en ligne auprès du service de votre canton de domicile.","Apportez votre ancien document et, si nécessaire, un acte de naissance ou d'origine.","Réglez les émoluments : environ CHF 70 pour la carte d'identité, CHF 140 pour le passeport et CHF 148 pour l'offre combinée. La livraison prend environ 10 jours ouvrables."],
+      who:[1,1,0],note:"La Confédération définit les documents, le canton reçoit votre demande.",
+      src:["fedpol, documents d'identité suisses","Service des documents d'identité de votre canton"]},
+    tax:{intro:"La déclaration d'impôt relève des cantons. Le délai se situe, selon le canton, entre la mi-mars et la fin mars. Une prolongation se demande en général en ligne.",
+      steps:["Vérifiez le délai de votre canton de domicile auprès de l'administration fiscale cantonale.","Rassemblez vos documents : certificat de salaire, relevés de compte, justificatifs de déductions.","Si nécessaire, demandez une prolongation en ligne avant l'échéance."],
+      who:[1,1,1],note:"La Confédération, le canton et la commune prélèvent des impôts. Vous ne remplissez qu'une seule déclaration.",
+      src:["Administration fiscale cantonale","Administration fédérale des contributions"]}
+  }
+},
+it:{
+  title:"Tell, informazioni da Confederazione, cantoni e comuni (concetto)",
+  skip:"Vai al contenuto",
+  banner:"Prototipo concettuale, non un sito ufficiale della Confederazione, dei cantoni o dei comuni.",
+  ask_cta:"Fai una domanda",
+  h1_sr:"Tell, la risposta alle vostre domande a Confederazione, cantoni e comuni",
+  lede:"Tutto ciò che vi serve dallo Stato. Basta una domanda.",
+  ask_label:"Cosa desiderate sapere?",
+  send:"Invia la domanda",
+  chips:[{l:"Annunciare un trasloco",q:"Mi trasferisco a Lugano. Cosa devo fare?"},{l:"Richiedere un passaporto",q:"Come richiedo un passaporto?"},{l:"Dichiarazione d'imposta",q:"Entro quando devo consegnare la dichiarazione d'imposta?"}],
+  stmt:"La Svizzera ha 26 cantoni, circa 2100 comuni e quattro lingue nazionali. Non dovete sapere chi è responsabile di cosa. Basta chiedere.",
+  lad_title:"Confederazione, cantone o comune? Ci pensiamo noi.",
+  lad1_h:"1 Confederazione",lad1_t:"Assicurazioni sociali come l'AVS, dogana, esercito, politica estera.",
+  lad2_h:"26 cantoni",lad2_t:"Imposte, polizia, scuole, ospedali, documenti d'identità.",
+  lad3_h:"Circa 2100 comuni",lad3_t:"Controllo abitanti, rifiuti, autorizzazioni locali, imposte comunali.",
+  move_title:"Una volta sola. Annunciato ovunque.",
+  move_sub:"Nella fase successiva sbrigherete tutto il trasloco in un solo passaggio. Ecco come potrebbe apparire.",
+  move_addr:"Nuovo indirizzo",
+  move_btn:"Simula il trasloco",move_run:"Annuncio in corso",move_again:"Simula di nuovo",
+  move_count:"{n} su 5 annunciati",st0:"In sospeso",st1:"Annunciato",
+  rows:["Controllo abitanti","Cassa malati","Posta, inoltro","Serafe","Ufficio imposte"],
+  priv_title:"Le vostre domande restano vostre.",
+  priv:[{h:"Nessun account",t:"Fate domande senza registrarvi."},{h:"Nessuna cronologia",t:"La vostra conversazione scompare appena lasciate la pagina."},{h:"Dati in Svizzera",t:"Gestione e archiviazione in centri di calcolo svizzeri, secondo la legge sulla protezione dei dati."}],
+  f_links:["Protezione dei dati","Condizioni d'uso","Accessibilità","Contatto"],
+  f_note:"Prototipo concettuale. Tutte le risposte sono esempi e non sostituiscono l'informazione di un'autorità.",
+  think:"Tell consulta le fonti ufficiali",who:"Competenza",bund:"Confederazione",kanton:"Cantone",gemeinde:"Comune",src:"Fonti (esempio)",newq:"Nuova domanda",
+  fb:{intro:"Il prototipo non ha ancora una risposta a questa domanda. La versione definitiva consulterebbe qui le fonti ufficiali di Confederazione, cantoni e comuni. Provate uno degli esempi."},
+  ans:{
+    move:{intro:"Se vi trasferite in Svizzera, vi annunciate al vecchio comune e vi registrate nel nuovo. L'annuncio va di regola fatto entro 14 giorni.",
+      steps:["Annunciate la partenza al comune attuale, di solito online.","Registratevi nel nuovo comune con documento d'identità, contratto d'affitto e tessera della cassa malati.","Informate la cassa malati, la Posta e Serafe. Il premio dipende dalla nuova regione di premio."],
+      who:[0,1,1],note:"Il comune registra il vostro trasloco. Se cambiate cantone, si applica anche il diritto fiscale di quel cantone.",
+      src:["Controllo abitanti del comune","Amministrazione fiscale cantonale","Ufficio federale della sanità pubblica, regioni di premio"]},
+    passport:{intro:"Passaporti e carte d'identità si richiedono presso l'ufficio cantonale dei documenti d'identità. Dovete presentarvi di persona, perché foto e impronte digitali vengono rilevate sul posto.",
+      steps:["Prenotate online un appuntamento presso l'ufficio del vostro cantone di domicilio.","Portate il documento attuale e, se necessario, un atto di nascita o di attinenza.","Pagate gli emolumenti: circa CHF 70 per la carta d'identità, CHF 140 per il passaporto e CHF 148 per l'offerta combinata. La consegna richiede circa 10 giorni lavorativi."],
+      who:[1,1,0],note:"La Confederazione definisce i documenti, il cantone riceve la vostra richiesta.",
+      src:["fedpol, documenti d'identità svizzeri","Ufficio dei documenti d'identità del vostro cantone"]},
+    tax:{intro:"La dichiarazione d'imposta è di competenza dei cantoni. Il termine varia, a seconda del cantone, tra metà e fine marzo. Una proroga si chiede di solito online.",
+      steps:["Verificate il termine del vostro cantone di domicilio presso l'amministrazione fiscale cantonale.","Raccogliete i documenti: certificato di salario, estratti conto, giustificativi delle deduzioni.","Se necessario, chiedete online una proroga prima della scadenza."],
+      who:[1,1,1],note:"Confederazione, cantone e comune prelevano imposte. Compilate una sola dichiarazione.",
+      src:["Amministrazione fiscale cantonale","Amministrazione federale delle contribuzioni"]}
+  }
+},
+en:{
+  title:"Tell, answers from federal, cantonal and local government (concept)",
+  skip:"Skip to content",
+  banner:"Concept prototype, not an official website of the federal, cantonal or local governments.",
+  ask_cta:"Ask a question",
+  h1_sr:"Tell, answers to your questions about federal, cantonal and municipal government",
+  lede:"Everything you need from government. One question is enough.",
+  ask_label:"What would you like to know?",
+  send:"Send question",
+  chips:[{l:"Report a move",q:"I'm moving to Zurich. What do I need to do?"},{l:"Apply for a passport",q:"How do I apply for a passport?"},{l:"Tax return",q:"When is my tax return due?"}],
+  stmt:"Switzerland has 26 cantons, about 2,100 municipalities and four national languages. You don't need to know who is responsible for what. Just ask.",
+  lad_title:"Federal, cantonal or local? We sort it out.",
+  lad1_h:"1 federal government",lad1_t:"Social insurance such as AHV/AVS, customs, army, foreign policy.",
+  lad2_h:"26 cantons",lad2_t:"Taxes, police, schools, hospitals, identity documents.",
+  lad3_h:"About 2,100 municipalities",lad3_t:"Residents' registry, waste, local permits, municipal taxes.",
+  move_title:"Enter it once. Reported everywhere.",
+  move_sub:"In the next phase you'll handle your whole move in one step. This is how it could look.",
+  move_addr:"New address",
+  move_btn:"Simulate move",move_run:"Reporting",move_again:"Simulate again",
+  move_count:"{n} of 5 reported",st0:"Pending",st1:"Reported",
+  rows:["Residents' registry","Health insurer","Post, mail redirect","Serafe","Tax office"],
+  priv_title:"Your questions stay yours.",
+  priv:[{h:"No account",t:"Ask questions without signing in."},{h:"No chat history",t:"Your conversation disappears when you leave the page."},{h:"Data stays in Switzerland",t:"Operation and storage in Swiss data centres, under the Swiss data protection act."}],
+  f_links:["Privacy","Terms of use","Accessibility","Contact"],
+  f_note:"Concept prototype. All answers are examples and do not replace information from an authority.",
+  think:"Tell is checking official sources",who:"Responsible",bund:"Federal",kanton:"Canton",gemeinde:"Municipality",src:"Sources (example)",newq:"New question",
+  fb:{intro:"The prototype has no answer to this yet. The real version would search official sources from federal, cantonal and municipal governments here. Try one of the examples."},
+  ans:{
+    move:{intro:"When you move within Switzerland, you deregister from your old municipality and register with the new one. Registration is usually required within 14 days.",
+      steps:["Deregister from your current municipality, usually online.","Register with the new municipality. Bring your ID, rental contract and health insurance card.","Tell your health insurer, the Post and Serafe. Your premium depends on the new premium region."],
+      who:[0,1,1],note:"The municipality records your move. If you change canton, that canton's tax rules apply too.",
+      src:["Municipal residents' registry","Cantonal tax office","Federal Office of Public Health, premium regions"]},
+    passport:{intro:"You apply for passports and ID cards at your canton's identity document office. You must go in person, because your photo and fingerprints are taken on site.",
+      steps:["Book an appointment online with the office in your canton of residence.","Bring your current document and, if needed, a birth or citizenship certificate.","Pay the fee: about CHF 70 for the ID card, CHF 140 for the passport and CHF 148 for the combined offer. Delivery takes about 10 working days."],
+      who:[1,1,0],note:"The federal government defines the documents, the canton takes your application.",
+      src:["fedpol, Swiss identity documents","Identity document office of your canton"]},
+    tax:{intro:"Tax returns are a cantonal matter. The deadline falls between mid and late March, depending on the canton. You can usually request an extension online.",
+      steps:["Check the deadline of your canton of residence with the cantonal tax office.","Gather your documents: salary certificate, bank statements, receipts for deductions.","If needed, request an extension online before the deadline passes."],
+      who:[1,1,1],note:"Federal, cantonal and municipal governments levy taxes. You fill in a single return.",
+      src:["Cantonal tax office","Federal Tax Administration"]}
+  }
+}
+};
+
+(()=>{
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+const HTML_LANG={de:'de-CH',fr:'fr-CH',it:'it-CH',en:'en'};
+const CANTONS=['ZH','BE','LU','UR','SZ','OW','NW','GL','ZG','FR','SO','BS','BL','SH','AR','AI','SG','GR','AG','TG','TI','VD','VS','NE','GE','JU'];
+let lang=I18N[new URLSearchParams(location.search).get('lang')]?new URLSearchParams(location.search).get('lang'):'de';
+const T=()=>I18N[lang];
+const tx=s=>lang==='fr'?s.replace(/ ([?!:;])/g,' $1'):s;
+let run=0, ticking=false, words=[], phTimer=null, mvRunning=false;
+const sleep=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
+
+const hdr=$('#hdr'), form=$('#askForm'), input=$('#q'), ph=$('#ph'), chipsEl=$('#chips');
+const answerEl=$('#answer'), aQ=$('#aQ'), think=$('#think'), aText=$('#aText'), aSteps=$('#aSteps');
+const aWho=$('#aWho'), whoRow=$('#whoRow'), whoNote=$('#whoNote'), aSrc=$('#aSrc'), srcList=$('#srcList'), newQ=$('#newQ'), sr=$('#sr');
+
+/* ---------- build helpers ---------- */
+function buildChips(){
+  chipsEl.textContent='';
+  T().chips.forEach(c=>{
+    const b=document.createElement('button');
+    b.type='button'; b.className='chip'; b.textContent=tx(c.l);
+    b.addEventListener('click',()=>{input.value=tx(c.q); form.classList.add('has-value'); form.requestSubmit();});
+    chipsEl.append(b);
+  });
+}
+function buildPh(){
+  clearInterval(phTimer);
+  ph.textContent='';
+  const spans=T().chips.map((c,i)=>{const s=document.createElement('span'); s.textContent=tx(c.q); if(i===0)s.className='on'; ph.append(s); return s;});
+  let i=0;
+  if(reduce)return;
+  phTimer=setInterval(()=>{
+    const cur=spans[i]; i=(i+1)%spans.length; const nxt=spans[i];
+    cur.className='off'; nxt.className='on';
+    setTimeout(()=>{cur.className='';},700);
+  },4300);
+}
+function buildStatement(){
+  const p=$('#stmt'); p.textContent='';
+  words=T().stmt.split(' ').map(w=>{const s=document.createElement('span'); s.className='w'; s.textContent=w; p.append(s,' '); return s;});
+}
+function buildCantons(){
+  const c=$('#cantons'); CANTONS.forEach(a=>{const s=document.createElement('span'); s.textContent=a; c.append(s);});
+}
+function buildMove(){
+  const list=$('#mvList'); list.textContent='';
+  T().rows.forEach(name=>{
+    const li=document.createElement('li'); li.className='mv-row'; li.dataset.s='pending';
+    li.innerHTML='<span class="mv-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="mv-name"></span><span class="mv-st"></span>';
+    $('.mv-name',li).textContent=name; $('.mv-st',li).textContent=T().st0;
+    list.append(li);
+  });
+  mvRunning=false; setMvCount(0);
+  const b=$('#mvBtn'); b.disabled=false; b.textContent=T().move_btn;
+}
+function setMvCount(n){
+  $('#mvCount').textContent=T().move_count.replace('{n}',n);
+  $('#mvBar').style.transform='scaleX('+(n/5)+')';
+}
+function buildPrivacy(){
+  const l=$('#pList'); l.textContent='';
+  T().priv.forEach(p=>{
+    const li=document.createElement('li'); li.className='p-row';
+    li.innerHTML='<h3></h3><p></p>'; $('h3',li).textContent=p.h; $('p',li).textContent=p.t; l.append(li);
+  });
+}
+function buildFooter(){
+  const l=$('#fLinks'); l.textContent='';
+  T().f_links.forEach(t=>{const li=document.createElement('li'); const a=document.createElement('a'); a.href='#'; a.textContent=t; a.addEventListener('click',e=>e.preventDefault()); li.append(a); l.append(li);});
+}
+function resetAnswer(){
+  answerEl.classList.remove('open');
+  aQ.textContent=''; aText.textContent=''; aSteps.textContent=''; think.hidden=true;
+  aWho.hidden=true; aWho.classList.remove('in'); aSrc.hidden=true; aSrc.classList.remove('in'); newQ.hidden=true; newQ.classList.remove('in'); sr.textContent='';
+}
+
+/* ---------- language ---------- */
+function setLang(l){
+  lang=l; run++;
+  document.documentElement.lang=HTML_LANG[l]; document.title=T().title;
+  $$('[data-i]').forEach(el=>{const v=T()[el.dataset.i]; if(typeof v==='string')el.textContent=tx(v);});
+  $$('[data-ia]').forEach(el=>{const [a,k]=el.dataset.ia.split(':'); el.setAttribute(a,T()[k]);});
+  $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)));
+  buildChips(); buildPh(); buildStatement(); buildMove(); buildPrivacy(); buildFooter(); resetAnswer();
+  try{history.replaceState(null,'','?lang='+l);}catch(e){}
+  update();
+}
+$$('.lang button').forEach(b=>b.addEventListener('click',()=>{ if(b.dataset.l!==lang){input.value=''; form.classList.remove('has-value'); setLang(b.dataset.l);} }));
+
+/* ---------- answer ---------- */
+function route(q){
+  const s=q.toLowerCase();
+  if(/umzug|umzieh|ziehe|zügel|ummeld|déménag|demenag|trasloc|trasfer|moving|\bmove\b|relocat/.test(s))return 'move';
+  if(/\bpass\b|passeport|passaporto|passport|ausweis|identit|\bid\b|carte d|identity/.test(s))return 'passport';
+  if(/steuer|impôt|impot|imposta|\btax|fiscal/.test(s))return 'tax';
+  return null;
+}
+function scrollToForm(){
+  const y=form.getBoundingClientRect().top+scrollY-96;
+  scrollTo({top:Math.max(0,y),behavior:reduce?'auto':'smooth'});
+}
+async function ask(q){
+  const id=++run, key=route(q), A=key?T().ans[key]:T().fb;
+  resetAnswer();
+  aQ.textContent=q;
+  answerEl.classList.add('open');
+  think.hidden=false; $('#thinkTxt').textContent=T().think;
+  setTimeout(scrollToForm,60);
+  await sleep(1300); if(id!==run)return;
+  think.hidden=true;
+
+  const spans=tx(A.intro).split(' ').map(w=>{const s=document.createElement('span'); s.className='sw'; s.textContent=w; aText.append(s,' '); return s;});
+  for(const s of spans){ if(id!==run)return; s.classList.add('in'); await sleep(26); }
+  sr.textContent=A.intro;
+
+  if(A.steps){
+    A.steps.forEach(t=>{const li=document.createElement('li'); li.textContent=tx(t); aSteps.append(li);});
+    for(const li of $$('li',aSteps)){ if(id!==run)return; await sleep(130); li.classList.add('in'); }
+  }
+  if(A.who){
+    whoRow.textContent=''; $('#whoLbl').textContent=T().who; whoNote.textContent=tx(A.note);
+    [T().bund,T().kanton,T().gemeinde].forEach(n=>{const li=document.createElement('li'); li.textContent=n; whoRow.append(li);});
+    aWho.hidden=false; await sleep(30); if(id!==run)return; aWho.classList.add('in');
+    for(const [i,li] of $$('li',whoRow).entries()){ await sleep(160); if(id!==run)return; if(A.who[i])li.classList.add('on'); }
+    await sleep(200); if(id!==run)return;
+    srcList.textContent=''; $('#srcLbl').textContent=T().src;
+    A.src.forEach(t=>{
+      const li=document.createElement('li'); const a=document.createElement('a'); a.href='#';
+      a.innerHTML='<span></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg>';
+      $('span',a).textContent=t; a.addEventListener('click',e=>e.preventDefault()); li.append(a); srcList.append(li);
+    });
+    aSrc.hidden=false; await sleep(30); if(id!==run)return; aSrc.classList.add('in');
+  }
+  await sleep(250); if(id!==run)return;
+  newQ.textContent=T().newq; newQ.hidden=false; await sleep(30); newQ.classList.add('in');
+}
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const q=input.value.trim();
+  if(!q){form.classList.remove('nudge'); void form.offsetWidth; form.classList.add('nudge'); input.focus(); return;}
+  ask(q);
+});
+input.addEventListener('input',()=>form.classList.toggle('has-value',input.value.length>0));
+newQ.addEventListener('click',()=>{ run++; resetAnswer(); input.value=''; form.classList.remove('has-value'); scrollTo({top:0,behavior:reduce?'auto':'smooth'}); setTimeout(()=>input.focus({preventScroll:true}),reduce?0:500); });
+
+/* ---------- header ask button ---------- */
+const headAsk=$('#headAsk');
+new IntersectionObserver(([e])=>headAsk.classList.toggle('show',!e.isIntersecting),{rootMargin:'-80px 0px 0px 0px'}).observe(form);
+headAsk.addEventListener('click',()=>{ scrollTo({top:0,behavior:reduce?'auto':'smooth'}); setTimeout(()=>input.focus({preventScroll:true}),reduce?0:600); });
+
+/* ---------- move simulation ---------- */
+$('#mvBtn').addEventListener('click',async()=>{
+  if(mvRunning)return; mvRunning=true; const id=lang;
+  const btn=$('#mvBtn'); btn.disabled=true; btn.textContent=T().move_run;
+  const rows=$$('.mv-row'); rows.forEach(r=>{r.dataset.s='pending'; $('.mv-st',r).textContent=T().st0;}); setMvCount(0);
+  let n=0;
+  for(const r of rows){
+    if(id!==lang)return;
+    r.dataset.s='active'; await sleep(850); if(id!==lang)return;
+    r.dataset.s='done'; $('.mv-st',r).textContent=T().st1; setMvCount(++n);
+    await sleep(160);
+  }
+  mvRunning=false; btn.disabled=false; btn.textContent=T().move_again;
+});
+
+/* ---------- greeting ---------- */
+const gws=$$('.gw'), ticks=$$('.ticks i'); let gi=0;
+function setTick(i){ ticks.forEach(t=>t.classList.remove('on')); void ticks[i].offsetWidth; ticks[i].classList.add('on'); }
+function startGreet(){
+  gws[0].classList.add('is-on');
+  if(reduce)return;
+  setTick(0);
+  setInterval(()=>{
+    const cur=gws[gi], ni=(gi+1)%gws.length, nxt=gws[ni];
+    cur.classList.remove('is-on'); cur.classList.add('is-out'); nxt.classList.add('is-on');
+    setTimeout(()=>{cur.classList.add('no-tr'); cur.classList.remove('is-out'); void cur.offsetWidth; cur.classList.remove('no-tr');},1050);
+    gi=ni; setTick(gi);
+  },3400);
+}
+
+/* ---------- scroll ---------- */
+const stEl=$('#statement'), ladEl=$('#ladder'), ladRule=$('#ladRule'), ladFlag=$('#ladFlag'), dots=$('#dots'), fMark=$('#fMark'), footer=$('.footer');
+let cantonEls=[];
+function update(){
+  ticking=false;
+  hdr.classList.toggle('scrolled',scrollY>8);
+
+  const vh=innerHeight;
+  const sr_=stEl.getBoundingClientRect();
+  const total=Math.max(1,sr_.height-vh);
+  const p=reduce?1:clamp(-sr_.top/total,0,1);
+  const n=words.length, t=p*(n+6);
+  words.forEach((w,i)=>{w.style.opacity=reduce?1:(.14+.86*clamp((t-i)/5,0,1)).toFixed(3);});
+
+  const lr=ladEl.getBoundingClientRect();
+  const lp=reduce?1:clamp((vh*0.9-lr.top)/(lr.height*0.85),0,1);
+  ladRule.style.transform='scaleX('+lp+')';
+  ladFlag.classList.toggle('on',lp>0.12);
+  const cn=Math.floor(clamp((lp-0.2)/0.4,0,1)*CANTONS.length);
+  cantonEls.forEach((el,i)=>el.classList.toggle('on',i<cn));
+  dots.style.clipPath='inset(0 '+((1-clamp((lp-0.45)/0.5,0,1))*100).toFixed(2)+'% 0 0)';
+
+  const fr=footer.getBoundingClientRect();
+  const fp=reduce?1:clamp((vh-fr.top)/fr.height,0,1);
+  fMark.style.transform='translateY('+((1-fp)*14).toFixed(2)+'%)';
+}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+addEventListener('resize',update);
+
+/* ---------- init ---------- */
+buildCantons(); cantonEls=$$('#cantons span');
+setLang(lang);
+const go=()=>{document.documentElement.classList.add('ready'); setTimeout(startGreet,reduce?0:420);};
+Promise.race([document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve(),new Promise(r=>setTimeout(r,1600))]).then(()=>requestAnimationFrame(go));
+})();
+</script>
+</body>
+</html>
