@@ -1329,7 +1329,7 @@ let noteT=null;
 function softNote(msg){let n=$('#softnote');if(!n){n=document.createElement('div');n.id='softnote';n.className='softnote';n.setAttribute('role','status');document.body.append(n)}n.textContent=msg;void n.offsetWidth;n.classList.add('on');clearTimeout(noteT);noteT=setTimeout(()=>n.classList.remove('on'),3400)}
 function buildFooter(){
   const l=$('#fLinks'); l.textContent='';
-  T().f_links.forEach((t,i,arr)=>{const li=document.createElement('li'); const a=document.createElement('a'); const n=arr.length,real=i>=n-2; a.href=i===n-2?'behoerdensicht.html':i===n-1?'buergersicht.html':'#'; a.textContent=t; if(!real)a.addEventListener('click',e=>{e.preventDefault();softNote(T().f_soon)}); li.append(a); l.append(li);});
+  T().f_links.forEach((t,i,arr)=>{const li=document.createElement('li'); const a=document.createElement('a'); const n=arr.length,real=i>=n-2; const q=lang==='de'?'':'?lang='+lang; a.href=i===n-2?'behoerdensicht.html'+q:i===n-1?'buergersicht.html'+q:'#'; a.textContent=t; if(!real)a.addEventListener('click',e=>{e.preventDefault();softNote(T().f_soon)}); li.append(a); l.append(li);});
 }
 function resetAnswer(){
   hero.classList.remove('answering');
