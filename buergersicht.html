@@ -683,7 +683,7 @@ details.paid summary{cursor:pointer;font-size:.8125rem;font-weight:600;color:var
 <!-- Hinweis-Banner: privates Konzept, keine offizielle Seite -->
 <style>
 html.dsc-lock{overflow:hidden!important}
-.dsc{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:clamp(12px,3vw,32px);background:rgba(238,233,224,.58);-webkit-backdrop-filter:blur(18px) saturate(1.15);backdrop-filter:blur(18px) saturate(1.15);font-family:Switzer,system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A2531;animation:dscBg .8s cubic-bezier(.2,.8,.2,1) both;transition:opacity .7s cubic-bezier(.2,.8,.2,1),backdrop-filter .7s,-webkit-backdrop-filter .7s}
+.dsc{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:clamp(12px,3vw,32px);background:rgba(238,233,224,.58);-webkit-backdrop-filter:blur(18px) saturate(1.15);backdrop-filter:blur(18px) saturate(1.15);font-family:Switzer,system-ui,-apple-system,"Segoe UI",sans-serif;color:#1A2531;animation:dscBg .8s cubic-bezier(.2,.8,.2,1) both;transition:opacity .7s cubic-bezier(.2,.8,.2,1),background .9s,backdrop-filter .7s,-webkit-backdrop-filter .7s}
 .dsc.out{opacity:0;-webkit-backdrop-filter:blur(0);backdrop-filter:blur(0);pointer-events:none}
 .dsc *{box-sizing:border-box}
 .dsc-card{position:relative;width:min(660px,100%);max-height:calc(100svh - 24px);overflow:auto;padding:clamp(24px,4vw,44px);border-radius:clamp(30px,4vw,44px);background:rgba(251,249,245,.94);box-shadow:0 50px 100px -40px rgba(26,37,49,.55),0 0 0 1px rgba(255,255,255,.7) inset;animation:dscCard 1s .12s cubic-bezier(.2,.8,.2,1) both;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .6s;scrollbar-width:thin}
@@ -711,28 +711,49 @@ html.dsc-lock{overflow:hidden!important}
 .dsc-go:hover svg{transform:translateX(4px)}
 .dsc-foot{margin:14px 0 0;font-size:.8125rem;line-height:1.45;color:#5A6674}
 .dsc-rise{animation:dscRise .9s calc(.35s + var(--i,0)*.09s) cubic-bezier(.2,.8,.2,1) both}
+
+.dsc.s2{background:rgba(26,37,49,.5)}
+.dsc-card{transition:width .9s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.dsc-card.big{width:min(960px,100%)}
+.dsc-card.swapping>*{opacity:0;transform:translateY(-10px);transition:opacity .28s,transform .28s}
+.dsc h2.dsc-big{margin:clamp(20px,3.4vw,34px) 0 0;font-family:Gambetta,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-weight:500;font-size:clamp(40px,11.5vw,104px);line-height:.9;letter-spacing:-.035em;text-transform:uppercase}
+.dsc h2.dsc-big em{font-style:normal;color:#D8001A}
+.dsc-s2{margin:clamp(18px,2.6vw,26px) 0 0;text-transform:uppercase;letter-spacing:.09em;font-size:clamp(.78rem,1.9vw,.96rem);font-weight:600;line-height:1.75;color:#2B3846}
+.dsc-ok{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;gap:.9em;margin-top:clamp(22px,3.4vw,34px);padding:.9em .9em .9em 1.7em;border:0;border-radius:999px;background:#1A2531;color:#EEE9E0;font:inherit;font-size:1.0625rem;font-weight:500;cursor:pointer;transition:background .6s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.dsc-ok[aria-disabled="true"]{cursor:not-allowed;opacity:.92}
+.dsc-ok.wait::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.16);transform-origin:left;transform:scaleX(0);animation:dscFill 5s linear forwards;animation-delay:calc(var(--el,0)*-1s);z-index:-1}
+.dsc-ok.ready{background:#D8001A}
+.dsc-ok:not([aria-disabled="true"]):active{transform:scale(.96)}
+.dsc-ok:focus-visible{outline:2px solid #D8001A;outline-offset:3px}
+.dsc-n{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);font-variant-numeric:tabular-nums;font-weight:600;font-size:1rem}
+.dsc-n svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dsc-ok.ready:hover .dsc-n svg{transform:translateX(3px)}
+.dsc-n svg{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes dscFill{to{transform:scaleX(1)}}
+@keyframes dscPop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.dsc-n.pop{animation:dscPop .5s cubic-bezier(.2,.8,.2,1)}
 @keyframes dscBg{from{opacity:0;-webkit-backdrop-filter:blur(0);backdrop-filter:blur(0)}}
 @keyframes dscCard{from{opacity:0;transform:translateY(34px) scale(.965)}}
 @keyframes dscRise{from{opacity:0;transform:translateY(16px)}}
 @keyframes dscPulse{70%{box-shadow:0 0 0 9px rgba(216,0,26,0)}100%{box-shadow:0 0 0 0 rgba(216,0,26,0)}}
-@media (prefers-reduced-motion:reduce){.dsc,.dsc-card,.dsc-rise,.dsc-pill i{animation:none!important}.dsc,.dsc-card{transition-duration:.01s}}
-@media (max-width:520px){.dsc{padding:10px}.dsc li{padding:12px 13px;gap:12px}.dsc-go{width:100%;justify-content:center}}
+@media (prefers-reduced-motion:reduce){.dsc,.dsc-card,.dsc-rise,.dsc-pill i,.dsc-ok.wait::after,.dsc-n.pop{animation:none!important}.dsc,.dsc-card{transition-duration:.01s}}
+@media (max-width:520px){.dsc{padding:10px}.dsc li{padding:12px 13px;gap:12px}.dsc-go{width:100%;justify-content:center}.dsc-ok{width:100%;justify-content:space-between}}
 </style>
 <script>
 (function(){
   var KEY='tellDisclaimerSeen';
   try{if(sessionStorage.getItem(KEY)==='1')return}catch(e){}
   var C={
-   de:{pill:'Privates Konzept · Prototyp',h:'Keine offizielle Seite.',lead:'Tell ist ein privates Konzept. Es ist weder ein Angebot noch eine Website des Bundes, eines Kantons, einer Gemeinde oder einer anderen staatlichen Organisation.',
+   de:{s2h:['Keine',' offizielle Seite.'],s2:'Privates Konzept. Kein Bund, kein Kanton, keine Gemeinde. Keine staatliche Stelle. Alles erfunden.',wait:'Bitte lesen',ready:'Bestätigen, zum Prototyp',pill:'Privates Konzept · Prototyp',h:'Keine offizielle Seite.',lead:'Tell ist ein privates Konzept. Es ist weder ein Angebot noch eine Website des Bundes, eines Kantons, einer Gemeinde oder einer anderen staatlichen Organisation.',
     i:[['Keine Verbindung zu Behörden','Es besteht keine Zusammenarbeit, kein Auftrag und keine Billigung durch staatliche Stellen.'],['Keine Nachahmung','Diese Seite will keine staatliche Organisation nachahmen und nicht in deren Namen auftreten. Bezeichnungen, Symbole und Behördennamen dienen nur zur Veranschaulichung des Konzepts.'],['Alles erfunden','Personen, Fälle, Beträge, Dokumente und Abläufe sind frei erfunden. Es werden keine echten Daten verarbeitet. Bitte gib keine echten persönlichen Daten oder Zahlungsdaten ein.']],
     go:'Verstanden, zum Prototyp',foot:'Offizielle Informationen findest du auf ch.ch.',aria:'Wichtiger Hinweis'},
-   fr:{pill:'Concept privé · Prototype',h:'Pas un site officiel.',lead:'Tell est un concept privé. Ce n’est ni une offre ni un site de la Confédération, d’un canton, d’une commune ou d’une autre organisation étatique.',
+   fr:{s2h:['Pas un',' site officiel.'],s2:'Concept privé. Ni Confédération, ni canton, ni commune. Aucune autorité. Tout est fictif.',wait:'Veuillez lire',ready:'Confirmer, voir le prototype',pill:'Concept privé · Prototype',h:'Pas un site officiel.',lead:'Tell est un concept privé. Ce n’est ni une offre ni un site de la Confédération, d’un canton, d’une commune ou d’une autre organisation étatique.',
     i:[['Aucun lien avec les autorités','Il n’existe aucune collaboration, aucun mandat ni aucune approbation de la part d’organismes publics.'],['Aucune imitation','Ce site ne cherche ni à imiter une organisation étatique ni à agir en son nom. Les désignations, symboles et noms d’autorités servent uniquement à illustrer le concept.'],['Tout est fictif','Personnes, cas, montants, documents et procédures sont entièrement inventés. Aucune donnée réelle n’est traitée. Merci de ne saisir aucune donnée personnelle ni de paiement réelle.']],
     go:'Compris, voir le prototype',foot:'Vous trouverez les informations officielles sur ch.ch.',aria:'Avis important'},
-   it:{pill:'Concetto privato · Prototipo',h:'Non è un sito ufficiale.',lead:'Tell è un concetto privato. Non è un’offerta né un sito della Confederazione, di un Cantone, di un Comune o di un’altra organizzazione statale.',
+   it:{s2h:['Non è un',' sito ufficiale.'],s2:'Concetto privato. Né Confederazione, né Cantone, né Comune. Nessuna autorità. Tutto inventato.',wait:'Leggere prego',ready:'Conferma, vai al prototipo',pill:'Concetto privato · Prototipo',h:'Non è un sito ufficiale.',lead:'Tell è un concetto privato. Non è un’offerta né un sito della Confederazione, di un Cantone, di un Comune o di un’altra organizzazione statale.',
     i:[['Nessun legame con le autorità','Non esiste alcuna collaborazione, alcun incarico né alcuna approvazione da parte di enti pubblici.'],['Nessuna imitazione','Questo sito non intende imitare alcuna organizzazione statale né agire in suo nome. Denominazioni, simboli e nomi di autorità servono solo a illustrare il concetto.'],['Tutto inventato','Persone, casi, importi, documenti e procedure sono completamente inventati. Non vengono trattati dati reali. Non inserire dati personali o di pagamento reali.']],
     go:'Ho capito, vai al prototipo',foot:'Le informazioni ufficiali si trovano su ch.ch.',aria:'Avviso importante'},
-   en:{pill:'Private concept · Prototype',h:'Not an official website.',lead:'Tell is a private concept. It is neither an offer nor a website of the Swiss Confederation, a canton, a municipality or any other government organisation.',
+   en:{s2h:['Not an',' official website.'],s2:'Private concept. No federal government, no canton, no municipality. No public authority. Everything is fictional.',wait:'Please read',ready:'Confirm, view the prototype',pill:'Private concept · Prototype',h:'Not an official website.',lead:'Tell is a private concept. It is neither an offer nor a website of the Swiss Confederation, a canton, a municipality or any other government organisation.',
     i:[['No connection to any authority','There is no cooperation, commission or endorsement by any government body.'],['No imitation','This site does not seek to imitate any government organisation or to act on its behalf. Names, symbols and authority names are used only to illustrate the concept.'],['Everything is fictional','People, cases, amounts, documents and processes are entirely made up. No real data is processed. Please do not enter any real personal or payment data.']],
     go:'Understood, view the prototype',foot:'Official information is available at ch.ch.',aria:'Important notice'}
   };
@@ -744,31 +765,61 @@ html.dsc-lock{overflow:hidden!important}
   var ARW='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   var esc=function(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
   var root=document.createElement('div');root.className='dsc';root.setAttribute('data-notr','');root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');
-  var inerted=[];
+  var card=document.createElement('div');card.className='dsc-card';root.appendChild(card);
+  var inerted=[],closed=false,stage=1,left=5,t0=0,timer=null;
+  var LANGBAR=function(l,r){return '<div class="dsc-lang'+r+'" style="--i:1" role="group" aria-label="Language">'+L.map(function(x){return '<button type="button" data-l="'+x+'" lang="'+x+'" aria-pressed="'+(x===l)+'">'+x.toUpperCase()+'</button>'}).join('')+'</div>'};
+  function okInner(t){return '<span>'+esc(left>0?t.wait:t.ready)+'</span><span class="dsc-n" id="dscN">'+(left>0?left:ARW)+'</span>'}
   function paint(l,first){
     var t=C[l];cur=l;root.setAttribute('aria-label',t.aria);root.lang=l==='de'?'de-CH':l==='fr'?'fr-CH':l==='it'?'it-CH':'en';
     var r=first?' dsc-rise':'';
-    root.innerHTML='<div class="dsc-card"><div class="dsc-top"><span class="dsc-pill'+r+'" style="--i:0"><i></i>'+esc(t.pill)+'</span><div class="dsc-lang'+r+'" style="--i:1" role="group" aria-label="Language">'+L.map(function(x){return '<button type="button" data-l="'+x+'" lang="'+x+'" aria-pressed="'+(x===l)+'">'+x.toUpperCase()+'</button>'}).join('')+'</div></div>'+
-     '<h2 class="'+r.trim()+'" style="--i:2">'+esc(t.h)+'</h2><p class="dsc-lead'+r+'" style="--i:3">'+esc(t.lead)+'</p>'+
-     '<ul>'+t.i.map(function(x,n){return '<li class="'+r.trim()+'" style="--i:'+(4+n)+'">'+ICO[n]+'<div><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></div></li>'}).join('')+'</ul>'+
-     '<button class="dsc-go'+r+'" style="--i:7" type="button" id="dscGo"><span>'+esc(t.go)+'</span>'+ARW+'</button><p class="dsc-foot'+r+'" style="--i:8">'+esc(t.foot)+'</p></div>';
+    var top='<div class="dsc-top"><span class="dsc-pill'+r+'" style="--i:0"><i></i>'+esc(t.pill)+'</span>'+LANGBAR(l,r)+'</div>';
+    if(stage===1){
+      card.className='dsc-card';root.classList.remove('s2');
+      card.innerHTML=top+'<h2 class="'+r.trim()+'" style="--i:2">'+esc(t.h)+'</h2><p class="dsc-lead'+r+'" style="--i:3">'+esc(t.lead)+'</p>'+
+       '<ul>'+t.i.map(function(x,n){return '<li class="'+r.trim()+'" style="--i:'+(4+n)+'">'+ICO[n]+'<div><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></div></li>'}).join('')+'</ul>'+
+       '<button class="dsc-go'+r+'" style="--i:7" type="button" id="dscGo"><span>'+esc(t.go)+'</span>'+ARW+'</button><p class="dsc-foot'+r+'" style="--i:8">'+esc(t.foot)+'</p>';
+    }else{
+      card.className='dsc-card big';root.classList.add('s2');
+      var el=Math.max(0,Math.min(5,(Date.now()-t0)/1000)).toFixed(2);
+      card.innerHTML=top+'<h2 class="dsc-big'+r+'" style="--i:2"><em>'+esc(t.s2h[0])+'</em>'+esc(t.s2h[1])+'</h2><p class="dsc-s2'+r+'" style="--i:3">'+esc(t.s2)+'</p>'+
+       '<button class="dsc-ok'+(left>0?' wait':' ready')+r+'" style="--i:4;--el:'+el+'" type="button" id="dscOk" aria-disabled="'+(left>0)+'">'+okInner(t)+'</button>';
+    }
   }
+  function toStage2(){
+    stage=2;card.classList.add('swapping');
+    setTimeout(function(){
+      t0=Date.now();left=5;paint(cur,true);card.classList.remove('swapping');
+      var ok=root.querySelector('#dscOk');if(ok)ok.focus({preventScroll:true});
+      clearInterval(timer);
+      timer=setInterval(function(){
+        left=Math.max(0,5-Math.floor((Date.now()-t0)/1000));
+        var b=root.querySelector('#dscOk'),n=root.querySelector('#dscN');if(!b||!n)return;
+        if(left>0){n.textContent=left;n.classList.remove('pop');void n.offsetWidth;n.classList.add('pop')}
+        else{clearInterval(timer);b.classList.remove('wait');b.classList.add('ready');b.setAttribute('aria-disabled','false');b.firstChild.textContent=C[cur].ready;n.classList.remove('pop');n.innerHTML=ARW}
+      },250);
+    },reduce?0:300);
+  }
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   function close(){
+    clearInterval(timer);closed=true;
     try{sessionStorage.setItem(KEY,'1')}catch(e){}
     if(cur!==pageLang){var u=new URL(location.href);u.searchParams.set('lang',cur);location.replace(u.toString());return}
-    closed=true;root.classList.add('out');
+    root.classList.add('out');
     inerted.forEach(function(n){n.inert=false});
     document.documentElement.classList.remove('dsc-lock');
     setTimeout(function(){root.remove()},800);
   }
   root.addEventListener('click',function(e){
-    var b=e.target.closest('.dsc-lang button');if(b){paint(b.dataset.l,false);var g=root.querySelector('#dscGo');if(g)g.focus({preventScroll:true});return}
-    var g=e.target.closest('#dscGo');if(g){var r=g.getBoundingClientRect();g.style.setProperty('--ox',(e.clientX-r.left)+'px');g.style.setProperty('--oy',(e.clientY-r.top)+'px');close()}
+    var b=e.target.closest('.dsc-lang button');
+    if(b){var shown=cur;paint(b.dataset.l,false);if(stage===1){var g=root.querySelector('#dscGo');if(g)g.focus({preventScroll:true})}else{var o=root.querySelector('#dscOk');if(o)o.focus({preventScroll:true})}return}
+    var g1=e.target.closest('#dscGo');
+    if(g1){var r1=g1.getBoundingClientRect();g1.style.setProperty('--ox',(e.clientX-r1.left)+'px');g1.style.setProperty('--oy',(e.clientY-r1.top)+'px');toStage2();return}
+    var g2=e.target.closest('#dscOk');
+    if(g2&&left<=0)close();
   });
   paint(cur,true);
   document.documentElement.classList.add('dsc-lock');
   document.body.appendChild(root);
-  var closed=false;
   function lockBg(){if(closed)return;[].forEach.call(document.body.children,function(n){if(n!==root&&n.tagName!=='SCRIPT'&&n.tagName!=='STYLE'&&!n.inert){n.inert=true;inerted.push(n)}})}
   lockBg();if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',lockBg);
   var go=root.querySelector('#dscGo');if(go)go.focus({preventScroll:true});
