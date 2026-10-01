@@ -181,13 +181,6 @@ svg{display:block}
 
 
 /* privacy */
-.priv-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap,24px)}
-.priv-grid .sec-title{grid-column:1/6}
-.p-list{grid-column:7/13;list-style:none;padding:0;align-self:end}
-.p-row{display:grid;grid-template-columns:1fr 1.5fr;gap:var(--gap,24px);padding:26px 0;border-top:1px solid var(--rule)}
-.p-row:last-child{border-bottom:1px solid var(--rule)}
-.p-row h3{font-family:var(--serif);font-size:1.4rem;font-weight:500;letter-spacing:-.015em;line-height:1.15}
-.p-row p{color:var(--granit);max-width:32em}
 
 /* footer */
 .footer{margin:var(--inset);background:var(--ink);color:var(--paper);border-radius:var(--r-xl);padding:clamp(64px,9vw,140px) var(--pad) 28px;overflow:hidden}
@@ -513,14 +506,103 @@ u:nth-child(2n){width:82%}u:nth-child(3n){width:64%}
   .pin-ring,.rt-q .caret,.hc-addr .caret,.hn[data-s="active"] .hn-ic::after{animation:none}
 }
 
+/* ============ trust / account ============ */
+.trust{position:relative;margin:var(--inset);border-radius:var(--r-xl);background:var(--snow);overflow:clip}
+.tr-intro{padding:var(--sec) var(--pad) clamp(24px,4vw,56px)}
+.tr-intro p{margin-top:22px;color:var(--granit);font-size:clamp(1.0625rem,1.35vw,1.25rem);line-height:1.45;max-width:31em}
+.tr-track{position:relative;height:430vh}
+.tr-stage{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,5vw,80px);align-items:center;padding:84px var(--pad) 28px}
+.tr-visual{display:grid;place-items:center;min-width:0}
+.tv-wrap{width:calc(560px*var(--k,1));height:calc(440px*var(--k,1))}
+.tv{position:relative;width:560px;height:440px;transform-origin:0 0;transform:scale(var(--k,1));border-radius:38px;background:#fff;box-shadow:0 2px 0 rgba(26,37,49,.04),0 50px 90px -40px rgba(26,37,49,.45),0 0 0 1px rgba(26,37,49,.07);display:flex;flex-direction:column;overflow:hidden;font-size:14px}
+.tv-top{display:flex;align-items:center;justify-content:space-between;padding:18px 24px 4px}
+.tv-top .mini{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-weight:500;font-size:20px}
+.tv-top .mini svg{width:24px;height:24px}
+.tv-screens{position:relative;flex:1;min-height:0}
+.tvs{position:absolute;inset:0;padding:8px 24px 24px;opacity:0;transform:translateY(24px) scale(.985);pointer-events:none;transition:opacity .6s var(--ease),transform .8s var(--ease)}
+.tvs.on{opacity:1;transform:none;pointer-events:auto}
+.tvs h3{font-family:var(--serif);font-weight:500;font-size:28px;letter-spacing:-.02em;line-height:1.05}
+.lg{margin-top:14px;border-radius:30px;background:var(--paper);padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:290px;text-align:center}
+.lg-i,.lg-w,.lg-o{display:none;flex-direction:column;align-items:center;gap:14px}
+.lg[data-state="idle"] .lg-i,.lg[data-state="wait"] .lg-w,.lg[data-state="ok"] .lg-o{display:flex;animation:fadeup .55s var(--ease) both}
+.lg-btn{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;background:var(--ink);color:var(--paper);padding:15px 26px;border-radius:99px;font-weight:600;font-size:15px;transition:transform .25s var(--ease),background .3s}
+.lg-btn:hover{background:var(--red)}
+.lg-btn:active{transform:scale(.96)}
+.lg-btn svg{width:22px;height:22px}
+.lg-hint{color:var(--granit);font-size:13px;max-width:24em;line-height:1.4}
+.ph-mock{position:relative;width:64px;height:92px;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 2px rgba(26,37,49,.18);display:grid;place-items:center}
+.ph-mock::before{content:"";position:absolute;top:7px;width:18px;height:4px;border-radius:2px;background:rgba(26,37,49,.18)}
+.ph-mock svg{width:30px;height:30px}
+.ph-mock::after{content:"";position:absolute;inset:-8px;border-radius:26px;border:2px solid var(--red);opacity:0;animation:ring 1.4s ease-out infinite}
+.lg-o .av{width:72px;height:72px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:24px;font-weight:600;position:relative}
+.lg-o .av::after{content:"";position:absolute;right:-4px;bottom:-4px;width:26px;height:26px;border-radius:50%;background:var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat;box-shadow:0 0 0 3px var(--paper)}
+.lg-o b{font-family:var(--serif);font-weight:500;font-size:22px}
+.lg-o span{color:var(--granit);font-size:13px}
+.dc{margin-top:14px;border-radius:28px;background:var(--paper);padding:18px}
+.dc-head{display:flex;align-items:center;gap:12px}
+.dc-ic{width:42px;height:42px;border-radius:14px;background:#fff;display:grid;place-items:center}
+.dc-ic svg{width:21px;height:21px}
+.dc-head b{display:block;font-size:15px;line-height:1.2}
+.dc-head small{color:var(--granit);font-size:12px}
+.dc-lock{margin-left:auto;width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center;transition:background .5s,color .5s}
+.dc-lock svg{width:18px;height:18px}
+.dc[data-state="cipher"] .dc-lock{background:var(--red);color:#fff}
+.dc-body{margin-top:14px;border-radius:20px;background:#fff;padding:16px;font-size:15px;line-height:1.5;min-height:112px;overflow-wrap:anywhere}
+.dc[data-state="cipher"] .dc-body{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;color:var(--granit);letter-spacing:.03em}
+.dc-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;color:var(--granit);font-size:13px}
+.pill-btn{border:0;cursor:pointer;background:var(--ink);color:var(--paper);padding:.7em 1.3em;border-radius:99px;font-weight:600;font-size:13px;transition:background .3s,transform .25s var(--ease)}
+.pill-btn:hover{background:var(--red)}
+.pill-btn:active{transform:scale(.95)}
+.pill-btn.ghost{background:var(--paper);color:var(--ink)}
+.pill-btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.mp{position:relative;margin-top:12px;border-radius:28px;background:var(--paper);overflow:hidden}
+.mp svg{display:block;width:100%;height:auto}
+.mp .cc{fill:#fff;stroke:#E4DDD0;stroke-width:1}
+.mp .lk{fill:#DDE7EC}
+.mp .dash{fill:none;stroke:var(--red);stroke-width:2.2;stroke-dasharray:3 9;stroke-linecap:round;animation:dashmove 1.2s linear infinite}
+@keyframes dashmove{to{stroke-dashoffset:-24}}
+.mp .pr{fill:none;stroke:var(--red);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:pulse 2.2s ease-out infinite}
+.mp .pd{fill:var(--red);stroke:#fff;stroke-width:2.4}
+.mp .pt{font:600 22px "Switzer",Arial,sans-serif;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:6px;stroke-linejoin:round}
+.mp-badge{position:absolute;left:14px;bottom:14px;display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.92);font-size:12.5px;font-weight:600}
+.mp-badge svg{width:16px;height:16px}
+.mp-note{position:absolute;right:14px;bottom:16px;font-size:11px;color:rgba(26,37,49,.45)}
+.pm{list-style:none;padding:0;margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.pm li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 16px 14px 12px;border-radius:26px;background:var(--paper);transition:opacity .4s var(--ease)}
+.pm .org{width:44px;height:44px;border-radius:15px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--serif);font-size:20px}
+.pm b{display:block;font-size:14px;line-height:1.25}
+.pm small{display:block;color:var(--granit);font-size:12px;line-height:1.3;margin-top:2px}
+.pm .stt{display:block;margin-top:4px;font-size:11.5px;font-weight:600;color:#2B5A3A}
+.pm li.off .stt{color:var(--granit)}
+.pm li.off .org{background:rgba(26,37,49,.2)}
+.swt{position:relative;width:52px;height:30px;border-radius:99px;border:0;cursor:pointer;background:var(--red);transition:background .3s var(--ease)}
+.swt::after{content:"";position:absolute;top:3px;left:25px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .35s var(--ease)}
+.swt[aria-checked="false"]{background:rgba(26,37,49,.22)}
+.swt[aria-checked="false"]::after{left:3px}
+.pm-acts{display:flex;gap:10px;margin-top:14px}
+.tv-foot{display:flex;align-items:center;gap:8px;margin-top:14px;color:var(--granit);font-size:12.5px}
+.tv-foot svg{width:15px;height:15px;flex:none}
+.tr-right{min-width:0}
+.tr-steps{margin-top:0}
+.tr-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin-top:clamp(20px,4svh,40px)}
+.tr-chips li{display:inline-flex;align-items:center;gap:8px;padding:.6em 1em;border-radius:99px;background:var(--paper);font-size:.875rem;font-weight:500}
+.tr-chips li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red)}
+@media (max-width:900px){
+  .tr-track{height:400vh}
+  .tr-stage{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;gap:16px;padding:76px var(--pad) 14px}
+  .tr-chips{margin-top:12px}
+  .tr-chips li{font-size:.75rem;padding:.5em .85em}
+}
+@media (prefers-reduced-motion:reduce){
+  .ph-mock::after,.mp .dash,.mp .pr{animation:none}
+}
+
+
 /* responsive */
 @media (max-width:900px){
   .notice{order:3;flex:1 0 100%;max-width:none;padding:7px 12px;font-size:.75rem}
   .site-header{flex-wrap:wrap;row-gap:8px}
-  .priv-grid .sec-title,.p-list{grid-column:1/-1}
-  .p-list{margin-top:40px}
-  .p-row{grid-template-columns:1fr}
-  .f-links,.f-note{grid-column:1/-1}
+        .f-links,.f-note{grid-column:1/-1}
   .f-note{margin-top:8px}
   .statement{height:250vh}
 }
@@ -751,12 +833,34 @@ u:nth-child(2n){width:82%}u:nth-child(3n){width:64%}
     </div>
   </section>
 
-  <section class="sheet" id="privacy">
-    <div class="priv-grid">
-      <h2 class="sec-title" data-i="priv_title"></h2>
-      <ul class="p-list" id="pList"></ul>
+  <section class="trust" id="privacy" aria-labelledby="trH">
+    <div class="tr-intro">
+      <h2 class="sec-title" id="trH"></h2>
+      <p id="trLead"></p>
+    </div>
+    <div class="tr-track" id="trTrack">
+      <div class="tr-stage">
+        <div class="tr-visual">
+          <div class="tv-wrap" id="tvWrap">
+            <div class="tv" id="tv">
+              <div class="tv-top"><span class="mini"><svg aria-hidden="true"><use href="#cross"/></svg>Tell</span><span class="avatar" aria-hidden="true">LM</span></div>
+              <div class="tv-screens">
+                <div class="tvs" id="tvs0"></div>
+                <div class="tvs" id="tvs1"></div>
+                <div class="tvs" id="tvs2"></div>
+                <div class="tvs" id="tvs3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tr-right">
+          <ol class="psteps tr-steps" id="trSteps"><span class="pbar" id="trBar"></span></ol>
+          <ul class="tr-chips" id="trChips"></ul>
+        </div>
+      </div>
     </div>
   </section>
+
 </main>
 
 <footer class="footer">
@@ -995,10 +1099,6 @@ function buildStatement(){
   const p=$('#stmt'); p.textContent='';
   words=tx(T().stmt).split(' ').map(w=>{const s=document.createElement('span'); s.className='w'; s.textContent=w; p.append(s,' '); return s;});
 }
-function buildPrivacy(){
-  const l=$('#pList'); l.textContent='';
-  T().priv.forEach(p=>{const li=document.createElement('li'); li.className='p-row'; li.innerHTML='<h3></h3><p></p>'; $('h3',li).textContent=tx(p.h); $('p',li).textContent=tx(p.t); l.append(li);});
-}
 function buildFooter(){
   const l=$('#fLinks'); l.textContent='';
   T().f_links.forEach(t=>{const li=document.createElement('li'); const a=document.createElement('a'); a.href='#'; a.textContent=t; a.addEventListener('click',e=>e.preventDefault()); li.append(a); l.append(li);});
@@ -1017,7 +1117,7 @@ function setLang(l){
   $$('[data-i]').forEach(el=>{const v=T()[el.dataset.i]; if(typeof v==='string')el.textContent=tx(v);});
   $$('[data-ia]').forEach(el=>{const [a,k]=el.dataset.ia.split(':'); el.setAttribute(a,T()[k]);});
   $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)));
-  buildChips(); buildPh(); buildStatement(); buildRouter(); buildHub(); buildPrivacy(); buildFooter(); buildPlat(); curStep=-1; resetAnswer();
+  buildChips(); buildPh(); buildStatement(); buildRouter(); buildHub(); buildTrust(); buildFooter(); buildPlat(); curStep=-1; resetAnswer();
   try{history.replaceState(null,'','?lang='+l);}catch(e){}
   update();
 }
@@ -1119,7 +1219,7 @@ function update(){
   const fr=footer.getBoundingClientRect();
   const fp=reduce?1:clamp((vh-fr.top)/fr.height,0,1);
   fMark.style.transform='translateY('+((1-fp)*14).toFixed(2)+'%)';
-  updateChaos(); updatePlat(); updateRoute(); updateHub();
+  updateChaos(); updatePlat(); updateRoute(); updateHub(); updateTrust();
 }
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
 addEventListener('resize',update);
@@ -1447,6 +1547,113 @@ function updateHub(force){
   });
   $('#hsCount').textContent=tx(M.count.replace('{n}',done)); $('#hsBar').style.transform='scaleX('+(done/5)+')';
   $('#hsCmp').classList.toggle('on',p>.8);
+}
+
+
+/* ---------- trust / account ---------- */
+const TRUST={
+de:{title:"Ihre Daten gehören Ihnen.",lead:"Fragen stellen geht ohne Konto. Für Datenraum und Anträge melden Sie sich mit der E-ID an, und Sie behalten jederzeit die Kontrolle.",
+ steps:[{h:"Anmelden mit E-ID",t:"Kein neues Passwort, kein weiteres Profil. Sie bestätigen auf dem Handy, und die Identität ist geprüft."},{h:"Verschlüsselt abgelegt",t:"Dokumente sind Ende-zu-Ende verschlüsselt. Ohne Ihre Freigabe kann sie niemand lesen, auch nicht der Betreiber."},{h:"Nur in der Schweiz",t:"Betrieb und Speicherung in Schweizer Rechenzentren, nach dem Datenschutzgesetz."},{h:"Sie haben die Kontrolle",t:"Jeder Zugriff braucht Ihre Zustimmung, wird protokolliert und lässt sich widerrufen. Export und Löschung jederzeit."}],
+ chips:["Fragen ohne Konto möglich","Keine Werbung, kein Tracking","Kein Verkauf Ihrer Daten"],
+ s1:{h:"Anmelden",btn:"Mit E-ID anmelden",hint:"Sie bestätigen die Anmeldung in der E-ID-App auf Ihrem Handy.",wait:"Bestätigen Sie auf Ihrem Handy …",ok:"Angemeldet",who:"Lena Muster",again:"Nochmals anmelden"},
+ s2:{h:"Dokument",file:"Mietvertrag.pdf",sub:"Datenraum",clear:"Mietvertrag Ostermundigen, Monatsmiete CHF 1'850, Beginn 1. November.",lock:"Nur mit Ihrem Schlüssel lesbar",show:"Entschlüsseln",hide:"Verschlüsseln",key:"Der Schlüssel liegt auf Ihrem Gerät."},
+ s3:{h:"Standorte",a:"Rechenzentrum 1",b:"Rechenzentrum 2",badge:"Daten bleiben in der Schweiz",note:"Beispiel, Standorte frei erfunden"},
+ s4:{h:"Freigaben",rows:[["Gemeinde Ostermundigen","Wohnsitzbestätigung, bis 8. Okt."],["Strassenverkehrsamt Bern","Fahrausweis, einmalig"]],last:"Letzter Zugriff: heute 09:12",on:"Freigegeben",off:"Widerrufen",exp:"Daten exportieren",del:"Konto löschen"}},
+fr:{title:"Vos données vous appartiennent.",lead:"Poser une question ne demande pas de compte. Pour l'espace de données et les demandes, vous vous connectez avec l'E-ID et gardez le contrôle à tout moment.",
+ steps:[{h:"Connexion avec l'E-ID",t:"Pas de nouveau mot de passe, pas de nouveau profil. Vous confirmez sur votre téléphone et l'identité est vérifiée."},{h:"Stocké chiffré",t:"Les documents sont chiffrés de bout en bout. Sans votre accord, personne ne peut les lire, pas même l'exploitant."},{h:"Uniquement en Suisse",t:"Exploitation et stockage dans des centres de calcul suisses, selon la loi sur la protection des données."},{h:"Vous gardez le contrôle",t:"Chaque accès exige votre accord, est consigné et peut être révoqué. Export et suppression à tout moment."}],
+ chips:["Questions possibles sans compte","Ni publicité ni suivi","Aucune vente de vos données"],
+ s1:{h:"Connexion",btn:"Se connecter avec l'E-ID",hint:"Vous confirmez la connexion dans l'application E-ID sur votre téléphone.",wait:"Confirmez sur votre téléphone …",ok:"Connecté",who:"Lena Muster",again:"Se reconnecter"},
+ s2:{h:"Document",file:"Contrat de bail.pdf",sub:"Espace de données",clear:"Contrat de bail Ostermundigen, loyer mensuel CHF 1 850, début le 1er novembre.",lock:"Lisible uniquement avec votre clé",show:"Déchiffrer",hide:"Chiffrer",key:"La clé reste sur votre appareil."},
+ s3:{h:"Sites",a:"Centre de calcul 1",b:"Centre de calcul 2",badge:"Les données restent en Suisse",note:"Exemple, sites fictifs"},
+ s4:{h:"Autorisations",rows:[["Commune d'Ostermundigen","Attestation de domicile, jusqu'au 8 oct."],["Office de la circulation de Berne","Permis de conduire, unique"]],last:"Dernier accès : aujourd'hui 09:12",on:"Autorisé",off:"Révoqué",exp:"Exporter les données",del:"Supprimer le compte"}},
+it:{title:"I vostri dati appartengono a voi.",lead:"Fare domande non richiede un account. Per lo spazio dati e le pratiche accedete con la E-ID e mantenete sempre il controllo.",
+ steps:[{h:"Accesso con la E-ID",t:"Nessuna nuova password, nessun altro profilo. Confermate sul telefono e l'identità è verificata."},{h:"Conservati cifrati",t:"I documenti sono cifrati end-to-end. Senza il vostro consenso nessuno può leggerli, nemmeno il gestore."},{h:"Solo in Svizzera",t:"Gestione e archiviazione in centri di calcolo svizzeri, secondo la legge sulla protezione dei dati."},{h:"Il controllo resta a voi",t:"Ogni accesso richiede il vostro consenso, viene registrato e può essere revocato. Esportazione ed eliminazione in ogni momento."}],
+ chips:["Domande possibili senza account","Niente pubblicità né tracciamento","Nessuna vendita dei vostri dati"],
+ s1:{h:"Accesso",btn:"Accedi con la E-ID",hint:"Confermate l'accesso nell'app E-ID sul vostro telefono.",wait:"Confermate sul telefono …",ok:"Accesso eseguito",who:"Lena Muster",again:"Accedi di nuovo"},
+ s2:{h:"Documento",file:"Contratto d'affitto.pdf",sub:"Spazio dati",clear:"Contratto d'affitto Ostermundigen, pigione mensile CHF 1850, inizio 1° novembre.",lock:"Leggibile solo con la vostra chiave",show:"Decifra",hide:"Cifra",key:"La chiave resta sul vostro dispositivo."},
+ s3:{h:"Sedi",a:"Centro di calcolo 1",b:"Centro di calcolo 2",badge:"I dati restano in Svizzera",note:"Esempio, sedi fittizie"},
+ s4:{h:"Autorizzazioni",rows:[["Comune di Ostermundigen","Attestato di domicilio, fino all'8 ott."],["Ufficio della circolazione di Berna","Licenza di condurre, una tantum"]],last:"Ultimo accesso: oggi 09:12",on:"Autorizzato",off:"Revocato",exp:"Esporta i dati",del:"Elimina l'account"}},
+en:{title:"Your data belongs to you.",lead:"Asking questions works without an account. For the data space and applications you sign in with the E-ID, and you stay in control at all times.",
+ steps:[{h:"Sign in with E-ID",t:"No new password, no extra profile. You confirm on your phone and your identity is verified."},{h:"Stored encrypted",t:"Documents are end-to-end encrypted. Without your approval nobody can read them, not even the operator."},{h:"Only in Switzerland",t:"Operation and storage in Swiss data centres, under the Swiss data protection act."},{h:"You stay in control",t:"Every access needs your consent, is logged and can be revoked. Export and deletion at any time."}],
+ chips:["Questions possible without an account","No ads, no tracking","Your data is never sold"],
+ s1:{h:"Sign in",btn:"Sign in with E-ID",hint:"You confirm the sign-in in the E-ID app on your phone.",wait:"Confirm on your phone …",ok:"Signed in",who:"Lena Muster",again:"Sign in again"},
+ s2:{h:"Document",file:"Rental contract.pdf",sub:"Data space",clear:"Rental contract Ostermundigen, monthly rent CHF 1,850, starting 1 November.",lock:"Readable only with your key",show:"Decrypt",hide:"Encrypt",key:"The key stays on your device."},
+ s3:{h:"Locations",a:"Data centre 1",b:"Data centre 2",badge:"Data stays in Switzerland",note:"Example, made-up locations"},
+ s4:{h:"Permissions",rows:[["Municipality of Ostermundigen","Proof of residence, until 8 Oct"],["Bern Road Traffic Office","Driving licence, one-time"]],last:"Last access: today 09:12",on:"Allowed",off:"Revoked",exp:"Export data",del:"Delete account"}}
+};
+const trTrack=$('#trTrack'), trSteps=$('#trSteps'), trBar=$('#trBar'), tvWrap=$('#tvWrap'), tvEl=$('#tv');
+const tvs=[0,1,2,3].map(i=>$('#tvs'+i));
+let trStepEls=[], curTr=-1, trRun=0, cipherOn=false;
+const TIC={
+ cross:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#D8001A"/><path fill="#fff" d="M10 4.5h4v5.5h5.5v4H14v5.5h-4V14H4.5v-4H10z"/></svg>',
+ phone:'<svg viewBox="0 0 24 24" fill="none" stroke="#1A2531" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.6"/><path d="M7.5 12h.01M16.5 12h.01"/></svg>',
+ doc:'<svg viewBox="0 0 24 24" fill="none" stroke="#1A2531" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg>',
+ lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>'
+};
+function scramble(el,target,toCipher,id){
+  const chars='0123456789abcdefABCDEF#%&$@=+~';
+  const rnd=()=>chars[Math.floor(Math.random()*chars.length)];
+  const n=target.length; let step=0; const total=16;
+  const tick=()=>{
+    if(id!==trRun&&id!==-1)return;
+    step++; const f=step/total;
+    let out='';
+    for(let i=0;i<n;i++){
+      const ch=target[i]; const done=toCipher? (i/n<f? true:false) : (i/n<f? true:false);
+      if(toCipher) out+= (ch===' '? ' ' : (done? rnd() : ch));
+      else out+= (done? ch : (ch===' '? ' ' : rnd()));
+    }
+    el.textContent=out;
+    if(step<total) setTimeout(tick,45); else el.textContent= toCipher? target.replace(/[^ ]/g,()=>rnd()) : target;
+  };
+  if(reduce){el.textContent=toCipher? target.replace(/[^ ]/g,()=>rnd()):target; return;}
+  tick();
+}
+function buildTrust(){
+  const R=TRUST[lang];
+  $('#trH').textContent=tx(R.title); $('#trLead').textContent=tx(R.lead);
+  $$('.pstep',trSteps).forEach(e=>e.remove());
+  trStepEls=R.steps.map((s,i)=>{
+    const b=document.createElement('button'); b.type='button'; b.className='pstep'; b.innerHTML='<b></b><span class="pt"><span></span></span>';
+    $('b',b).textContent=tx(s.h); $('.pt span',b).textContent=tx(s.t);
+    b.addEventListener('click',()=>{const r=trTrack.getBoundingClientRect(); scrollTo({top:scrollY+r.top+(r.height-innerHeight)*((i+.5)/4),behavior:reduce?'auto':'smooth'});});
+    trSteps.append(b); return b;});
+  $('#trChips').innerHTML=R.chips.map(c=>'<li>'+tx(c)+'</li>').join('');
+  const s1=R.s1,s2=R.s2,s3=R.s3,s4=R.s4;
+  tvs[0].innerHTML='<h3>'+tx(s1.h)+'</h3><div class="lg" data-state="idle"><div class="lg-i"><button class="lg-btn" type="button">'+TIC.cross+tx(s1.btn)+'</button><p class="lg-hint">'+tx(s1.hint)+'</p></div><div class="lg-w"><div class="ph-mock">'+TIC.phone+'</div><p class="lg-hint">'+tx(s1.wait)+'</p></div><div class="lg-o"><span class="av">LM</span><b>'+s1.who+'</b><span>'+tx(s1.ok)+'</span><button class="pill-btn ghost" type="button">'+tx(s1.again)+'</button></div></div>';
+  tvs[1].innerHTML='<h3>'+tx(s2.h)+'</h3><div class="dc" data-state="clear"><div class="dc-head"><span class="dc-ic">'+TIC.doc+'</span><div><b>'+s2.file+'</b><small>'+tx(s2.sub)+'</small></div><span class="dc-lock">'+TIC.lock+'</span></div><div class="dc-body"></div><div class="dc-foot"><span class="dc-lbl">'+tx(s2.lock)+'</span><button class="pill-btn" type="button"></button></div></div><p class="tv-foot">'+TIC.lock+'<span>'+tx(s2.key)+'</span></p>';
+  const bern=MAP.pts.Bern, zrh=MAP.pts.Zuerich;
+  tvs[2].innerHTML='<h3>'+tx(s3.h)+'</h3><div class="mp"><svg viewBox="60 50 880 540" aria-hidden="true"><path class="lk" d="'+MAP.lakes+'"/>'+Object.keys(MAP.cantons).map(a=>'<path class="cc" d="'+MAP.cantons[a]+'"/>').join('')+'<path class="dash" d="M'+bern[0]+','+bern[1]+' Q'+((bern[0]+zrh[0])/2-30)+','+((bern[1]+zrh[1])/2+10)+' '+zrh[0]+','+zrh[1]+'"/>'+[[bern,s3.a,-1],[zrh,s3.b,1]].map(([p,n,s])=>'<g transform="translate('+p[0]+' '+p[1]+')"><circle class="pr" r="9"/><circle class="pr" r="9" style="animation-delay:1.1s"/><circle class="pd" r="9"/><text class="pt" x="'+(s>0?16:-16)+'" y="'+(s>0?-14:40)+'" text-anchor="'+(s>0?'start':'end')+'">'+tx(n)+'</text></g>').join('')+'</svg><span class="mp-badge">'+TIC.cross.replace('<svg','<svg width="16" height="16"')+tx(s3.badge)+'</span><span class="mp-note">'+tx(s3.note)+'</span></div>';
+  tvs[3].innerHTML='<h3>'+tx(s4.h)+'</h3><ul class="pm">'+s4.rows.map((r,i)=>'<li data-i="'+i+'"><span class="org">'+(i?'S':'O')+'</span><div><b>'+tx(r[0])+'</b><small>'+tx(r[1])+'</small><span class="stt">'+tx(s4.on)+'</span></div><button class="swt" type="button" role="switch" aria-checked="true" aria-label="'+tx(r[0])+'"></button></li>').join('')+'</ul><div class="pm-acts"><button class="pill-btn ghost" type="button">'+tx(s4.exp)+'</button><button class="pill-btn ghost" type="button">'+tx(s4.del)+'</button></div><p class="tv-foot">'+TIC.lock+'<span>'+tx(s4.last)+'</span></p>';
+  /* interactions */
+  const lg=$('.lg',tvs[0]);
+  const runLogin=()=>{const id=++trRun; lg.dataset.state='idle'; if(reduce){lg.dataset.state='ok';return;} setTimeout(()=>{if(id!==trRun)return; lg.dataset.state='wait'; setTimeout(()=>{if(id!==trRun)return; lg.dataset.state='ok';},1900);},900);};
+  $('.lg-btn',tvs[0]).addEventListener('click',()=>{const id=++trRun; lg.dataset.state='wait'; setTimeout(()=>{if(id!==trRun)return; lg.dataset.state='ok';},1500);});
+  $('.lg-o .pill-btn',tvs[0]).addEventListener('click',()=>{++trRun; lg.dataset.state='idle';});
+  tvs[0]._run=runLogin;
+  const dc=$('.dc',tvs[1]), body=$('.dc-body',tvs[1]), tgl=$('.dc-foot .pill-btn',tvs[1]);
+  const setCipher=(on,id)=>{dc.dataset.state=on?'cipher':'clear'; cipherOn=on; tgl.textContent=tx(on?s2.show:s2.hide); scramble(body,s2.clear,on,id);};
+  tgl.addEventListener('click',()=>setCipher(!cipherOn,-1));
+  tvs[1]._run=()=>{const id=++trRun; dc.dataset.state='clear'; cipherOn=false; body.textContent=s2.clear; tgl.textContent=tx(s2.hide); if(reduce){setCipher(true,id);return;} setTimeout(()=>{if(id===trRun)setCipher(true,id);},1100);};
+  $$('.pm li',tvs[3]).forEach(li=>{const sw=$('.swt',li), st=$('.stt',li);
+    sw.addEventListener('click',()=>{const on=sw.getAttribute('aria-checked')!=='true'; sw.setAttribute('aria-checked',String(on)); li.classList.toggle('off',!on); st.textContent=tx(on?s4.on:s4.off);});});
+  tvs[0].dataset.ready='1'; curTr=-1; updateTrust(true);
+}
+function setTrust(i){
+  curTr=i;
+  trStepEls.forEach((el,j)=>el.classList.toggle('on',j===i));
+  tvs.forEach((s,j)=>s.classList.toggle('on',j===i));
+  if(tvs[i]._run) tvs[i]._run();
+}
+function updateTrust(force){
+  const r=trTrack.getBoundingClientRect(), vh=innerHeight;
+  if(!force&&(r.bottom<-120||r.top>vh+120))return;
+  const p=reduce?0:clamp(-r.top/Math.max(1,r.height-vh),0,.9999);
+  const i=reduce?0:Math.min(3,Math.floor(p*4));
+  if(i!==curTr) setTrust(i);
+  trBar.style.setProperty('--pp',(.08+.92*(i+1)/4).toFixed(3));
+  const aw=tvWrap.parentElement.clientWidth, ah=vh-(innerWidth<900?330:130);
+  tvEl.parentElement.style.setProperty('--k',Math.min(aw/560,ah/440,1.12).toFixed(3));
 }
 
 
