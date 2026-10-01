@@ -1125,7 +1125,7 @@ de:{
   rows:["Einwohnerkontrolle","Krankenkasse","Post, Nachsendeauftrag","Serafe","Steueramt"],
   priv_title:"Ihre Fragen bleiben Ihre Sache.",
   priv:[{h:"Kein Konto",t:"Sie stellen Fragen, ohne sich anzumelden."},{h:"Kein Gesprächsverlauf",t:"Ihr Chat verschwindet, sobald Sie die Seite verlassen."},{h:"Daten in der Schweiz",t:"Betrieb und Speicherung in Schweizer Rechenzentren, nach dem Datenschutzgesetz."}],
-  f_soon:"Nur im Prototyp: Diese Seite ist noch nicht ausgearbeitet.",f_links:["Datenschutz","Nutzungsbedingungen","Barrierefreiheit","Kontakt","Behördensicht"],
+  f_soon:"Nur im Prototyp: Diese Seite ist noch nicht ausgearbeitet.",f_links:["Datenschutz","Nutzungsbedingungen","Barrierefreiheit","Kontakt","Behördensicht","Bürgersicht"],
   f_note:"Konzeptprototyp. Alle Antworten sind Beispiele und ersetzen keine Auskunft einer Behörde.",
   think:"Tell prüft offizielle Quellen",who:"Zuständig",bund:"Bund",kanton:"Kanton",gemeinde:"Gemeinde",src:"Quellen (Beispiel)",newq:"Neue Frage",
   fb:{intro:"Dazu hat der Prototyp noch keine Antwort. Die echte Version würde hier offizielle Quellen von Bund, Kantonen und Gemeinden durchsuchen. Probieren Sie eines der Beispiele."},
@@ -1169,7 +1169,7 @@ fr:{
   rows:["Contrôle des habitants","Caisse maladie","La Poste, réexpédition","Serafe","Service des impôts"],
   priv_title:"Vos questions ne regardent que vous.",
   priv:[{h:"Pas de compte",t:"Vous posez vos questions sans vous connecter."},{h:"Pas d'historique",t:"Votre conversation disparaît dès que vous quittez la page."},{h:"Données en Suisse",t:"Exploitation et stockage dans des centres de calcul suisses, selon la loi sur la protection des données."}],
-  f_soon:"Prototype uniquement : cette page n'est pas encore rédigée.",f_links:["Protection des données","Conditions d'utilisation","Accessibilité","Contact","Vue des autorités"],
+  f_soon:"Prototype uniquement : cette page n'est pas encore rédigée.",f_links:["Protection des données","Conditions d'utilisation","Accessibilité","Contact","Vue des autorités","Vue citoyenne"],
   f_note:"Prototype conceptuel. Toutes les réponses sont des exemples et ne remplacent pas un renseignement officiel.",
   think:"Tell consulte les sources officielles",who:"Compétence",bund:"Confédération",kanton:"Canton",gemeinde:"Commune",src:"Sources (exemple)",newq:"Nouvelle question",
   fb:{intro:"Le prototype n'a pas encore de réponse à cette question. La version finale consulterait ici les sources officielles de la Confédération, des cantons et des communes. Essayez l'un des exemples."},
@@ -1213,7 +1213,7 @@ it:{
   rows:["Controllo abitanti","Cassa malati","Posta, inoltro","Serafe","Ufficio imposte"],
   priv_title:"Le vostre domande restano vostre.",
   priv:[{h:"Nessun account",t:"Fate domande senza registrarvi."},{h:"Nessuna cronologia",t:"La vostra conversazione scompare appena lasciate la pagina."},{h:"Dati in Svizzera",t:"Gestione e archiviazione in centri di calcolo svizzeri, secondo la legge sulla protezione dei dati."}],
-  f_soon:"Solo prototipo: questa pagina non è ancora stata redatta.",f_links:["Protezione dei dati","Condizioni d'uso","Accessibilità","Contatto","Vista delle autorità"],
+  f_soon:"Solo prototipo: questa pagina non è ancora stata redatta.",f_links:["Protezione dei dati","Condizioni d'uso","Accessibilità","Contatto","Vista delle autorità","Vista cittadina"],
   f_note:"Prototipo concettuale. Tutte le risposte sono esempi e non sostituiscono l'informazione di un'autorità.",
   think:"Tell consulta le fonti ufficiali",who:"Competenza",bund:"Confederazione",kanton:"Cantone",gemeinde:"Comune",src:"Fonti (esempio)",newq:"Nuova domanda",
   fb:{intro:"Il prototipo non ha ancora una risposta a questa domanda. La versione definitiva consulterebbe qui le fonti ufficiali di Confederazione, cantoni e comuni. Provate uno degli esempi."},
@@ -1257,7 +1257,7 @@ en:{
   rows:["Residents' registry","Health insurer","Post, mail redirect","Serafe","Tax office"],
   priv_title:"Your questions stay yours.",
   priv:[{h:"No account",t:"Ask questions without signing in."},{h:"No chat history",t:"Your conversation disappears when you leave the page."},{h:"Data stays in Switzerland",t:"Operation and storage in Swiss data centres, under the Swiss data protection act."}],
-  f_soon:"Prototype only: this page has not been written yet.",f_links:["Privacy","Terms of use","Accessibility","Contact","Authority view"],
+  f_soon:"Prototype only: this page has not been written yet.",f_links:["Privacy","Terms of use","Accessibility","Contact","Authority view","Citizen view"],
   f_note:"Concept prototype. All answers are examples and do not replace information from an authority.",
   think:"Tell is checking official sources",who:"Responsible",bund:"Federal",kanton:"Canton",gemeinde:"Municipality",src:"Sources (example)",newq:"New question",
   fb:{intro:"The prototype has no answer to this yet. The real version would search official sources from federal, cantonal and municipal governments here. Try one of the examples."},
@@ -1329,7 +1329,7 @@ let noteT=null;
 function softNote(msg){let n=$('#softnote');if(!n){n=document.createElement('div');n.id='softnote';n.className='softnote';n.setAttribute('role','status');document.body.append(n)}n.textContent=msg;void n.offsetWidth;n.classList.add('on');clearTimeout(noteT);noteT=setTimeout(()=>n.classList.remove('on'),3400)}
 function buildFooter(){
   const l=$('#fLinks'); l.textContent='';
-  T().f_links.forEach((t,i,arr)=>{const li=document.createElement('li'); const a=document.createElement('a'); const last=i===arr.length-1; a.href=last?'behoerdensicht.html':'#'; a.textContent=t; if(!last)a.addEventListener('click',e=>{e.preventDefault();softNote(T().f_soon)}); li.append(a); l.append(li);});
+  T().f_links.forEach((t,i,arr)=>{const li=document.createElement('li'); const a=document.createElement('a'); const n=arr.length,real=i>=n-2; a.href=i===n-2?'behoerdensicht.html':i===n-1?'buergersicht.html':'#'; a.textContent=t; if(!real)a.addEventListener('click',e=>{e.preventDefault();softNote(T().f_soon)}); li.append(a); l.append(li);});
 }
 function resetAnswer(){
   hero.classList.remove('answering');
