@@ -74,7 +74,7 @@ svg{display:block}
 .btn.ghost:hover,.btn.ghost:focus-visible{color:#fff;box-shadow:none}
 
 /* ============ hero ============ */
-.hero{position:relative;--lh:min(36svh,24vw);--pb:calc(var(--lh) + 3svh);--dist:78svh}
+.hero{position:relative;--lh:min(31svh,21vw);--pb:calc(var(--lh) + 3svh);--dist:78svh}
 .h-bg,.h-fg{position:sticky;top:var(--inset);height:calc(100svh - var(--inset)*2);margin-inline:var(--inset);border-radius:var(--r-xl);overflow:hidden}
 .h-bg{margin-top:var(--inset);z-index:0;background:#d8c9cc url(assets/mountain-1920.jpg) 50% 30%/cover no-repeat}
 .h-fg{margin-top:calc(-100svh + var(--inset)*2);z-index:3;pointer-events:none}
@@ -240,6 +240,185 @@ svg{display:block}
 .f-credit{grid-column:1/-1;color:rgba(238,233,224,.5);font-size:.8125rem;max-width:62em}
 .footer :focus-visible{outline-color:var(--paper)}
 
+/* ============ chaos -> flag ============ */
+.chaos{position:relative;height:540vh;margin:var(--inset);border-radius:var(--r-xl);background:#0D1722;overflow:clip}
+.cs-stage{position:sticky;top:0;height:100svh;overflow:hidden;background-image:radial-gradient(rgba(238,233,224,.07) 1px,transparent 1.5px);background-size:30px 30px}
+.cs-glow{position:absolute;inset:0;background:radial-gradient(52% 50% at 50% 50%,rgba(216,0,26,.42),rgba(216,0,26,0) 72%);opacity:var(--gl,0);pointer-events:none}
+.cs-fade{position:absolute;left:0;right:0;top:0;height:34%;z-index:5;pointer-events:none;background:linear-gradient(#0D1722 30%,rgba(13,23,34,.86) 52%,rgba(13,23,34,0))}
+.cs-cap{position:absolute;z-index:6;color:#EEE9E0;pointer-events:none}
+.cs-a{top:clamp(84px,13svh,130px);left:0;right:0;text-align:center;padding:0 var(--pad);font-family:var(--serif);font-size:clamp(1.25rem,2.3vw,2.1rem);letter-spacing:-.015em;line-height:1.15;text-wrap:balance}
+.cs-b{left:var(--pad);top:50%;width:min(44vw,640px);opacity:0}
+.cs-b h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.3rem,5.4vw,5.6rem);line-height:1;letter-spacing:-.03em;text-wrap:balance}
+.cs-b p{margin-top:20px;font-size:clamp(1rem,1.4vw,1.25rem);line-height:1.45;color:rgba(238,233,224,.74);max-width:27em}
+.cs-world{position:absolute;inset:0;perspective:1500px;perspective-origin:50% 44%}
+.cs-card{position:absolute;left:50%;top:50%;width:var(--w);height:calc(var(--w)*.74);margin:calc(var(--w)*-.37) 0 0 calc(var(--w)*-.5);font-size:calc(var(--w)*.04);line-height:1.25;border-radius:var(--rad,8px);overflow:hidden;background:var(--bg);color:var(--fg,#222);font-family:var(--ff);box-shadow:0 44px 80px -34px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.07);will-change:transform,opacity}
+.mk-bar{display:flex;align-items:center;gap:.45em;height:2.1em;padding:0 .8em;background:rgba(0,0,0,.09)}
+.mk-bar i{width:.6em;height:.6em;border-radius:50%;background:rgba(0,0,0,.28)}
+.mk-bar span{flex:1;margin-left:.6em;padding:.12em .9em;border-radius:1em;background:rgba(255,255,255,.75);color:#555;font-size:.82em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:Arial,sans-serif}
+.mk-head{display:flex;justify-content:space-between;align-items:center;padding:.7em .9em;background:var(--c1);color:#fff}
+.mk-head b{font-size:1.05em;letter-spacing:.01em}
+.mk-head s{width:1.2em;height:.8em;border-top:.14em solid #fff;border-bottom:.14em solid #fff;position:relative}
+.mk-head s::after{content:"";position:absolute;left:0;right:0;top:.17em;height:.14em;background:#fff}
+.mk-card h4{font-size:1.5em;line-height:1.1;margin:0}
+.mk-hero{padding:1em .9em 1.1em;background:var(--c2)}
+.mk-hero h4{font-size:1.7em;line-height:1.05;color:var(--c1);margin-bottom:.5em}
+.mk-body{padding:.9em}
+.mk-body h4{color:var(--c1);font-size:1.5em;line-height:1.1;margin-bottom:.6em}
+u{display:block;height:.55em;margin:.45em 0;border-radius:.3em;background:rgba(0,0,0,.14);text-decoration:none}
+u:nth-child(2n){width:82%}u:nth-child(3n){width:64%}
+.mk-btn{display:inline-block;margin:.5em .9em .9em;padding:.55em 1.2em;background:var(--c1);color:#fff;border-radius:calc(var(--rad,8px)*.6);font-size:.95em;font-weight:700}
+.mk-split{display:grid;grid-template-columns:24% 1fr;min-height:70%}
+.mk-split nav{background:var(--c1);padding:.8em .6em}
+.mk-split nav u{background:rgba(255,255,255,.55);height:.5em}
+.mk-split main{padding:.9em}
+.mk-split main h4{color:var(--c1);font-size:1.4em;margin-bottom:.5em}
+.mk-tbl u{height:.9em;background:var(--c2);margin:.35em 0;border-radius:.2em}
+.mk-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.28em}
+.mk-grid i{aspect-ratio:1;border-radius:.25em;background:var(--c2)}
+.mk-grid i.on{background:var(--c1)}
+.mk-fld{height:1.9em;margin:.25em 0 .6em;border:.12em solid var(--c1);border-radius:calc(var(--rad,8px)*.5);background:#fff}
+.mk-lbl{font-size:.85em;font-weight:700;color:var(--c1)}
+.mk-tiles{display:grid;grid-template-columns:1fr 1fr;gap:.55em}
+.mk-tiles b{display:block;height:3.7em;background:var(--c2);border-radius:calc(var(--rad,8px)*.7);position:relative}
+.mk-tiles b:nth-child(2n){background:var(--c1)}
+.mk-tiles b::after{content:"";position:absolute;left:.7em;bottom:.7em;width:55%;height:.5em;border-radius:.3em;background:rgba(255,255,255,.7)}
+.cs-flag{position:absolute;left:50%;top:50%;width:var(--fs);height:var(--fs);margin:calc(var(--fs)*-.5) 0 0 calc(var(--fs)*-.5);opacity:0;will-change:transform,opacity}
+.cs-flag svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 70px rgba(216,0,26,.55))}
+.cs-flag .cross-fill{fill:rgba(255,255,255,.13)}
+.cs-flag .cross-neon{fill:none;stroke:#fff;stroke-width:.8;stroke-opacity:.5;stroke-linejoin:round;opacity:0;filter:url(#neonGlow)}
+.cs-flag.lit .cross-neon{opacity:1;animation:ignite 1.7s steps(1,end) both}
+.cs-tell{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-weight:500;font-size:calc(var(--fs)*.33);letter-spacing:-.035em;color:#fff;opacity:0;padding-bottom:.08em}
+.cs-flag.lit .cs-tell{opacity:1;text-shadow:0 0 .04em #fff,0 0 .12em #fff,0 0 .3em rgba(255,255,255,.9),0 0 .62em rgba(255,255,255,.65),0 0 1.1em rgba(255,214,214,.55);animation:ignite 1.7s steps(1,end) both,breathe 4.2s ease-in-out 1.7s infinite}
+@keyframes ignite{0%{opacity:0}7%{opacity:1}11%{opacity:.1}17%{opacity:1}22%{opacity:.25}29%{opacity:1}34%{opacity:.6}40%,100%{opacity:1}}
+@keyframes breathe{0%,100%{text-shadow:0 0 .04em #fff,0 0 .12em #fff,0 0 .3em rgba(255,255,255,.9),0 0 .62em rgba(255,255,255,.65),0 0 1.1em rgba(255,214,214,.55)}50%{text-shadow:0 0 .04em #fff,0 0 .1em #fff,0 0 .24em rgba(255,255,255,.8),0 0 .5em rgba(255,255,255,.5),0 0 .9em rgba(255,214,214,.4)}}
+.cs-bloom{position:absolute;left:50%;top:50%;width:var(--fs);height:var(--fs);margin:calc(var(--fs)*-.5) 0 0 calc(var(--fs)*-.5);background:radial-gradient(closest-side,rgba(255,255,255,.92),rgba(255,255,255,.38) 42%,rgba(255,255,255,.1) 72%,rgba(255,255,255,0));opacity:0;mix-blend-mode:screen;pointer-events:none}
+
+/* ============ platform ============ */
+.plat{position:relative;height:470vh;margin:var(--inset);border-radius:var(--r-xl);background:var(--snow);overflow:clip}
+.plat-stage{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:var(--pad);align-items:center;padding:0 var(--pad)}
+.plat-left{display:flex;flex-direction:column;gap:clamp(22px,4svh,44px);min-width:0}
+.plat-left .sec-title{font-size:clamp(2rem,3.7vw,3.7rem);max-width:12em}
+.psteps{position:relative;list-style:none;padding:0 0 0 28px;display:flex;flex-direction:column;gap:2px}
+.psteps::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;border-radius:3px;background:var(--rule)}
+.pbar{position:absolute;left:0;top:6px;width:3px;border-radius:3px;background:var(--red);height:calc(100% - 12px);transform-origin:top;transform:scaleY(var(--pp,0))}
+.pstep{display:block;text-align:left;background:none;border:0;padding:11px 0;cursor:pointer;opacity:.38;transition:opacity .5s var(--ease)}
+.pstep.on{opacity:1}
+.pstep:hover{opacity:.75}
+.pstep.on:hover{opacity:1}
+.pstep b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,1.9vw,1.85rem);letter-spacing:-.015em;line-height:1.1}
+.pstep .pt{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.pstep.on .pt{grid-template-rows:1fr}
+.pstep .pt>span{overflow:hidden;color:var(--granit);font-size:1rem;line-height:1.45;max-width:30em;padding-top:0;display:block}
+.pstep.on .pt>span{padding-top:8px}
+.plat-note{font-size:.8125rem;color:var(--granit)}
+.plat-right{display:grid;place-items:center;min-width:0}
+.dev-wrap{width:calc(460px*var(--k,1));height:calc(700px*var(--k,1));perspective:1800px}
+.device{position:relative;width:460px;height:700px;transform-origin:0 0;transform:scale(var(--k,1)) rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg));border-radius:44px;background:#fff;box-shadow:0 2px 0 rgba(26,37,49,.04),0 50px 90px -40px rgba(26,37,49,.45),0 0 0 1px rgba(26,37,49,.07);overflow:hidden;display:flex;flex-direction:column;font-size:14px}
+.dev-top{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 6px}
+.dev-top .mini{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-weight:500;font-size:20px}
+.dev-top .mini svg{width:24px;height:24px}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:12px;font-weight:600}
+.dev-screens{position:relative;flex:1;min-height:0}
+.scr{position:absolute;inset:0;padding:10px 22px 22px;opacity:0;transform:translateY(26px) scale(.98);pointer-events:none;transition:opacity .6s var(--ease),transform .8s var(--ease)}
+.scr.on{opacity:1;transform:none;pointer-events:auto}
+.scr h3{font-family:var(--serif);font-weight:500;font-size:28px;letter-spacing:-.02em;line-height:1.05}
+.scr .s-sub{font-family:var(--serif);font-weight:500;font-size:18px;margin:18px 0 8px;letter-spacing:-.01em}
+.s-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.s-head p{color:var(--granit);font-size:13px;margin-top:4px}
+.chip-lock{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--paper)}
+.chip-lock svg{width:16px;height:16px}
+.docs{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.docs li{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;padding:13px;border-radius:22px;background:var(--paper);opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .6s var(--ease);transition-delay:calc(var(--i)*70ms + 150ms)}
+.scr.on .docs li{opacity:1;transform:none}
+.doc-ic{grid-row:1/3;width:40px;height:40px;border-radius:14px;background:var(--tn);display:grid;place-items:center}
+.doc-ic svg{width:20px;height:20px}
+.docs b{font-weight:600;font-size:13px;line-height:1.2}
+.docs small{color:var(--granit);font-size:12px;line-height:1.2}
+.dz{margin-top:12px;border:1.5px dashed rgba(26,37,49,.22);border-radius:22px;padding:15px;display:flex;align-items:center;justify-content:center;gap:10px;color:var(--granit);font-size:13px;font-weight:500}
+.dz svg{width:16px;height:16px}
+.dev-ask{display:flex;align-items:center;gap:10px;margin:0 22px 22px;padding:6px 6px 6px 16px;border-radius:999px;background:var(--paper);color:var(--granit);font-size:13.5px}
+.dev-ask>svg{width:18px;height:18px;flex:none}
+.dev-ask .go{margin-left:auto;width:38px;height:38px;border-radius:50%;background:var(--red);display:grid;place-items:center}
+.dev-ask .go svg{width:18px;height:18px}
+.s-foot{display:flex;align-items:center;gap:8px;margin-top:16px;color:var(--granit);font-size:12.5px}
+.s-foot svg{width:15px;height:15px;flex:none}
+.badge{min-width:26px;height:26px;border-radius:13px;background:var(--red);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:600;padding:0 8px}
+.req{border-radius:26px;background:var(--paper);padding:16px}
+.req-top{display:flex;align-items:center;gap:12px}
+.org{width:40px;height:40px;border-radius:14px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:var(--serif);font-size:20px}
+.req-top b{display:block;font-size:14px;line-height:1.2}
+.req-top small{color:var(--granit);font-size:12px}
+.req-q{margin:12px 0 8px;font-size:13px;color:var(--granit)}
+.req-items{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
+.req-items li{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:14px;background:#fff;font-size:13.5px;font-weight:500}
+.req-items svg{width:16px;height:16px;flex:none}
+.req-purpose{margin:10px 2px 12px;font-size:12px;color:var(--granit)}
+.req-actions{display:flex;gap:8px}
+.btn.sm{padding:.7em 1.3em;font-size:13px}
+.req-result{margin-top:4px;font-size:13px;font-weight:500}
+.log{list-style:none;padding:0}
+.log li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:9px 0;border-top:1px solid var(--rule);font-size:13px;line-height:1.3}
+.log li small{grid-column:1/2;color:var(--granit);font-size:11.5px}
+.tag{grid-row:1/3;grid-column:2;align-self:center;font-size:11px;font-weight:600;padding:4px 10px;border-radius:99px;background:var(--ink);color:var(--paper)}
+.tag.filed{background:#DDE9DF;color:#2B5A3A}
+.log li.new{animation:newrow .9s var(--ease) both}
+@keyframes newrow{from{opacity:0;transform:translateY(-10px);background:rgba(216,0,26,.08)}to{opacity:1;transform:none;background:transparent}}
+.tiles3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tl{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:14px;border-radius:22px;background:var(--paper);text-align:left;border:0;cursor:pointer;transition:background .3s,color .3s,transform .3s var(--ease);opacity:0;transform:translateY(10px);transition-delay:calc(var(--i)*80ms + 150ms)}
+.scr.on .tl{opacity:1;transform:none}
+.tl:hover{background:var(--ink);color:var(--paper)}
+.tl .ti{width:36px;height:36px;border-radius:12px;background:#fff;display:grid;place-items:center}
+.tl .ti svg{width:19px;height:19px}
+.tl b{font-size:13px;line-height:1.15;font-weight:600}
+.tl small{display:block;font-size:11.5px;opacity:.65;font-weight:400}
+.rows{list-style:none;padding:0}
+.rows li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--rule);font-size:13.5px}
+.rows li b{font-weight:600}
+.rows li small{grid-column:1;color:var(--granit);font-size:12px}
+.pill{grid-row:1/3;grid-column:2;font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:99px;background:var(--paper);white-space:nowrap}
+.pill.go{background:#DDE9DF;color:#2B5A3A}
+.pill.act{background:var(--ink);color:var(--paper);border:0;cursor:pointer}
+.gem-cover{height:92px;border-radius:24px;background:linear-gradient(180deg,#e9d6d6 0,#d9b7ad 48%,#6f7f95 100%);position:relative;overflow:hidden;margin-bottom:12px}
+.gem-cover::after{content:"";position:absolute;left:-5%;right:-5%;bottom:-2px;height:55%;background:linear-gradient(160deg,transparent 49%,#51627a 50%),linear-gradient(200deg,transparent 49%,#3d4d64 50%);background-size:50% 100%,50% 100%;background-position:0 0,100% 0;background-repeat:no-repeat;opacity:.9}
+.gem-cover .gem-t{position:absolute;left:16px;top:12px;color:#fff;font-family:var(--serif);font-size:24px;letter-spacing:-.02em;text-shadow:0 1px 8px rgba(0,0,0,.25);z-index:2}
+.gem-cover .gem-s{position:absolute;right:12px;top:12px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.85);font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:99px}
+.gem-s svg{width:12px;height:12px}
+.waste{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.waste div{padding:10px 12px;border-radius:18px;background:var(--paper);font-size:12.5px;line-height:1.25}
+.waste b{display:block;font-weight:600}
+.waste i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.vote{border-radius:24px;background:var(--paper);padding:14px 16px;margin-top:2px}
+.vote p{font-size:13.5px;font-weight:500;line-height:1.3}
+.vote-row{display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap}
+.vote-row .vb{border:0;cursor:pointer;padding:9px 20px;border-radius:99px;background:#fff;font-weight:600;font-size:13px;box-shadow:inset 0 0 0 1px rgba(26,37,49,.12);transition:background .3s,color .3s,transform .3s var(--ease)}
+.vote-row .vb:hover{background:var(--ink);color:var(--paper)}
+.vote-row .vb:active{transform:scale(.95)}
+.vote-row .vb.sel{background:var(--ink);color:var(--paper)}
+.vote small{display:flex;align-items:center;gap:6px;color:var(--granit);font-size:11.5px;margin-top:8px}
+.vote small svg{width:13px;height:13px}
+.news{list-style:none;padding:0}
+.news li{padding:8px 0;border-top:1px solid var(--rule);font-size:13.5px;font-weight:500;line-height:1.25}
+.news li small{display:block;color:var(--granit);font-weight:400;font-size:11.5px;margin-top:2px}
+
+@media (max-width:900px){
+  .chaos{height:480vh}
+  .cs-b{left:var(--pad);right:var(--pad);width:auto;top:auto;bottom:clamp(36px,8svh,80px)}
+  .plat{height:440vh}
+  .plat-stage{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;gap:18px;padding-top:70px}
+  .plat-right{order:1}
+  .plat-left{order:2;gap:10px}
+  .plat-left .sec-title,.plat-note{display:none}
+  .psteps{padding-left:0}
+  .psteps::before,.pbar{display:none}
+  .pstep{display:none;opacity:1}
+  .pstep.on{display:block}
+  .pstep .pt>span{max-width:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .cs-flag.lit .cross-neon,.cs-flag.lit .cs-tell{animation:none}
+}
+
+
 /* responsive */
 @media (max-width:900px){
   .notice{order:3;flex:1 0 100%;max-width:none;padding:7px 12px;font-size:.75rem}
@@ -261,7 +440,7 @@ svg{display:block}
 }
 @media (max-width:700px){
   .btn.head-ask,.btn.head-ask.show{display:none}
-  .hero{--lh:min(30svh,46vw);--dist:70svh}
+  .hero{--lh:min(26svh,40vw);--dist:70svh}
   .ld:first-child,.ld:last-child{display:none}
   .ld:nth-child(2){margin-left:0}
   .h-curtain{padding-top:calc(var(--inset) + 128px)}
@@ -379,6 +558,57 @@ svg{display:block}
 
   <section class="statement" id="statement" aria-label="Tell">
     <div class="statement-in"><p id="stmt"></p></div>
+  </section>
+
+  <section class="chaos" id="chaos" aria-labelledby="csH">
+    <div class="cs-stage" id="csStage">
+      <div class="cs-glow" id="csGlow"></div>
+      <div class="cs-fade" id="csFade"></div>
+      <p class="cs-cap cs-a" id="capA"></p>
+      <div class="cs-world" id="csWorld" aria-hidden="true">
+        <div class="cs-bloom" id="csBloom"></div>
+        <div class="cs-flag" id="csFlag">
+          <svg viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="flagG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E3182B"/><stop offset="1" stop-color="#C80017"/></linearGradient>
+              <filter id="neonGlow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <rect width="100" height="100" rx="13" fill="url(#flagG)"/>
+            <path class="cross-fill" d="M40.6 18.75h18.8v21.85h21.85v18.8H59.4v21.85H40.6V59.4H18.75V40.6H40.6z"/>
+            <path class="cross-neon" d="M40.6 18.75h18.8v21.85h21.85v18.8H59.4v21.85H40.6V59.4H18.75V40.6H40.6z"/>
+          </svg>
+          <div class="cs-tell">Tell</div>
+        </div>
+      </div>
+      <div class="cs-cap cs-b" id="capB">
+        <h2 id="csH"></h2>
+        <p id="csP"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="plat" id="plat" aria-labelledby="platH">
+    <div class="plat-stage" id="platStage">
+      <div class="plat-left">
+        <h2 class="sec-title" id="platH"></h2>
+        <ol class="psteps" id="psteps"><span class="pbar" id="platBar"></span></ol>
+        <p class="plat-note" id="platNote"></p>
+      </div>
+      <div class="plat-right">
+        <div class="dev-wrap" id="devWrap">
+          <div class="device" id="device">
+            <div class="dev-top"><span class="mini"><svg aria-hidden="true"><use href="#cross"/></svg>Tell</span><span class="avatar" aria-hidden="true">LM</span></div>
+            <div class="dev-screens" id="devScreens">
+              <div class="scr" id="scr0"></div>
+              <div class="scr" id="scr1"></div>
+              <div class="scr" id="scr2"></div>
+              <div class="scr" id="scr3"></div>
+            </div>
+            <div class="dev-ask" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#1A2531" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg><span id="devAsk"></span><span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="sheet" id="ladder">
@@ -694,7 +924,7 @@ function setLang(l){
   $$('[data-i]').forEach(el=>{const v=T()[el.dataset.i]; if(typeof v==='string')el.textContent=tx(v);});
   $$('[data-ia]').forEach(el=>{const [a,k]=el.dataset.ia.split(':'); el.setAttribute(a,T()[k]);});
   $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)));
-  buildChips(); buildPh(); buildStatement(); buildMove(); buildPrivacy(); buildFooter(); resetAnswer();
+  buildChips(); buildPh(); buildStatement(); buildMove(); buildPrivacy(); buildFooter(); buildPlat(); curStep=-1; resetAnswer();
   try{history.replaceState(null,'','?lang='+l);}catch(e){}
   update();
 }
@@ -817,12 +1047,184 @@ function update(){
   const fr=footer.getBoundingClientRect();
   const fp=reduce?1:clamp((vh-fr.top)/fr.height,0,1);
   fMark.style.transform='translateY('+((1-fp)*14).toFixed(2)+'%)';
+  updateChaos(); updatePlat();
 }
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
 addEventListener('resize',update);
 
+/* ---------- platform copy ---------- */
+const PLAT={
+de:{chaos_a:"Heute: Hunderte Seiten. Jede anders. Jede mit eigenem Login.",chaos_h:"Eine Plattform für alles.",chaos_p:"KI-gestützt, sicher in der Schweiz gehostet und von der Schweiz betrieben.",title:"Was das Leben in der Schweiz einfacher macht.",note:"Alle Bildschirme sind frei erfundene Beispiele.",ask_ph:"Frage an Tell …",
+ steps:[{h:"Ihr Datenraum",t:"Ausweis, Belege und Versicherungen an einem Ort. Nur Sie haben den Schlüssel."},{h:"Sie entscheiden",t:"Behörden fragen an, Sie erlauben. Sie sehen, was geöffnet wurde und was Behörden für Sie hinterlegt haben."},{h:"Anträge in Minuten",t:"Kennzeichen, Ausweis, Rezepte: Daten einmal hinterlegen, nie wieder dasselbe Formular."},{h:"Ihre Gemeinde",t:"News, Kehrichtplan und Abstimmungen, direkt aus Ostermundigen."}],
+ s1:{t:"Ihr Datenraum",sub:"Nur Sie haben Zugriff. Gespeichert in der Schweiz.",docs:[["Identitätskarte","gültig bis 04/2031"],["Krankenversicherung","Police 2026"],["Mietvertrag","Ostermundigen"],["Lohnausweis 2025","Arbeitgeber"],["Fahrausweis","Kat. B"],["Impfausweis","Gesundheit"]],foot:"Ende-zu-Ende verschlüsselt, Standort Schweiz",add:"Dokument hinzufügen oder ablegen"},
+ s2:{t:"Zugriffsanfragen",from:"Gemeinde Ostermundigen",dept:"Einwohnerdienste",q:"möchte einsehen:",items:["Wohnsitzbestätigung","Ausweiskopie, nur Vorderseite"],purpose:"Zweck: Anmeldung Hundehaltung. Gültig 7 Tage.",allow:"Zulassen",deny:"Ablehnen",allowed:"Freigegeben bis 8. Okt.",denied:"Abgelehnt. Es wurde nichts geöffnet.",log_h:"Protokoll",log:[["Heute 09:12","Strassenverkehrsamt Bern hat Fahrausweis geöffnet","geöffnet"],["Gestern","Kantonales Steueramt hat Steuerveranlagung 2025 hinterlegt","hinterlegt"],["Mo 28. Sep","Gemeinde hat Wohnsitzbestätigung hinterlegt","hinterlegt"]],new_log:["Gerade eben","Gemeinde Ostermundigen hat Wohnsitzbestätigung geöffnet","geöffnet"]},
+ s3:{t:"Anträge & Services",tiles:[["Kennzeichen","beantragen"],["Ausweis","erneuern"],["Rezepte","verwalten"]],st_h:"Laufende Anträge",st:[["Pass","Antrag eingereicht, bereit ab 14. Okt.","in Arbeit"],["Kennzeichen BE","Zahlung bestätigt","bereit"]],rx_h:"Meine Rezepte",rx:[["Inhalator 100 µg","noch 2 Bezüge","Erneuern"],["Allergietabletten","gültig bis 12/2026","Erneuern"]]},
+ s4:{t:"Ostermundigen",sub:"Abonniert",news_h:"Neuigkeiten",news:[["Neue Veloroute entlang der Bernstrasse","vor 2 Tagen"],["Hallenbad: Saison startet am 19. Oktober","vor 5 Tagen"]],waste_h:"Kehrichtplan",waste:[["Do 8. Okt","Kehricht"],["Fr 9. Okt","Grüngut"],["Mi 14. Okt","Papier"]],vote_h:"Abstimmung",vote_q:"Beispiel: Soll die Bernstrasse zur Tempo-30-Zone werden?",yes:"Ja",no:"Nein",voted:"Stimme gezählt (Beispiel)",eligible:"Stimmrecht geprüft"}},
+fr:{chaos_a:"Aujourd'hui : des centaines de sites. Tous différents. Chacun avec son login.",chaos_h:"Une plateforme pour tout.",chaos_p:"Assistée par l'IA, hébergée en toute sécurité en Suisse et exploitée par la Suisse.",title:"Ce qui simplifie la vie en Suisse.",note:"Tous les écrans sont des exemples fictifs.",ask_ph:"Question à Tell …",
+ steps:[{h:"Votre espace de données",t:"Pièce d'identité, justificatifs et assurances au même endroit. Vous seul avez la clé."},{h:"C'est vous qui décidez",t:"Les autorités demandent, vous autorisez. Vous voyez ce qui a été ouvert et ce qu'elles ont déposé pour vous."},{h:"Des demandes en quelques minutes",t:"Plaques, pièce d'identité, ordonnances : vous saisissez vos données une fois, plus jamais le même formulaire."},{h:"Votre commune",t:"Actualités, calendrier des déchets et votations, directement depuis Ostermundigen."}],
+ s1:{t:"Votre espace de données",sub:"Vous seul y avez accès. Stocké en Suisse.",docs:[["Carte d'identité","valable jusqu'en 04/2031"],["Assurance maladie","Police 2026"],["Contrat de bail","Ostermundigen"],["Certificat de salaire 2025","Employeur"],["Permis de conduire","Cat. B"],["Carnet de vaccination","Santé"]],foot:"Chiffré de bout en bout, hébergé en Suisse",add:"Ajouter ou déposer un document"},
+ s2:{t:"Demandes d'accès",from:"Commune d'Ostermundigen",dept:"Contrôle des habitants",q:"souhaite consulter :",items:["Attestation de domicile","Copie de la pièce d'identité, recto uniquement"],purpose:"But : annonce de détention d'un chien. Valable 7 jours.",allow:"Autoriser",deny:"Refuser",allowed:"Autorisé jusqu'au 8 oct.",denied:"Refusé. Rien n'a été ouvert.",log_h:"Journal",log:[["Aujourd'hui 09:12","L'Office de la circulation de Berne a ouvert le permis de conduire","ouvert"],["Hier","L'Administration fiscale cantonale a déposé la taxation 2025","déposé"],["Lun 28 sept.","La commune a déposé l'attestation de domicile","déposé"]],new_log:["À l'instant","La commune d'Ostermundigen a ouvert l'attestation de domicile","ouvert"]},
+ s3:{t:"Demandes & services",tiles:[["Plaques","demander"],["Pièce d'identité","renouveler"],["Ordonnances","gérer"]],st_h:"Demandes en cours",st:[["Passeport","Demande déposée, prêt dès le 14 oct.","en cours"],["Plaques BE","Paiement confirmé","prêt"]],rx_h:"Mes ordonnances",rx:[["Inhalateur 100 µg","encore 2 délivrances","Renouveler"],["Comprimés antiallergiques","valable jusqu'en 12/2026","Renouveler"]]},
+ s4:{t:"Ostermundigen",sub:"Suivie",news_h:"Actualités",news:[["Nouvelle piste cyclable le long de la Bernstrasse","il y a 2 jours"],["Piscine couverte : ouverture le 19 octobre","il y a 5 jours"]],waste_h:"Calendrier des déchets",waste:[["Jeu 8 oct.","Ordures"],["Ven 9 oct.","Déchets verts"],["Mer 14 oct.","Papier"]],vote_h:"Votation",vote_q:"Exemple : la Bernstrasse doit-elle devenir une zone 30 ?",yes:"Oui",no:"Non",voted:"Voix comptée (exemple)",eligible:"Droit de vote vérifié"}},
+it:{chaos_a:"Oggi: centinaia di siti. Tutti diversi. Ognuno con il proprio login.",chaos_h:"Una piattaforma per tutto.",chaos_p:"Con il supporto dell'IA, ospitata in modo sicuro in Svizzera e gestita dalla Svizzera.",title:"Ciò che rende la vita in Svizzera più semplice.",note:"Tutte le schermate sono esempi inventati.",ask_ph:"Domanda a Tell …",
+ steps:[{h:"Il vostro spazio dati",t:"Documento d'identità, giustificativi e assicurazioni in un solo posto. Solo voi avete la chiave."},{h:"Decidete voi",t:"Le autorità chiedono, voi autorizzate. Vedete cosa è stato aperto e cosa hanno depositato per voi."},{h:"Pratiche in pochi minuti",t:"Targhe, documento d'identità, ricette: inserite i dati una volta, mai più lo stesso modulo."},{h:"Il vostro comune",t:"Novità, calendario dei rifiuti e votazioni, direttamente da Ostermundigen."}],
+ s1:{t:"Il vostro spazio dati",sub:"Solo voi avete accesso. Conservato in Svizzera.",docs:[["Carta d'identità","valida fino al 04/2031"],["Assicurazione malattia","Polizza 2026"],["Contratto d'affitto","Ostermundigen"],["Certificato di salario 2025","Datore di lavoro"],["Licenza di condurre","Cat. B"],["Libretto vaccinazioni","Salute"]],foot:"Crittografato end-to-end, sede in Svizzera",add:"Aggiungi o trascina un documento"},
+ s2:{t:"Richieste di accesso",from:"Comune di Ostermundigen",dept:"Controllo abitanti",q:"desidera consultare:",items:["Attestato di domicilio","Copia del documento, solo fronte"],purpose:"Scopo: annuncio detenzione di un cane. Valido 7 giorni.",allow:"Consenti",deny:"Rifiuta",allowed:"Consentito fino all'8 ott.",denied:"Rifiutato. Nulla è stato aperto.",log_h:"Registro",log:[["Oggi 09:12","L'Ufficio della circolazione di Berna ha aperto la licenza di condurre","aperto"],["Ieri","L'Amministrazione fiscale cantonale ha depositato la tassazione 2025","depositato"],["Lun 28 set.","Il comune ha depositato l'attestato di domicilio","depositato"]],new_log:["Adesso","Il comune di Ostermundigen ha aperto l'attestato di domicilio","aperto"]},
+ s3:{t:"Pratiche e servizi",tiles:[["Targhe","richiedere"],["Documento d'identità","rinnovare"],["Ricette","gestire"]],st_h:"Pratiche in corso",st:[["Passaporto","Richiesta inoltrata, pronto dal 14 ott.","in corso"],["Targhe BE","Pagamento confermato","pronto"]],rx_h:"Le mie ricette",rx:[["Inalatore 100 µg","ancora 2 prelievi","Rinnova"],["Compresse antiallergiche","valida fino al 12/2026","Rinnova"]]},
+ s4:{t:"Ostermundigen",sub:"Seguito",news_h:"Novità",news:[["Nuova pista ciclabile lungo la Bernstrasse","2 giorni fa"],["Piscina coperta: apertura il 19 ottobre","5 giorni fa"]],waste_h:"Calendario dei rifiuti",waste:[["Gio 8 ott.","Rifiuti"],["Ven 9 ott.","Verde"],["Mer 14 ott.","Carta"]],vote_h:"Votazione",vote_q:"Esempio: la Bernstrasse deve diventare zona 30?",yes:"Sì",no:"No",voted:"Voto conteggiato (esempio)",eligible:"Diritto di voto verificato"}},
+en:{chaos_a:"Today: hundreds of sites. All different. Each with its own login.",chaos_h:"One platform for everything.",chaos_p:"AI-assisted, securely hosted in Switzerland and operated by Switzerland.",title:"What makes life in Switzerland easier.",note:"All screens are made-up examples.",ask_ph:"Ask Tell …",
+ steps:[{h:"Your data space",t:"ID, receipts and insurance in one place. Only you hold the key."},{h:"You decide",t:"Authorities ask, you allow. You see what was opened and what they have filed for you."},{h:"Applications in minutes",t:"Licence plates, ID, prescriptions: enter your data once, never fill in the same form again."},{h:"Your municipality",t:"News, waste calendar and votes, straight from Ostermundigen."}],
+ s1:{t:"Your data space",sub:"Only you have access. Stored in Switzerland.",docs:[["ID card","valid until 04/2031"],["Health insurance","Policy 2026"],["Rental contract","Ostermundigen"],["Salary statement 2025","Employer"],["Driving licence","Cat. B"],["Vaccination record","Health"]],foot:"End-to-end encrypted, hosted in Switzerland",add:"Add or drop a document"},
+ s2:{t:"Access requests",from:"Municipality of Ostermundigen",dept:"Residents' services",q:"would like to view:",items:["Proof of residence","ID copy, front side only"],purpose:"Purpose: dog registration. Valid for 7 days.",allow:"Allow",deny:"Decline",allowed:"Allowed until 8 Oct",denied:"Declined. Nothing was opened.",log_h:"Activity log",log:[["Today 09:12","Bern Road Traffic Office opened your driving licence","opened"],["Yesterday","Cantonal Tax Office filed your 2025 tax assessment","filed"],["Mon 28 Sep","Municipality filed your proof of residence","filed"]],new_log:["Just now","Municipality of Ostermundigen opened your proof of residence","opened"]},
+ s3:{t:"Applications & services",tiles:[["Licence plates","apply"],["ID","renew"],["Prescriptions","manage"]],st_h:"Open applications",st:[["Passport","Application submitted, ready from 14 Oct","in progress"],["Plates BE","Payment confirmed","ready"]],rx_h:"My prescriptions",rx:[["Inhaler 100 µg","2 refills left","Renew"],["Allergy tablets","valid until 12/2026","Renew"]]},
+ s4:{t:"Ostermundigen",sub:"Subscribed",news_h:"News",news:[["New cycle route along Bernstrasse","2 days ago"],["Indoor pool: season starts 19 October","5 days ago"]],waste_h:"Waste calendar",waste:[["Thu 8 Oct","General waste"],["Fri 9 Oct","Green waste"],["Wed 14 Oct","Paper"]],vote_h:"Vote",vote_q:"Example: should Bernstrasse become a 30 km/h zone?",yes:"Yes",no:"No",voted:"Vote counted (example)",eligible:"Voting right verified"}}
+};
+
+/* ---------- chaos: mock sites ---------- */
+const MOCKS=[
+ {city:"Stadt Bern",t:"Umzug melden",u:"bern.ch/umzug",k:"hero",b:"Weiter",bg:"#fff",c1:"#C8102E",c2:"#F7DDE1",ff:'"Switzer",Arial,sans-serif',rad:"6px",p:[-35,-23,70,8,16,-6,1]},
+ {city:"Zürich",t:"Kehrichtplan",u:"stadt-zuerich.ch/abfall",k:"cal",bg:"#F3F7FC",c1:"#0D4EA6",c2:"#CFE0F7",ff:"Arial,Helvetica,sans-serif",rad:"2px",p:[-9,-31,-90,-6,-12,4,.92]},
+ {city:"Basel",t:"Steuererklärung",u:"steuern.bs.ch",k:"form",bg:"#FFFDF3",c1:"#1F7A4A",c2:"#D8EFE0",ff:"Georgia,serif",rad:"14px",p:[22,-27,40,0,-18,5,1.05]},
+ {city:"Genève",t:"Demande de passeport",u:"ge.ch/passeport",k:"hero",b:"Continuer",bg:"#fff",c1:"#FF6A00",c2:"#FFE6D3",fg:"#0B2A4A",ff:'"Trebuchet MS",sans-serif',rad:"0px",p:[40,-13,-40,10,-22,-4,.95]},
+ {city:"Lugano",t:"Permesso di costruzione",u:"lugano.ch/edilizia",k:"side",bg:"#F2FBFB",c1:"#0E7C86",c2:"#CDEEF0",ff:"Verdana,sans-serif",rad:"10px",p:[37,19,95,0,-14,7,1.1]},
+ {city:"St. Gallen",t:"Parkkarte beantragen",u:"stadt.sg.ch/parkieren",k:"tiles",bg:"#FAF5FF",c1:"#6A2C91",c2:"#E7D6F3",ff:'"Courier New",monospace',rad:"18px",p:[11,33,-60,-8,10,-5,.9]},
+ {city:"Luzern",t:"Schulanmeldung",u:"stadtluzern.ch/schule",k:"form",bg:"#15171A",c1:"#FFD400",c2:"#2B2E33",fg:"#fff",ff:'"Arial Black",Impact,sans-serif',rad:"4px",p:[-17,31,75,6,14,4,1.05]},
+ {city:"Ostermundigen",t:"Hundesteuer",u:"ostermundigen.ch/hunde",k:"hero",b:"Anmelden",bg:"#FFF8EF",c1:"#E9770E",c2:"#FDE5C8",ff:'"Palatino Linotype",Palatino,serif',rad:"8px",p:[-41,14,-30,0,20,-7,.95]},
+ {city:"Winterthur",t:"Parkplatzgesuch",u:"stadt.winterthur.ch/gesuch",k:"side",bg:"#F0F0F0",c1:"#444",c2:"#DCDCDC",ff:'"Courier New",monospace',rad:"0px",p:[-24,-1,-150,0,10,3,.8]},
+ {city:"Lausanne",t:"Permis de conduire",u:"lausanne.ch/permis",k:"tiles",bg:"#fff",c1:"#00305E",c2:"#D7E3F2",ff:"Tahoma,sans-serif",rad:"12px",p:[6,-4,-210,0,-6,-3,.75]},
+ {city:"Chur",t:"Abstimmungsunterlagen",u:"chur.ch/abstimmung",k:"cal",bg:"#FFF3F3",c1:"#B3262E",c2:"#F4D3D5",ff:"Georgia,serif",rad:"2px",p:[25,6,-130,0,-16,6,.85]},
+ {city:"Aarau",t:"Baugesuch",u:"aarau.ch/bauen",k:"form",bg:"#F7F2EA",c1:"#8B5E34",c2:"#EADCC8",ff:'"Gill Sans",Optima,sans-serif',rad:"16px",p:[-3,17,-180,0,12,-5,.8]}
+];
+function mockHTML(m){
+  const bar='<div class="mk-bar"><i></i><i></i><i></i><span>'+m.u+'</span></div>';
+  const head='<div class="mk-head"><b>'+m.city+'</b><s></s></div>';
+  if(m.k==='hero') return bar+head+'<div class="mk-hero"><h4>'+m.t+'</h4><u></u><u></u></div><div class="mk-body"><u></u><u></u><u></u></div><span class="mk-btn">'+m.b+'</span>';
+  if(m.k==='side') return bar+'<div class="mk-split"><nav><u></u><u></u><u></u><u></u><u></u></nav><main><h4>'+m.t+'</h4><div class="mk-tbl"><u></u><u></u><u></u><u></u><u></u></div></main></div>';
+  if(m.k==='cal'){ let g=''; for(let i=0;i<35;i++) g+='<i'+(([3,9,10,16,23,24,30].includes(i))?' class="on"':'')+'></i>'; return bar+head+'<div class="mk-body"><h4>'+m.t+'</h4><div class="mk-grid">'+g+'</div></div>'; }
+  if(m.k==='form') return bar+head+'<div class="mk-body"><h4>'+m.t+'</h4><div class="mk-lbl">Name</div><div class="mk-fld"></div><div class="mk-lbl">Adresse</div><div class="mk-fld"></div><div class="mk-lbl">Datum</div><div class="mk-fld"></div></div>';
+  return bar+head+'<div class="mk-body"><h4>'+m.t+'</h4><div class="mk-tiles"><b></b><b></b><b></b><b></b></div></div>';
+}
+
+/* ---------- icons ---------- */
+const IC={
+ doc:'<svg viewBox="0 0 24 24" fill="none" stroke="#1A2531" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg>',
+ lock:'<svg viewBox="0 0 24 24" fill="none" stroke="#1A2531" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+ check:'<svg viewBox="0 0 24 24" fill="none" stroke="#D8001A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+ plate:'<svg viewBox="0 0 24 24" fill="none" stroke="#1A2531" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="2.5"/><path d="M7 12h3M13 12h4"/></svg>',
+ id:'<svg viewBox="0 0 24 24" fill="none" stroke="#1A2531" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2"/><path d="M6.5 16c.6-1.6 1.7-2.2 2.5-2.2s1.9.6 2.5 2.2M14 10h4M14 13.5h3"/></svg>',
+ pill:'<svg viewBox="0 0 24 24" fill="none" stroke="#1A2531" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9" width="17" height="7" rx="3.5" transform="rotate(-35 12 12)"/><path d="M9.5 8.5l6 6"/></svg>',
+ bell:'<svg viewBox="0 0 24 24" fill="none" stroke="#1A2531" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
+};
+const TINTS=['#F2D9D4','#D9E4EC','#E6DFCB','#DDE6D9','#E4D9EC','#EDDCE0'];
+
+/* ---------- build ---------- */
+let csCards=[];
+const csStage=$('#csStage'), csWorld=$('#csWorld'), csFlag=$('#csFlag'), csBloom=$('#csBloom'), capA=$('#capA'), capB=$('#capB'), csGlow=$('#csGlow'), csEl=$('#chaos');
+function buildChaos(){
+  MOCKS.forEach((m,i)=>{
+    const el=document.createElement('div'); el.className='cs-card';
+    el.style.cssText='--bg:'+m.bg+';--c1:'+m.c1+';--c2:'+m.c2+';--fg:'+(m.fg||'#222')+';--ff:'+m.ff+';--rad:'+m.rad;
+    el.innerHTML=mockHTML(m);
+    csWorld.insertBefore(el,csBloom);
+    csCards.push({el,p:m.p,i});
+  });
+}
+const platEl=$('#plat'), psteps=$('#psteps'), platBar=$('#platBar'), devWrap=$('#devWrap'), device=$('#device');
+const scr=[0,1,2,3].map(i=>$('#scr'+i));
+let pstepEls=[], curStep=-1;
+function buildPlat(){
+  const P=PLAT[lang];
+  $('#csH').textContent=tx(P.chaos_h); $('#csP').textContent=tx(P.chaos_p); capA.textContent=tx(P.chaos_a);
+  $('#platH').textContent=tx(P.title); $('#platNote').textContent=tx(P.note); $('#devAsk').textContent=tx(P.ask_ph);
+  $$('.pstep',psteps).forEach(e=>e.remove());
+  pstepEls=P.steps.map((s,i)=>{
+    const b=document.createElement('button'); b.type='button'; b.className='pstep';
+    b.innerHTML='<b></b><span class="pt"><span></span></span>';
+    $('b',b).textContent=tx(s.h); $('.pt span',b).textContent=tx(s.t);
+    b.addEventListener('click',()=>{const r=platEl.getBoundingClientRect(); const y=scrollY+r.top+(r.height-innerHeight)*((i+.5)/4); scrollTo({top:y,behavior:reduce?'auto':'smooth'});});
+    psteps.append(b); return b;
+  });
+  const s1=P.s1,s2=P.s2,s3=P.s3,s4=P.s4;
+  scr[0].innerHTML='<div class="s-head"><div><h3>'+s1.t+'</h3><p>'+s1.sub+'</p></div><span class="chip-lock">'+IC.lock+'</span></div><ul class="docs">'+s1.docs.map((d,i)=>'<li style="--i:'+i+'"><span class="doc-ic" style="--tn:'+TINTS[i]+'">'+IC.doc+'</span><b>'+d[0]+'</b><small>'+d[1]+'</small></li>').join('')+'</ul><div class="dz"><svg viewBox="0 0 24 24" fill="none" stroke="#59636D" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>'+s1.add+'</div><p class="s-foot">'+IC.lock+'<span>'+s1.foot+'</span></p>';
+  scr[1].innerHTML='<div class="s-head"><h3>'+s2.t+'</h3><span class="badge">1</span></div><div class="req"><div class="req-top"><span class="org">O</span><div><b>'+s2.from+'</b><small>'+s2.dept+'</small></div></div><p class="req-q">'+s2.q+'</p><ul class="req-items">'+s2.items.map(x=>'<li>'+IC.check+x+'</li>').join('')+'</ul><p class="req-purpose">'+s2.purpose+'</p><div class="req-actions"><button class="btn sm" type="button" data-a="allow">'+s2.allow+'</button><button class="btn ghost sm" type="button" data-a="deny">'+s2.deny+'</button></div><p class="req-result" hidden></p></div><h4 class="s-sub">'+s2.log_h+'</h4><ul class="log">'+s2.log.map(l=>'<li><span>'+l[1]+'</span><small>'+l[0]+'</small><span class="tag'+(l[2]===s2.log[0][2]?'':' filed')+'">'+l[2]+'</span></li>').join('')+'</ul>';
+  const ic3=[IC.plate,IC.id,IC.pill];
+  scr[2].innerHTML='<div class="s-head"><h3>'+s3.t+'</h3></div><div class="tiles3">'+s3.tiles.map((t,i)=>'<button class="tl" type="button" style="--i:'+i+'"><span class="ti">'+ic3[i]+'</span><b>'+t[0]+'<small>'+t[1]+'</small></b></button>').join('')+'</div><h4 class="s-sub">'+s3.st_h+'</h4><ul class="rows">'+s3.st.map((r,i)=>'<li><b>'+r[0]+'</b><small>'+r[1]+'</small><span class="pill'+(i?' go':'')+'">'+r[2]+'</span></li>').join('')+'</ul><h4 class="s-sub">'+s3.rx_h+'</h4><ul class="rows">'+s3.rx.map(r=>'<li><b>'+r[0]+'</b><small>'+r[1]+'</small><button class="pill act" type="button">'+r[2]+'</button></li>').join('')+'</ul>';
+  const dot=['#7A8691','#4F8A6B','#4C7FB0'];
+  scr[3].innerHTML='<div class="gem-cover"><span class="gem-t">'+s4.t+'</span><span class="gem-s">'+IC.bell.replace('stroke="#1A2531"','stroke="#1A2531"')+s4.sub+'</span></div><h4 class="s-sub" style="margin-top:6px">'+s4.news_h+'</h4><ul class="news">'+s4.news.map(n=>'<li>'+n[0]+'<small>'+n[1]+'</small></li>').join('')+'</ul><h4 class="s-sub">'+s4.waste_h+'</h4><div class="waste">'+s4.waste.map((w,i)=>'<div><b>'+w[0]+'</b><i style="background:'+dot[i]+'"></i>'+w[1]+'</div>').join('')+'</div><h4 class="s-sub">'+s4.vote_h+'</h4><div class="vote"><p>'+s4.vote_q+'</p><div class="vote-row"><button class="vb" type="button" data-v="y">'+s4.yes+'</button><button class="vb" type="button" data-v="n">'+s4.no+'</button></div><small class="vote-msg">'+IC.lock.replace('width','width')+s4.eligible+'</small></div>';
+  /* interactions */
+  const req=$('.req',scr[1]), res=$('.req-result',scr[1]), acts=$('.req-actions',scr[1]);
+  $$('[data-a]',scr[1]).forEach(b=>b.addEventListener('click',()=>{
+    acts.hidden=true; res.hidden=false;
+    if(b.dataset.a==='allow'){
+      res.textContent=s2.allowed; res.style.color='#2B5A3A';
+      const li=document.createElement('li'); li.className='new';
+      li.innerHTML='<span>'+s2.new_log[1]+'</span><small>'+s2.new_log[0]+'</small><span class="tag">'+s2.new_log[2]+'</span>';
+      const lg=$('.log',scr[1]); lg.prepend(li); const all=$$('li',lg); if(all.length>3) all[all.length-1].remove();
+    } else { res.textContent=s2.denied; res.style.color='#59636D'; }
+  }));
+  $$('.vb',scr[3]).forEach(b=>b.addEventListener('click',()=>{
+    $$('.vb',scr[3]).forEach(x=>x.classList.toggle('sel',x===b));
+    $('.vote-msg',scr[3]).innerHTML=IC.lock+s4.voted;
+  }));
+}
+
+/* ---------- animate ---------- */
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const easeOut=t=>1-Math.pow(1-t,3);
+function updateChaos(){
+  const r=csEl.getBoundingClientRect(), vh=innerHeight;
+  if(r.bottom<-80||r.top>vh+80) return;
+  const p=reduce?1:clamp(-r.top/Math.max(1,r.height-vh),0,1);
+  const W=csStage.clientWidth, H=csStage.clientHeight, mob=W<900;
+  const bw=clamp(W*(mob?.4:.2),130,310);
+  const e=reduce?1:ease(clamp((p-.12)/.5,0,1));
+  const fade=clamp((e-.7)/.3,0,1);
+  csCards.forEach(({el,p:d,i})=>{
+    const x0=d[0]/100*W, y0=d[1]/100*H, r0=Math.hypot(x0,y0), th0=Math.atan2(y0,x0);
+    const rr=r0*Math.pow(1-e,1.15), th=th0+e*Math.PI*2.5;
+    const wob=Math.sin(p*7+i*1.7)*7*(1-e);
+    const x=rr*Math.cos(th), y=rr*Math.sin(th)*.84+wob;
+    const z=d[2]*(1-e)-e*220;
+    const rx=d[3]*(1-e), ry=d[4]+e*(i%2?560:-560), rz=d[5]*(1-e)+(th-th0)*57.3*.2;
+    const sc=d[6]*(1-.74*e);
+    el.style.setProperty('--w',(bw*d[6]).toFixed(1)+'px');
+    el.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,'+z.toFixed(1)+'px) rotateX('+rx.toFixed(1)+'deg) rotateY('+ry.toFixed(1)+'deg) rotateZ('+rz.toFixed(1)+'deg) scale('+(sc/d[6]).toFixed(3)+')';
+    el.style.opacity=(1-fade).toFixed(3);
+    el.style.visibility=fade>=1?'hidden':'visible';
+    el.style.zIndex=Math.round(1000+z);
+  });
+  const fs=Math.min(W*(mob?.62:.34),H*.56,560);
+  csFlag.style.setProperty('--fs',fs+'px'); csBloom.style.setProperty('--fs',fs+'px');
+  const f=reduce?1:easeOut(clamp((p-.55)/.22,0,1));
+  const g=reduce?1:ease(clamp((p-.8)/.18,0,1));
+  const gx=mob?0:g*W*.2, gy=mob?-g*H*.13:0;
+  csFlag.style.opacity=reduce?1:clamp((p-.5)/.1,0,1).toFixed(3);
+  csFlag.style.transform='translate3d('+gx.toFixed(1)+'px,'+gy.toFixed(1)+'px,0) scale('+(.2+.8*f).toFixed(3)+') rotateY('+((1-f)*-110).toFixed(1)+'deg)';
+  const pulse=reduce?0:Math.sin(clamp((p-.55)/.25,0,1)*Math.PI);
+  csBloom.style.opacity=(pulse*.95).toFixed(3);
+  csBloom.style.transform='translate3d('+gx.toFixed(1)+'px,'+gy.toFixed(1)+'px,0) scale('+(.3+pulse*1.1).toFixed(3)+')';
+  csGlow.style.setProperty('--gl',(f*.95).toFixed(3));
+  csFlag.classList.toggle('lit',p>.78||reduce);
+  const ca=reduce?0:(1-clamp((p-.07)/.12,0,1)); capA.style.opacity=ca.toFixed(3); $('#csFade').style.opacity=ca.toFixed(3);
+  capB.style.opacity=g.toFixed(3);
+  capB.style.transform=mob?'translateY('+((1-g)*24).toFixed(1)+'px)':'translateY(calc(-50% + '+((1-g)*24).toFixed(1)+'px))';
+}
+function updatePlat(){
+  const r=platEl.getBoundingClientRect(), vh=innerHeight;
+  if(r.bottom<-80||r.top>vh+80) return;
+  const p=clamp(-r.top/Math.max(1,r.height-vh),0,1);
+  const idx=clamp(Math.floor(p*4),0,3);
+  if(idx!==curStep){curStep=idx; pstepEls.forEach((el,i)=>el.classList.toggle('on',i===idx)); scr.forEach((s,i)=>s.classList.toggle('on',i===idx));}
+  platBar.style.setProperty('--pp',(.08+.92*(idx+1)/4).toFixed(3));
+  const aw=devWrap.parentElement.clientWidth, ah=vh-(innerWidth<900?260:110);
+  const k=Math.min(aw/460,ah/700,1.1);
+  devWrap.style.setProperty('--k',k.toFixed(3));
+  device.style.setProperty('--ry',(reduce?0:(-7+14*p)).toFixed(2)+'deg');
+  device.style.setProperty('--rx',(reduce?0:(3-4*p)).toFixed(2)+'deg');
+}
+
 /* ---------- init ---------- */
-buildCantons(); setLang(lang);
+buildCantons(); buildChaos(); setLang(lang);
 const go=()=>{document.documentElement.classList.add('ready'); setTimeout(startGreet,reduce?0:500);};
 const imgReady=new Promise(r=>{const im=$('.h-img'); if(im.complete)r(); else{im.addEventListener('load',r); im.addEventListener('error',r);}});
 Promise.race([Promise.all([document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve(),imgReady]),new Promise(r=>setTimeout(r,2200))]).then(()=>requestAnimationFrame(go));
