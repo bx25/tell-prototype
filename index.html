@@ -165,10 +165,20 @@ svg{display:block}
 .think .h{animation:growh 1.1s var(--ease-io) .25s infinite alternate}
 @keyframes growv{from{transform:scaleY(.1)}to{transform:scaleY(1)}}
 @keyframes growh{from{transform:scaleX(.1)}to{transform:scaleX(1)}}
-.a-text{font-family:var(--serif);font-size:clamp(1.3rem,1.9vw,1.7rem);line-height:1.3;letter-spacing:-.012em;max-width:34em}
+.a-text{font-family:var(--serif);font-size:clamp(1.15rem,1.6vw,1.45rem);line-height:1.32;letter-spacing:-.012em;max-width:34em}
 .sw{opacity:0;transition:opacity .35s}
 .sw.in{opacity:1}
+.a-glance{margin-top:24px}
+.a-glance .who-lbl{margin-bottom:6px}
+.a-facts{margin:0;padding:0}
+.a-facts>div{display:grid;grid-template-columns:minmax(5.6rem,7.6rem) 1fr;column-gap:clamp(12px,2vw,20px);padding:11px 0;border-top:1px solid var(--rule);opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.a-facts>div:last-child{border-bottom:1px solid var(--rule)}
+.a-facts>div.in{opacity:1;transform:none}
+.a-facts dt{font-size:.8125rem;font-weight:500;letter-spacing:.01em;color:var(--granit);padding-top:.16em}
+.a-facts dd{margin:0;font-size:.9375rem;line-height:1.4;min-width:0;overflow-wrap:anywhere}
+@media (max-width:560px){.a-facts>div{grid-template-columns:1fr;row-gap:2px;padding:10px 0}.a-facts dt{padding-top:0}}
 .a-steps{list-style:none;padding:0;margin-top:26px;counter-reset:s}
+.a-glance+.a-steps{margin-top:22px}
 .a-steps li{display:grid;grid-template-columns:44px 1fr;padding:15px 0;border-top:1px solid var(--rule);opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .a-steps li:last-child{border-bottom:1px solid var(--rule)}
 .a-steps li::before{counter-increment:s;content:counter(s);color:var(--red);font-weight:500;font-feature-settings:"tnum"}
@@ -186,7 +196,10 @@ svg{display:block}
 .a-src li a{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--rule);text-decoration:none;font-size:.9375rem;transition:padding .35s var(--ease),color .25s}
 .a-src li:last-child a{border-bottom:1px solid var(--rule)}
 .a-src li a:hover{padding-left:8px;color:var(--red)}
-.a-src li a svg{width:16px;height:16px;flex:none;margin-top:3px}
+.a-src li a svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(--granit);transition:color .25s}
+.a-src li a:hover svg{color:var(--red)}
+.a-src li a span{min-width:0;overflow-wrap:anywhere}
+.a-stand{margin-top:12px;font-size:.8125rem;line-height:1.45;color:var(--granit)}
 .a-src,.a-who,#newQ{opacity:0;transition:opacity .7s var(--ease)}
 .a-src.in,.a-who.in,#newQ.in{opacity:1}
 #newQ{margin-top:26px}
@@ -1026,6 +1039,10 @@ html.dsc-lock{overflow:hidden!important}
                 <span id="thinkTxt"></span>
               </div>
               <p class="a-text" id="aText"></p>
+              <div class="a-glance" id="aGlance" hidden>
+                <p class="who-lbl" id="glLbl"></p>
+                <dl class="a-facts" id="aFacts"></dl>
+              </div>
               <ol class="a-steps" id="aSteps"></ol>
               <div class="a-who" id="aWho" hidden>
                 <p class="who-lbl" id="whoLbl"></p>
@@ -1035,6 +1052,7 @@ html.dsc-lock{overflow:hidden!important}
               <div class="a-src" id="aSrc" hidden>
                 <p class="who-lbl" id="srcLbl"></p>
                 <ul id="srcList"></ul>
+                <p class="a-stand" id="aStand"></p>
               </div>
               <button class="btn ghost" id="newQ" type="button" hidden></button>
             </div>
@@ -1268,6 +1286,8 @@ html.dsc-lock{overflow:hidden!important}
 <!-- tell-shared:ifooter:end -->
 
 <script>
+/* source URLs for the five answers; identical in all languages, names live in I18N[lang].ans[key].src */
+const SRC_URL={"move":["https://www.eumzug.swiss/eumzugngx/global","https://stadt.winterthur.ch/themen/lebensereignisse/umzug-neu-winterthur","https://www.bern.ch/themen/zuzug-umzug-wegzug/","https://stadt.winterthur.ch/themen/arbeit-steuern-wirtschaft/steuern-privatpersonen/steuern-bei-veraenderter-lebenssituation/umzug-zuzug-wegzug"],"passport":["https://www.fedpol.admin.ch/de/preise-gueltigkeit-und-lieferfristen","https://www.pass-id.sid.be.ch/de/start/themen/ausweise.html","https://www.pass-id.sid.be.ch/de/start/themen/ausweiszentren.html","https://www.pass-id.sid.be.ch/de/start/dienstleistungen/termin-ausweiszentrum.html"],"tax":["https://www.sv.fin.be.ch/de/start/themen/frist-verlaengern/fristverlaengerung-privatpersonen.html","https://www.wegleitung.sv.fin.be.ch/de/start/np2025/allgemeine-informationen/fristen.html","https://www.zh.ch/de/steuern-finanzen/steuern/steuern-natuerliche-personen/steuererklaerung-natuerliche-personen.html","https://www.ge.ch/remplir-ma-declaration-impot-tant-que-particulier/demander-delai-ma-declaration-impot"],"ahv":["https://www.akbern.ch/de/Versicherungen/AHV-Leistungen/Altersrente-der-AHV/Altersrente-der-AHV.html","https://www.ahv-iv.ch/p/3.01.d","https://www.ch.ch/de/pensionierung/pensionierung-ab-wann/","https://www.bsv.admin.ch/de/ahv-21"],"alv":["https://www.arbeit.swiss/de/stellensuchende/anmeldung-und-registrierung","https://www.arbeit.swiss/de/stellensuchende/faq-zur-arbeitslosenentschaedigung","https://www.ch.ch/de/versicherungen/arbeitslosenversicherung/","https://www.fedlex.admin.ch/eli/cc/1982/2184_2184_2184/de"]};
 const I18N={
 de:{
   title:"Tell – privates Konzept für eine gemeinsame Auskunftsstelle (Prototyp)",
@@ -1282,7 +1302,7 @@ de:{
   lede:"Alles, was Sie vom Staat brauchen. Eine Frage genügt.",
   ask_label:"Was möchten Sie wissen?",
   send:"Frage senden",
-  chips:[{l:"Umzug melden",q:"Ich ziehe nach Winterthur. Was muss ich tun?"},{l:"Pass beantragen",q:"Wie beantrage ich einen Pass?"},{l:"Steuererklärung",q:"Bis wann muss ich die Steuererklärung abgeben?"}],
+  chips:[{l:"Umzug melden",q:"Ich ziehe von Bern nach Winterthur: Wie und bis wann melde ich mich ab und an?"},{l:"Pass & ID",q:"Ich wohne in Bern und brauche einen neuen Pass und eine Identitätskarte. Wie und wo bestelle ich die?"},{l:"Steuererklärung Frist",q:"Ich wohne in Bern und schaffe meine Steuererklärung nicht bis Mitte März. Wie verlängere ich die Frist und was kostet das?"},{l:"AHV-Rente anmelden",q:"Ich bin Jahrgang 1962 und wohne in Thun: Wann und wo melde ich meine AHV-Rente an?"},{l:"Arbeitslos melden",q:"Ich wohne in Thun und verliere Ende Monat meine Stelle. Wo und wann muss ich mich melden, und wie bekomme ich Arbeitslosengeld?"}],
   stmt:"Die Schweiz hat 26 Kantone, 2’110 Gemeinden und vier Landessprachen. Wer wofür zuständig ist, müssen Sie nicht wissen. Fragen Sie einfach.",
   lad_title:"Bund, Kanton oder Gemeinde? Das klären wir.",
   lad1_h:"1 Bund",lad1_t:"Sozialversicherungen wie die AHV, Zoll, Armee, Aussenpolitik.",
@@ -1298,21 +1318,34 @@ de:{
   priv:[{h:"Kein Konto",t:"Sie stellen Fragen, ohne sich anzumelden."},{h:"Kein Gesprächsverlauf",t:"Ihr Chat verschwindet, sobald Sie die Seite verlassen."},{h:"Daten sollen in der Schweiz bleiben",t:"Betrieb und Speicherung sollen in Schweizer Rechenzentren erfolgen, nach dem Datenschutzgesetz."}],
   f_links:["Kontakt","Behördensicht","Bürgersicht","Projekt"],f_sender:"Privates Konzept von Bilal Simsek, Bern. Kein Angebot einer Behörde. Rückmeldungen willkommen: {c}",f_legal:"Datenschutz, Nutzungsbedingungen und Barrierefreiheit sind im Konzept nicht ausgearbeitet. Der Prototyp sammelt keine Personendaten, setzt keine Cookies und verwendet keine Analyse-Tools; lokal im Browser wird nur gemerkt, dass Sie den Hinweis gelesen haben.",nav:["Bürgersicht","Behördensicht","Projekt","Startseite","Menü","Seiten"],
   f_note:"Konzeptprototyp. Alle Antworten sind Beispiele und ersetzen keine Auskunft einer Behörde.",
-  think:"Tell prüft offizielle Quellen",who:"Zuständig",bund:"Bund",kanton:"Kanton",gemeinde:"Gemeinde",src:"Quellen (Beispiel)",newq:"Neue Frage",
-  fb:{intro:"Dazu hat der Prototyp noch keine Antwort. Die echte Version würde hier offizielle Quellen von Bund, Kantonen und Gemeinden durchsuchen. Probieren Sie eines der Beispiele."},
+  think:"Tell prüft offizielle Quellen",who:"Zuständig",bund:"Bund",kanton:"Kanton",gemeinde:"Gemeinde",src:"Quellen",glance:"Auf einen Blick",stand:"Stand: Oktober 2026 · Beispielhafte Antwort aus öffentlichen Quellen, ohne Gewähr. Massgebend sind die Stellen.",newtab:"öffnet in neuem Tab",newq:"Neue Frage",
+  fb:{intro:"Dazu hat der Prototyp noch keine Antwort. Die echte Version würde hier offizielle Quellen von Bund, Kantonen und Gemeinden durchsuchen. Fünf Beispiele beantwortet er schon: Umzug, Pass und ID, Steuererklärung, AHV-Rente und Arbeitslosigkeit. Probieren Sie eines davon."},
   ans:{
-    move:{intro:"Bei einem Umzug innerhalb der Schweiz melden Sie sich bei der alten Gemeinde ab und bei der neuen an. Die Anmeldung ist in der Regel innert 14 Tagen nötig.",
-      steps:["Bei der bisherigen Gemeinde abmelden. Das geht meist online.","Bei der neuen Gemeinde anmelden. Bringen Sie Ausweis, Mietvertrag und Krankenkassenkarte mit.","Krankenkasse, Post und Serafe informieren. Die Prämie hängt von der neuen Prämienregion ab."],
-      who:[0,1,1],note:"Die Gemeinde erfasst Ihren Umzug. Wechseln Sie den Kanton, gilt dort auch Ihr Steuerrecht.",
-      src:["Einwohnerkontrolle der Gemeinde","Kantonales Steueramt","Bundesamt für Gesundheit, Prämienregionen"]},
-    passport:{intro:"Pässe und Identitätskarten beantragen Sie bei der kantonalen Ausweisstelle. Sie müssen persönlich vorbeigehen, weil Foto und Fingerabdrücke direkt vor Ort erfasst werden.",
-      steps:["Online einen Termin bei der Ausweisstelle Ihres Wohnkantons buchen.","Bisherigen Ausweis und, falls nötig, einen Geburts- oder Heimatschein mitbringen.","Gebühr bezahlen: ungefähr CHF 70 für die ID, CHF 140 für den Pass und CHF 148 für das Kombiangebot. Die Lieferung dauert rund 10 Arbeitstage."],
-      who:[1,1,0],note:"Der Bund legt die Ausweise fest, der Kanton nimmt Ihren Antrag entgegen.",
-      src:["fedpol, Schweizer Ausweise","Ausweisstelle Ihres Kantons"]},
-    tax:{intro:"Die Steuererklärung ist Sache der Kantone. Die Frist liegt je nach Kanton zwischen Mitte und Ende März. Eine Fristverlängerung beantragen Sie meist online.",
-      steps:["Beim kantonalen Steueramt die Frist Ihres Wohnkantons prüfen.","Unterlagen sammeln: Lohnausweis, Kontoauszüge, Belege für Abzüge.","Bei Bedarf online eine Fristverlängerung beantragen, bevor die Frist abläuft."],
-      who:[1,1,1],note:"Bund, Kanton und Gemeinde erheben Steuern. Sie füllen nur eine Erklärung aus.",
-      src:["Kantonales Steueramt","Eidgenössische Steuerverwaltung"]}
+    move:{intro:"Sie melden sich innert 14 Tagen am neuen Wohnort an. Von Bern nach Winterthur geht das online über eUmzugCH: Beide Gemeinden sind angeschlossen, Ab- und Anmeldung dauern zusammen etwa 10 Minuten.",
+      facts:[["Frist","14 Tage ab Adressänderung (Art. 11 RHG)"],["Kosten","Winterthur: CHF\u00a040 pro erwachsene Person; eUmzugCH kostet nicht mehr als der Schalter"],["Dauer","Online ca. 10 Minuten"],["Zuständig","Einwohnerdienste Bern (Abmeldung), Einwohnerkontrolle Winterthur (Anmeldung)"]],
+      steps:["Auf eumzug.swiss alte Adresse (Bern) und neue Adresse (Winterthur) eingeben und «Prüfen» klicken.","Bereithalten: Pass oder ID, AHV-Nummer (13-stellig), Mietvertrag oder Einzugsbestätigung, Karte oder Twint für CHF\u00a040.","Krankenkassenkarte oder Police bereithalten: Winterthur verlangt diesen Nachweis bei der Anmeldung.","Abmeldung in Bern und Anmeldung in Winterthur online abschliessen; ein Schalterbesuch in Bern ist nicht nötig.","Steueramt: Winterthur erhält die neue Adresse automatisch; steuerpflichtig sind Sie dort ab 1. Januar des Zuzugsjahres."],
+      who:[1,1,1],note:"Die Gemeinden (Bern, Winterthur) nehmen Ab- und Anmeldung entgegen, eUmzugCH ist der gemeinsame Dienst von Bund, Kantonen und Gemeinden, die Steuern erhebt der Kanton Zürich mit der Stadt Winterthur.",
+      src:["eUmzugCH – Umzug online melden (Bund, Kantone, Gemeinden)","Stadt Winterthur – Umzug & Neu in Winterthur","Stadt Bern – Zuzug, Umzug und Wegzug","Stadt Winterthur – Steuern bei Umzug, Zuzug und Wegzug"]},
+    passport:{intro:"Als Erwachsene mit Wohnsitz in Bern beantragen Sie Pass und/oder ID online auf schweizerpass.ch und gehen dann zum gebuchten Termin, z. B. ins Ausweiszentrum Bern (Laupenstrasse 18A). Die Kombi Pass + ID kostet CHF\u00a0158 und ist 10 Jahre gültig.",
+      facts:[["Kosten","Erwachsene: ID CHF\u00a070, Pass CHF\u00a0145, Kombi CHF\u00a0158. Kinder bis 18: ID 35, Pass 65, Kombi 78 (inkl. Porto)."],["Gültigkeit","Erwachsene 10 Jahre, Kinder und Jugendliche bis 18 Jahre: 5 Jahre. Verlängern ist nicht möglich, Sie bestellen neu."],["Dauer","Lieferung max. 10 Arbeitstage nach dem Termin, per Einschreiben. Mitnehmen am Schalter geht nicht."],["Termin","Pflicht und persönliches Erscheinen nötig (Foto, bei Pass Fingerabdrücke)."]],
+      steps:["Online-Antrag auf schweizerpass.ch ausfüllen (persönliche E-Mail nötig). Nach der Prüfung erhalten Sie eine E-Mail zur Terminwahl.","Termin in einem der 7 Berner Ausweiszentren buchen (Pflicht): online oder per Tel. 031 635 40 00, Mo-Fr.","Alten Ausweis mitbringen, aber kein Passfoto: Das Foto wird vor Ort aufgenommen.","Gebühr vor Ort zahlen (Karte, Twint oder bar). Kinder kommen mit sorgeberechtigter Person und deren Ausweis.","Ausweis kommt innert 10 Arbeitstagen per Einschreiben an die angegebene Adresse."],
+      who:[1,1,0],note:"Der Bund (fedpol) publiziert Preise, Gültigkeit und Lieferfristen; im Kanton Bern erfasst der Pass- und Identitätskartendienst (Amt für Bevölkerungsdienste) Ihre Daten in den Ausweiszentren.",
+      src:["fedpol: Preise, Gültigkeit und Lieferfristen","Kanton Bern: Ausweise, Preise und Gültigkeit","Kanton Bern: Ausweiszentren und Termin","Kanton Bern: Termin wahrnehmen, Unterlagen"]},
+    tax:{intro:"Im Kanton Bern ist die Steuererklärung grundsätzlich bis 15. März fällig; online verlängern Sie bis 15. Juli gratis, höchstens bis 15. November. Für die Steuerperiode 2025 gilt wegen eines IT-Unterbruchs ausnahmsweise der 30. November 2026 als letzte Frist.",
+      facts:[["Frist","Bern: 15. März (Selbstständige: 15. Mai). Zürich und Genf: 31. März."],["Kosten","Bern online: bis 15. Juli gratis, bis 15. Sept. CHF\u00a020, bis 15. Nov. CHF\u00a040. Schriftlich/Telefon: CHF\u00a020/40/60. Genf: CHF\u00a020/40/60."],["Dauer","Bern: höchstens bis 15. Nov.; 2025er-Erklärung ausnahmsweise bis 30. Nov. 2026 (IT-Unterbruch)."],["Zuständig","Bern: kantonale Steuerverwaltung. Zürich: Gemeindesteueramt. Genf: Administration fiscale cantonale."]],
+      steps:["Brief zur Steuererklärung, Lohnausweis (vom Arbeitgeber) und Belege bereitlegen.","Vor Fristablauf in BE-Login (mit AGOV) «Fristverlängerung erfassen», neue Frist wählen und bestätigen.","Bestätigung selbst speichern: Es kommt keine per Post oder E-Mail.","Steuererklärung in TaxMe-Online ausfüllen und mit Belegen einreichen (oder ausgedruckt bei der Wohnsitzgemeinde abgeben).","Zu spät? Es droht eine Mahngebühr von CHF\u00a060; nach abgelaufener Mahnfrist ist keine Verlängerung mehr möglich."],
+      who:[1,1,1],note:"Die kantonale Steuerverwaltung nimmt Ihre Erklärung entgegen und veranlagt auch die direkte Bundessteuer im Auftrag des Bundes (ESTV beaufsichtigt), die Gemeinde legt ihren Steuerfuss fest.",
+      src:["Kanton Bern: Frist als Privatperson verlängern","Kanton Bern: Wegleitung, Einreichefrist","Kanton Zürich: Steuererklärung Privatpersonen","Canton de Genève: Demander un délai"]},
+    ahv:{intro:"Ein Mann, Jahrgang 1962, in Thun erreicht 2027 mit 65 das Referenzalter und meldet seine Rente 3–4 Monate vorher bei der Ausgleichskasse an. Bei Geburtstag am 15. März 2027 beginnt die Rente am 1. April 2027; die Anmeldung erfolgt ab ca. Dezember 2026.",
+      facts:[["Referenzalter","Männer 65. Frauen: Jg. 1961 = 64 J. 3 Mt., Jg. 1962 = 64 J. 6 Mt., Jg. 1963 = 64 J. 9 Mt., ab Jg. 1964 = 65. Rente ab Folgemonat."],["Frist","Anmeldung 3–4 Monate vor Rentenbeginn. Vorbezug ab 63 (–6.8\u00a0% bei 1 Jahr), Aufschub 1–5 Jahre (+5.2\u00a0% bis +31.5\u00a0%)."],["Rente","Bei voller Beitragsdauer CHF\u00a01’260 bis 2’520 pro Monat; Ehepaar höchstens CHF\u00a03’780. Dazu 13. Rente ab Dezember 2026."],["Zuständig","Ausgleichskasse, bei der Ihr Arbeitgeber angeschlossen ist (im Kanton Bern z. B. die AK Bern)."]],
+      steps:["Zuständige Ausgleichskasse klären: Angestellte fragen den Arbeitgeber, Selbstständige die zuletzt abrechnende Kasse.","Formular 318.370 «Anmeldung für eine Altersrente» 3–4 Monate vor Rentenbeginn online ausfüllen und einreichen.","Vorbezug: spätestens bis Ende des Vormonats beantragen. Aufschub: spätestens 1 Jahr nach Referenzalter im Formular ankreuzen.","Beilagen mit dem Formular hochladen oder per Post senden; die Ausgleichskasse beschafft nötige Unterlagen und berechnet die Rente.","Auszahlung monatlich (AK Bern: 4. Arbeitstag, z. B. 4. Dezember 2026); die 13. Rente im Dezember kommt ohne Antrag."],
+      who:[1,1,0],note:"Der Bund (BSV) gibt Regeln und Merkblätter vor; die Ausgleichskasse (im Kanton Bern die AK Bern) nimmt Ihre Anmeldung entgegen, berechnet und zahlt die Rente aus.",
+      src:["Ausgleichskasse Kanton Bern: Altersrente der AHV","ahv-iv.ch: Merkblatt 3.01 Altersrenten (Stand 1.1.2026)","ch.ch: Pensionierung – ab wann?","BSV: Stabilisierung der AHV (AHV 21)"]},
+    alv:{intro:"Melden Sie sich spätestens am ersten Tag, für den Sie Arbeitslosenentschädigung wollen, beim RAV Ihrer Region an, am schnellsten online im Job-Room. Beispiel Thun: 30-jährig, 6’500 Franken Monatslohn, keine Kinder, 14 Monate Beitragszeit ergibt 70\u00a0%, höchstens 260 Taggelder und 10 Wartetage.",
+      facts:[["Frist","Anmeldung beim RAV spätestens am 1. Tag der Arbeitslosigkeit, besser schon während der Kündigungsfrist."],["Höhe","70\u00a0% des versicherten Verdienstes. 80\u00a0% bei Kindern unter 25, Verdienst bis 3’797 Franken oder IV-Rente ab 40\u00a0%."],["Dauer","Mind. 12 Monate Beitragszeit in 2 Jahren. 260 Taggelder, bei längerer Beitragszeit mehr. Rahmenfrist: 2 Jahre."],["Zuständig","RAV (Anmeldung, Beratung) und die von Ihnen gewählte Arbeitslosenkasse (Auszahlung)."]],
+      steps:["Online anmelden: eService «Anmeldung zur Arbeitsvermittlung (RAV)» im Job-Room, oder persönlich beim RAV Ihrer Region.","Schon in der Kündigungsfrist Stellen suchen und jede Bewerbung belegen. Wie viele, legt Ihr RAV fest.","Arbeitslosenkasse wählen, «Antrag auf Arbeitslosenentschädigung» und Arbeitgeberbescheinigungen (2 Jahre) einreichen.","Erstgespräch beim RAV (Einladung innert 15 Tagen): AHV- oder Krankenkassenkarte, ID und Nachweis der Bemühungen mitbringen.","Jeden Monat «Angaben der versicherten Person» einreichen. Die Taggelder folgen in der Regel im Folgemonat."],
+      who:[1,1,0],note:"Das SECO beaufsichtigt die Arbeitslosenversicherung, RAV, Arbeitslosenkassen und kantonale Amtsstellen vollziehen sie; angemeldet wird direkt beim RAV.",
+      src:["arbeit.swiss: Anmeldung und Registrierung","arbeit.swiss (SECO): FAQ zur Arbeitslosenentschädigung","ch.ch: Arbeitslosigkeit in der Schweiz","Fedlex: AVIG (SR 837.0), Art. 9, 17, 18, 22, 27"]}
   }
 },
 fr:{
@@ -1328,7 +1361,7 @@ fr:{
   lede:"Tout ce dont vous avez besoin auprès de l'État. Une question suffit.",
   ask_label:"Que souhaitez-vous savoir ?",
   send:"Envoyer la question",
-  chips:[{l:"Annoncer un déménagement",q:"Je déménage à Lausanne. Que dois-je faire ?"},{l:"Demander un passeport",q:"Comment demander un passeport ?"},{l:"Déclaration d'impôt",q:"Quand dois-je remettre ma déclaration d'impôt ?"}],
+  chips:[{l:"Déménagement",q:"Je déménage de Berne à Winterthour : comment et jusqu’à quand dois-je annoncer mon départ et mon arrivée ?"},{l:"Passeport & ID",q:"J’habite à Berne et j’ai besoin d’un nouveau passeport et d’une carte d’identité. Comment et où les commander ?"},{l:"Délai fiscal",q:"J’habite à Berne et je n’arrive pas à remplir ma déclaration d’impôt d’ici la mi-mars. Comment prolonger le délai et combien cela coûte-t-il ?"},{l:"Rente AVS",q:"Je suis né(e) en 1962 et j’habite à Thoune : quand et où dois-je demander ma rente AVS ?"},{l:"Chômage",q:"J’habite à Thoune et je perds mon emploi à la fin du mois. Où et quand dois-je m’annoncer, et comment obtenir des indemnités de chômage ?"}],
   stmt:"La Suisse compte 26 cantons, 2 110 communes et quatre langues nationales. Vous n'avez pas à savoir qui est responsable de quoi. Posez simplement votre question.",
   lad_title:"Confédération, canton ou commune ? Nous tranchons.",
   lad1_h:"1 Confédération",lad1_t:"Assurances sociales comme l'AVS, douane, armée, politique étrangère.",
@@ -1344,21 +1377,34 @@ fr:{
   priv:[{h:"Pas de compte",t:"Vous posez vos questions sans vous connecter."},{h:"Pas d'historique",t:"Votre conversation disparaît dès que vous quittez la page."},{h:"Les données doivent rester en Suisse",t:"L'exploitation et le stockage doivent se faire dans des centres de calcul suisses, selon la loi sur la protection des données."}],
   f_links:["Contact","Vue des autorités","Vue citoyenne","Projet"],f_sender:"Concept privé de Bilal Simsek, Berne. Pas une offre d'une autorité. Vos retours sont les bienvenus : {c}",f_legal:"Protection des données, conditions d'utilisation et accessibilité ne sont pas développées dans le concept. Le prototype ne collecte aucune donnée personnelle, ne dépose aucun cookie et n'utilise aucun outil d'analyse ; seul le fait que vous avez lu l'avertissement est mémorisé localement dans le navigateur.",nav:["Vue citoyenne","Vue des autorités","Projet","Accueil","Menu","Pages"],
   f_note:"Prototype conceptuel. Toutes les réponses sont des exemples et ne remplacent pas un renseignement officiel.",
-  think:"Tell consulte les sources officielles",who:"Compétence",bund:"Confédération",kanton:"Canton",gemeinde:"Commune",src:"Sources (exemple)",newq:"Nouvelle question",
-  fb:{intro:"Le prototype n'a pas encore de réponse à cette question. La version finale consulterait ici les sources officielles de la Confédération, des cantons et des communes. Essayez l'un des exemples."},
+  think:"Tell consulte les sources officielles",who:"Compétence",bund:"Confédération",kanton:"Canton",gemeinde:"Commune",src:"Sources",glance:"En un coup d’œil",stand:"État : octobre 2026 · Réponse donnée à titre d’exemple, issue de sources publiques, sans garantie. Seuls les services compétents font foi.",newtab:"s’ouvre dans un nouvel onglet",newq:"Nouvelle question",
+  fb:{intro:"Le prototype n’a pas encore de réponse à cette question. La version finale consulterait ici les sources officielles de la Confédération, des cantons et des communes. Il répond déjà à cinq exemples : déménagement, passeport et carte d’identité, déclaration d’impôt, rente AVS et chômage. Essayez l’un d’eux."},
   ans:{
-    move:{intro:"Pour un déménagement dans toute la Suisse, vous vous annoncez à l'ancienne commune puis à la nouvelle. L'inscription doit en règle générale se faire dans les 14 jours.",
-      steps:["Annoncez votre départ à la commune actuelle, le plus souvent en ligne.","Inscrivez-vous à la nouvelle commune avec une pièce d'identité, le contrat de bail et la carte d'assurance maladie.","Informez la caisse maladie, La Poste et Serafe. La prime dépend de la nouvelle région de prime."],
-      who:[0,1,1],note:"La commune enregistre votre déménagement. Si vous changez de canton, le droit fiscal de ce canton s'applique aussi.",
-      src:["Contrôle des habitants de la commune","Administration fiscale cantonale","Office fédéral de la santé publique, régions de primes"]},
-    passport:{intro:"Les passeports et cartes d'identité se demandent auprès du service cantonal des documents d'identité. Vous devez vous présenter en personne, car la photo et les empreintes digitales sont saisies sur place.",
-      steps:["Réservez un rendez-vous en ligne auprès du service de votre canton de domicile.","Apportez votre ancien document et, si nécessaire, un acte de naissance ou d'origine.","Réglez les émoluments : environ CHF 70 pour la carte d'identité, CHF 140 pour le passeport et CHF 148 pour l'offre combinée. La livraison prend environ 10 jours ouvrables."],
-      who:[1,1,0],note:"La Confédération définit les documents, le canton reçoit votre demande.",
-      src:["fedpol, documents d'identité suisses","Service des documents d'identité de votre canton"]},
-    tax:{intro:"La déclaration d'impôt relève des cantons. Le délai se situe, selon le canton, entre la mi-mars et la fin mars. Une prolongation se demande en général en ligne.",
-      steps:["Vérifiez le délai de votre canton de domicile auprès de l'administration fiscale cantonale.","Rassemblez vos documents : certificat de salaire, relevés de compte, justificatifs de déductions.","Si nécessaire, demandez une prolongation en ligne avant l'échéance."],
-      who:[1,1,1],note:"La Confédération, le canton et la commune prélèvent des impôts. Vous ne remplissez qu'une seule déclaration.",
-      src:["Administration fiscale cantonale","Administration fédérale des contributions"]}
+    move:{intro:"Vous vous annoncez dans les 14 jours auprès de votre nouvelle commune. De Berne à Winterthour, cela se fait en ligne via eUmzugCH : les deux communes sont raccordées, l’annonce de départ et l’annonce d’arrivée prennent ensemble environ 10 minutes.",
+      facts:[["Délai","14 jours dès le changement d’adresse (art. 11 LHR)"],["Coûts","Winterthour : CHF\u00a040 par adulte ; eUmzugCH ne coûte pas plus cher que le guichet"],["Durée","En ligne env. 10 minutes"],["Compétence","Services aux habitants de Berne (départ), contrôle des habitants de Winterthour (arrivée)"]],
+      steps:["Sur eumzug.swiss, saisir l’ancienne adresse (Berne) et la nouvelle adresse (Winterthour), puis lancer la vérification.","À préparer : passeport ou carte d’identité, numéro AVS (13 chiffres), contrat de bail ou attestation d’emménagement, carte ou Twint pour CHF\u00a040.","Préparer la carte d’assuré ou la police d’assurance-maladie : Winterthour exige ce justificatif lors de l’annonce d’arrivée.","Terminer en ligne l’annonce de départ à Berne et l’annonce d’arrivée à Winterthour ; un passage au guichet à Berne n’est pas nécessaire.","Service des impôts : Winterthour reçoit automatiquement la nouvelle adresse ; vous y êtes assujetti à l’impôt dès le 1er janvier de l’année d’arrivée."],
+      who:[1,1,1],note:"Les communes (Berne, Winterthour) reçoivent les annonces de départ et d’arrivée, eUmzugCH est le service commun de la Confédération, des cantons et des communes ; les impôts sont prélevés par le canton de Zurich avec la ville de Winterthour.",
+      src:["eUmzugCH – annoncer son déménagement en ligne (Confédération, cantons, communes)","Ville de Winterthour – déménagement et arrivée à Winterthour","Ville de Berne – arrivée, déménagement et départ","Ville de Winterthour – impôts en cas de déménagement, d’arrivée et de départ"]},
+    passport:{intro:"Si vous êtes adulte et habitez à Berne, vous demandez votre passeport et/ou votre carte d’identité en ligne sur schweizerpass.ch, puis vous vous rendez au rendez-vous réservé, p. ex. au centre de documents d’identité de Berne (Laupenstrasse 18A). La combinaison passeport + carte d’identité coûte CHF\u00a0158 et est valable 10 ans.",
+      facts:[["Coûts","Adultes : carte d’identité CHF\u00a070, passeport CHF\u00a0145, combinaison CHF\u00a0158. Enfants jusqu’à 18 ans : carte d’identité 35, passeport 65, combinaison 78 (port inclus)."],["Validité","Adultes 10 ans, enfants et jeunes jusqu’à 18 ans : 5 ans. Une prolongation n’est pas possible, vous commandez un nouveau document."],["Durée","Livraison au plus tard 10 jours ouvrables après le rendez-vous, par envoi recommandé. Emporter le document au guichet n’est pas possible."],["Rendez-vous","Obligatoire, présence personnelle nécessaire (photo, pour le passeport empreintes digitales)."]],
+      steps:["Remplir la demande en ligne sur schweizerpass.ch (adresse e-mail personnelle requise). Après vérification, vous recevez un e-mail pour choisir un rendez-vous.","Réserver un rendez-vous dans l’un des 7 centres de documents d’identité bernois (obligatoire) : en ligne ou par téléphone au 031 635 40 00, lu–ve.","Apporter l’ancien document, mais pas de photo : elle est prise sur place.","Payer les frais sur place (carte, Twint ou espèces). Les enfants viennent avec une personne détentrice de l’autorité parentale et son document d’identité.","Le document arrive dans les 10 jours ouvrables, par envoi recommandé, à l’adresse indiquée."],
+      who:[1,1,0],note:"La Confédération (fedpol) publie les prix, la durée de validité et les délais de livraison ; dans le canton de Berne, le service des passeports et cartes d’identité (Office de la population) saisit vos données dans les centres de documents d’identité.",
+      src:["fedpol : prix, durée de validité et délais de livraison","Canton de Berne : documents d’identité, prix et durée de validité","Canton de Berne : centres de documents d’identité et rendez-vous","Canton de Berne : se rendre au rendez-vous, documents à apporter"]},
+    tax:{intro:"Dans le canton de Berne, la déclaration d’impôt est en principe due au 15 mars ; en ligne, vous prolongez gratuitement jusqu’au 15 juillet, au plus tard jusqu’au 15 novembre. Pour la période fiscale 2025, en raison d’une panne informatique, le 30 novembre 2026 est exceptionnellement le dernier délai.",
+      facts:[["Délai","Berne : 15 mars (indépendants : 15 mai). Zurich et Genève : 31 mars."],["Coûts","Berne en ligne : gratuit jusqu’au 15 juillet, CHF\u00a020 jusqu’au 15 sept., CHF\u00a040 jusqu’au 15 nov. Par écrit/téléphone : CHF\u00a020/40/60. Genève : CHF\u00a020/40/60."],["Durée","Berne : au plus tard jusqu’au 15 nov. ; déclaration 2025 exceptionnellement jusqu’au 30 nov. 2026 (panne informatique)."],["Compétence","Berne : administration fiscale cantonale. Zurich : office communal des impôts. Genève : Administration fiscale cantonale."]],
+      steps:["Préparer la lettre relative à la déclaration d’impôt, le certificat de salaire (de l’employeur) et les justificatifs.","Avant l’échéance, dans BE-Login (avec AGOV) : «\u00a0Fristverlängerung erfassen\u00a0» (saisir la prolongation de délai), choisir le nouveau délai et confirmer.","Enregistrer soi-même la confirmation : aucune n’est envoyée par la poste ni par e-mail.","Remplir la déclaration dans TaxMe-Online et la déposer avec les justificatifs (ou la remettre imprimée à votre commune de domicile).","En retard ? Des frais de rappel de CHF\u00a060 sont à craindre ; une fois le délai de rappel écoulé, aucune prolongation n’est plus possible."],
+      who:[1,1,1],note:"L’administration fiscale cantonale reçoit votre déclaration et taxe aussi l’impôt fédéral direct pour le compte de la Confédération (sous la surveillance de l’AFC) ; la commune fixe sa quotité d’impôt.",
+      src:["Canton de Berne : prolonger le délai en tant que particulier","Canton de Berne : instructions, délai de dépôt","Canton de Zurich : déclaration d’impôt des particuliers","Canton de Genève : demander un délai"]},
+    ahv:{intro:"Un homme né en 1962 et habitant à Thoune atteint l’âge de référence de 65 ans en 2027 et demande sa rente à la caisse de compensation 3 à 4 mois avant. Avec un anniversaire le 15 mars 2027, la rente commence le 1er avril 2027 ; la demande se fait dès décembre 2026 environ.",
+      facts:[["Âge de référence","Hommes 65 ans. Femmes : née en 1961 = 64 ans 3 mois, 1962 = 64 ans 6 mois, 1963 = 64 ans 9 mois, dès 1964 = 65 ans. Rente dès le mois suivant."],["Délai","Demande 3 à 4 mois avant le début de la rente. Anticipation dès 63 ans (–6.8\u00a0% pour 1 an), ajournement 1 à 5 ans (+5.2\u00a0% à +31.5\u00a0%)."],["Rente","Avec une durée de cotisation complète CHF\u00a01\u202f260 à 2\u202f520 par mois ; couple au maximum CHF\u00a03\u202f780. S’y ajoute la 13e rente dès décembre 2026."],["Compétence","Caisse de compensation à laquelle votre employeur est affilié (dans le canton de Berne p. ex. la caisse de compensation du canton de Berne, AK Bern)."]],
+      steps:["Clarifier la caisse de compensation compétente : les salariés demandent à leur employeur, les indépendants à la dernière caisse avec laquelle ils décomptent.","Remplir et envoyer en ligne le formulaire 318.370 «\u00a0Demande de rente de vieillesse\u00a0» 3 à 4 mois avant le début de la rente.","Anticipation : à demander au plus tard à la fin du mois précédent. Ajournement : à cocher dans le formulaire au plus tard 1 an après l’âge de référence.","Télécharger les annexes avec le formulaire ou les envoyer par la poste ; la caisse de compensation se procure les documents nécessaires et calcule la rente.","Versement mensuel (AK Bern : 4e jour ouvrable, p. ex. le 4 décembre 2026) ; la 13e rente de décembre est versée sans demande."],
+      who:[1,1,0],note:"La Confédération (OFAS) fixe les règles et publie les mémentos ; la caisse de compensation (dans le canton de Berne, l’AK Bern) reçoit votre demande, calcule et verse la rente.",
+      src:["Caisse de compensation du canton de Berne : rente de vieillesse de l’AVS","ahv-iv.ch : mémento 3.01 Rentes de vieillesse (état au 1.1.2026)","ch.ch : retraite – à partir de quand ?","OFAS : stabilisation de l’AVS (AVS 21)"]},
+    alv:{intro:"Inscrivez-vous auprès de l’ORP de votre région au plus tard le premier jour pour lequel vous voulez toucher l’indemnité de chômage, le plus rapidement en ligne dans Job-Room. Exemple à Thoune : 30 ans, salaire mensuel de 6\u202f500 francs, sans enfant, 14 mois de cotisation donnent 70\u00a0%, au maximum 260 indemnités journalières et 10 jours d’attente.",
+      facts:[["Délai","Inscription à l’ORP au plus tard le 1er jour de chômage, mieux encore pendant le délai de congé."],["Montant","70\u00a0% du gain assuré. 80\u00a0% en cas d’enfants de moins de 25 ans, de gain jusqu’à 3\u202f797 francs ou de rente AI dès 40\u00a0%."],["Durée","Au moins 12 mois de cotisation en 2 ans. 260 indemnités journalières, davantage en cas de période de cotisation plus longue. Délai-cadre : 2 ans."],["Compétence","ORP (inscription, conseil) et la caisse de chômage que vous choisissez (versement)."]],
+      steps:["S’inscrire en ligne via l’e-service d’inscription au placement (ORP) dans Job-Room, ou en personne auprès de l’ORP de votre région.","Chercher un emploi déjà pendant le délai de congé et justifier chaque candidature. Votre ORP fixe le nombre exigé.","Choisir une caisse de chômage, déposer la «\u00a0demande d’indemnité de chômage\u00a0» et les attestations de l’employeur (2 ans).","Premier entretien à l’ORP (convocation dans les 15 jours) : apporter la carte AVS ou d’assuré, une pièce d’identité et la preuve de vos recherches d’emploi.","Chaque mois, remettre les «\u00a0indications de la personne assurée\u00a0». Les indemnités journalières suivent en règle générale le mois suivant."],
+      who:[1,1,0],note:"Le SECO surveille l’assurance-chômage ; les ORP, les caisses de chômage et les services cantonaux l’appliquent ; l’inscription se fait directement auprès de l’ORP.",
+      src:["arbeit.swiss : inscription et enregistrement","arbeit.swiss (SECO) : FAQ sur l’indemnité de chômage","ch.ch : chômage en Suisse","Fedlex : LACI (RS 837.0), art. 9, 17, 18, 22, 27"]}
   }
 },
 it:{
@@ -1374,7 +1420,7 @@ it:{
   lede:"Tutto ciò che Le serve dallo Stato. Basta una domanda.",
   ask_label:"Cosa desidera sapere?",
   send:"Invii la domanda",
-  chips:[{l:"Annunciare un trasloco",q:"Mi trasferisco a Lugano. Cosa devo fare?"},{l:"Richiedere un passaporto",q:"Come richiedo un passaporto?"},{l:"Dichiarazione d'imposta",q:"Entro quando devo consegnare la dichiarazione d'imposta?"}],
+  chips:[{l:"Trasloco",q:"Mi trasferisco da Berna a Winterthur: come e entro quando devo annunciare la partenza e l’arrivo?"},{l:"Passaporto & ID",q:"Abito a Berna e ho bisogno di un nuovo passaporto e di una carta d’identità. Come e dove li ordino?"},{l:"Termine fiscale",q:"Abito a Berna e non riesco a presentare la dichiarazione d’imposta entro metà marzo. Come prolungo il termine e quanto costa?"},{l:"Rendita AVS",q:"Sono nato/a nel 1962 e abito a Thun: quando e dove richiedo la rendita AVS?"},{l:"Disoccupazione",q:"Abito a Thun e alla fine del mese perdo il mio posto di lavoro. Dove e quando devo annunciarmi e come ottengo l’indennità di disoccupazione?"}],
   stmt:"La Svizzera ha 26 cantoni, 2110 comuni e quattro lingue nazionali. Non deve sapere chi è responsabile di cosa. Basta chiedere.",
   lad_title:"Confederazione, cantone o comune? Ci pensiamo noi.",
   lad1_h:"1 Confederazione",lad1_t:"Assicurazioni sociali come l'AVS, dogana, esercito, politica estera.",
@@ -1390,21 +1436,34 @@ it:{
   priv:[{h:"Nessun account",t:"Faccia domande senza registrarsi."},{h:"Nessuna cronologia",t:"La Sua conversazione scompare appena lascia la pagina."},{h:"I dati devono restare in Svizzera",t:"Gestione e archiviazione devono avvenire in centri di calcolo svizzeri, secondo la legge sulla protezione dei dati."}],
   f_links:["Contatto","Vista delle autorità","Vista cittadini","Progetto"],f_sender:"Concetto privato di Bilal Simsek, Berna. Non è un'offerta di un'autorità. I Suoi riscontri sono benvenuti: {c}",f_legal:"Protezione dei dati, condizioni d'uso e accessibilità non sono elaborate nel concetto. Il prototipo non raccoglie dati personali, non imposta cookie e non utilizza strumenti di analisi; nel browser viene memorizzato solo, in locale, che Lei ha letto l'avviso.",nav:["Vista cittadini","Vista delle autorità","Progetto","Pagina iniziale","Menu","Pagine"],
   f_note:"Prototipo concettuale. Tutte le risposte sono esempi e non sostituiscono l'informazione di un'autorità.",
-  think:"Tell consulta le fonti ufficiali",who:"Competenza",bund:"Confederazione",kanton:"Cantone",gemeinde:"Comune",src:"Fonti (esempio)",newq:"Nuova domanda",
-  fb:{intro:"Il prototipo non ha ancora una risposta a questa domanda. La versione definitiva consulterebbe qui le fonti ufficiali di Confederazione, cantoni e comuni. Provi uno degli esempi."},
+  think:"Tell consulta le fonti ufficiali",who:"Competenza",bund:"Confederazione",kanton:"Cantone",gemeinde:"Comune",src:"Fonti",glance:"In breve",stand:"Stato: ottobre 2026 · Risposta a titolo di esempio, tratta da fonti pubbliche, senza garanzia. Fanno stato gli uffici competenti.",newtab:"si apre in una nuova scheda",newq:"Nuova domanda",
+  fb:{intro:"Il prototipo non ha ancora una risposta a questa domanda. La versione definitiva consulterebbe qui le fonti ufficiali di Confederazione, cantoni e comuni. Risponde già a cinque esempi: trasloco, passaporto e carta d’identità, dichiarazione d’imposta, rendita AVS e disoccupazione. Provi uno di questi."},
   ans:{
-    move:{intro:"Per un trasloco in tutta la Svizzera, Lei si annuncia al vecchio comune e si registra nel nuovo. L'annuncio va di regola fatto entro 14 giorni.",
-      steps:["Annunci la partenza al comune attuale, di solito online.","Si registri nel nuovo comune con documento d'identità, contratto d'affitto e tessera della cassa malati.","Informi la cassa malati, la Posta e Serafe. Il premio dipende dalla nuova regione di premio."],
-      who:[0,1,1],note:"Il comune registra il Suo trasloco. Se cambia cantone, si applica anche il diritto fiscale di quel cantone.",
-      src:["Controllo abitanti del comune","Amministrazione fiscale cantonale","Ufficio federale della sanità pubblica, regioni di premio"]},
-    passport:{intro:"Passaporti e carte d'identità si richiedono presso l'ufficio cantonale dei documenti d'identità. Deve presentarsi di persona, perché foto e impronte digitali vengono rilevate sul posto.",
-      steps:["Prenoti online un appuntamento presso l'ufficio del Suo cantone di domicilio.","Porti il documento attuale e, se necessario, un atto di nascita o di attinenza.","Paghi gli emolumenti: circa CHF 70 per la carta d'identità, CHF 140 per il passaporto e CHF 148 per l'offerta combinata. La consegna richiede circa 10 giorni lavorativi."],
-      who:[1,1,0],note:"La Confederazione definisce i documenti, il cantone riceve la Sua richiesta.",
-      src:["fedpol, documenti d'identità svizzeri","Ufficio dei documenti d'identità del Suo cantone"]},
-    tax:{intro:"La dichiarazione d'imposta è di competenza dei cantoni. Il termine varia, a seconda del cantone, tra metà e fine marzo. Una proroga si chiede di solito online.",
-      steps:["Verifichi il termine del Suo cantone di domicilio presso l'amministrazione fiscale cantonale.","Raccolga i documenti: certificato di salario, estratti conto, giustificativi delle deduzioni.","Se necessario, chieda online una proroga prima della scadenza."],
-      who:[1,1,1],note:"Confederazione, cantone e comune prelevano imposte. Lei compila una sola dichiarazione.",
-      src:["Amministrazione fiscale cantonale","Amministrazione federale delle contribuzioni"]}
+    move:{intro:"Lei si annuncia entro 14 giorni presso il nuovo comune. Da Berna a Winterthur ciò avviene online tramite eUmzugCH: entrambi i comuni sono collegati e l’annuncio di partenza e quello di arrivo richiedono insieme circa 10 minuti.",
+      facts:[["Scadenza","14 giorni dal cambio di indirizzo (art. 11 LArRa)"],["Costi","Winterthur: CHF\u00a040 per persona adulta; eUmzugCH non costa più dello sportello"],["Durata","Online circa 10 minuti"],["Competenza","Servizi agli abitanti di Berna (partenza), controllo abitanti di Winterthur (arrivo)"]],
+      steps:["Su eumzug.swiss inserire il vecchio indirizzo (Berna) e il nuovo indirizzo (Winterthur) e avviare la verifica.","Tenere pronti: passaporto o carta d’identità, numero AVS (13 cifre), contratto di locazione o conferma di entrata nell’alloggio, carta o Twint per CHF\u00a040.","Tenere pronta la tessera della cassa malati o la polizza: Winterthur richiede questa prova al momento dell’annuncio di arrivo.","Concludere online l’annuncio di partenza a Berna e l’annuncio di arrivo a Winterthur; una visita allo sportello a Berna non è necessaria.","Ufficio delle imposte: Winterthur riceve automaticamente il nuovo indirizzo; vi è assoggettato all’imposta dal 1° gennaio dell’anno di arrivo."],
+      who:[1,1,1],note:"I comuni (Berna, Winterthur) ricevono gli annunci di partenza e di arrivo, eUmzugCH è il servizio comune di Confederazione, cantoni e comuni; le imposte sono riscosse dal Cantone di Zurigo con la Città di Winterthur.",
+      src:["eUmzugCH – annunciare il trasloco online (Confederazione, cantoni, comuni)","Città di Winterthur – trasloco e arrivo a Winterthur","Città di Berna – arrivo, trasloco e partenza","Città di Winterthur – imposte in caso di trasloco, arrivo e partenza"]},
+    passport:{intro:"Come persona adulta domiciliata a Berna, Lei richiede passaporto e/o carta d’identità online su schweizerpass.ch e si reca poi all’appuntamento prenotato, p. es. al centro documenti d’identità di Berna (Laupenstrasse 18A). La combinazione passaporto + carta d’identità costa CHF\u00a0158 ed è valida 10 anni.",
+      facts:[["Costi","Adulti: carta d’identità CHF\u00a070, passaporto CHF\u00a0145, combinazione CHF\u00a0158. Bambini fino a 18 anni: carta d’identità 35, passaporto 65, combinazione 78 (porto incluso)."],["Validità","Adulti 10 anni, bambini e giovani fino a 18 anni: 5 anni. Una proroga non è possibile, si ordina un nuovo documento."],["Durata","Consegna al massimo 10 giorni lavorativi dopo l’appuntamento, per raccomandata. Il ritiro allo sportello non è possibile."],["Appuntamento","Obbligatorio, presenza personale necessaria (foto, per il passaporto impronte digitali)."]],
+      steps:["Compilare la richiesta online su schweizerpass.ch (indirizzo e-mail personale necessario). Dopo la verifica riceve un’e-mail per scegliere l’appuntamento.","Prenotare l’appuntamento in uno dei 7 centri documenti d’identità bernesi (obbligatorio): online o per telefono allo 031 635 40 00, lun–ven.","Portare il vecchio documento, ma nessuna fotografia: la foto viene scattata sul posto.","Pagare l’importo sul posto (carta, Twint o contanti). I bambini vengono con una persona titolare dell’autorità parentale e il suo documento d’identità.","Il documento arriva entro 10 giorni lavorativi, per raccomandata, all’indirizzo indicato."],
+      who:[1,1,0],note:"La Confederazione (fedpol) pubblica prezzi, validità e termini di consegna; nel Cantone di Berna il servizio passaporti e carte d’identità (Ufficio della popolazione) registra i Suoi dati nei centri documenti d’identità.",
+      src:["fedpol: prezzi, validità e termini di consegna","Cantone di Berna: documenti d’identità, prezzi e validità","Cantone di Berna: centri documenti d’identità e appuntamento","Cantone di Berna: presentarsi all’appuntamento, documenti da portare"]},
+    tax:{intro:"Nel Cantone di Berna la dichiarazione d’imposta scade di regola il 15 marzo; online può prorogare gratuitamente fino al 15 luglio, al massimo fino al 15 novembre. Per il periodo fiscale 2025, a causa di un’interruzione informatica, il 30 novembre 2026 vale eccezionalmente come ultimo termine.",
+      facts:[["Scadenza","Berna: 15 marzo (indipendenti: 15 maggio). Zurigo e Ginevra: 31 marzo."],["Costi","Berna online: gratis fino al 15 luglio, CHF\u00a020 fino al 15 sett., CHF\u00a040 fino al 15 nov. Per scritto/telefono: CHF\u00a020/40/60. Ginevra: CHF\u00a020/40/60."],["Durata","Berna: al massimo fino al 15 nov.; dichiarazione 2025 eccezionalmente fino al 30 nov. 2026 (interruzione informatica)."],["Competenza","Berna: amministrazione cantonale delle imposte. Zurigo: ufficio comunale delle imposte. Ginevra: Administration fiscale cantonale."]],
+      steps:["Tenere pronti la lettera sulla dichiarazione d’imposta, il certificato di salario (del datore di lavoro) e i giustificativi.","Prima della scadenza, in BE-Login (con AGOV): «Fristverlängerung erfassen» (registrare la proroga), scegliere il nuovo termine e confermare.","Salvare la conferma da sé: non ne arriva nessuna per posta o e-mail.","Compilare la dichiarazione in TaxMe-Online e inoltrarla con i giustificativi (oppure consegnarla stampata al comune di domicilio).","In ritardo? Si rischia una tassa di sollecito di CHF\u00a060; scaduto il termine di sollecito, non è più possibile alcuna proroga."],
+      who:[1,1,1],note:"L’amministrazione cantonale delle imposte riceve la Sua dichiarazione e tassa anche l’imposta federale diretta su mandato della Confederazione (vigilanza dell’AFC); il comune fissa il proprio moltiplicatore d’imposta.",
+      src:["Cantone di Berna: prorogare il termine come persona privata","Cantone di Berna: istruzioni, termine di inoltro","Cantone di Zurigo: dichiarazione d’imposta delle persone fisiche","Cantone di Ginevra: richiedere una proroga"]},
+    ahv:{intro:"Un uomo nato nel 1962 e residente a Thun raggiunge nel 2027, a 65 anni, l’età di riferimento e richiede la rendita alla cassa di compensazione 3–4 mesi prima. Con compleanno il 15 marzo 2027 la rendita inizia il 1° aprile 2027; la richiesta si presenta da circa dicembre 2026.",
+      facts:[["Età di riferimento","Uomini 65. Donne: nate nel 1961 = 64 anni e 3 mesi, 1962 = 64 anni e 6 mesi, 1963 = 64 anni e 9 mesi, dal 1964 = 65. Rendita dal mese successivo."],["Scadenza","Richiesta 3–4 mesi prima dell’inizio della rendita. Anticipo dai 63 anni (–6.8\u00a0% per 1 anno), differimento 1–5 anni (+5.2\u00a0% fino a +31.5\u00a0%)."],["Rendita","Con durata di contribuzione completa CHF\u00a01’260–2’520 al mese; coppia al massimo CHF\u00a03’780. In più la 13a rendita da dicembre 2026."],["Competenza","Cassa di compensazione a cui è affiliato il Suo datore di lavoro (nel Cantone di Berna p. es. la cassa di compensazione del Cantone di Berna, AK Bern)."]],
+      steps:["Chiarire la cassa di compensazione competente: i dipendenti chiedono al datore di lavoro, gli indipendenti all’ultima cassa con cui hanno conteggiato.","Compilare e inoltrare online il modulo 318.370 «Richiesta di una rendita di vecchiaia» 3–4 mesi prima dell’inizio della rendita.","Anticipo: da chiedere al più tardi entro la fine del mese precedente. Differimento: da spuntare nel modulo al più tardi 1 anno dopo l’età di riferimento.","Caricare gli allegati con il modulo o inviarli per posta; la cassa di compensazione procura i documenti necessari e calcola la rendita.","Pagamento mensile (AK Bern: 4° giorno lavorativo, p. es. il 4 dicembre 2026); la 13a rendita di dicembre arriva senza richiesta."],
+      who:[1,1,0],note:"La Confederazione (UFAS) stabilisce le regole e pubblica i fogli informativi; la cassa di compensazione (nel Cantone di Berna l’AK Bern) riceve la Sua richiesta, calcola e versa la rendita.",
+      src:["Cassa di compensazione del Cantone di Berna: rendita di vecchiaia dell’AVS","ahv-iv.ch: opuscolo 3.01 Rendite di vecchiaia (stato 1.1.2026)","ch.ch: pensionamento – da quando?","UFAS: stabilizzazione dell’AVS (AVS 21)"]},
+    alv:{intro:"Si annunci all’URC della Sua regione al più tardi il primo giorno per cui desidera l’indennità di disoccupazione, nel modo più rapido online nel Job-Room. Esempio a Thun: 30 anni, salario mensile di 6’500 franchi, nessun figlio, 14 mesi di contribuzione danno il 70\u00a0%, al massimo 260 indennità giornaliere e 10 giorni di attesa.",
+      facts:[["Scadenza","Annuncio all’URC al più tardi il 1° giorno di disoccupazione, meglio già durante il periodo di disdetta."],["Importo","70\u00a0% del guadagno assicurato. 80\u00a0% con figli sotto i 25 anni, guadagno fino a 3’797 franchi o rendita AI dal 40\u00a0%."],["Durata","Almeno 12 mesi di contribuzione in 2 anni. 260 indennità giornaliere, di più con un periodo di contribuzione più lungo. Termine quadro: 2 anni."],["Competenza","URC (annuncio, consulenza) e la cassa di disoccupazione da Lei scelta (pagamento)."]],
+      steps:["Annunciarsi online tramite l’e-service per l’annuncio all’URC nel Job-Room, oppure di persona presso l’URC della Sua regione.","Cercare lavoro già durante il periodo di disdetta e documentare ogni candidatura. Quante, lo stabilisce il Suo URC.","Scegliere la cassa di disoccupazione, inoltrare la «richiesta di indennità di disoccupazione» e le attestazioni del datore di lavoro (2 anni).","Primo colloquio all’URC (invito entro 15 giorni): portare la tessera AVS o della cassa malati, un documento d’identità e la prova delle ricerche di lavoro.","Ogni mese inoltrare le «indicazioni della persona assicurata». Le indennità giornaliere seguono di regola il mese successivo."],
+      who:[1,1,0],note:"La SECO vigila sull’assicurazione contro la disoccupazione; URC, casse di disoccupazione e uffici cantonali la eseguono; l’annuncio si fa direttamente all’URC.",
+      src:["arbeit.swiss: annuncio e registrazione","arbeit.swiss (SECO): FAQ sull’indennità di disoccupazione","ch.ch: disoccupazione in Svizzera","Fedlex: LADI (RS 837.0), art. 9, 17, 18, 22, 27"]}
   }
 },
 en:{
@@ -1420,7 +1479,7 @@ en:{
   lede:"Everything you need from government. One question is enough.",
   ask_label:"What would you like to know?",
   send:"Send question",
-  chips:[{l:"Report a move",q:"I'm moving to Zurich. What do I need to do?"},{l:"Apply for a passport",q:"How do I apply for a passport?"},{l:"Tax return",q:"When is my tax return due?"}],
+  chips:[{l:"Report a move",q:"I'm moving from Bern to Winterthur: how and by when do I deregister and register?"},{l:"Passport & ID",q:"I live in Bern and need a new passport and an ID card. How and where do I order them?"},{l:"Tax return deadline",q:"I live in Bern and can't finish my tax return by mid-March. How do I extend the deadline and what does it cost?"},{l:"AHV/AVS pension",q:"I was born in 1962 and live in Thun: when and where do I claim my AHV/AVS pension?"},{l:"Register as unemployed",q:"I live in Thun and lose my job at the end of the month. Where and when do I have to register, and how do I get unemployment benefit?"}],
   stmt:"Switzerland has 26 cantons, 2,110 municipalities and four national languages. You don't need to know who is responsible for what. Just ask.",
   lad_title:"Federal, cantonal or local? We sort it out.",
   lad1_h:"1 federal government",lad1_t:"Social insurance such as AHV/AVS, customs, army, foreign policy.",
@@ -1436,21 +1495,34 @@ en:{
   priv:[{h:"No account",t:"Ask questions without signing in."},{h:"No chat history",t:"Your conversation disappears when you leave the page."},{h:"Data should stay in Switzerland",t:"Operation and storage are to take place in Swiss data centres, under the Swiss data protection act."}],
   f_links:["Contact","Authority view","Citizen view","Project"],f_sender:"Private concept by Bilal Simsek, Bern. Not an offer by any authority. Feedback welcome: {c}",f_legal:"Privacy, terms of use and accessibility are not worked out in the concept. The prototype collects no personal data, sets no cookies and uses no analytics tools; the browser only remembers locally that you have read the notice.",nav:["Citizen view","Authority view","Project","Home","Menu","Pages"],
   f_note:"Concept prototype. All answers are examples and do not replace information from an authority.",
-  think:"Tell is checking official sources",who:"Responsible",bund:"Federal",kanton:"Canton",gemeinde:"Municipality",src:"Sources (example)",newq:"New question",
-  fb:{intro:"The prototype has no answer to this yet. The real version would search official sources from federal, cantonal and municipal governments here. Try one of the examples."},
+  think:"Tell is checking official sources",who:"Responsible",bund:"Federal",kanton:"Canton",gemeinde:"Municipality",src:"Sources",glance:"At a glance",stand:"As of October 2026 · Sample answer from public sources, without guarantee. The responsible offices are authoritative.",newtab:"opens in a new tab",newq:"New question",
+  fb:{intro:"The prototype has no answer to this yet. The real version would search official sources from federal, cantonal and municipal governments here. It already answers five examples: moving, passport and ID, tax return, AHV/AVS pension and unemployment. Try one of them."},
   ans:{
-    move:{intro:"When you move within Switzerland, you deregister from your old municipality and register with the new one. Registration is usually required within 14 days.",
-      steps:["Deregister from your current municipality, usually online.","Register with the new municipality. Bring your ID, rental contract and health insurance card.","Tell your health insurer, Swiss Post and Serafe. Your premium depends on the new premium region."],
-      who:[0,1,1],note:"The municipality records your move. If you change canton, that canton's tax rules apply too.",
-      src:["Municipal residents' registry","Cantonal tax office","Federal Office of Public Health, premium regions"]},
-    passport:{intro:"You apply for passports and ID cards at your canton's identity document office. You must go in person, because your photo and fingerprints are taken on site.",
-      steps:["Book an appointment online with the office in your canton of residence.","Bring your current document and, if needed, a birth or citizenship certificate.","Pay the fee: about CHF 70 for the ID card, CHF 140 for the passport and CHF 148 for the combined offer. Delivery takes about 10 working days."],
-      who:[1,1,0],note:"The federal government defines the documents, the canton takes your application.",
-      src:["fedpol, Swiss identity documents","Identity document office of your canton"]},
-    tax:{intro:"Tax returns are a cantonal matter. The deadline falls between mid and late March, depending on the canton. You can usually request an extension online.",
-      steps:["Check the deadline of your canton of residence with the cantonal tax office.","Gather your documents: salary certificate, bank statements, receipts for deductions.","If needed, request an extension online before the deadline passes."],
-      who:[1,1,1],note:"Federal, cantonal and municipal governments levy taxes. You fill in a single return.",
-      src:["Cantonal tax office","Federal Tax Administration"]}
+    move:{intro:"You register at your new place of residence within 14 days. From Bern to Winterthur this works online via eUmzugCH: both municipalities are connected, and deregistering and registering take about 10 minutes together.",
+      facts:[["Deadline","14 days from the change of address (Art. 11 Register Harmonisation Act)"],["Cost","Winterthur: CHF\u00a040 per adult; eUmzugCH costs no more than the counter"],["Duration","About 10 minutes online"],["Responsible","Bern residents' services (deregistration), Winterthur residents' registry (registration)"]],
+      steps:["On eumzug.swiss, enter your old address (Bern) and your new address (Winterthur) and start the check.","Have ready: passport or ID card, AHV/AVS number (13 digits), rental contract or move-in confirmation, card or Twint for CHF\u00a040.","Have your health insurance card or policy ready: Winterthur requires this proof at registration.","Complete deregistration in Bern and registration in Winterthur online; a visit to the counter in Bern is not necessary.","Tax office: Winterthur receives the new address automatically; you are liable to tax there from 1 January of the year of arrival."],
+      who:[1,1,1],note:"The municipalities (Bern, Winterthur) handle deregistration and registration, eUmzugCH is the joint service of the federal government, cantons and municipalities, and taxes are levied by the canton of Zurich together with the city of Winterthur.",
+      src:["eUmzugCH – report your move online (federal government, cantons, municipalities)","City of Winterthur – moving and arriving in Winterthur","City of Bern – arrival, moving and departure","City of Winterthur – taxes when moving, arriving and leaving"]},
+    passport:{intro:"As an adult living in Bern, you apply for a passport and/or ID card online at schweizerpass.ch and then go to your booked appointment, e.g. at the ID document centre in Bern (Laupenstrasse 18A). The combined passport + ID card costs CHF\u00a0158 and is valid for 10 years.",
+      facts:[["Cost","Adults: ID card CHF\u00a070, passport CHF\u00a0145, combination CHF\u00a0158. Children up to 18: ID 35, passport 65, combination 78 (postage included)."],["Validity","Adults 10 years, children and young people up to 18: 5 years. Extending is not possible, you order a new one."],["Duration","Delivery within 10 working days after the appointment at the latest, by registered mail. Taking it with you at the counter is not possible."],["Appointment","Mandatory, you must appear in person (photo, fingerprints for the passport)."]],
+      steps:["Fill in the online application at schweizerpass.ch (personal e-mail address required). After review, you receive an e-mail to choose an appointment.","Book an appointment at one of the 7 ID document centres in the canton of Bern (mandatory): online or by phone on 031 635 40 00, Mon–Fri.","Bring your old document, but no passport photo: the photo is taken on site.","Pay the fee on site (card, Twint or cash). Children come with a legal guardian and their ID.","The document arrives within 10 working days by registered mail at the address you gave."],
+      who:[1,1,0],note:"The federal government (fedpol) publishes prices, validity and delivery times; in the canton of Bern, the passport and ID card service (Office for Resident Services) records your data at the ID document centres.",
+      src:["fedpol: prices, validity and delivery times","Canton of Bern: ID documents, prices and validity","Canton of Bern: ID document centres and appointments","Canton of Bern: attending the appointment, documents to bring"]},
+    tax:{intro:"In the canton of Bern, the tax return is generally due on 15 March; online you can extend it free of charge until 15 July, and until 15 November at the latest. For tax period 2025, because of an IT outage, 30 November 2026 applies exceptionally as the final deadline.",
+      facts:[["Deadline","Bern: 15 March (self-employed: 15 May). Zurich and Geneva: 31 March."],["Cost","Bern online: free until 15 July, CHF\u00a020 until 15 Sept., CHF\u00a040 until 15 Nov. In writing/by phone: CHF\u00a020/40/60. Geneva: CHF\u00a020/40/60."],["Duration","Bern: until 15 Nov. at the latest; 2025 return exceptionally until 30 Nov. 2026 (IT outage)."],["Responsible","Bern: cantonal tax administration. Zurich: municipal tax office. Geneva: Administration fiscale cantonale."]],
+      steps:["Have the letter about the tax return, your salary certificate (from your employer) and supporting documents ready.","Before the deadline, in BE-Login (with AGOV): “Fristverlängerung erfassen” (record extension), choose the new deadline and confirm.","Save the confirmation yourself: none is sent by post or e-mail.","Fill in the return in TaxMe-Online and submit it with supporting documents (or hand it in printed at your municipality of residence).","Too late? A reminder fee of CHF\u00a060 is possible; once the reminder period has expired, no extension is possible any more."],
+      who:[1,1,1],note:"The cantonal tax administration receives your return and also assesses the direct federal tax on behalf of the federal government (supervised by the FTA); the municipality sets its own tax rate.",
+      src:["Canton of Bern: extending the deadline as a private individual","Canton of Bern: guidance, filing deadline","Canton of Zurich: tax return for private individuals","Canton of Geneva: request an extension"]},
+    ahv:{intro:"A man born in 1962 who lives in Thun reaches the reference age of 65 in 2027 and claims his pension from the compensation office 3–4 months earlier. With a birthday on 15 March 2027, the pension starts on 1 April 2027; the claim is filed from about December 2026.",
+      facts:[["Reference age","Men 65. Women: born 1961 = 64 y 3 m, 1962 = 64 y 6 m, 1963 = 64 y 9 m, from 1964 = 65. Pension from the following month."],["Deadline","Claim 3–4 months before the pension starts. Early drawing from 63 (–6.8\u00a0% for 1 year), deferral 1–5 years (+5.2\u00a0% to +31.5\u00a0%)."],["Pension","With a full contribution period CHF\u00a01,260 to 2,520 per month; couple at most CHF\u00a03,780. Plus the 13th pension from December 2026."],["Responsible","The compensation office your employer is affiliated with (in the canton of Bern e.g. the Bern compensation office, AK Bern)."]],
+      steps:["Find out which compensation office is responsible: employees ask their employer, self-employed people the office they last settled with.","Fill in and submit form 318.370 “Claim for an old-age pension” online 3–4 months before the pension starts.","Early drawing: apply by the end of the previous month at the latest. Deferral: tick the box on the form no later than 1 year after the reference age.","Upload the enclosures with the form or send them by post; the compensation office obtains the documents needed and calculates the pension.","Paid monthly (AK Bern: 4th working day, e.g. 4 December 2026); the 13th pension in December comes without an application."],
+      who:[1,1,0],note:"The federal government (FSIO) sets the rules and publishes the leaflets; the compensation office (in the canton of Bern, AK Bern) receives your claim, calculates and pays the pension.",
+      src:["Bern compensation office: AHV/AVS old-age pension","ahv-iv.ch: Leaflet 3.01 Old-age pensions (as of 1.1.2026)","ch.ch: Retirement – from when?","FSIO: Stabilising the AHV (AHV 21)"]},
+    alv:{intro:"Register at the RAV (regional employment centre) in your region no later than the first day for which you want unemployment benefit, fastest online in Job-Room. Example in Thun: aged 30, monthly salary of 6,500 francs, no children, 14 months of contributions gives 70\u00a0%, at most 260 daily allowances and 10 waiting days.",
+      facts:[["Deadline","Register with the RAV no later than the 1st day of unemployment, better still during the notice period."],["Amount","70\u00a0% of insured earnings. 80\u00a0% with children under 25, earnings up to 3,797 francs or a disability pension of 40\u00a0% or more."],["Duration","At least 12 months of contributions within 2 years. 260 daily allowances, more with a longer contribution period. Framework period: 2 years."],["Responsible","RAV (registration, counselling) and the unemployment fund you choose (payment)."]],
+      steps:["Register online: use the e-service for registering with the RAV in Job-Room, or go in person to the RAV in your region.","Look for work already during the notice period and document every application. Your RAV sets how many.","Choose an unemployment fund, submit the “application for unemployment benefit” and employer certificates (2 years).","First interview at the RAV (invitation within 15 days): bring your AHV/AVS or health insurance card, ID and proof of your job search efforts.","Submit the “information from the insured person” form every month. Daily allowances usually follow in the next month."],
+      who:[1,1,0],note:"SECO supervises unemployment insurance; RAV, unemployment funds and cantonal offices carry it out; you register directly with the RAV.",
+      src:["arbeit.swiss: registration","arbeit.swiss (SECO): FAQ on unemployment benefit","ch.ch: Unemployment in Switzerland","Fedlex: Unemployment Insurance Act (AVIG, SR 837.0), Art. 9, 17, 18, 22, 27"]}
   }
 }
 };
@@ -1469,6 +1541,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
 
 const hero=$('#hero'), hdr=$('.site-header'), form=$('#askForm'), input=$('#q'), ph=$('#ph'), chipsEl=$('#chips'), card=$('#card');
 const answerEl=$('#answer'), aQ=$('#aQ'), think=$('#think'), aText=$('#aText'), aSteps=$('#aSteps');
+const aGlance=$('#aGlance'), aFacts=$('#aFacts'), aStand=$('#aStand');
 const aWho=$('#aWho'), whoRow=$('#whoRow'), whoNote=$('#whoNote'), aSrc=$('#aSrc'), srcList=$('#srcList'), newQ=$('#newQ'), sr=$('#sr');
 
 /* button ripple origin */
@@ -1524,7 +1597,7 @@ function buildFooter(){
 function resetAnswer(){
   hero.classList.remove('answering');
   answerEl.classList.remove('open');
-  aQ.textContent=''; aText.textContent=''; aSteps.textContent=''; think.hidden=true;
+  aQ.textContent=''; aText.textContent=''; aSteps.textContent=''; aFacts.textContent=''; aGlance.hidden=true; aStand.textContent=''; think.hidden=true;
   aWho.hidden=true; aWho.classList.remove('in'); aSrc.hidden=true; aSrc.classList.remove('in'); newQ.hidden=true; newQ.classList.remove('in'); sr.textContent='';
 }
 
@@ -1544,11 +1617,15 @@ $$('.lang button').forEach(b=>b.addEventListener('click',()=>{ if(b.dataset.l!==
 /* ---------- ask ---------- */
 function route(q){
   const s=q.toLowerCase();
-  /* match at the START of a word, so that e.g. "Hundesteuer" is not taken for "Steuer" */
+  /* match at the START of a word, so that e.g. "Hundesteuer" is not taken for "Steuer";
+     (?![\p{L}]) after short acronyms makes them whole-word matches */
   const at=r=>new RegExp('(?:^|[^\\p{L}\\p{N}])(?:'+r+')','u').test(s);
-  if(at('umzug|umzieh|ziehe|zügel|ummeld|déménag|demenag|trasloc|trasfer|moving|move(?![\\p{L}])|relocat'))return 'move';
-  if(at('pass(?![\\p{L}])|passeport|passaporto|passport|ausweis|identit|id(?![\\p{L}\\p{N}])|carte d|identity'))return 'passport';
-  if(!/hund|chien|\\bcan[ei]\\b|\\bdogs?\\b/.test(s)&&at('steuer|impôt|impot|imposta|tax(?:es|ation)?(?![\\p{L}])|fiscal'))return 'tax';
+  /* priority: specific life events first; a bare "anmeld(en)" or "wohnsitz" only means "move" when nothing more specific matches */
+  if(at('arbeitslos|stellenverlust|jobverlust|stelle verlo|job verlo|arbeitsplatz verlo|entlassen|(?:ich|mir) wurde gek(?:ü|ue)ndigt|mir (?:ist )?gek(?:ü|ue)ndigt|(?:stelle|job|arbeitsstelle) gek(?:ü|ue)ndigt|taggeld|stempel|rav(?![\\p{L}])|alv(?![\\p{L}])|ch[ôo]mage|orp(?![\\p{L}])|urc(?![\\p{L}])|licenci|perdu (?:mon|ma|son|mes) (?:emploi|travail|poste|place|job)|sans emploi|sans travail|disoccup|senza lavoro|perso (?:il|un|il mio) (?:lavoro|posto|impiego)|licenziat|unemploy|jobless|lost (?:my|the|his|her) job|laid off|made redundant|got fired|fired(?![\\p{L}])|out of work|without a job'))return 'alv';
+  if(at('ahv|avs(?![\\p{L}])|altersrente|rente|pension|fr(?:ü|ue)hpension|referenzalter|vorbezug|rentenaufschub|aufschub (?:der )?(?:ahv|rente)|ausgleichskasse|retraite|caisse de compensation|pensione|pensionamento|rendita|et[àa] pensionabile|cassa di compensazione|retire|old.age'))return 'ahv';
+  if(at('pass(?![\\p{L}])|p(?:ä|ae)sse|reisepass|passfoto|passstelle|passb(?:ü|ue)ro|passeport|passaporto|passport|ausweis|identit|id(?![\\p{L}\\p{N}])|carte d.identit|carte nationale|identity|biometri'))return 'passport';
+  if(!at('hund|chien|can[ei](?![\\p{L}])|dogs?(?![\\p{L}])')&&at('steuer|imp[ôo]t|impost|tax(?:es|ation)?(?![\\p{L}])|fiscal|taxme|etax|lohnausweis|fristverl|fristerstreck|frist verl|dichiarazione dei redditi'))return 'tax';
+  if(at('umzug|umzieh|ziehe|z(?:ü|ue)gel|umgezogen|ummeld|wegzug|zuzug|abmeld|adress(?:ä|ae)nd|adresse (?:ä|ae)nder|wohnsitz|einwohnerkontrolle|einwohnerdienst|eumzug|d[ée]m[ée]nag|emm[ée]nag|changement d.adresse|changer d.adresse|trasloc|trasfer|cambio (?:di )?indirizzo|cambiare indirizzo|moving|moved(?![\\p{L}])|move(?![\\p{L}])|relocat|change (?:of|my) address|new address'))return 'move';
   return null;
 }
 function goAsk(){
@@ -1577,6 +1654,13 @@ async function ask(q){
   const spans=tx(A.intro).split(' ').map(w=>{const s=document.createElement('span'); s.className='sw'; s.textContent=w; aText.append(s,' '); return s;});
   for(const s of spans){ if(id!==run)return; s.classList.add('in'); await sleep(26); }
   sr.textContent=A.intro; settleCard();
+  if(A.facts){
+    $('#glLbl').textContent=T().glance;
+    A.facts.forEach(([k,v])=>{const d=document.createElement('div'); const dt=document.createElement('dt'); const dd=document.createElement('dd'); dt.textContent=tx(k); dd.textContent=tx(v); d.append(dt,dd); aFacts.append(d);});
+    aGlance.hidden=false; await sleep(120); if(id!==run)return;
+    for(const d of $$('div',aFacts)){ if(id!==run)return; d.classList.add('in'); settleCard(); await sleep(110); }
+    await sleep(60); if(id!==run)return;
+  }
   if(A.steps){
     A.steps.forEach(t=>{const li=document.createElement('li'); li.textContent=tx(t); aSteps.append(li);});
     for(const li of $$('li',aSteps)){ if(id!==run)return; await sleep(130); li.classList.add('in'); settleCard(); }
@@ -1588,11 +1672,13 @@ async function ask(q){
     for(const [i,li] of $$('li',whoRow).entries()){ await sleep(160); if(id!==run)return; if(A.who[i])li.classList.add('on'); }
     await sleep(200); if(id!==run)return;
     srcList.textContent=''; $('#srcLbl').textContent=T().src;
-    A.src.forEach(t=>{
-      const li=document.createElement('li'); const a=document.createElement('a'); a.href='#';
-      a.innerHTML='<span></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg>';
-      $('span',a).textContent=t; a.addEventListener('click',e=>e.preventDefault()); li.append(a); srcList.append(li);
+    A.src.forEach((t,i)=>{
+      const li=document.createElement('li'); const a=document.createElement('a');
+      a.href=SRC_URL[key][i]; a.target='_blank'; a.rel='noopener noreferrer';
+      a.innerHTML='<span></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5h4.5V7M13.5 2.5L7.5 8.5M12 9.5v3a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3"/></svg><span class="sr-only"></span>';
+      const sp=$$('span',a); sp[0].textContent=tx(t); sp[1].textContent=' ('+T().newtab+')'; li.append(a); srcList.append(li);
     });
+    aStand.textContent=tx(T().stand);
     aSrc.hidden=false; await sleep(30); if(id!==run)return; aSrc.classList.add('in'); settleCard();
   }
   await sleep(250); if(id!==run)return;
