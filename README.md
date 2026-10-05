@@ -4,6 +4,6 @@ Privates Konzept von Bilal Simsek, Bern. Kein Angebot und keine offizielle Seite
 
 Bildnachweis:
 - Matterhorn: «Sunrise on the Matterhorn», Jean Schmitt, CC BY-SA 4.0, via Wikimedia Commons (bearbeitet).
-- Bundeshaus (freigestellt, bearbeitet): «Bundeshaus Bundesplatz Bern», Baikonur, CC BY-SA 3.0, via Wikimedia Commons. Die bearbeitete Fassung steht unter derselben Lizenz (CC BY-SA 3.0).
+- Bundeshaus (freigestellt, bearbeitet): «Bundeshaus Bern 20180827-2», Suicasmo, CC BY-SA 4.0, via Wikimedia Commons. Die bearbeitete Fassung steht unter derselben Lizenz (CC BY-SA 4.0).
 - Vorschaubild und Fotos zusätzlich: «Summer evening in Bern», Karlheinz Klingbeil, CC BY 4.0, via Wikimedia Commons (bearbeitet).
 - Schrift Switzer, Indian Type Foundry (Fontshare), ITF Free Font License.
