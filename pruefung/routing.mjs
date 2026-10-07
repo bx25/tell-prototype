@@ -69,7 +69,13 @@ const FAELLE = [
   ['Ich habe im Kanton Bern eine Parkbusse bekommen, finde sie aber ungerecht. Was kann ich tun und bis wann muss ich zahlen?', 'obu'],
   ['Ich bin vor Monaten ausgezogen und der Vermieter gibt die Mietkaution nicht frei. Wie komme ich an mein Geld?', 'kau'],
   ['Ich habe gekündigt und mein Chef gibt mir kein Arbeitszeugnis. Habe ich ein Recht darauf?', 'zeug'],
+  ['Ich bin seit zwei Wochen krank. Muss mein Arbeitgeber mir weiter den Lohn zahlen und wie lange?', 'krl'],
   // Abgrenzungen, die heute stimmen
+  ['Lohnfortzahlung bei Krankheit', 'krl'],
+  ['certificat médical dès le premier jour', 'krl'],
+  ['salario in caso di malattia', 'krl'],
+  ['Do I get sick pay?', 'krl'],
+  ['Ich will die Krankenkasse wechseln', 'kk'],
   ['Zwischenzeugnis verlangen', 'zeug'],
   ['certificat de travail', 'zeug'],
   ['certificato di lavoro', 'zeug'],
@@ -263,7 +269,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
