@@ -35,7 +35,11 @@ const FAELLE = [
   ['Ich bin angestellt und bekomme im Frühling ein Kind. Wie viel Mutterschaftsentschädigung erhalte ich und wie beantrage ich sie?', 'mse'],
   ['Ich bin angestellt und werde im Frühling Vater. Wie lange ist der Vaterschaftsurlaub und wie bekomme ich die Entschädigung?', 'pat'],
   ['Ich bin 17, wohne in Bern und will Auto fahren lernen. Wie bekomme ich den Lernfahrausweis?', 'lfa'],
+  ['Ich wohne in der Stadt Bern und brauche eine Wohnsitzbestätigung. Wo bekomme ich sie und was kostet sie?', 'wsb'],
   // Abgrenzungen, die heute stimmen
+  ['Wohnsitzbescheinigung bestellen', 'wsb'],
+  ['attestation de domicile', 'wsb'],
+  ['Neuen Wohnsitz anmelden', 'move'],
   ['Theorieprüfung buchen', 'lfa'],
   ['Nothelferkurs für den Lernfahrausweis', 'lfa'],
   ['permis d’élève conducteur', 'lfa'],
@@ -104,7 +108,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
