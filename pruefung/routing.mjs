@@ -34,7 +34,12 @@ const FAELLE = [
   ['Ich wohne in Bern und bin seit Monaten krank und arbeitsunfähig. Wie melde ich mich bei der IV an?', 'iv'],
   ['Ich bin angestellt und bekomme im Frühling ein Kind. Wie viel Mutterschaftsentschädigung erhalte ich und wie beantrage ich sie?', 'mse'],
   ['Ich bin angestellt und werde im Frühling Vater. Wie lange ist der Vaterschaftsurlaub und wie bekomme ich die Entschädigung?', 'pat'],
+  ['Ich bin 17, wohne in Bern und will Auto fahren lernen. Wie bekomme ich den Lernfahrausweis?', 'lfa'],
   // Abgrenzungen, die heute stimmen
+  ['Theorieprüfung buchen', 'lfa'],
+  ['Nothelferkurs für den Lernfahrausweis', 'lfa'],
+  ['permis d’élève conducteur', 'lfa'],
+  ['Ausländischen Führerausweis umtauschen', 'drv'],
   ['Papiurlaub tageweise beziehen', 'pat'],
   ['congé paternité', 'pat'],
   ['Vaterschaftsurlaub als Selbstständiger', 'pat'],
@@ -79,7 +84,7 @@ const FAELLE = [
   ['Hochzeit im Standesamt planen', 'wed'],
   ['Wie tausche ich meinen Führerschein aus den USA um?', 'drv'],
   ['Führerausweis: neue Adresse nach Umzug melden', 'move'],
-  ['Ich brauche einen Lernfahrausweis', null],
+  ['Ich brauche einen Lernfahrausweis', 'lfa'],
   ['Muss ich mit meinem Führerausweis aus Brasilien eine Kontrollfahrt machen?', 'drv'],
   ['Échanger mon permis de conduire étranger', 'drv'],
   ['How do I exchange my foreign driving licence?', 'drv'],
@@ -99,7 +104,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
