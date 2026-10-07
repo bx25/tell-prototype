@@ -31,6 +31,7 @@ const FAELLE = [
   ['Wir wohnen in der Stadt Bern und wollen unser Kind in die Kita geben. Bekommen wir Betreuungsgutscheine und wie beantragen wir sie?', 'kita'],
   ['Ich wohne in der Stadt Bern und komme mit meinem Geld nicht mehr durch. Wie beantrage ich Sozialhilfe?', 'soz'],
   ['Ich bin pensioniert, wohne in Thun und meine AHV-Rente reicht nicht. Kann ich Ergänzungsleistungen beantragen?', 'el'],
+  ['Ich wohne in Bern und bin seit Monaten krank und arbeitsunfähig. Wie melde ich mich bei der IV an?', 'iv'],
   // Abgrenzungen, die heute stimmen
   ['Hundesteuer bezahlen', 'dog'],
   ['Bekomme ich als Selbstständige Kinderzulagen?', 'fam'],
@@ -52,6 +53,7 @@ const FAELLE = [
   ['Kinderzulage für mein Kind in der Kita', 'fam'],
   ['Anmeldung beim Sozialdienst', 'soz'],
   ['EL zur IV beantragen', 'el'],
+  ['Ich habe eine IV-Rente', 'iv'],
   ['Ich ziehe mit meinem Hund um', 'dog'],
   ['Ich ziehe um, muss ich die Krankenkasse informieren?', 'move'],
   ['Ich will eine Firma gründen', 'biz'],
@@ -83,14 +85,13 @@ const FAELLE = [
 // Wer einen davon behebt, verschiebt ihn nach oben in FAELLE.
 const OFFEN = [
   ['Pensionskasse auszahlen lassen', null],               // landet bei AHV (2. statt 1. Säule)
-  ['Ich habe eine IV-Rente', null],                       // landet bei AHV
   ['Ich möchte meine Adresse bei der Steuerverwaltung ändern', 'move'], // landet bei Steuerfrist
   ['Ich verliere meine Stelle', 'alv'],                   // kein Treffer, Fallback
   ['Stellensuche nach Kündigung', 'alv'],                 // kein Treffer, Fallback
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
