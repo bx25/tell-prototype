@@ -55,7 +55,14 @@ const FAELLE = [
   ['Ich wohne im Kanton Bern und will an der Aare fischen. Welches Patent brauche ich und was kostet es?', 'fis'],
   ['Ich brauche einen Grundbuchauszug für mein Haus im Kanton Bern. Wie bestelle ich ihn und was kostet er?', 'gba'],
   ['Ich wohne in Bern und brauche einen Personenstandsausweis. Wo bestelle ich ihn und was kostet er?', 'zst'],
+  ['Ich habe einen Zahlungsbefehl erhalten, schulde aber nichts. Wie erhebe ich Rechtsvorschlag und bis wann?', 'rv'],
   // Abgrenzungen, die heute stimmen
+  ['Wie lange habe ich Zeit für den Rechtsvorschlag?', 'rv'],
+  ['faire opposition au commandement de payer', 'rv'],
+  ['Ho ricevuto un precetto esecutivo', 'rv'],
+  ['I received a payment order', 'rv'],
+  ['Wie leite ich eine Betreibung ein?', 'bet'],
+  ['Mein Kunde zahlt seine Rechnung nicht', 'bet'],
   ['Heimatschein bestellen', 'zst'],
   ['Familienausweis bestellen', 'zst'],
   ['commander un acte d’origine', 'zst'],
@@ -97,7 +104,7 @@ const FAELLE = [
   ['Nummernschilder deponieren', 'abm'],
   ['Auto abmelden', 'abm'],
   ['Nummernschilder für mein neues Auto', 'car'],
-  ['Ich habe einen Zahlungsbefehl erhalten', 'bet'],
+  ['Ich habe einen Zahlungsbefehl erhalten', 'rv'],
   ['commandement de payer', 'bet'],
   ['Betreibungsauszug für die Wohnungssuche', 'debt'],
   ['Ich habe einen Schlüssel gefunden', 'fund'],
@@ -181,7 +188,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
