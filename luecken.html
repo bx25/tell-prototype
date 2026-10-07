@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#EEE9E0">
+<title>Lücken in offiziellen Angaben – Tell (privates Konzept, Prototyp)</title>
+<meta name="description" content="Tell hält fest, wo offizielle Angaben zu seinen sechs Themen Lücken, Unklarheiten oder Abweichungen zeigen. Beobachtungen mit Quellen, Stand 7. Oktober 2026. Keine offizielle Seite.">
+<!-- tell-shared:head:start -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tell (Konzeptprototyp)">
+<meta property="og:title" content="Lücken in offiziellen Angaben – Tell (privates Konzept, Prototyp)">
+<meta property="og:description" content="Tell hält fest, wo offizielle Angaben zu seinen sechs Themen Lücken, Unklarheiten oder Abweichungen zeigen. Beobachtungen mit Quellen, Stand 7. Oktober 2026. Keine offizielle Seite.">
+<meta property="og:url" content="https://bx25.github.io/tell-prototype/luecken.html">
+<meta property="og:image" content="https://bx25.github.io/tell-prototype/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bundeshaus Bern, Konzeptprototyp Tell (privates Konzept, keine offizielle Seite)">
+<meta property="og:locale" content="de_CH">
+<meta property="og:locale:alternate" content="fr_CH">
+<meta property="og:locale:alternate" content="it_CH">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lücken in offiziellen Angaben – Tell (privates Konzept, Prototyp)">
+<meta name="twitter:description" content="Tell hält fest, wo offizielle Angaben zu seinen sechs Themen Lücken, Unklarheiten oder Abweichungen zeigen. Beobachtungen mit Quellen, Stand 7. Oktober 2026. Keine offizielle Seite.">
+<meta name="twitter:image" content="https://bx25.github.io/tell-prototype/assets/og-image.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<script>window.TELL_CONTACT="bxsk25@pm.me";</script>
+<style id="tell-fonts">
+@font-face{font-family:"Switzer";src:url("assets/fonts/Switzer-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url("assets/fonts/Switzer-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url("assets/fonts/Switzer-600.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+</style>
+<!-- tell-shared:head:end -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23D8001A'/%3E%3Cpath fill='%23fff' d='M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#EEE9E0;
+  --snow:#FBF9F5;
+  --ink:#1A2531;
+  --granit:#59636D;
+  --red:#D8001A;
+  --red-d:#B00015;
+  --rule:rgba(26,37,49,.13);
+  --inset:clamp(8px,1.1vw,16px);
+  --pad:clamp(20px,4vw,64px);
+  --r-xl:clamp(26px,3vw,44px);
+  --r-lg:24px;
+  --sh:0 1px 2px rgba(26,37,49,.05),0 28px 64px -28px rgba(26,37,49,.34);
+  --sec:clamp(88px,12vw,200px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --ease-io:cubic-bezier(.76,0,.24,1);
+  --serif:"Gambetta","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  font-family:"Switzer","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+[hidden]{display:none!important}
+html{background:var(--paper);color:var(--ink);-webkit-text-size-adjust:100%}
+body{font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;background:var(--paper)}
+button,input{font:inherit;color:inherit}
+a{color:inherit}
+svg{display:block}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.skip{position:absolute;left:var(--pad);top:-80px;z-index:100;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;transition:top .2s}
+.skip:focus{top:12px}
+
+/* glass */
+.glass{background:rgba(251,249,245,.66);-webkit-backdrop-filter:blur(20px) saturate(1.25);backdrop-filter:blur(20px) saturate(1.25);border:1px solid rgba(255,255,255,.6);box-shadow:0 10px 32px -14px rgba(26,37,49,.3)}
+
+/* header */
+.site-header{position:fixed;z-index:60;top:calc(var(--inset) + 10px);left:calc(var(--inset) + 12px);right:calc(var(--inset) + 12px);display:flex;align-items:center;justify-content:space-between;gap:12px;pointer-events:none}
+.site-header>*{pointer-events:auto}
+.brand{display:inline-flex;align-items:center;gap:10px;padding:7px 18px 7px 8px;border-radius:999px;text-decoration:none;font-family:var(--serif);font-weight:500;font-size:1.5rem;line-height:1;letter-spacing:-.02em}
+.brand svg{width:30px;height:30px}
+.notice{padding:9px 16px;border-radius:999px;font-size:.8125rem;line-height:1.2;color:var(--granit);text-align:center;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.site-header.past .notice{opacity:0;pointer-events:none}
+.head-r{display:flex;align-items:center;gap:8px;padding:5px;border-radius:999px}
+.lang{display:flex;gap:2px}
+.lang button{border:0;background:transparent;border-radius:999px;padding:8px 12px;font-size:.8125rem;font-weight:500;color:var(--granit);cursor:pointer;transition:background .3s,color .3s}
+.lang button:hover{color:var(--ink)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn.head-ask{visibility:hidden;padding:.65em 0;font-size:.875rem;opacity:0;transform:scale(.9);pointer-events:none;width:0;padding-inline:0;margin:0 -4px 0 0;overflow:hidden;transition:opacity .4s var(--ease),transform .4s var(--ease),width .45s var(--ease),padding .45s var(--ease)}
+.btn.head-ask.show{visibility:visible;opacity:1;transform:none;pointer-events:auto;width:auto;padding-inline:1.1em}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;padding:.95em 1.5em;background:var(--ink);color:var(--paper);border:0;border-radius:999px;font-weight:500;font-size:.9375rem;line-height:1.1;cursor:pointer;overflow:hidden;isolation:isolate;text-decoration:none;white-space:nowrap;transition:transform .3s var(--ease),color .3s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--red);border-radius:inherit;transform:scale(0);transform-origin:var(--ox,50%) var(--oy,50%);transition:transform .6s var(--ease);z-index:-1}
+.btn:hover::before,.btn:focus-visible::before{transform:scale(1.6)}
+.btn:active{transform:scale(.96)}
+.btn[disabled]{cursor:default;opacity:.7}
+.btn[disabled]::before{transform:scale(0)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(26,37,49,.2)}
+.btn.ghost:hover,.btn.ghost:focus-visible{color:#fff;box-shadow:none}
+
+
+.ask{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;background:#fff;border:1px solid rgba(26,37,49,.1);border-radius:999px;padding:6px;box-shadow:0 2px 0 rgba(26,37,49,.02),0 14px 30px -18px rgba(26,37,49,.3);transition:box-shadow .4s,border-color .3s}
+.ask:focus-within{border-color:rgba(26,37,49,.45);box-shadow:0 0 0 5px rgba(216,0,26,.14),0 14px 30px -18px rgba(26,37,49,.3)}
+.ask.nudge{animation:nudge .45s var(--ease)}
+@keyframes nudge{20%{transform:translateX(-6px)}50%{transform:translateX(5px)}80%{transform:translateX(-2px)}}
+.ask-field{position:relative;min-width:0}
+.ask input{width:100%;height:58px;border:0;background:transparent;padding:0 clamp(16px,1.8vw,26px);font-size:clamp(1rem,1.35vw,1.2rem);letter-spacing:-.01em;outline:none}
+.ph{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.ph span{position:absolute;left:clamp(16px,1.8vw,26px);right:8px;top:50%;margin-top:-.7em;font-size:clamp(1rem,1.35vw,1.2rem);letter-spacing:-.01em;color:var(--granit);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;transform:translateY(60%);opacity:0;transition:transform .7s var(--ease),opacity .5s}
+.ph span.on{transform:none;opacity:1}
+.ph span.off{transform:translateY(-160%);opacity:0}
+.ask.has-value .ph{opacity:0}
+.send{width:58px;height:58px;border-radius:50%;background:var(--red);color:#fff;border:0;cursor:pointer;display:grid;place-items:center;overflow:hidden;transition:background .3s,transform .3s var(--ease)}
+.send svg{width:24px;height:24px;transition:transform .45s var(--ease)}
+.send:hover,.send:focus-visible{background:var(--red-d)}
+.send:hover svg{transform:translateX(4px)}
+.send:active{transform:scale(.92)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:rgba(255,255,255,.7);border:1px solid rgba(26,37,49,.1);border-radius:999px;padding:.62em 1.05em;font-size:.9rem;cursor:pointer;transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease)}
+.chip:hover,.chip:focus-visible{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip:active{transform:scale(.96)}
+
+/* answer */
+.answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .9s var(--ease)}
+.answer.open{grid-template-rows:1fr}
+.answer-in{overflow:hidden;min-height:0}
+.a-body{padding:34px clamp(6px,.8vw,12px) 6px}
+.a-q{font-size:.9375rem;color:var(--granit);margin-bottom:16px}
+.think{display:flex;align-items:center;gap:14px;color:var(--granit);font-size:.9375rem}
+.think svg{width:28px;height:28px}
+.think rect{fill:var(--red);transform-box:fill-box;transform-origin:center}
+.think .v{animation:growv 1.1s var(--ease-io) infinite alternate}
+.think .h{animation:growh 1.1s var(--ease-io) .25s infinite alternate}
+@keyframes growv{from{transform:scaleY(.1)}to{transform:scaleY(1)}}
+@keyframes growh{from{transform:scaleX(.1)}to{transform:scaleX(1)}}
+.a-text{font-family:var(--serif);font-size:clamp(1.15rem,1.6vw,1.45rem);line-height:1.32;letter-spacing:-.012em;max-width:34em}
+.sw{opacity:0;transition:opacity .35s}
+.sw.in{opacity:1}
+.a-glance{margin-top:24px}
+.a-glance .who-lbl{margin-bottom:6px}
+.a-facts{margin:0;padding:0}
+.a-facts>div{display:grid;grid-template-columns:minmax(5.6rem,7.6rem) 1fr;column-gap:clamp(12px,2vw,20px);padding:11px 0;border-top:1px solid var(--rule);opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.a-facts>div:last-child{border-bottom:1px solid var(--rule)}
+.a-facts>div.in{opacity:1;transform:none}
+.a-facts dt{font-size:.8125rem;font-weight:500;letter-spacing:.01em;color:var(--granit);padding-top:.16em}
+.a-facts dd{margin:0;font-size:.9375rem;line-height:1.4;min-width:0;overflow-wrap:anywhere}
+@media (max-width:560px){.a-facts>div{grid-template-columns:1fr;row-gap:2px;padding:10px 0}.a-facts dt{padding-top:0}}
+.a-steps{list-style:none;padding:0;margin-top:26px;counter-reset:s}
+.a-glance+.a-steps{margin-top:22px}
+.a-steps li{display:grid;grid-template-columns:44px 1fr;padding:15px 0;border-top:1px solid var(--rule);opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.a-steps li:last-child{border-bottom:1px solid var(--rule)}
+.a-steps li::before{counter-increment:s;content:counter(s);color:var(--red);font-weight:500;font-feature-settings:"tnum"}
+.a-steps li.in{opacity:1;transform:none}
+.a-who{margin-top:28px}
+.who-lbl{font-size:.9375rem;color:var(--granit);margin-bottom:10px}
+.who-row{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0}
+.who-row li{display:inline-flex;align-items:center;gap:10px;padding:.65em 1.1em;border-radius:999px;font-weight:500;font-size:.9375rem;box-shadow:inset 0 0 0 1px rgba(26,37,49,.14);color:var(--granit);transition:background .6s var(--ease),color .6s var(--ease),box-shadow .6s}
+.who-row li::before{content:"";width:8px;height:8px;border-radius:50%;background:rgba(26,37,49,.2);transition:background .6s}
+.who-row li.on{background:var(--ink);color:var(--paper);box-shadow:none}
+.who-row li.on::before{background:var(--red)}
+.who-note{margin-top:12px;font-size:.9375rem;color:var(--granit)}
+.a-src{margin-top:26px}
+.a-src ul{list-style:none;padding:0}
+.a-src li a{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--rule);text-decoration:none;font-size:.9375rem;transition:padding .35s var(--ease),color .25s}
+.a-src li:last-child a{border-bottom:1px solid var(--rule)}
+.a-src li a:hover{padding-left:8px;color:var(--red)}
+.a-src li a svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(--granit);transition:color .25s}
+.a-src li a:hover svg{color:var(--red)}
+.a-src li a span{min-width:0;overflow-wrap:anywhere}
+.a-stand{margin-top:12px;font-size:.8125rem;line-height:1.45;color:var(--granit)}
+.a-src,.a-who,#newQ{opacity:0;transition:opacity .7s var(--ease)}
+.a-src.in,.a-who.in,#newQ.in{opacity:1}
+#newQ{margin-top:26px}
+
+
+
+/* ============ Frag Tell ============ */
+body{background:var(--paper)}
+main{outline:none}
+:root{--hh:84px}
+.fq-home{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;padding:calc(var(--inset) + clamp(96px,17svh,170px)) var(--pad) 0;overflow:clip}
+.fq-greet{font-family:var(--serif);font-weight:400;font-size:clamp(2.5rem,6.6vw,5.8rem);line-height:1;letter-spacing:-.035em;text-align:center;text-wrap:balance;animation:fqUp .9s var(--ease) both}
+.fq-sub{margin-top:clamp(12px,1.4vw,20px);color:var(--granit);font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.35;text-align:center;max-width:32em;text-wrap:balance;animation:fqUp .9s .12s var(--ease) both}
+.fq-card{margin-top:clamp(26px,4vw,48px);width:min(100%,720px);padding:clamp(16px,2vw,26px);border-radius:var(--r-xl);background:rgba(251,249,245,.82);-webkit-backdrop-filter:blur(26px) saturate(1.2);backdrop-filter:blur(26px) saturate(1.2);border:1px solid rgba(255,255,255,.7);box-shadow:var(--sh);animation:fqUp .9s .24s var(--ease) both;position:relative;z-index:2}
+.fq-home.answering .fq-card{background:rgba(251,249,245,.96)}
+.fq-card .chips{justify-content:center}
+.chip.more{border-style:dashed;background:transparent}
+.fq-note{margin-top:16px;max-width:36em;text-align:center;font-size:.8125rem;line-height:1.45;color:var(--granit);position:relative;z-index:2}
+.fq-sky{margin-top:auto;padding-top:clamp(28px,5vw,64px);width:100%;display:flex;justify-content:center;pointer-events:none;transition:opacity .6s var(--ease)}
+.fq-sky img{display:block;width:auto;max-width:min(980px,100%);height:auto;max-height:min(44svh,500px);object-fit:contain;filter:drop-shadow(0 14px 22px rgba(26,37,49,.2));margin-bottom:-2px}
+.fq-home.answering .fq-sky{opacity:.18}
+@keyframes fqUp{from{opacity:0;transform:translateY(14px)}}
+
+.fq-view{margin:calc(var(--inset) + var(--hh)) var(--inset) var(--inset)}
+.fq-sheet{border-radius:var(--r-xl);background:var(--snow);padding:clamp(40px,6vw,96px) var(--pad) clamp(48px,7vw,110px);min-height:60svh}
+.fq-in{max-width:68rem;margin-inline:auto}
+.fq-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8125rem;font-weight:500;color:var(--granit);margin-bottom:18px}
+.fq-eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
+.fq-h{font-family:var(--serif);font-weight:400;font-size:clamp(2.3rem,5.2vw,4.6rem);line-height:1.04;letter-spacing:-.03em;text-wrap:balance;outline:none}
+.fq-lead{margin-top:20px;max-width:40em;font-size:clamp(1.0625rem,1.5vw,1.25rem);line-height:1.5;color:var(--granit)}
+.fq-b{margin-top:clamp(36px,5vw,68px)}
+.fq-b>h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.55rem,2.5vw,2.2rem);line-height:1.1;letter-spacing:-.02em}
+.fq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px;margin-top:22px}
+.fq-tile{display:flex;flex-direction:column;gap:10px;padding:clamp(18px,2vw,26px);border-radius:var(--r-lg);background:var(--paper)}
+.fq-tile h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.12;letter-spacing:-.015em}
+.fq-tile p{color:var(--granit);font-size:.9375rem;line-height:1.45}
+.fq-tile .fq-meta{font-size:.8125rem;font-weight:500;color:var(--ink);display:inline-flex;align-items:center;gap:8px}
+.fq-tile .fq-meta::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}
+.fq-tile .btn{margin-top:auto;align-self:flex-start;font-size:.875rem;padding:.8em 1.25em}
+.fq-tile .fq-gap{flex:1}
+.fq-list{list-style:none;padding:0;margin-top:18px}
+.fq-list li{padding:14px 0 14px 26px;border-top:1px solid var(--rule);position:relative;line-height:1.5;max-width:52em}
+.fq-list li:last-child{border-bottom:1px solid var(--rule)}
+.fq-list li::before{content:"";position:absolute;left:4px;top:1.15em;width:8px;height:8px;border-radius:50%;background:rgba(26,37,49,.22)}
+.fq-note2{margin-top:12px;font-size:.875rem;color:var(--granit)}
+.fq-day{display:grid;grid-template-columns:minmax(8.5rem,14rem) 1fr;gap:12px clamp(16px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-top:1px solid var(--rule)}
+.fq-day:last-child{border-bottom:1px solid var(--rule)}
+.fq-day time{font-family:var(--serif);font-size:clamp(1.25rem,1.9vw,1.7rem);letter-spacing:-.015em;line-height:1.15}
+.fq-day h3{font-size:.8125rem;font-weight:500;color:var(--granit);letter-spacing:.01em;margin:0 0 6px}
+.fq-day h3:not(:first-child){margin-top:18px}
+.fq-day ul{list-style:none;padding:0}
+.fq-day li{padding:3px 0;max-width:46em;line-height:1.5}
+.fq-ph{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:22px;counter-reset:ph}
+.fq-ph article{padding:clamp(18px,2vw,26px);border-radius:var(--r-lg);background:var(--paper);display:flex;flex-direction:column;gap:8px}
+.fq-ph .n{font-family:var(--serif);font-size:2.2rem;line-height:1;color:var(--red);letter-spacing:-.03em}
+.fq-ph h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.12;letter-spacing:-.015em}
+.fq-ph .e{font-size:.8125rem;font-weight:500;color:var(--granit)}
+.fq-ph p{font-size:.9375rem;line-height:1.45;color:var(--ink)}
+.fq-links{list-style:none;padding:0;margin-top:18px}
+.fq-links li a{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--rule);text-decoration:none;transition:padding .35s var(--ease),color .25s}
+.fq-links li:last-child a{border-bottom:1px solid var(--rule)}
+.fq-links li a:hover,.fq-links li a:focus-visible{padding-left:8px;color:var(--red)}
+.fq-links li a svg{width:18px;height:18px;flex:none;margin-top:3px}
+.hnav a[aria-current="page"]{background:rgba(26,37,49,.08);color:var(--ink)}
+.tfoot#tfoot{padding-bottom:clamp(28px,4vw,48px)}
+.tfoot-links+.tfoot-links{margin-top:2px}
+.tfoot-h{margin-top:14px;font-size:.8125rem;color:rgba(238,233,224,.6)}
+.tfoot a[aria-current="page"]{text-decoration:underline;text-underline-offset:4px}
+.tfoot-credit{margin-top:10px;max-width:64em;font-size:.8125rem;color:rgba(238,233,224,.5);overflow-wrap:anywhere}
+
+/* responsive (aus index.html übernommen) */
+@media (max-width:900px){
+  .notice{order:3;flex:1 0 100%;max-width:none;padding:7px 12px;font-size:.75rem}
+  .site-header{flex-wrap:wrap;row-gap:8px}
+  :root{--hh:112px}
+  .fq-home{padding-top:calc(var(--inset) + 128px)}
+}
+@media (max-width:700px){
+  .brand{font-size:1.3rem}
+  .head-r{padding:4px}
+  .lang button{padding:7px 9px}
+  .ask input{height:52px}
+  .send{width:52px;height:52px}
+  .fq-day{grid-template-columns:1fr}
+  .fq-greet{font-size:clamp(2.3rem,11vw,3.4rem)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+</style>
+
+<!-- tell-shared:css:start -->
+<style>
+/* ---- nav menu button + panel ---- */
+.menubtn{display:none;align-items:center;justify-content:center;flex:none;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:transparent;color:var(--ink,#1A2531);cursor:pointer;transition:background .3s,color .3s,transform .25s}
+.menubtn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;display:block}
+.menubtn:hover,.menubtn[aria-expanded="true"]{background:var(--ink,#1A2531);color:var(--paper,#EEE9E0)}
+.menubtn:active{transform:scale(.94)}
+.tmenu{position:fixed;z-index:65;right:calc(var(--inset,12px) + 12px);top:76px;min-width:230px;max-width:calc(100vw - 24px);padding:8px;border-radius:26px;display:grid;gap:2px}
+.tmenu{background:rgba(251,249,245,.96)}
+.tmenu[hidden]{display:none!important}
+.tmenu a{display:flex;align-items:center;min-height:44px;padding:0 16px;border-radius:18px;text-decoration:none;color:var(--ink,#1A2531);font-size:.9375rem;font-weight:500;transition:background .25s,color .25s}
+.tmenu a:hover,.tmenu a:focus-visible{background:var(--ink,#1A2531);color:var(--paper,#EEE9E0)}
+.tmenu a[aria-current="page"]{background:rgba(26,37,49,.07);color:var(--granit,#59636D)}
+/* ---- shared footer (pages without their own footer) ---- */
+.tfoot{margin:var(--inset,12px);padding:clamp(28px,4vw,48px) var(--pad,24px) 112px;border-radius:var(--r-xl,32px);background:var(--ink,#1A2531);color:rgba(238,233,224,.74);font-size:.9375rem;line-height:1.55}
+.tfoot a{color:var(--paper,#EEE9E0)}
+.tfoot :focus-visible{outline-color:var(--paper,#EEE9E0)}
+.tfoot-links{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:0 22px}
+.tfoot-links a{display:inline-flex;align-items:center;min-height:40px;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 calc(50% + 11px)/0 1px no-repeat;transition:background-size .4s}
+.tfoot-links a:hover,.tfoot-links a:focus-visible{background-size:100% 1px}
+.tfoot-sender{margin-top:10px;color:var(--paper,#EEE9E0);font-weight:500}
+.tfoot-sender a{text-underline-offset:3px;overflow-wrap:anywhere}
+.tfoot-legal{margin-top:10px;max-width:64em;font-size:.8125rem;color:rgba(238,233,224,.6)}
+/* ---- index footer additions ---- */
+.f-sender{grid-column:1/-1;color:var(--paper,#EEE9E0);font-weight:500;margin:0}
+.f-sender a{text-underline-offset:3px;overflow-wrap:anywhere}
+.f-credit{overflow-wrap:anywhere}
+.f-legal{grid-column:1/-1;color:rgba(238,233,224,.6);font-size:.8125rem;max-width:64em;margin:0}
+/* ---- index header nav ---- */
+.hnav{display:none;align-items:center;gap:2px;padding:5px;border-radius:999px}
+.hnav a{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;font-size:.8125rem;font-weight:500;color:var(--granit,#59636D);text-decoration:none;white-space:nowrap;transition:background .3s,color .3s}
+.hnav a:hover,.hnav a:focus-visible{background:var(--ink,#1A2531);color:var(--paper,#EEE9E0)}
+.site-header .menubtn{display:inline-flex}
+@media (min-width:901px){.site-header .notice{position:static;transform:none;margin:0 auto;flex:0 1 auto}}
+@media (min-width:1360px){.hnav{display:flex}.site-header .menubtn{display:none}}
+/* ---- pages with .top header: pills collapse into the menu on narrower screens ---- */
+@media (max-width:1180px){.top .pl-nav{display:none!important}.top .menubtn{display:inline-flex}}
+/* ---- tap targets (>= 40px) on small screens ---- */
+@media (max-width:900px){
+  .lang button{min-height:40px;display:inline-flex;align-items:center;justify-content:center}
+  .site-header .lang button{padding:0 9px}
+  .top .lang button{padding:0 6px;min-width:34px}
+  .pillbtn{min-height:40px;justify-content:center}
+  .chip,.rt-tab,.tp{min-height:40px}
+  .f-links a{display:inline-flex;align-items:center;min-height:40px}
+}
+/* ---- chat greeting bubble never auto-covers content on small screens ---- */
+.tbub .x{width:28px;height:28px;top:-10px;left:-10px}
+@media (max-width:560px){.tbub{display:none!important}}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,3vw,36px)}
+.hero-ctas .hero-cta{margin-top:0}
+.hero-cta2{background:rgba(251,249,245,.55);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(26,37,49,.24);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.hero-cta2:hover,.hero-cta2:focus-visible{color:#fff;box-shadow:none}
+</style>
+<!-- tell-shared:css:end -->
+<style>
+/* ============ Lücken ============ */
+.lk-in{max-width:68rem;margin-inline:auto}
+.lk-status{margin-top:clamp(28px,4vw,44px);max-width:52rem;padding:clamp(18px,2.2vw,28px);border-radius:var(--r-lg);background:var(--paper);box-shadow:inset 3px 0 0 var(--red)}
+.lk-status h2{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.15;letter-spacing:-.015em}
+.lk-status p{margin-top:8px;color:var(--ink);font-size:.9375rem;line-height:1.5;max-width:46em}
+.lk-topics{margin-top:clamp(28px,4vw,44px)}
+.lk-topics h2{font-size:.8125rem;font-weight:500;color:var(--granit);letter-spacing:.01em;margin-bottom:10px}
+.lk-chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.lk-chips a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:.55em 1.05em;border-radius:999px;background:var(--paper);border:1px solid rgba(26,37,49,.1);text-decoration:none;font-size:.9rem;transition:background .3s,color .3s,border-color .3s}
+.lk-chips a:hover,.lk-chips a:focus-visible{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lk-chips .n{font-weight:500;font-feature-settings:"tnum";color:var(--red)}
+.lk-chips a:hover .n,.lk-chips a:focus-visible .n{color:var(--paper)}
+.lk-group{margin-top:clamp(40px,5.5vw,76px);scroll-margin-top:calc(var(--hh) + var(--inset) + 12px)}
+.lk-group>h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.55rem,2.5vw,2.2rem);line-height:1.1;letter-spacing:-.02em}
+.lk-group>.lk-cnt{margin-top:4px;font-size:.8125rem;font-weight:500;color:var(--granit)}
+.lk-cards{display:grid;gap:14px;margin-top:18px}
+.lk-card{max-width:56rem;padding:clamp(18px,2.4vw,32px);border-radius:var(--r-lg);background:var(--paper)}
+.lk-tag{display:inline-flex;align-items:center;gap:8px;font-size:.8125rem;font-weight:500;color:var(--granit)}
+.lk-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}
+.lk-tag[data-t="unc"]::before{background:var(--ink)}
+.lk-tag[data-t="mis"]::before{background:transparent;box-shadow:inset 0 0 0 2px var(--red)}
+.lk-card h3{margin-top:8px;font-family:var(--serif);font-weight:500;font-size:clamp(1.3rem,1.9vw,1.6rem);line-height:1.15;letter-spacing:-.018em;text-wrap:balance}
+.lk-lbl{margin-top:20px;margin-bottom:6px;font-size:.8125rem;font-weight:500;color:var(--granit);letter-spacing:.01em}
+.lk-card p.lk-p{margin-top:8px;font-size:.9375rem;line-height:1.55;max-width:46em;overflow-wrap:anywhere}
+.lk-card p.lk-p:first-of-type{margin-top:0}
+.lk-nk{margin-top:20px;padding:14px 16px;border-radius:16px;background:var(--snow)}
+.lk-nk .lk-lbl{margin-top:0}
+.lk-nk p{font-size:.9375rem;line-height:1.55;max-width:46em;overflow-wrap:anywhere}
+.lk-src{list-style:none;padding:0}
+.lk-src li a{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid var(--rule);text-decoration:none;font-size:.9375rem;transition:padding .35s var(--ease),color .25s}
+.lk-src li:last-child a{border-bottom:1px solid var(--rule)}
+.lk-src li a:hover,.lk-src li a:focus-visible{padding-left:8px;color:var(--red)}
+.lk-src li a svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(--granit)}
+.lk-src li a:hover svg,.lk-src li a:focus-visible svg{color:var(--red)}
+.lk-src li a span{min-width:0;overflow-wrap:anywhere}
+.lk-src .u{display:block;font-size:.8125rem;color:var(--granit);margin-top:1px}
+.lk-meth{margin-top:clamp(44px,6vw,84px)}
+.lk-meth>h2,.lk-cta>h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.55rem,2.5vw,2.2rem);line-height:1.1;letter-spacing:-.02em}
+.lk-cta{margin-top:clamp(40px,5vw,72px);padding:clamp(20px,2.6vw,34px);border-radius:var(--r-lg);background:var(--paper);max-width:56rem}
+.lk-cta p{margin-top:10px;max-width:42em;color:var(--granit);line-height:1.5}
+.lk-cta .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.lk-cta .btn{font-size:.9375rem;white-space:normal;text-align:center;max-width:100%}
+@media (max-width:560px){.lk-card{padding:18px 16px}.lk-src li a{padding:12px 0}}
+</style>
+</head>
+<body>
+<!-- tell-shared:gate:start -->
+<!-- Hinweis: privates Konzept, keine offizielle Seite -->
+<style>
+html.dsc-lock{overflow:hidden!important}
+.dsc{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:clamp(12px,3vw,32px);background:rgba(238,233,224,.62);-webkit-backdrop-filter:blur(16px) saturate(1.1);backdrop-filter:blur(16px) saturate(1.1);font-family:Switzer,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:#1A2531;animation:dscBg .5s ease both;transition:opacity .5s ease,backdrop-filter .5s ease,-webkit-backdrop-filter .5s ease}
+.dsc.out{opacity:0;pointer-events:none}
+.dsc *{box-sizing:border-box}
+.dsc-card{position:relative;width:min(560px,100%);max-height:calc(100svh - 24px);overflow:auto;padding:clamp(22px,4vw,36px);border-radius:clamp(26px,4vw,36px);background:rgba(251,249,245,.97);box-shadow:0 44px 90px -40px rgba(26,37,49,.5),0 0 0 1px rgba(255,255,255,.8) inset,0 0 0 1px rgba(26,37,49,.06);animation:dscCard .55s cubic-bezier(.2,.8,.2,1) both;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.dsc.out .dsc-card{transform:translateY(-12px) scale(.98);opacity:0}
+.dsc-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dsc-mark{display:inline-flex;align-items:center;gap:10px;font-family:Gambetta,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-weight:500;font-size:1.375rem;line-height:1;letter-spacing:-.02em}
+.dsc-mark svg{width:28px;height:28px;display:block}
+.dsc-lang{display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(26,37,49,.06)}
+.dsc-lang button{border:0;background:transparent;border-radius:999px;min-height:40px;min-width:40px;padding:0 10px;font:inherit;font-size:.8125rem;font-weight:500;color:#5A6674;cursor:pointer;transition:background .3s,color .3s}
+.dsc-lang button:hover{color:#1A2531}
+.dsc-lang button[aria-pressed="true"]{background:#1A2531;color:#EEE9E0}
+.dsc h2{margin:clamp(20px,3.4vw,28px) 0 0;font-family:Gambetta,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-weight:500;font-size:clamp(1.75rem,5.4vw,2.5rem);line-height:1.08;letter-spacing:-.025em;text-wrap:balance}
+.dsc-lead{margin:14px 0 0;font-size:clamp(1rem,2.2vw,1.0625rem);line-height:1.55;color:#2B3846}
+.dsc-go{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:48px;margin-top:clamp(20px,3vw,26px);padding:.9em 1.6em;border:0;border-radius:999px;background:#1A2531;color:#EEE9E0;font:inherit;font-size:1rem;font-weight:500;cursor:pointer;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.dsc-go::before{content:"";position:absolute;inset:0;background:#D8001A;border-radius:inherit;transform:scale(0);transform-origin:var(--ox,50%) var(--oy,50%);transition:transform .6s cubic-bezier(.2,.8,.2,1);z-index:-1}
+.dsc-go:hover::before,.dsc-go:focus-visible::before{transform:scale(1.6)}
+.dsc-go:active{transform:scale(.97)}
+.dsc-go:focus-visible,.dsc-lang button:focus-visible,.dsc-foot a:focus-visible{outline:2px solid #D8001A;outline-offset:3px}
+.dsc-go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.dsc-go:hover svg{transform:translateX(4px)}
+.dsc-foot{margin:16px 0 0;font-size:.875rem;line-height:1.5;color:#4A5663}
+.dsc-foot a{color:inherit;text-underline-offset:3px}
+.dsc-rise{animation:dscRise .8s calc(.25s + var(--i,0)*.07s) cubic-bezier(.2,.8,.2,1) both}
+@keyframes dscBg{from{opacity:0}}
+@keyframes dscCard{from{opacity:0;transform:translateY(24px) scale(.97)}}
+@keyframes dscRise{from{opacity:0;transform:translateY(12px)}}
+@media (prefers-reduced-motion:reduce){.dsc,.dsc-card,.dsc-rise{animation:none!important}.dsc,.dsc-card{transition-duration:.01s}}
+@media (max-width:520px){.dsc{padding:10px}.dsc-go{width:100%}}
+</style>
+<script>
+(function(){
+  var KEY='tellDisclaimerSeen';
+  try{if(sessionStorage.getItem(KEY)==='1')return}catch(e){}
+  var C={"de": {"h": "Privates Konzept, keine offizielle Seite", "lead": "Tell ist ein Konzeptprototyp von Bilal Simsek. Es steht in keiner Verbindung zu Bund, Kantonen oder Gemeinden. Die Fallbeispiele (Personen, Dokumente, Beträge) sind frei erfunden; die Kennzahlen auf der Projektseite stammen aus öffentlichen Quellen und sind dort belegt.", "go": "Verstanden, weiter", "foot": "Offizielle Informationen finden Sie auf ", "aria": "Wichtiger Hinweis"}, "fr": {"h": "Concept privé, pas un site officiel", "lead": "Tell est un prototype conceptuel de Bilal Simsek. Il n'a aucun lien avec la Confédération, les cantons ou les communes. Les cas d'exemple (personnes, documents, montants) sont entièrement fictifs ; les chiffres clés de la page Projet proviennent de sources publiques et y sont référencés.", "go": "Compris, continuer", "foot": "Vous trouverez les informations officielles sur ", "aria": "Avis important"}, "it": {"h": "Concetto privato, non un sito ufficiale", "lead": "Tell è un prototipo concettuale di Bilal Simsek. Non ha alcun legame con la Confederazione, i Cantoni o i Comuni. I casi d'esempio (persone, documenti, importi) sono del tutto inventati; i dati chiave nella pagina Progetto provengono da fonti pubbliche e vi sono documentati.", "go": "Ho capito, continua", "foot": "Le informazioni ufficiali si trovano su ", "aria": "Avviso importante"}, "en": {"h": "Private concept, not an official website", "lead": "Tell is a concept prototype by Bilal Simsek. It has no connection to the Confederation, the cantons or the municipalities. The case examples (people, documents, amounts) are entirely fictional; the key figures on the project page come from public sources and are referenced there.", "go": "Understood, continue", "foot": "Official information is available at ", "aria": "Important notice"}};
+  var L=['de','fr','it','en'],q=new URLSearchParams(location.search).get('lang');
+  var pageLang=L.indexOf(q)>-1?q:'de';
+  var nav=(navigator.language||'de').slice(0,2).toLowerCase();
+  var cur=L.indexOf(q)>-1?q:(L.indexOf(nav)>-1?nav:'de');
+  var ARW='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var MARK='<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#D8001A"/><path fill="#fff" d="M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z"/></svg>';
+  var esc=function(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var root=document.createElement('div');root.className='dsc';root.setAttribute('data-notr','');root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');
+  var card=document.createElement('div');card.className='dsc-card';root.appendChild(card);
+  var inerted=[],closed=false;
+  function paint(l,first){
+    var t=C[l];cur=l;root.setAttribute('aria-labelledby','dscH');root.setAttribute('aria-describedby','dscD');
+    root.lang=l==='de'?'de-CH':l==='fr'?'fr-CH':l==='it'?'it-CH':'en';
+    var r=first?' dsc-rise':'';
+    var langbar='<div class="dsc-lang'+r+'" style="--i:1" role="group" aria-label="Language">'+L.map(function(x){return '<button type="button" data-l="'+x+'" lang="'+x+'" aria-pressed="'+(x===l)+'">'+x.toUpperCase()+'</button>'}).join('')+'</div>';
+    card.innerHTML='<div class="dsc-top"><span class="dsc-mark'+r+'" style="--i:0">'+MARK+'Tell</span>'+langbar+'</div>'+
+      '<h2 id="dscH" class="'+r.trim()+'" style="--i:2">'+esc(t.h)+'</h2>'+
+      '<p id="dscD" class="dsc-lead'+r+'" style="--i:3">'+esc(t.lead)+'</p>'+
+      '<button class="dsc-go'+r+'" style="--i:4" type="button" id="dscGo"><span>'+esc(t.go)+'</span>'+ARW+'</button>'+
+      '<p class="dsc-foot'+r+'" style="--i:5">'+esc(t.foot)+'<a href="https://www.ch.ch" target="_blank" rel="noopener noreferrer">ch.ch</a></p>';
+  }
+  function close(){
+    closed=true;
+    try{sessionStorage.setItem(KEY,'1')}catch(e){}
+    if(cur!==pageLang){var u=new URL(location.href);u.searchParams.set('lang',cur);location.replace(u.toString());return}
+    root.classList.add('out');
+    inerted.forEach(function(n){n.inert=false});
+    var mn=document.getElementById('main')||document.querySelector('main');if(mn){try{mn.focus({preventScroll:true})}catch(e){}}
+    document.documentElement.classList.remove('dsc-lock');
+    setTimeout(function(){root.remove()},700);
+  }
+  root.addEventListener('click',function(e){
+    var b=e.target.closest('.dsc-lang button');
+    if(b){paint(b.dataset.l,false);var nb=root.querySelector('.dsc-lang [data-l="'+b.dataset.l+'"]');if(nb)nb.focus({preventScroll:true});return}
+    var g=e.target.closest('#dscGo');
+    if(g){var rc=g.getBoundingClientRect();g.style.setProperty('--ox',(e.clientX-rc.left)+'px');g.style.setProperty('--oy',(e.clientY-rc.top)+'px');close()}
+  });
+  root.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){e.preventDefault();e.stopPropagation();return}   /* the notice cannot be dismissed with Escape */
+    if(e.key!=='Tab')return;
+    var f=[].filter.call(root.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'),function(x){return !x.disabled});
+    if(!f.length)return;var a=f[0],z=f[f.length-1],act=document.activeElement;
+    if(!root.contains(act)){e.preventDefault();a.focus();return}
+    if(e.shiftKey&&act===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&act===z){e.preventDefault();a.focus()}
+  });
+  paint(cur,true);
+  document.documentElement.classList.add('dsc-lock');
+  document.body.appendChild(root);
+  function lockBg(){if(closed)return;[].forEach.call(document.body.children,function(n){if(n!==root&&n.tagName!=='SCRIPT'&&n.tagName!=='STYLE'&&!n.inert){n.inert=true;inerted.push(n)}})}
+  lockBg();if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',lockBg);
+  var go=root.querySelector('#dscGo');if(go)go.focus({preventScroll:true});
+})();
+</script>
+<!-- tell-shared:gate:end -->
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="cross" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#D8001A"/><path fill="#fff" d="M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z"/></symbol>
+</svg>
+
+<a class="skip" href="#main" id="skipLink">Zum Inhalt springen</a>
+
+<header class="site-header">
+  <a class="brand glass" id="brandLink" href="index.html" aria-label="Tell"><svg aria-hidden="true"><use href="#cross"/></svg>Tell</a>
+  <nav class="hnav glass" id="hnav" aria-label="Seiten"></nav>
+  <p class="notice glass" id="banner">Konzeptprototyp, keine offizielle Seite</p>
+  <div class="head-r glass">
+    <button class="menubtn" id="tmenuBtn" type="button" aria-expanded="false" aria-controls="tmenu" aria-label="Menü"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <div class="lang" role="group" aria-label="Sprache">
+      <button type="button" data-l="de" aria-pressed="true" lang="de" aria-label="Deutsch">DE</button>
+      <button type="button" data-l="fr" aria-pressed="false" lang="fr" aria-label="Français">FR</button>
+      <button type="button" data-l="it" aria-pressed="false" lang="it" aria-label="Italiano">IT</button>
+      <button type="button" data-l="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+    </div>
+  </div>
+</header>
+<div class="tmenu glass" id="tmenu" hidden role="navigation" aria-label="Seiten"></div>
+
+<main id="main" tabindex="-1">
+  <div class="fq-view">
+    <section class="fq-sheet"><div class="lk-in" id="lkIn"></div></section>
+  </div>
+</main>
+
+<footer class="tfoot" id="tfoot">
+  <p class="tfoot-h" id="fPagesH"></p>
+  <ul class="tfoot-links" id="fPages"></ul>
+  <p class="tfoot-sender" id="fSender"></p>
+  <p class="tfoot-legal" id="fLegal"></p>
+</footer>
+
+<script>window.TELL_CONTACT="bxsk25@pm.me";</script>
+<script>
+const CHROME={"de":{"nav":["Bürgersicht","Behördensicht","Projekt","Startseite","Menü","Seiten"],"f_links":["Kontakt","Behördensicht","Bürgersicht","Projekt"],"f_sender":"Privates Konzept von Bilal Simsek, Bern. Kein Angebot einer Behörde. Rückmeldungen willkommen: {c}","f_legal":"Datenschutz, Nutzungsbedingungen und Barrierefreiheit sind im Konzept nicht ausgearbeitet. Der Prototyp sammelt keine Personendaten, setzt keine Cookies und verwendet keine Analyse-Tools; lokal im Browser wird nur gemerkt, dass Sie den Hinweis gelesen haben.","banner_s":"Konzeptprototyp, keine offizielle Seite","skip":"Zum Inhalt springen","page":"Frag Tell","f_pages_h":"Weitere Seiten von Tell","f_views":["Abdeckung","Neuigkeiten","Für Behörden","Mitmachen"],"lk":"Lücken"},"fr":{"nav":["Vue citoyenne","Vue des autorités","Projet","Accueil","Menu","Pages"],"f_links":["Contact","Vue des autorités","Vue citoyenne","Projet"],"f_sender":"Concept privé de Bilal Simsek, Berne. Pas une offre d'une autorité. Vos retours sont les bienvenus : {c}","f_legal":"Protection des données, conditions d'utilisation et accessibilité ne sont pas développées dans le concept. Le prototype ne collecte aucune donnée personnelle, ne dépose aucun cookie et n'utilise aucun outil d'analyse ; seul le fait que vous avez lu l'avertissement est mémorisé localement dans le navigateur.","banner_s":"Prototype conceptuel, pas un site officiel","skip":"Aller au contenu","page":"Demandez à Tell","f_pages_h":"Autres pages de Tell","f_views":["Couverture","Actualités","Pour les autorités","Participer"],"lk":"Lacunes"},"it":{"nav":["Vista cittadini","Vista delle autorità","Progetto","Pagina iniziale","Menu","Pagine"],"f_links":["Contatto","Vista delle autorità","Vista cittadini","Progetto"],"f_sender":"Concetto privato di Bilal Simsek, Berna. Non è un'offerta di un'autorità. I Suoi riscontri sono benvenuti: {c}","f_legal":"Protezione dei dati, condizioni d'uso e accessibilità non sono elaborate nel concetto. Il prototipo non raccoglie dati personali, non imposta cookie e non utilizza strumenti di analisi; nel browser viene memorizzato solo, in locale, che Lei ha letto l'avviso.","banner_s":"Prototipo concettuale, non un sito ufficiale","skip":"Vai al contenuto","page":"Chiedi a Tell","f_pages_h":"Altre pagine di Tell","f_views":["Copertura","Novità","Per le autorità","Partecipare"],"lk":"Lacune"},"en":{"nav":["Citizen view","Authority view","Project","Home","Menu","Pages"],"f_links":["Contact","Authority view","Citizen view","Project"],"f_sender":"Private concept by Bilal Simsek, Bern. Not an offer by any authority. Feedback welcome: {c}","f_legal":"Privacy, terms of use and accessibility are not worked out in the concept. The prototype collects no personal data, sets no cookies and uses no analytics tools; the browser only remembers locally that you have read the notice.","banner_s":"Concept prototype, not an official site","skip":"Skip to content","page":"Ask Tell","f_pages_h":"More pages of Tell","f_views":["Coverage","News","For authorities","Get involved"],"lk":"Gaps"}};
+const DATA={"de":{"title":"Lücken in offiziellen Angaben – Tell (privates Konzept, Prototyp)","desc":"Tell hält fest, wo offizielle Angaben zu seinen sechs Themen Lücken, Unklarheiten oder Abweichungen zeigen. Beobachtungen mit Quellen, Stand 7. Oktober 2026. Keine offizielle Seite.","page":"Lücken","h":"Lücken in offiziellen Angaben","lead":"Tell liest für seine sechs Themen offizielle Seiten und hält hier fest, wo sie Lücken, Unklarheiten oder Abweichungen zeigen: zwischen Bund, Kanton und Gemeinde, zwischen Erklärseite und Gesetz, oder zwischen zwei Seiten derselben Stelle. Das Ziel ist, Behörden zu helfen, ihre Angaben zu verbessern. Es sind Beobachtungen, keine Vorwürfe.","statusH":"Stand 7. Oktober 2026: erst ein Anfang","statusT":"Aufgeführt sind 8 Beobachtungen, verteilt auf die 6 Themen. Das ist keine vollständige Prüfung: Tell hat bisher nur die Seiten gelesen, die es als Quellen nutzt, und einige Gesetzestexte. Bitte prüfen: Seiten können sich seit dem Abruf geändert haben.","topicsH":"Nach Thema","topics":["Umzug melden","Pass & ID","Steuererklärung, Frist verlängern","AHV-Rente anmelden","Arbeitslos melden","Krankenkasse wechseln"],"types":{"dev":"Abweichung","unc":"Unklarheit","mis":"Fehlender Hinweis"},"obsH":"Beobachtung","nkH":"Was Bürgerinnen und Bürger deshalb nicht wissen","srcH":"Quellen, abgerufen am 7.10.2026","newtab":"öffnet in neuem Tab","methH":"So entstehen die Einträge","meth":["Jeder Eintrag nennt seine Quellen mit Adresse und Abrufdatum (7. Oktober 2026).","Gelesen wurde nur, was öffentlich zugänglich ist. Nichts wurde ausprobiert, und bei Ämtern wurde nicht nachgefragt.","Tell beurteilt nicht, welche Angabe richtig ist. Massgebend sind die zuständigen Stellen.","Zitate stammen aus den deutschsprachigen Originalseiten. In den anderen Sprachen sind sie sinngemäss übersetzt."],"ctaH":"Lücke gefunden, oder ist ein Eintrag überholt?","ctaT":"Wenn eine Stelle eine Angabe schon angepasst hat, nimmt Tell den Eintrag gern heraus. Hinweise und weitere Beobachtungen sind willkommen.","ctaBtn":"Hinweis senden","ctaGov":"Für Behörden","mailSubj":"Tell: Hinweis zur Seite Lücken","e":{"umzug-abmeldung":{"h":"Abmeldung: vor dem Umzug oder bis 14 Tage danach?","obs":["Stadt Winterthur, «Umzug & Neu in Winterthur»: Beim Zuzug gilt «Sie müssen sich innert 14 Tagen ab Zuzug bei der Einwohnerkontrolle Winterthur anmelden. Vorher müssen Sie sich bei der bisherigen Wohngemeinde abmelden.» Beim Wegzug steht auf derselben Seite: «… denken Sie bitte daran, sich innerhalb von 14 Tagen bei der Einwohnerkontrolle abzumelden.»","Stadt Bern, «Zuzug, Umzug und Wegzug»: Für die Anmeldung gilt «innert 14 Tagen». Für die Abmeldung nennt die Seite weder eine Frist noch einen Zeitpunkt, nur den Weg über eUmzugCH."],"nk":"Aus den beiden Seiten lässt sich nicht ablesen, ob die Abmeldung vor dem Umzug erfolgen muss oder auch bis 14 Tage danach genügt. Winterthur weist ausserdem darauf hin: Wer sich bei der Gemeinde schon persönlich oder telefonisch abgemeldet hat, kann eUmzug nicht mehr nutzen.","src":["Stadt Winterthur: Umzug & Neu in Winterthur","Stadt Bern: Zuzug, Umzug und Wegzug"]},"id-neu":{"h":"Neue biometrische ID ab 2. November 2026: kein Hinweis auf der Preisseite des Bundes","obs":["fedpol, «Preise, Gültigkeit und Lieferfristen»: Die Seite führt Identitätskarte und «Provisorischer Pass» auf. Die neue biometrische Identitätskarte und der Begriff «Notpass» kommen dort nicht vor.","Andere offizielle Stellen nennen beides: fedpol, «Laufende Projekte» (Einführung «ist auf den 2. November 2026 geplant», Bezug freiwillig); Medienmitteilung des Bundesrats vom 26. August 2026 (Gebühren bleiben gleich wie bei der heutigen Karte ohne Chip; der «provisorische Pass» heisst ab 2. November 2026 «Notpass»); Kanton Bern («Bis zur Einführung im November können noch keine Termine für eine Biometrische Identitätskarte gebucht werden»)."],"nk":"Wer jetzt eine ID plant und die Seite mit Preisen und Gültigkeit liest, erfährt nicht, dass es ab November zwei Varianten gibt, dass der Preis laut Bundesrat gleich bleibt und dass der provisorische Pass umbenannt wird. Die Gültigkeitsdauer der neuen Karte ist in den geprüften Quellen nicht angegeben.","src":["fedpol: Preise, Gültigkeit und Lieferfristen","fedpol: Laufende Projekte (biometrische Identitätskarte)","Bundesrat: Medienmitteilung vom 26.8.2026 (Revision der Ausweisverordnung)","Kanton Bern: Ausweise, Preise und Gültigkeit"]},"id-eu":{"h":"ID ohne Chip in der EU: zwei verschiedene Bedingungen","obs":["Medienmitteilung des Bundesrats (26.8.2026) und Kanton Bern: Nicht biometrische Identitätskarten, die vor der Einführung der neuen Karte ausgestellt werden, sind «für Reisen in die EU bis zu ihrem Ablaufdatum gültig».","fedpol, FAQ zur biometrischen Identitätskarte (Stand Oktober 2026): Eine Karte ohne Chip bleibt bis zum Ablaufdatum für EU-Reisen gültig, wenn sie spätestens ein Jahr nach Inkrafttreten des aktualisierten Personenfreizügigkeitsabkommens ausgestellt wird. Dieses Abkommen ist «noch nicht in Kraft». Im Beispiel der FAQ: Inkrafttreten am 1. Januar 2028, Verwendung längstens bis 31. Dezember 2038."],"nk":"Die beiden Aussagen schliessen sich nicht zwingend aus, nennen aber verschiedene Bedingungen: Ausstellung vor der Einführung der neuen Karte, bzw. Ausstellung bis ein Jahr nach Inkrafttreten eines Abkommens, das noch nicht gilt. Wer eine ID ohne Chip hat oder bestellen will und in die EU reist, kann nicht eindeutig lesen, bis wann sie dort gilt und ob das vom Abkommen abhängt.","src":["Bundesrat: Medienmitteilung vom 26.8.2026 (Revision der Ausweisverordnung)","Kanton Bern: Ausweise, Preise und Gültigkeit","fedpol: FAQ biometrische Identitätskarte (PDF, Stand Oktober 2026)"]},"steuer-be":{"h":"Steuererklärung Bern: Höchstfrist 15. oder 30. November 2026?","obs":["Kanton Bern, Steuerverwaltung, «Frist als Privatperson verlängern»: Ein Hinweis zum Betriebsunterbruch (23. Oktober bis 1. November 2026) nennt als letzte Einreichfrist für die Steuererklärung 2025 neu den 30. November 2026 («automatisch vom 15. auf den 30. November 2026 verlängert»). In der Gebührentabelle derselben Seite steht weiterhin die Fussnote «Die Frist kann höchstens bis 15. November verlängert werden.»","Die Wegleitung «Einreichefrist» (Steuerjahr 2025) erwähnt die Ausnahme nicht. Die Seite taxme.ch/serviceinfo beschreibt sie ausführlich, auch dass dafür nichts beantragt werden muss."],"nk":"Wer nur die Tabelle oder die Wegleitung liest, rechnet mit dem 15. November als letztem Termin. Die Ausnahme steht an anderer Stelle und gilt laut Kanton für die Steuererklärung 2025.","src":["Kanton Bern: Frist als Privatperson verlängern","Kanton Bern: Wegleitung, Einreichefrist (Steuerjahr 2025)","Kanton Bern: Geplanter Betriebsunterbruch (taxme.ch/serviceinfo)"]},"ahv-referenzalter":{"h":"Referenzalter 65 für Frauen: «ab 2028» oder «ab 1. Januar 2029»?","obs":["Merkblatt 3.01 «Altersrenten» (Stand 1.1.2026): Tabelle mit «2028: 65 Jahre, Jahrgang 1964» und der Satz «Ab 2028 gilt für Frauen und Männer ein einheitliches Referenzalter von 65 Jahren». BSV-Seite «AHV 21» (aktualisiert am 28. September 2026): «Ab 2028: Jahrgang 1964 und jünger: 65 Jahre».","Ausgleichskasse Bern, «Altersrente der AHV»: «Ab 1. Januar 2029 gilt für beide Geschlechter das Referenzalter 65.» In ihrer Tabelle steht beim Jahrgang 1964 die Jahreszahl 2029 (beim Jahrgang 1962 «2026-2027», beim Jahrgang 1963 «2027-2028»)."],"nk":"Die Jahreszahlen scheinen Verschiedenes zu meinen (das Jahr, in dem das Referenzalter 65 für den Jahrgang 1964 festgelegt ist, bzw. das Jahr, in dem diese Frauen 65 werden). Erklärt wird das auf den Seiten nicht. Wer wissen will, ab wann welches Referenzalter für ihn oder sie gilt, muss selbst rechnen.","src":["ahv-iv.ch: Merkblatt 3.01 Altersrenten (Stand 1.1.2026)","BSV: Stabilisierung der AHV (AHV 21)","Ausgleichskasse Kanton Bern: Altersrente der AHV"]},"alv-nachweis":{"h":"Arbeitsbemühungen nachweisen: Die Frist steht nur im Formular und in der Verordnung","obs":["AVIV Art. 26 Abs. 2 (SR 837.02): Der Nachweis ist «für jede Kontrollperiode spätestens am fünften Tag des folgenden Monats» einzureichen. Später eingereichte Arbeitsbemühungen «werden nicht mehr berücksichtigt», wenn kein entschuldbarer Grund geltend gemacht wird. Dieselbe Frist steht auf dem Formular 716.007 «Nachweis der persönlichen Arbeitsbemühungen».","Auf den geprüften arbeit.swiss-Seiten (FAQ zur Arbeitslosenentschädigung; Anmeldung und Registrierung; Erste Schritte nach der Kündigung; eServices und Formulare) steht nur, dass die Stellensuche «monatlich» nachzuweisen ist, und für das Formular «Angaben der versicherten Person» «jeweils am Monatsende». Die Frist «5. Tag des Folgemonats» kommt dort nicht vor."],"nk":"Wer die Erklärseiten liest, erfährt nicht, bis wann der Nachweis beim RAV sein muss. Wer die Frist verpasst, riskiert, dass die Bemühungen des Monats nicht zählen (Art. 26 AVIV). Das Datum steht nur im Formular und in der Verordnung.","src":["Fedlex: AVIV (SR 837.02), Art. 26","arbeit.swiss: eServices und Formulare (Formular 716.007)","arbeit.swiss: FAQ zur Arbeitslosenentschädigung","arbeit.swiss: Anmeldung und Registrierung","arbeit.swiss: Erste Schritte nach der Kündigung"]},"kk-franchise":{"h":"Franchise ändern: 15. November, Ende November oder Mitte Dezember?","obs":["Priminfo (BAG), «Wechsel der Krankenkasse»: Für eine tiefere und für eine höhere Franchise gilt je «Informieren Sie die Krankenkasse bis am 15. November.»","Priminfo (BAG), FAQ: Eine tiefere Franchise muss der Kasse «bis spätestens am letzten Arbeitstag im November» schriftlich mitgeteilt werden. Für eine höhere Franchise, die nur auf Jahresbeginn möglich ist, wird «spätestens Mitte Dezember» empfohlen. Rechtsgrundlage: KVV Art. 94 Abs. 1 und 2."],"nk":"Es ist nicht erkennbar, ob der 15. November eine Frist oder eine Empfehlung ist. Die Wechsel-Seite nennt für höhere und tiefere Franchise dasselbe Datum, die FAQ nennt zwei verschiedene.","src":["Priminfo (BAG): Wechsel der Krankenkasse","Priminfo (BAG): FAQ","Fedlex: KVV (SR 832.102), Art. 94"]},"kk-termin":{"h":"Kündigungstermin: feste Daten oder Werktagsregel, einmal oder zweimal pro Jahr?","obs":["Priminfo (BAG), «Wechsel der Krankenkasse» (Leichte Sprache und Originaltext): «Das ist einmal pro Jahr möglich.» und «Die Kündigung muss bis am 30. November bei der Krankenkasse eintreffen.» Ein Wechsel per 1. Juli wird dort nicht erwähnt.","Priminfo (BAG), FAQ: Die Frist gilt am 31. März bzw. 30. November «oder dem letzten Arbeitstag davor, wenn das Datum auf einen Samstag, Sonntag oder Feiertag fällt». Ein Wechsel per 1. Juli (Kündigung bis 31. März) ist möglich, aber nur mit ordentlicher Franchise und freier Wahl des Leistungserbringers. KVG Art. 7 Abs. 1 nennt den Wechsel auf das Ende eines Kalendersemesters ohne diese Einschränkung; sie steht in der Verordnung (u. a. KVV Art. 94)."],"nk":"2026 fällt der 30. November auf einen Montag, der Unterschied wirkt sich dieses Jahr nicht aus. In anderen Jahren (2025: Sonntag) schon. Wer nur die Wechsel-Seite liest, erfährt nichts vom Wechsel per 1. Juli und nichts von der Werktagsregel.","src":["Priminfo (BAG): Wechsel der Krankenkasse","Priminfo (BAG): FAQ","Fedlex: KVG (SR 832.10), Art. 7"]}},"c1":"1 Beobachtung","cn":"{n} Beobachtungen"},"fr":{"title":"Lacunes dans les informations officielles – Tell (concept privé, prototype)","desc":"Tell note où les informations officielles sur ses six thèmes présentent des lacunes, des ambiguïtés ou des divergences. Observations avec sources, état au 7 octobre 2026. Pas un site officiel.","page":"Lacunes","h":"Lacunes dans les informations officielles","lead":"Pour ses six thèmes, Tell lit des pages officielles et note ici où elles présentent des lacunes, des ambiguïtés ou des divergences : entre Confédération, canton et commune, entre une page explicative et la loi, ou entre deux pages d’un même service. Le but est d’aider les autorités à améliorer leurs informations. Ce sont des observations, pas des reproches.","statusH":"État au 7 octobre 2026 : seulement un début","statusT":"Huit observations sont listées, réparties sur les 6 thèmes. Ce n’est pas un examen complet : Tell n’a lu jusqu’ici que les pages qu’il utilise comme sources et quelques textes de loi. À vérifier : les pages ont pu changer depuis la consultation.","topicsH":"Par thème","topics":["Annoncer un déménagement","Passeport & carte d’identité","Déclaration d’impôt, prolonger le délai","Annoncer sa rente AVS","S’inscrire au chômage","Changer de caisse maladie"],"types":{"dev":"Divergence","unc":"Ambiguïté","mis":"Information manquante"},"obsH":"Observation","nkH":"Ce que les habitants ne savent donc pas","srcH":"Sources, consultées le 7.10.2026","newtab":"s’ouvre dans un nouvel onglet","methH":"Comment les entrées sont établies","meth":["Chaque entrée indique ses sources avec l’adresse et la date de consultation (7 octobre 2026).","Seul ce qui est public a été lu. Rien n’a été testé, et aucun service n’a été interrogé.","Tell ne juge pas quelle information est correcte. Font foi les services compétents.","Les citations proviennent des pages originales en allemand. Dans les autres langues, elles sont traduites librement."],"ctaH":"Une lacune trouvée, ou une entrée dépassée ?","ctaT":"Si un service a déjà adapté une information, Tell retire volontiers l’entrée. Remarques et autres observations bienvenues.","ctaBtn":"Envoyer une remarque","ctaGov":"Pour les autorités","mailSubj":"Tell : remarque sur la page Lacunes","e":{"umzug-abmeldung":{"h":"Départ : annoncer avant le déménagement ou jusqu’à 14 jours après ?","obs":["Ville de Winterthour, « Umzug & Neu in Winterthur » : à l’arrivée, « Sie müssen sich innert 14 Tagen ab Zuzug bei der Einwohnerkontrolle Winterthur anmelden. Vorher müssen Sie sich bei der bisherigen Wohngemeinde abmelden. » (vous devez vous annoncer dans les 14 jours dès l’arrivée ; auparavant, vous devez vous désinscrire de votre ancienne commune). Pour un départ, la même page dit : « … denken Sie bitte daran, sich innerhalb von 14 Tagen bei der Einwohnerkontrolle abzumelden » (pensez à vous désinscrire dans les 14 jours).","Ville de Berne, « Zuzug, Umzug und Wegzug » : pour l’annonce d’arrivée, « innert 14 Tagen » (dans les 14 jours). Pour la désinscription, la page ne donne ni délai ni moment, seulement la voie par eUmzugCH."],"nk":"Les deux pages ne permettent pas de savoir si la désinscription doit avoir lieu avant le déménagement ou si elle suffit jusqu’à 14 jours après. Winterthour précise en outre : qui s’est déjà désinscrit en personne ou par téléphone ne peut plus utiliser eUmzug.","src":["Ville de Winterthour : Umzug & Neu in Winterthur","Ville de Berne : Zuzug, Umzug und Wegzug"]},"id-neu":{"h":"Nouvelle carte d’identité biométrique dès le 2 novembre 2026 : rien sur la page des prix de la Confédération","obs":["fedpol, « Preise, Gültigkeit und Lieferfristen » (prix, validité et délais) : la page liste la carte d’identité et le « passeport provisoire ». La nouvelle carte d’identité biométrique et le terme « passeport d’urgence » (Notpass) n’y figurent pas.","D’autres services officiels mentionnent les deux : fedpol, « Laufende Projekte » (introduction « prévue le 2 novembre 2026 », facultative) ; communiqué du Conseil fédéral du 26 août 2026 (émoluments inchangés par rapport à la carte actuelle sans puce ; le « passeport provisoire » devient « passeport d’urgence » dès le 2 novembre 2026) ; canton de Berne (« jusqu’à l’introduction en novembre, aucun rendez-vous ne peut encore être réservé pour une carte d’identité biométrique »)."],"nk":"Qui prévoit une carte d’identité et lit la page des prix et de la validité ne découvre pas qu’il y aura deux variantes dès novembre, que le prix reste le même selon le Conseil fédéral et que le passeport provisoire change de nom. La durée de validité de la nouvelle carte n’est pas indiquée dans les sources examinées.","src":["fedpol : prix, validité et délais de livraison","fedpol : projets en cours (carte d’identité biométrique)","Conseil fédéral : communiqué du 26.8.2026 (révision de l’ordonnance sur les documents d’identité)","Canton de Berne : documents, prix et validité"]},"id-eu":{"h":"Carte d’identité sans puce dans l’UE : deux conditions différentes","obs":["Communiqué du Conseil fédéral (26.8.2026) et canton de Berne : les cartes d’identité non biométriques délivrées avant l’introduction de la nouvelle carte sont « valables pour voyager dans l’UE jusqu’à leur date d’expiration ».","fedpol, FAQ sur la carte d’identité biométrique (état octobre 2026) : une carte sans puce reste valable pour voyager dans l’UE jusqu’à son expiration si elle est délivrée au plus tard un an après l’entrée en vigueur de l’accord actualisé sur la libre circulation des personnes. Cet accord n’est « pas encore en vigueur ». Dans l’exemple de la FAQ : entrée en vigueur le 1er janvier 2028, utilisation au plus tard jusqu’au 31 décembre 2038."],"nk":"Les deux affirmations ne s’excluent pas forcément, mais citent des conditions différentes : délivrance avant l’introduction de la nouvelle carte, ou délivrance jusqu’à un an après l’entrée en vigueur d’un accord qui n’est pas encore applicable. Qui a ou veut commander une carte sans puce et voyage dans l’UE ne peut pas lire clairement jusqu’à quand elle y est valable ni si cela dépend de l’accord.","src":["Conseil fédéral : communiqué du 26.8.2026 (révision de l’ordonnance sur les documents d’identité)","Canton de Berne : documents, prix et validité","fedpol : FAQ carte d’identité biométrique (PDF, état octobre 2026)"]},"steuer-be":{"h":"Déclaration d’impôt à Berne : délai maximal au 15 ou au 30 novembre 2026 ?","obs":["Canton de Berne, Intendance des impôts, « Frist als Privatperson verlängern » : un avis sur l’interruption d’exploitation (du 23 octobre au 1er novembre 2026) indique désormais le 30 novembre 2026 comme dernier délai pour la déclaration 2025 (« automatisch vom 15. auf den 30. November 2026 verlängert », prolongé automatiquement). Dans le tableau des émoluments de la même page, la note « Die Frist kann höchstens bis 15. November verlängert werden » (le délai peut être prolongé au plus tard jusqu’au 15 novembre) figure toujours.","Le guide « Einreichefrist » (période fiscale 2025) ne mentionne pas l’exception. La page taxme.ch/serviceinfo la décrit en détail, y compris le fait qu’aucune demande n’est nécessaire."],"nk":"Qui lit seulement le tableau ou le guide compte sur le 15 novembre comme dernière date. L’exception figure ailleurs et s’applique, selon le canton, à la déclaration 2025.","src":["Canton de Berne : prolonger le délai (personnes physiques)","Canton de Berne : guide, délai de dépôt (période 2025)","Canton de Berne : interruption d’exploitation planifiée (taxme.ch/serviceinfo)"]},"ahv-referenzalter":{"h":"Âge de référence 65 ans pour les femmes : « dès 2028 » ou « dès le 1er janvier 2029 » ?","obs":["Mémento 3.01 « Rentes de vieillesse » (état au 1.1.2026) : tableau avec « 2028 : 65 ans, année de naissance 1964 » et la phrase « Ab 2028 gilt für Frauen und Männer ein einheitliches Referenzalter von 65 Jahren » (dès 2028, âge de référence unique de 65 ans). Page OFAS « AVS 21 » (mise à jour le 28 septembre 2026) : « Ab 2028: Jahrgang 1964 und jünger: 65 Jahre » (dès 2028 : année de naissance 1964 et suivantes : 65 ans).","Caisse de compensation de Berne, « Altersrente der AHV » : « Ab 1. Januar 2029 gilt für beide Geschlechter das Referenzalter 65 » (dès le 1er janvier 2029). Dans son tableau, l’année 2029 figure pour l’année de naissance 1964 (« 2026-2027 » pour 1962, « 2027-2028 » pour 1963)."],"nk":"Les années semblent désigner des choses différentes (l’année où l’âge de référence de 65 ans est fixé pour la génération 1964, ou l’année où ces femmes atteignent 65 ans). Les pages ne l’expliquent pas. Qui veut savoir quel âge de référence s’applique à lui ou à elle doit calculer soi-même.","src":["ahv-iv.ch : mémento 3.01 Rentes de vieillesse (état 1.1.2026)","OFAS : stabilisation de l’AVS (AVS 21)","Caisse de compensation du canton de Berne : rente de vieillesse AVS"]},"alv-nachweis":{"h":"Preuves de recherches d’emploi : le délai figure seulement sur le formulaire et dans l’ordonnance","obs":["OACI art. 26 al. 2 (en allemand AVIV, RS 837.02) : la preuve doit être remise « pour chaque période de contrôle au plus tard le cinquième jour du mois suivant ». Les recherches remises plus tard « ne sont plus prises en compte » sans motif excusable. Le même délai figure sur le formulaire 716.007 « Nachweis der persönlichen Arbeitsbemühungen ».","Sur les pages examinées d’arbeit.swiss (FAQ sur l’indemnité de chômage ; inscription et enregistrement ; premiers pas après le licenciement ; eServices et formulaires), il est seulement dit que la recherche d’emploi doit être justifiée « monatlich » (chaque mois) et, pour le formulaire « Angaben der versicherten Person », « jeweils am Monatsende » (à la fin de chaque mois). Le délai « 5e jour du mois suivant » n’y figure pas."],"nk":"Qui lit les pages explicatives ne sait pas jusqu’à quand la preuve doit être remise à l’ORP. Qui manque le délai risque que les recherches du mois ne comptent pas (art. 26 AVIV). La date figure uniquement sur le formulaire et dans l’ordonnance.","src":["Fedlex : AVIV (RS 837.02), art. 26","arbeit.swiss : eServices et formulaires (formulaire 716.007)","arbeit.swiss : FAQ sur l’indemnité de chômage","arbeit.swiss : inscription et enregistrement","arbeit.swiss : premiers pas après le licenciement"]},"kk-franchise":{"h":"Changer de franchise : 15 novembre, fin novembre ou mi-décembre ?","obs":["Priminfo (OFSP), « Wechsel der Krankenkasse » : pour une franchise plus basse comme pour une plus haute : « Informieren Sie die Krankenkasse bis am 15. November » (informez la caisse jusqu’au 15 novembre).","Priminfo (OFSP), FAQ : une franchise plus basse doit être communiquée par écrit à la caisse « bis spätestens am letzten Arbeitstag im November » (au plus tard le dernier jour ouvrable de novembre). Pour une franchise plus haute, possible seulement au début de l’année, « spätestens Mitte Dezember » (au plus tard mi-décembre) est recommandé. Base légale : OAMal art. 94 al. 1 et 2."],"nk":"On ne voit pas si le 15 novembre est un délai ou une recommandation. La page « Wechsel » indique la même date pour une franchise plus haute et plus basse, la FAQ en indique deux différentes.","src":["Priminfo (OFSP) : changer de caisse maladie","Priminfo (OFSP) : FAQ","Fedlex : OAMal (RS 832.102), art. 94"]},"kk-termin":{"h":"Date de résiliation : dates fixes ou règle des jours ouvrables, une ou deux fois par an ?","obs":["Priminfo (OFSP), « Wechsel der Krankenkasse » (langage facile et texte original) : « Das ist einmal pro Jahr möglich » (c’est possible une fois par an) et « Die Kündigung muss bis am 30. November bei der Krankenkasse eintreffen » (la résiliation doit parvenir à la caisse jusqu’au 30 novembre). Un changement au 1er juillet n’y est pas mentionné.","Priminfo (OFSP), FAQ : le délai court jusqu’au 31 mars ou au 30 novembre « oder dem letzten Arbeitstag davor, wenn das Datum auf einen Samstag, Sonntag oder Feiertag fällt » (ou le dernier jour ouvrable précédent si la date tombe un samedi, un dimanche ou un jour férié). Un changement au 1er juillet (résiliation jusqu’au 31 mars) est possible, mais seulement avec la franchise ordinaire et le libre choix du fournisseur de prestations. LAMal art. 7 al. 1 prévoit le changement pour la fin d’un semestre civil sans cette restriction ; elle figure dans l’ordonnance (notamment OAMal art. 94)."],"nk":"En 2026, le 30 novembre tombe un lundi : la différence n’a pas d’effet cette année. D’autres années (2025 : dimanche), si. Qui lit seulement la page « Wechsel » ne sait rien du changement au 1er juillet ni de la règle des jours ouvrables.","src":["Priminfo (OFSP) : changer de caisse maladie","Priminfo (OFSP) : FAQ","Fedlex : LAMal (RS 832.10), art. 7"]}},"c1":"1 observation","cn":"{n} observations"},"it":{"title":"Lacune nelle informazioni ufficiali – Tell (concetto privato, prototipo)","desc":"Tell annota dove le informazioni ufficiali sui suoi sei temi presentano lacune, ambiguità o divergenze. Osservazioni con fonti, stato al 7 ottobre 2026. Non è un sito ufficiale.","page":"Lacune","h":"Lacune nelle informazioni ufficiali","lead":"Per i suoi sei temi Tell legge pagine ufficiali e annota qui dove presentano lacune, ambiguità o divergenze: tra Confederazione, Cantone e Comune, tra una pagina esplicativa e la legge, oppure tra due pagine dello stesso ufficio. L’obiettivo è aiutare le autorità a migliorare le loro informazioni. Sono osservazioni, non accuse.","statusH":"Stato al 7 ottobre 2026: solo un inizio","statusT":"Sono elencate 8 osservazioni, distribuite sui 6 temi. Non è un esame completo: finora Tell ha letto solo le pagine che usa come fonti e alcuni testi di legge. Da verificare: le pagine possono essere cambiate dopo la consultazione.","topicsH":"Per tema","topics":["Annunciare un trasloco","Passaporto e carta d’identità","Dichiarazione d’imposta, prorogare il termine","Annunciare la rendita AVS","Annunciarsi come disoccupato","Cambiare cassa malati"],"types":{"dev":"Divergenza","unc":"Ambiguità","mis":"Informazione mancante"},"obsH":"Osservazione","nkH":"Cosa i cittadini di conseguenza non sanno","srcH":"Fonti, consultate il 7.10.2026","newtab":"si apre in una nuova scheda","methH":"Come nascono le voci","meth":["Ogni voce indica le sue fonti con indirizzo e data di consultazione (7 ottobre 2026).","È stato letto solo ciò che è pubblico. Nulla è stato provato e nessun ufficio è stato interpellato.","Tell non giudica quale indicazione sia corretta. Fanno stato gli uffici competenti.","Le citazioni provengono dalle pagine originali in tedesco. Nelle altre lingue sono tradotte a senso."],"ctaH":"Trovata una lacuna, o una voce è superata?","ctaT":"Se un ufficio ha già adeguato un’indicazione, Tell toglie volentieri la voce. Segnalazioni e altre osservazioni sono benvenute.","ctaBtn":"Invia una segnalazione","ctaGov":"Per le autorità","mailSubj":"Tell: segnalazione sulla pagina Lacune","e":{"umzug-abmeldung":{"h":"Partenza: annunciarsi prima del trasloco o entro 14 giorni dopo?","obs":["Città di Winterthur, «Umzug & Neu in Winterthur»: all’arrivo vale «Sie müssen sich innert 14 Tagen ab Zuzug bei der Einwohnerkontrolle Winterthur anmelden. Vorher müssen Sie sich bei der bisherigen Wohngemeinde abmelden.» (annunciarsi entro 14 giorni dall’arrivo; prima è necessario annunciare la partenza dal precedente Comune). Per la partenza la stessa pagina dice: «… denken Sie bitte daran, sich innerhalb von 14 Tagen bei der Einwohnerkontrolle abzumelden» (ricordarsi di annunciare la partenza entro 14 giorni).","Città di Berna, «Zuzug, Umzug und Wegzug»: per l’annuncio di arrivo vale «innert 14 Tagen» (entro 14 giorni). Per l’annuncio di partenza la pagina non indica né un termine né un momento, solo la via tramite eUmzugCH."],"nk":"Dalle due pagine non si capisce se l’annuncio di partenza debba avvenire prima del trasloco o se basti anche entro 14 giorni dopo. Winterthur segnala inoltre: chi ha già annunciato la partenza di persona o per telefono non può più usare eUmzug.","src":["Città di Winterthur: Umzug & Neu in Winterthur","Città di Berna: Zuzug, Umzug und Wegzug"]},"id-neu":{"h":"Nuova carta d’identità biometrica dal 2 novembre 2026: nessun cenno nella pagina dei prezzi della Confederazione","obs":["fedpol, «Preise, Gültigkeit und Lieferfristen» (prezzi, validità e termini di consegna): la pagina elenca la carta d’identità e il «passaporto provvisorio». La nuova carta d’identità biometrica e il termine «passaporto d’emergenza» (Notpass) non vi compaiono.","Altri uffici ufficiali citano entrambi: fedpol, «Laufende Projekte» (introduzione «prevista per il 2 novembre 2026», facoltativa); comunicato del Consiglio federale del 26 agosto 2026 (tasse invariate rispetto all’attuale carta senza chip; il «passaporto provvisorio» diventa «passaporto d’emergenza» dal 2 novembre 2026); Cantone di Berna («fino all’introduzione a novembre non è ancora possibile prenotare appuntamenti per una carta d’identità biometrica»)."],"nk":"Chi pianifica una carta d’identità e legge la pagina con prezzi e validità non viene a sapere che da novembre ci saranno due varianti, che il prezzo resta invariato secondo il Consiglio federale e che il passaporto provvisorio cambia nome. La durata di validità della nuova carta non è indicata nelle fonti esaminate.","src":["fedpol: prezzi, validità e termini di consegna","fedpol: progetti in corso (carta d’identità biometrica)","Consiglio federale: comunicato del 26.8.2026 (revisione dell’ordinanza sui documenti d’identità)","Cantone di Berna: documenti, prezzi e validità"]},"id-eu":{"h":"Carta d’identità senza chip nell’UE: due condizioni diverse","obs":["Comunicato del Consiglio federale (26.8.2026) e Cantone di Berna: le carte d’identità non biometriche rilasciate prima dell’introduzione della nuova carta sono «valide per viaggiare nell’UE fino alla data di scadenza».","fedpol, FAQ sulla carta d’identità biometrica (stato ottobre 2026): una carta senza chip resta valida per viaggiare nell’UE fino alla scadenza se è rilasciata al più tardi un anno dopo l’entrata in vigore dell’accordo aggiornato sulla libera circolazione delle persone. Tale accordo «non è ancora in vigore». Nell’esempio della FAQ: entrata in vigore il 1° gennaio 2028, utilizzo al massimo fino al 31 dicembre 2038."],"nk":"Le due affermazioni non si escludono necessariamente, ma indicano condizioni diverse: rilascio prima dell’introduzione della nuova carta, oppure rilascio fino a un anno dopo l’entrata in vigore di un accordo non ancora applicabile. Chi ha o vuole ordinare una carta senza chip e viaggia nell’UE non può leggere con chiarezza fino a quando vale e se dipende dall’accordo.","src":["Consiglio federale: comunicato del 26.8.2026 (revisione dell’ordinanza sui documenti d’identità)","Cantone di Berna: documenti, prezzi e validità","fedpol: FAQ carta d’identità biometrica (PDF, stato ottobre 2026)"]},"steuer-be":{"h":"Dichiarazione d’imposta a Berna: termine massimo il 15 o il 30 novembre 2026?","obs":["Cantone di Berna, Amministrazione delle imposte, «Frist als Privatperson verlängern»: un avviso sull’interruzione dell’esercizio (dal 23 ottobre al 1° novembre 2026) indica ora il 30 novembre 2026 come ultimo termine per la dichiarazione 2025 («automatisch vom 15. auf den 30. November 2026 verlängert», prorogato automaticamente). Nella tabella delle tasse della stessa pagina figura ancora la nota «Die Frist kann höchstens bis 15. November verlängert werden» (il termine può essere prorogato al massimo fino al 15 novembre).","La guida «Einreichefrist» (periodo fiscale 2025) non menziona l’eccezione. La pagina taxme.ch/serviceinfo la descrive in dettaglio, compreso il fatto che non occorre presentare alcuna richiesta."],"nk":"Chi legge solo la tabella o la guida conta sul 15 novembre come ultima data. L’eccezione si trova altrove e vale, secondo il Cantone, per la dichiarazione 2025.","src":["Cantone di Berna: prorogare il termine (persone fisiche)","Cantone di Berna: guida, termine di inoltro (periodo fiscale 2025)","Cantone di Berna: interruzione pianificata dell’esercizio (taxme.ch/serviceinfo)"]},"ahv-referenzalter":{"h":"Età di riferimento 65 anni per le donne: «dal 2028» o «dal 1° gennaio 2029»?","obs":["Opuscolo 3.01 «Rendite di vecchiaia» (stato 1.1.2026): tabella con «2028: 65 anni, anno di nascita 1964» e la frase «Ab 2028 gilt für Frauen und Männer ein einheitliches Referenzalter von 65 Jahren» (dal 2028 età di riferimento unica di 65 anni). Pagina UFAS «AVS 21» (aggiornata il 28 settembre 2026): «Ab 2028: Jahrgang 1964 und jünger: 65 Jahre» (dal 2028: anno di nascita 1964 e seguenti: 65 anni).","Cassa di compensazione di Berna, «Altersrente der AHV»: «Ab 1. Januar 2029 gilt für beide Geschlechter das Referenzalter 65» (dal 1° gennaio 2029). Nella sua tabella per l’anno di nascita 1964 figura il 2029 (per il 1962 «2026-2027», per il 1963 «2027-2028»)."],"nk":"Gli anni sembrano indicare cose diverse (l’anno in cui l’età di riferimento di 65 anni è fissata per il 1964, oppure l’anno in cui queste donne compiono 65 anni). Le pagine non lo spiegano. Chi vuole sapere da quando vale quale età di riferimento per sé deve calcolare da solo.","src":["ahv-iv.ch: opuscolo 3.01 Rendite di vecchiaia (stato 1.1.2026)","UFAS: stabilizzazione dell’AVS (AVS 21)","Cassa di compensazione del Cantone di Berna: rendita di vecchiaia AVS"]},"alv-nachweis":{"h":"Provare le ricerche di lavoro: il termine figura solo nel modulo e nell’ordinanza","obs":["OADI art. 26 cpv. 2 (in tedesco AVIV, RS 837.02): la prova va consegnata «per ogni periodo di controllo al più tardi il quinto giorno del mese successivo». Le ricerche consegnate dopo «non sono più considerate» se non c’è un motivo scusabile. Lo stesso termine figura sul modulo 716.007 «Nachweis der persönlichen Arbeitsbemühungen».","Nelle pagine esaminate di arbeit.swiss (FAQ sull’indennità di disoccupazione; annuncio e registrazione; primi passi dopo il licenziamento; eServices e moduli) si dice solo che la ricerca di lavoro va provata «monatlich» (ogni mese) e, per il modulo «Angaben der versicherten Person», «jeweils am Monatsende» (a fine mese). Il termine «5° giorno del mese successivo» non vi compare."],"nk":"Chi legge le pagine esplicative non sa fino a quando la prova deve arrivare all’URC. Chi perde il termine rischia che le ricerche del mese non contino (art. 26 AVIV). La data figura solo nel modulo e nell’ordinanza.","src":["Fedlex: AVIV (RS 837.02), art. 26","arbeit.swiss: eServices e moduli (modulo 716.007)","arbeit.swiss: FAQ sull’indennità di disoccupazione","arbeit.swiss: annuncio e registrazione","arbeit.swiss: primi passi dopo il licenziamento"]},"kk-franchise":{"h":"Cambiare franchigia: 15 novembre, fine novembre o metà dicembre?","obs":["Priminfo (UFSP), «Wechsel der Krankenkasse»: per una franchigia più bassa come per una più alta vale «Informieren Sie die Krankenkasse bis am 15. November» (informate la cassa entro il 15 novembre).","Priminfo (UFSP), FAQ: una franchigia più bassa va comunicata per scritto alla cassa «bis spätestens am letzten Arbeitstag im November» (al più tardi l’ultimo giorno lavorativo di novembre). Per una franchigia più alta, possibile solo a inizio anno, si raccomanda «spätestens Mitte Dezember» (al più tardi metà dicembre). Base legale: OAMal art. 94 cpv. 1 e 2."],"nk":"Non si capisce se il 15 novembre sia un termine o una raccomandazione. La pagina «Wechsel» indica la stessa data per franchigia più alta e più bassa, la FAQ ne indica due diverse.","src":["Priminfo (UFSP): cambiare cassa malati","Priminfo (UFSP): FAQ","Fedlex: OAMal (RS 832.102), art. 94"]},"kk-termin":{"h":"Termine di disdetta: date fisse o regola dei giorni lavorativi, una o due volte all’anno?","obs":["Priminfo (UFSP), «Wechsel der Krankenkasse» (linguaggio facile e testo originale): «Das ist einmal pro Jahr möglich» (è possibile una volta all’anno) e «Die Kündigung muss bis am 30. November bei der Krankenkasse eintreffen» (la disdetta deve giungere alla cassa entro il 30 novembre). Un cambio al 1° luglio non vi è menzionato.","Priminfo (UFSP), FAQ: il termine vale il 31 marzo o il 30 novembre «oder dem letzten Arbeitstag davor, wenn das Datum auf einen Samstag, Sonntag oder Feiertag fällt» (o l’ultimo giorno lavorativo precedente se la data cade di sabato, domenica o in un giorno festivo). Un cambio al 1° luglio (disdetta entro il 31 marzo) è possibile, ma solo con la franchigia ordinaria e libera scelta del fornitore di prestazioni. LAMal art. 7 cpv. 1 prevede il cambio per la fine di un semestre civile senza questa restrizione; essa figura nell’ordinanza (tra l’altro OAMal art. 94)."],"nk":"Nel 2026 il 30 novembre cade di lunedì: quest’anno la differenza non incide. In altri anni (2025: domenica) sì. Chi legge solo la pagina «Wechsel» non sa nulla del cambio al 1° luglio né della regola dei giorni lavorativi.","src":["Priminfo (UFSP): cambiare cassa malati","Priminfo (UFSP): FAQ","Fedlex: LAMal (RS 832.10), art. 7"]}},"c1":"1 osservazione","cn":"{n} osservazioni"},"en":{"title":"Gaps in official information – Tell (private concept, prototype)","desc":"Tell records where official information on its six topics shows gaps, ambiguities or discrepancies. Observations with sources, as of 7 October 2026. Not an official site.","page":"Gaps","h":"Gaps in official information","lead":"For its six topics, Tell reads official pages and records here where they show gaps, ambiguities or discrepancies: between federal, cantonal and municipal level, between an explanatory page and the law, or between two pages of the same office. The aim is to help authorities improve their information. These are observations, not accusations.","statusH":"As of 7 October 2026: only a start","statusT":"Eight observations are listed, spread across the 6 topics. This is not a complete review: so far Tell has only read the pages it uses as sources and a few legal texts. Please verify: pages may have changed since they were read.","topicsH":"By topic","topics":["Report a move","Passport & ID","Tax return, extend the deadline","Register for your AHV pension","Register as unemployed","Switch health insurer"],"types":{"dev":"Discrepancy","unc":"Ambiguity","mis":"Missing information"},"obsH":"Observation","nkH":"What residents therefore can’t tell","srcH":"Sources, accessed on 7 Oct 2026","newtab":"opens in a new tab","methH":"How the entries are made","meth":["Each entry names its sources with address and access date (7 October 2026).","Only publicly available material was read. Nothing was tested, and no office was asked.","Tell does not judge which statement is correct. The responsible offices are authoritative.","Quotes come from the German-language original pages. In the other languages they are translated in substance."],"ctaH":"Found a gap, or is an entry out of date?","ctaT":"If an office has already adjusted a statement, Tell will gladly remove the entry. Tips and further observations are welcome.","ctaBtn":"Send a note","ctaGov":"For authorities","mailSubj":"Tell: note on the Gaps page","e":{"umzug-abmeldung":{"h":"Deregistering: before the move, or up to 14 days after?","obs":["City of Winterthur, “Umzug & Neu in Winterthur”: on arrival, “Sie müssen sich innert 14 Tagen ab Zuzug bei der Einwohnerkontrolle Winterthur anmelden. Vorher müssen Sie sich bei der bisherigen Wohngemeinde abmelden.” (register within 14 days of arrival; beforehand you must deregister from your previous municipality). For leaving Winterthur the same page says: “… denken Sie bitte daran, sich innerhalb von 14 Tagen bei der Einwohnerkontrolle abzumelden” (remember to deregister within 14 days).","City of Bern, “Zuzug, Umzug und Wegzug”: for registering on arrival, “innert 14 Tagen” (within 14 days). For deregistering, the page gives neither a deadline nor a point in time, only the route via eUmzugCH."],"nk":"The two pages don’t show whether deregistration has to happen before the move or whether up to 14 days afterwards is enough. Winterthur also notes: anyone who has already deregistered in person or by phone can no longer use eUmzug.","src":["City of Winterthur: Umzug & Neu in Winterthur","City of Bern: Zuzug, Umzug und Wegzug"]},"id-neu":{"h":"New biometric ID card from 2 November 2026: no mention on the federal price page","obs":["fedpol, “Preise, Gültigkeit und Lieferfristen” (prices, validity and delivery times): the page lists the identity card and the “provisional passport”. The new biometric identity card and the term “Notpass” (emergency passport) do not appear there.","Other official sources mention both: fedpol, “Laufende Projekte” (introduction “planned for 2 November 2026”, optional); Federal Council press release of 26 August 2026 (fees stay the same as for the current card without a chip; the “provisional passport” becomes the “emergency passport” from 2 November 2026); Canton of Bern (“until the introduction in November, no appointments can yet be booked for a biometric identity card”)."],"nk":"Anyone planning an ID card who reads the page with prices and validity won’t learn that there will be two variants from November, that the price stays the same according to the Federal Council, and that the provisional passport is being renamed. The validity period of the new card is not stated in the sources examined.","src":["fedpol: prices, validity and delivery times","fedpol: ongoing projects (biometric identity card)","Federal Council: press release of 26.8.2026 (revision of the Ordinance on Identity Documents)","Canton of Bern: documents, prices and validity"]},"id-eu":{"h":"ID card without a chip in the EU: two different conditions","obs":["Federal Council press release (26.8.2026) and Canton of Bern: non-biometric identity cards issued before the new card is introduced are “valid for travel in the EU until their expiry date”.","fedpol, FAQ on the biometric identity card (as of October 2026): a card without a chip stays valid for EU travel until expiry if it is issued no later than one year after the updated Free Movement of Persons Agreement enters into force. That agreement is “not yet in force”. In the FAQ’s example: entry into force on 1 January 2028, usable at most until 31 December 2038."],"nk":"The two statements don’t necessarily exclude each other, but they name different conditions: issued before the new card is introduced, or issued up to one year after an agreement that does not yet apply enters into force. Anyone who holds or wants to order a card without a chip and travels in the EU can’t clearly read until when it is valid there and whether that depends on the agreement.","src":["Federal Council: press release of 26.8.2026 (revision of the Ordinance on Identity Documents)","Canton of Bern: documents, prices and validity","fedpol: FAQ biometric identity card (PDF, as of October 2026)"]},"steuer-be":{"h":"Tax return in Bern: final deadline 15 or 30 November 2026?","obs":["Canton of Bern, Tax Administration, “Frist als Privatperson verlängern”: a notice about the service interruption (23 October to 1 November 2026) now gives 30 November 2026 as the last filing deadline for the 2025 tax return (“automatisch vom 15. auf den 30. November 2026 verlängert”, extended automatically). In the fee table on the same page the footnote “Die Frist kann höchstens bis 15. November verlängert werden” (the deadline can be extended to 15 November at most) is still there.","The guidance “Einreichefrist” (tax year 2025) does not mention the exception. The page taxme.ch/serviceinfo describes it in detail, including that nothing needs to be applied for."],"nk":"Anyone who reads only the table or the guidance counts on 15 November as the last date. The exception is stated elsewhere and, according to the canton, applies to the 2025 tax return.","src":["Canton of Bern: extend the deadline (individuals)","Canton of Bern: guidance, filing deadline (tax year 2025)","Canton of Bern: planned service interruption (taxme.ch/serviceinfo)"]},"ahv-referenzalter":{"h":"Reference age 65 for women: “from 2028” or “from 1 January 2029”?","obs":["Information sheet 3.01 “Old-age pensions” (as of 1.1.2026): a table with “2028: 65 years, birth year 1964” and the sentence “Ab 2028 gilt für Frauen und Männer ein einheitliches Referenzalter von 65 Jahren” (from 2028 a uniform reference age of 65). FSIO page “AHV 21” (updated 28 September 2026): “Ab 2028: Jahrgang 1964 und jünger: 65 Jahre” (from 2028: birth year 1964 and younger: 65 years).","Bern compensation office, “Altersrente der AHV”: “Ab 1. Januar 2029 gilt für beide Geschlechter das Referenzalter 65” (from 1 January 2029). In its table, 2029 appears for birth year 1964 (“2026-2027” for 1962, “2027-2028” for 1963)."],"nk":"The years seem to mean different things (the year in which the reference age of 65 is set for the 1964 cohort, or the year in which these women turn 65). The pages don’t explain this. Anyone who wants to know from when which reference age applies to them has to work it out themselves.","src":["ahv-iv.ch: information sheet 3.01 Old-age pensions (as of 1.1.2026)","FSIO: stabilisation of the AHV (AHV 21)","Compensation office of the Canton of Bern: AHV old-age pension"]},"alv-nachweis":{"h":"Proving job-search efforts: the deadline appears only on the form and in the ordinance","obs":["AVIV Art. 26 para. 2 (SR 837.02): proof must be submitted “for each control period no later than the fifth day of the following month”. Efforts submitted later “are no longer taken into account” unless there is an excusable reason. The same deadline is printed on form 716.007 “Nachweis der persönlichen Arbeitsbemühungen”.","On the arbeit.swiss pages examined (FAQ on unemployment benefit; registration; first steps after dismissal; eServices and forms) it only says that the job search must be proven “monatlich” (monthly) and, for the form “Angaben der versicherten Person”, “jeweils am Monatsende” (at the end of each month). The deadline “5th day of the following month” does not appear there."],"nk":"Anyone reading the explanatory pages doesn’t learn by when the proof has to reach the RAV. Missing the deadline risks that the month’s efforts don’t count (Art. 26 AVIV). The date appears only on the form and in the ordinance.","src":["Fedlex: AVIV (SR 837.02), Art. 26","arbeit.swiss: eServices and forms (form 716.007)","arbeit.swiss: FAQ on unemployment benefit","arbeit.swiss: registration","arbeit.swiss: first steps after dismissal"]},"kk-franchise":{"h":"Changing the deductible: 15 November, end of November or mid-December?","obs":["Priminfo (FOPH), “Wechsel der Krankenkasse”: for a lower and for a higher deductible alike: “Informieren Sie die Krankenkasse bis am 15. November” (inform the insurer by 15 November).","Priminfo (FOPH), FAQ: a lower deductible must be notified to the insurer in writing “bis spätestens am letzten Arbeitstag im November” (by the last working day of November at the latest). For a higher deductible, possible only at the start of the year, “spätestens Mitte Dezember” (mid-December at the latest) is recommended. Legal basis: KVV Art. 94 paras. 1 and 2."],"nk":"It is not clear whether 15 November is a deadline or a recommendation. The “Wechsel” page gives the same date for a higher and a lower deductible, the FAQ gives two different ones.","src":["Priminfo (FOPH): switching health insurer","Priminfo (FOPH): FAQ","Fedlex: KVV (SR 832.102), Art. 94"]},"kk-termin":{"h":"Notice date: fixed dates or working-day rule, once or twice a year?","obs":["Priminfo (FOPH), “Wechsel der Krankenkasse” (easy-to-read language and original text): “Das ist einmal pro Jahr möglich” (this is possible once a year) and “Die Kündigung muss bis am 30. November bei der Krankenkasse eintreffen” (notice must reach the insurer by 30 November). A switch on 1 July is not mentioned there.","Priminfo (FOPH), FAQ: the deadline falls on 31 March or 30 November “oder dem letzten Arbeitstag davor, wenn das Datum auf einen Samstag, Sonntag oder Feiertag fällt” (or the last working day before, if the date falls on a Saturday, Sunday or public holiday). A switch on 1 July (notice by 31 March) is possible, but only with the standard deductible and free choice of provider. KVG Art. 7 para. 1 provides for switching at the end of a calendar half-year without this restriction; it is set out in the ordinance (including KVV Art. 94)."],"nk":"In 2026, 30 November is a Monday, so the difference has no effect this year. In other years (2025: Sunday) it does. Anyone reading only the “Wechsel” page learns nothing about the 1 July switch or the working-day rule.","src":["Priminfo (FOPH): switching health insurer","Priminfo (FOPH): FAQ","Fedlex: KVG (SR 832.10), Art. 7"]}},"c1":"1 observation","cn":"{n} observations"}};
+const ENTRIES=[{"id":"umzug-abmeldung","topic":0,"type":"unc","urls":["https://stadt.winterthur.ch/themen/lebensereignisse/umzug-neu-winterthur","https://www.bern.ch/themen/zuzug-umzug-wegzug/"]},{"id":"id-neu","topic":1,"type":"mis","urls":["https://www.fedpol.admin.ch/de/preise-gueltigkeit-und-lieferfristen","https://www.fedpol.admin.ch/de/laufende-projekte","https://www.admin.ch/de/newnsb/aKCjZsaUbIe8","https://www.pass-id.sid.be.ch/de/start/themen/ausweise.html"]},{"id":"id-eu","topic":1,"type":"unc","urls":["https://www.admin.ch/de/newnsb/aKCjZsaUbIe8","https://www.pass-id.sid.be.ch/de/start/themen/ausweise.html","https://www.fedpol.admin.ch/dam/de/sd-web/speQbmgb1ElY/faq-biom-idk-d.pdf"]},{"id":"steuer-be","topic":2,"type":"dev","urls":["https://www.sv.fin.be.ch/de/start/themen/frist-verlaengern/fristverlaengerung-privatpersonen.html","https://www.wegleitung.sv.fin.be.ch/de/start/np2025/allgemeine-informationen/fristen.html","https://www.taxme.ch/serviceinfo"]},{"id":"ahv-referenzalter","topic":3,"type":"dev","urls":["https://www.ahv-iv.ch/p/3.01.d","https://www.bsv.admin.ch/de/ahv-21","https://www.akbern.ch/de/Versicherungen/AHV-Leistungen/Altersrente-der-AHV/Altersrente-der-AHV.html"]},{"id":"alv-nachweis","topic":4,"type":"mis","urls":["https://www.fedlex.admin.ch/eli/cc/1983/1205_1205_1205/de","https://www.arbeit.swiss/de/stellensuchende/eservices-und-formulare-fuer-die-arbeitslosenentschaedigung","https://www.arbeit.swiss/de/stellensuchende/faq-zur-arbeitslosenentschaedigung","https://www.arbeit.swiss/de/stellensuchende/anmeldung-und-registrierung","https://www.arbeit.swiss/de/stellensuchende/erste-schritte-nach-kuendigung"]},{"id":"kk-franchise","topic":5,"type":"dev","urls":["https://www.priminfo.admin.ch/de/zahlen-und-fakten/wechsel","https://www.priminfo.admin.ch/de/faq","https://www.fedlex.admin.ch/eli/cc/1995/3867_3867_3867/de"]},{"id":"kk-termin","topic":5,"type":"dev","urls":["https://www.priminfo.admin.ch/de/zahlen-und-fakten/wechsel","https://www.priminfo.admin.ch/de/faq","https://www.fedlex.admin.ch/eli/cc/1995/1328_1328_1328/de"]}];
+(()=>{
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const HTML_LANG={de:'de-CH',fr:'fr-CH',it:'it-CH',en:'en'};
+const qp=new URLSearchParams(location.search).get('lang');
+let lang=['de','fr','it','en'].includes(qp)?qp:'de';
+const NB='\u00a0';
+const tx=s=>lang==='fr'?s.replace(/« /g,'«'+NB).replace(/ »/g,NB+'»').replace(/ ([?!:;])/g,NB+'$1'):s;
+const T=()=>DATA[lang], K=()=>CHROME[lang];
+const q_=()=>lang==='de'?'':'?lang='+lang;
+const ARROW='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5h4.5V7M13.5 2.5 7 9M12 9.5v3a1 1 0 0 1-1 1H3.5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3"/></svg>';
+function el(tag,cls,text){const e=document.createElement(tag); if(cls)e.className=cls; if(text!=null)e.textContent=tx(text); return e;}
+function mailHref(){return 'mailto:'+(window.TELL_CONTACT||'')+'?subject='+encodeURIComponent(tx(T().mailSubj));}
+function hostOf(u){try{return new URL(u).host.replace(/^www\./,'');}catch(e){return u;}}
+
+function buildNav(){
+  const N=K().nav, q=q_();
+  const items=[['frag-tell.html'+q,K().page_ft,false],['buergersicht.html'+q,N[0],false],['behoerdensicht.html'+q,N[1],false],['projekt.html'+q,N[2],false],['luecken.html'+q,K().lk,true]];
+  const hn=$('#hnav'); hn.textContent='';
+  items.forEach(([h,t,cur])=>{const a=document.createElement('a'); a.href=h; a.textContent=t; if(cur)a.setAttribute('aria-current','page'); hn.append(a);});
+  const m=$('#tmenu'); m.textContent='';
+  [['index.html'+q,N[3],false]].concat(items).forEach(([h,t,cur])=>{const a=document.createElement('a'); a.href=h; a.textContent=t; if(cur)a.setAttribute('aria-current','page'); m.append(a);});
+  m.setAttribute('aria-label',N[5]); hn.setAttribute('aria-label',N[5]); $('#tmenuBtn').setAttribute('aria-label',N[4]);
+  $('#brandLink').href='index.html'+q;
+}
+function buildFooter(){
+  const q=q_(), C=window.TELL_CONTACT||'', N=K().nav;
+  $('#fPagesH').textContent=K().f_pages_h;
+  const fp=$('#fPages'); fp.textContent='';
+  [['index.html'+q,N[3],false],['frag-tell.html'+q,K().page_ft,false],['buergersicht.html'+q,N[0],false],['behoerdensicht.html'+q,N[1],false],['projekt.html'+q,N[2],false],['luecken.html'+q,K().lk,true],['mailto:'+C,K().f_links[0],false]].forEach(([h,t,cur])=>{
+    const li=document.createElement('li'), a=document.createElement('a'); a.href=h; a.textContent=t; if(cur)a.setAttribute('aria-current','page'); li.append(a); fp.append(li);
+  });
+  const sd=$('#fSender'); const p=K().f_sender.split('{c}'); sd.textContent=''; sd.append(p[0]); const a=document.createElement('a'); a.href='mailto:'+C; a.textContent=C; sd.append(a); if(p[1])sd.append(p[1]);
+  $('#fLegal').textContent=K().f_legal;
+}
+function render(){
+  const t=T(), root=$('#lkIn'); root.textContent='';
+  root.append(el('p','fq-eyebrow',t.page));
+  const h=el('h1','fq-h',t.h); h.id='viewH'; h.tabIndex=-1; root.append(h);
+  root.append(el('p','fq-lead',t.lead));
+  const st=el('div','lk-status'); st.append(el('h2',null,t.statusH),el('p',null,t.statusT)); root.append(st);
+
+  const byTopic=t.topics.map(()=>[]);
+  ENTRIES.forEach(e=>byTopic[e.topic].push(e));
+  const tp=el('nav','lk-topics'); tp.setAttribute('aria-label',t.topicsH); tp.append(el('h2',null,t.topicsH));
+  const ul=el('ul','lk-chips');
+  t.topics.forEach((name,i)=>{
+    if(!byTopic[i].length)return;
+    const li=document.createElement('li'), a=document.createElement('a'); a.href='#t'+i;
+    a.append(el('span',null,name),el('span','n',String(byTopic[i].length))); li.append(a); ul.append(li);
+  });
+  tp.append(ul); root.append(tp);
+
+  t.topics.forEach((name,i)=>{
+    const list=byTopic[i]; if(!list.length)return;
+    const g=el('section','lk-group'); g.id='t'+i;
+    g.append(el('h2',null,name), el('p','lk-cnt',list.length===1?t.c1:t.cn.replace('{n}',list.length)));
+    const cards=el('div','lk-cards');
+    list.forEach(e=>{
+      const d=t.e[e.id], c=el('article','lk-card');
+      const tag=el('span','lk-tag',t.types[e.type]); tag.dataset.t=e.type;
+      c.append(tag, el('h3',null,d.h));
+      c.append(el('p','lk-lbl',t.obsH));
+      d.obs.forEach(p=>c.append(el('p','lk-p',p)));
+      const nk=el('div','lk-nk'); nk.append(el('p','lk-lbl',t.nkH), el('p',null,d.nk)); c.append(nk);
+      c.append(el('p','lk-lbl',t.srcH));
+      const sl=el('ul','lk-src');
+      d.src.forEach((label,j)=>{
+        const li=document.createElement('li'), a=document.createElement('a');
+        a.href=e.urls[j]; a.target='_blank'; a.rel='noopener noreferrer';
+        const sp=document.createElement('span'); sp.append(document.createTextNode(tx(label)+' ('+t.newtab+')')); const u=el('span','u',hostOf(e.urls[j])); u.removeAttribute('class'); u.className='u'; sp.append(u);
+        a.append(sp); a.insertAdjacentHTML('beforeend',ARROW); li.append(a); sl.append(li);
+      });
+      c.append(sl); cards.append(c);
+    });
+    g.append(cards); root.append(g);
+  });
+
+  const m=el('section','lk-meth'); m.append(el('h2',null,t.methH));
+  const ml=el('ul','fq-list'); t.meth.forEach(s=>ml.append(el('li',null,s))); m.append(ml); root.append(m);
+
+  const cta=el('section','lk-cta'); cta.append(el('h2',null,t.ctaH), el('p',null,t.ctaT));
+  const row=el('div','row');
+  const b=el('a','btn',t.ctaBtn); b.href=mailHref(); row.append(b);
+  const g2=el('a','btn ghost',t.ctaGov); g2.href='frag-tell.html'+q_()+'#behoerden'; row.append(g2);
+  cta.append(row); root.append(cta);
+}
+function setLang(l,fromUser){
+  lang=l;
+  document.documentElement.lang=HTML_LANG[l];
+  document.title=tx(T().title);
+  const md=document.querySelector('meta[name=description]'); if(md)md.content=T().desc;
+  $('#skipLink').textContent=K().skip; $('#banner').textContent=K().banner_s;
+  $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)));
+  buildNav(); buildFooter(); render();
+  try{history.replaceState(null,'','?lang='+l+location.hash);}catch(e){}
+}
+$$('.lang button').forEach(b=>b.addEventListener('click',()=>{ if(b.dataset.l!==lang)setLang(b.dataset.l,true); }));
+Object.keys(CHROME).forEach(l=>{CHROME[l].page_ft=({de:'Frag Tell',fr:'Frag Tell',it:'Frag Tell',en:'Frag Tell'})[l];});
+setLang(lang);
+if(location.hash){const t=document.getElementById(location.hash.slice(1)); if(t)setTimeout(()=>t.scrollIntoView(),50);}
+})();
+</script>
+<!-- tell-shared:js:start -->
+<script>
+(function(){
+  var b=document.getElementById('tmenuBtn'),m=document.getElementById('tmenu');
+  if(!b||!m)return;
+  function set(o){
+    if(o){var h=document.querySelector('.site-header,.top');if(h){m.style.top=(h.getBoundingClientRect().bottom+8)+'px'}}
+    m.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');
+  }
+  b.addEventListener('click',function(e){e.stopPropagation();set(m.hidden)});
+  document.addEventListener('click',function(e){if(!m.hidden&&!m.contains(e.target)&&!b.contains(e.target))set(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden){set(false);b.focus()}});
+  addEventListener('resize',function(){if(!m.hidden)set(false)});
+})();
+</script>
+<!-- tell-shared:js:end -->
+</body>
+</html>
