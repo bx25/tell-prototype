@@ -17,6 +17,7 @@ const FAELLE = [
   ['Bis wann kann ich meine Krankenkasse wechseln und wie geht das?', 'kk'],
   ['Ich wohne in Bern und mache mich mit einer Einzelfirma selbstständig. Was muss ich wo anmelden?', 'biz'],
   ['Ich wohne seit einigen Monaten in Bern und habe einen deutschen Führerausweis. Muss ich ihn umtauschen, und wie?', 'drv'],
+  ['Wir sind beide Schweizer, wohnen in Zürich und wollen heiraten. Wie läuft das und was kostet es?', 'wed'],
   // Abgrenzungen, die heute stimmen
   ['Hundesteuer bezahlen', null],
   ['Ich ziehe um, muss ich die Krankenkasse informieren?', 'move'],
@@ -28,6 +29,11 @@ const FAELLE = [
   ['AHV-Rente anmelden, ich war selbstständig', 'ahv'],
   ['Selbstständig nach Kündigung, muss ich zum RAV?', 'alv'],
   ['Muss ich mein Gewerbe anmelden?', 'biz'],
+  ['Nach der Heirat brauche ich einen neuen Pass', 'passport'],
+  ['Wann muss ich die Ehevorbereitung machen?', 'wed'],
+  ['Ich bin verheiratet und mache die Steuererklärung', 'tax'],
+  ['We want to get married in Switzerland', 'wed'],
+  ['Hochzeit im Standesamt planen', 'wed'],
   ['Wie tausche ich meinen Führerschein aus den USA um?', 'drv'],
   ['Führerausweis: neue Adresse nach Umzug melden', 'move'],
   ['Ich brauche einen Lernfahrausweis', null],
@@ -51,7 +57,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
