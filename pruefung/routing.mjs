@@ -61,7 +61,13 @@ const FAELLE = [
   ['Ich beginne im August ein Studium, meine Eltern wohnen im Kanton Bern. Wie beantrage ich ein Stipendium und bis wann?', 'sti'],
   ['Meine Miete beruht auf einem Referenzzinssatz von 1,5 %. Kann ich eine Senkung verlangen und wie?', 'miet'],
   ['Ich zahle Quellensteuer und wohne im Kanton Bern. Kann ich eine Steuererklärung machen, um Abzüge geltend zu machen?', 'qst'],
+  ['Mein Vater ist in Bern gestorben und die Bank verlangt einen Erbenschein. Wo bekomme ich ihn und was kostet er?', 'erb'],
   // Abgrenzungen, die heute stimmen
+  ['Erbschaft ausschlagen', 'erb'],
+  ['répudier la succession', 'erb'],
+  ['rinunciare all’eredità', 'erb'],
+  ['How do I renounce an inheritance?', 'erb'],
+  ['Mein Vater ist gestorben, was muss ich tun?', 'tod'],
   ['nachträgliche ordentliche Veranlagung', 'qst'],
   ['impôt à la source', 'qst'],
   ['imposta alla fonte', 'qst'],
@@ -217,7 +223,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
