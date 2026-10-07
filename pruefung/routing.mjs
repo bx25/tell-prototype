@@ -25,6 +25,7 @@ const FAELLE = [
   ['Ich wohne in Bern und habe ein Occasionsauto gekauft. Wie löse ich es ein und was kostet das?', 'car'],
   ['Ich lebe seit 12 Jahren in der Schweiz, davon 3 in der Stadt Bern, und habe den C-Ausweis. Kann ich mich einbürgern lassen und was kostet das?', 'nat'],
   ['Ich wohne im Kanton Bern und verdiene wenig. Bekomme ich Prämienverbilligung und muss ich sie beantragen?', 'pv'],
+  ['Ich bin 22, wohne in Bern und wurde für den Militärdienst untauglich erklärt. Muss ich Wehrpflichtersatz zahlen und wie viel?', 'wpe'],
   // Abgrenzungen, die heute stimmen
   ['Hundesteuer bezahlen', 'dog'],
   ['Bekomme ich als Selbstständige Kinderzulagen?', 'fam'],
@@ -38,6 +39,7 @@ const FAELLE = [
   ['How do I get Swiss citizenship?', 'nat'],
   ['Krankenkasse zu teuer, gibt es eine Verbilligung?', 'pv'],
   ['Krankenkasse wechseln wegen hoher Prämie', 'kk'],
+  ['Ersatzabgabe zurückfordern nach Zivildienst', 'wpe'],
   ['Ich ziehe mit meinem Hund um', 'dog'],
   ['Ich ziehe um, muss ich die Krankenkasse informieren?', 'move'],
   ['Ich will eine Firma gründen', 'biz'],
@@ -76,7 +78,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
