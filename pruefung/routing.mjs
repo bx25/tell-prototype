@@ -33,7 +33,11 @@ const FAELLE = [
   ['Ich bin pensioniert, wohne in Thun und meine AHV-Rente reicht nicht. Kann ich Ergänzungsleistungen beantragen?', 'el'],
   ['Ich wohne in Bern und bin seit Monaten krank und arbeitsunfähig. Wie melde ich mich bei der IV an?', 'iv'],
   ['Ich bin angestellt und bekomme im Frühling ein Kind. Wie viel Mutterschaftsentschädigung erhalte ich und wie beantrage ich sie?', 'mse'],
+  ['Ich bin angestellt und werde im Frühling Vater. Wie lange ist der Vaterschaftsurlaub und wie bekomme ich die Entschädigung?', 'pat'],
   // Abgrenzungen, die heute stimmen
+  ['Papiurlaub tageweise beziehen', 'pat'],
+  ['congé paternité', 'pat'],
+  ['Vaterschaftsurlaub als Selbstständiger', 'pat'],
   ['Taggeld bei Mutterschaft', 'mse'],
   ['Mutterschaftsentschädigung als Selbstständige', 'mse'],
   ['congé maternité indemnité', 'mse'],
@@ -95,7 +99,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
