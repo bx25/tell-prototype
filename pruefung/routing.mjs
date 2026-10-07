@@ -19,8 +19,11 @@ const FAELLE = [
   ['Ich wohne seit einigen Monaten in Bern und habe einen deutschen Führerausweis. Muss ich ihn umtauschen, und wie?', 'drv'],
   ['Wir sind beide Schweizer, wohnen in Zürich und wollen heiraten. Wie läuft das und was kostet es?', 'wed'],
   ['Ich wohne in der Stadt Bern und habe einen Hund übernommen. Wo melde ich ihn an und was kostet das?', 'dog'],
+  ['Ich bin in Bern angestellt und habe ein Baby bekommen. Wie bekomme ich Kinderzulagen und wie viel gibt es?', 'fam'],
   // Abgrenzungen, die heute stimmen
   ['Hundesteuer bezahlen', 'dog'],
+  ['Bekomme ich als Selbstständige Kinderzulagen?', 'fam'],
+  ['Ausbildungszulage für meine Tochter', 'fam'],
   ['Ich ziehe mit meinem Hund um', 'dog'],
   ['Ich ziehe um, muss ich die Krankenkasse informieren?', 'move'],
   ['Ich will eine Firma gründen', 'biz'],
@@ -59,7 +62,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
