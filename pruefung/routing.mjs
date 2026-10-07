@@ -47,7 +47,10 @@ const FAELLE = [
   ['Mir wurde in Bern das Velo gestohlen. Wie melde ich den Diebstahl bei der Polizei?', 'dieb'],
   ['Ich wohne in Bern und will einen Vorsorgeauftrag machen. Wie muss er aussehen und wo hinterlege ich ihn?', 'vor'],
   ['Ich wohne in der Stadt Bern und mein B-Ausweis läuft bald ab. Wie verlängere ich ihn?', 'aus'],
+  ['Ich bin geschieden, wohne in Bern und will wieder meinen ledigen Namen tragen. Wie geht das?', 'nam'],
   // Abgrenzungen, die heute stimmen
+  ['Ledigname wieder annehmen', 'nam'],
+  ['nom de célibataire', 'nam'],
   ['Verfallsanzeige erhalten', 'aus'],
   ['prolonger mon permis de séjour', 'aus'],
   ['Ich habe den C-Ausweis, kann ich mich einbürgern lassen?', 'nat'],
@@ -147,7 +150,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
