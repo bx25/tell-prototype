@@ -149,6 +149,11 @@ const FAELLE = [
   ['Faccio tre settimane di corso di ripetizione. Quanta indennità di perdita di guadagno ricevo?', 'eod'],
   ['I have three weeks of military refresher training. How much loss of earnings compensation do I get?', 'eod'],
   ['Bekomme ich im Zivildienst weiter Lohn?', 'eod'],
+  ['Meine Mutter ist 82 und braucht jeden Tag Hilfe beim Anziehen und Essen. Bekommt sie Geld von der AHV?', 'he'],
+  ['Ma mère a 82 ans et a besoin d’aide chaque jour pour s’habiller et manger. Reçoit-elle de l’argent de l’AVS ?', 'he'],
+  ['Mia madre ha 82 anni e ogni giorno ha bisogno di aiuto per vestirsi e mangiare. Riceve soldi dall’AVS?', 'he'],
+  ['My mother is 82 and needs help every day with dressing and eating. Can she get money from OASI?', 'he'],
+  ['Wie viel Hilflosenentschädigung gibt es bei mittlerer Hilflosigkeit?', 'he'],
   // Abgrenzungen, die heute stimmen
   ['Nachtruhestörung melden', 'lae'],
   ['tapage nocturne', 'lae'],
@@ -374,7 +379,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk', 'um', 'mze', 'mvk', 'ausw', 'stein', 'ahvv', 'fzk', 's3a', 'unf', 'adop', 'bue', 'sch', 'eod'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk', 'um', 'mze', 'mvk', 'ausw', 'stein', 'ahvv', 'fzk', 's3a', 'unf', 'adop', 'bue', 'sch', 'eod', 'he'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
