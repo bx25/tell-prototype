@@ -70,7 +70,13 @@ const FAELLE = [
   ['Ich bin vor Monaten ausgezogen und der Vermieter gibt die Mietkaution nicht frei. Wie komme ich an mein Geld?', 'kau'],
   ['Ich habe gekündigt und mein Chef gibt mir kein Arbeitszeugnis. Habe ich ein Recht darauf?', 'zeug'],
   ['Ich bin seit zwei Wochen krank. Muss mein Arbeitgeber mir weiter den Lohn zahlen und wie lange?', 'krl'],
+  ['Wie viele Wochen Ferien stehen mir zu, und darf mein Chef mir die Ferien auszahlen statt sie zu gewähren?', 'fer'],
   // Abgrenzungen, die heute stimmen
+  ['Ferienanspruch mit 19', 'fer'],
+  ['droit aux vacances', 'fer'],
+  ['vacanze non godute', 'fer'],
+  ['How many vacation days do I get?', 'fer'],
+  ['Wie lange dauert der Vaterschaftsurlaub?', 'pat'],
   ['Lohnfortzahlung bei Krankheit', 'krl'],
   ['certificat médical dès le premier jour', 'krl'],
   ['salario in caso di malattia', 'krl'],
@@ -269,7 +275,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
