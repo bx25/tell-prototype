@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#EEE9E0">
-<title>Prozess-Check – Tell (privates Konzept, Prototyp)</title>
-<meta name="description" content="Welche Prozesse von Tell sind belegt, korrekt und aktuell? Prüfung aller sechs Chat-Antworten, Stand 7. Oktober 2026. Keine offizielle Seite.">
+<title>Prozesse – Tell (privates Konzept, Prototyp)</title>
+<meta name="description" content="Welche Prozesse Tell sicher beantwortet und welche geplant sind. Stand 7. Oktober 2026. Keine offizielle Seite.">
 <!-- tell-shared:head:start -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tell (Konzeptprototyp)">
-<meta property="og:title" content="Prozess-Check – Tell (privates Konzept, Prototyp)">
-<meta property="og:description" content="Welche Prozesse von Tell sind belegt, korrekt und aktuell? Prüfung aller sechs Chat-Antworten, Stand 7. Oktober 2026. Keine offizielle Seite.">
+<meta property="og:title" content="Prozesse – Tell (privates Konzept, Prototyp)">
+<meta property="og:description" content="Welche Prozesse Tell sicher beantwortet und welche geplant sind. Stand 7. Oktober 2026. Keine offizielle Seite.">
 <meta property="og:url" content="https://bx25.github.io/tell-prototype/prozesse.html">
 <meta property="og:image" content="https://bx25.github.io/tell-prototype/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -22,8 +22,8 @@
 <meta property="og:locale:alternate" content="it_CH">
 <meta property="og:locale:alternate" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Prozess-Check – Tell (privates Konzept, Prototyp)">
-<meta name="twitter:description" content="Welche Prozesse von Tell sind belegt, korrekt und aktuell? Prüfung aller sechs Chat-Antworten, Stand 7. Oktober 2026. Keine offizielle Seite.">
+<meta name="twitter:title" content="Prozesse – Tell (privates Konzept, Prototyp)">
+<meta name="twitter:description" content="Welche Prozesse Tell sicher beantwortet und welche geplant sind. Stand 7. Oktober 2026. Keine offizielle Seite.">
 <meta name="twitter:image" content="https://bx25.github.io/tell-prototype/assets/og-image.jpg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
@@ -314,92 +314,23 @@ main{outline:none}
 </style>
 <!-- tell-shared:css:end -->
 <style>
-/* ============ Prozess-Check ============ */
-.pc-in{max-width:68rem;margin-inline:auto}
-.pc-ok{--c:#1E7A46}.pc-warn{--c:#B26B00}.pc-bad{--c:var(--red)}
-.pc-verdict{margin-top:clamp(28px,4vw,44px);display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,2.4vw,28px);align-items:center;max-width:56rem;padding:clamp(20px,2.6vw,32px);border-radius:var(--r-lg);background:var(--paper);box-shadow:inset 4px 0 0 #1E7A46}
-.pc-big{font-family:var(--serif);font-size:clamp(3rem,7vw,5.2rem);line-height:.9;letter-spacing:-.04em;color:#1E7A46;font-feature-settings:"tnum"}
-.pc-big small{font-size:.42em;color:var(--granit);letter-spacing:-.01em}
-.pc-verdict h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.15;letter-spacing:-.015em}
-.pc-verdict p{margin-top:6px;font-size:.9375rem;line-height:1.5;color:var(--ink);max-width:44em}
-@media (max-width:560px){.pc-verdict{grid-template-columns:1fr}}
-
-.pc-sec{margin-top:clamp(44px,6vw,84px)}
-.pc-sec>h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.55rem,2.5vw,2.2rem);line-height:1.1;letter-spacing:-.02em}
-.pc-sec>p.pc-sub{margin-top:8px;color:var(--granit);max-width:46em;line-height:1.5}
-
-/* mind map */
-.pc-map{position:relative;margin-top:24px;display:grid;grid-template-columns:1fr minmax(170px,220px) 1fr;grid-template-rows:repeat(3,auto);gap:16px clamp(40px,6vw,90px);align-items:center}
-.pc-map svg.pc-wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.pc-map svg.pc-wires path{fill:none;stroke-width:2;stroke-linecap:round}
-.pc-hub{grid-column:2;grid-row:1/4;position:relative;z-index:1;aspect-ratio:1;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px}
-.pc-hub b{font-family:var(--serif);font-weight:500;font-size:1.7rem;letter-spacing:-.02em;line-height:1}
-.pc-hub span{margin-top:6px;font-size:.8125rem;color:rgba(238,233,224,.75);line-height:1.35}
-.pc-node{position:relative;z-index:1;display:block;padding:14px 16px;border-radius:20px;background:var(--paper);text-decoration:none;color:var(--ink);box-shadow:inset 0 0 0 2px var(--c);transition:transform .3s var(--ease),background .3s}
-.pc-node:hover,.pc-node:focus-visible{transform:translateY(-2px);background:var(--snow)}
-.pc-node .t{font-family:var(--serif);font-weight:500;font-size:1.2rem;line-height:1.15;letter-spacing:-.01em}
-.pc-node .s{margin-top:6px;display:inline-flex;align-items:center;gap:7px;font-size:.8125rem;font-weight:600;color:var(--c)}
-.pc-node .s::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
-.pc-node .d{margin-top:4px;font-size:.8125rem;color:var(--granit);line-height:1.4}
-.pc-node.l{grid-column:1}.pc-node.r{grid-column:3}
-.pc-node.pc-ok{background:#E6F2EA;box-shadow:inset 0 0 0 3px var(--c)}
-@media (max-width:760px){
-  .pc-map{grid-template-columns:1fr;gap:10px;padding-left:22px}
-  .pc-map svg.pc-wires{display:none}
-  .pc-map::before{content:"";position:absolute;left:6px;top:40px;bottom:30px;width:2px;background:var(--rule)}
-  .pc-hub{grid-column:1;grid-row:auto;aspect-ratio:auto;border-radius:20px;margin-left:-22px;padding:16px}
-  .pc-node.l,.pc-node.r{grid-column:1;grid-row:auto!important}
-  .pc-hub{order:-1}
-  .pc-node::before{content:"";position:absolute;left:-16px;top:50%;width:14px;height:2px;background:var(--c)}
-}
+/* ============ einfache Listen (Prozesse, Neuigkeiten) ============ */
+.pl-in{max-width:52rem;margin-inline:auto}
+.pl-sec{margin-top:clamp(36px,5vw,64px)}
+.pl-sec>h2{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.1;letter-spacing:-.02em}
+.pl-sec>h2 .n{font-family:inherit;font-size:.7em;color:var(--granit)}
+.pl-dot{width:12px;height:12px;border-radius:50%;flex:none;background:var(--c)}
+.pl-ok{--c:#1E7A46}.pl-plan{--c:#B26B00}
+.pl-list{list-style:none;padding:0;margin-top:14px}
+.pl-list>li{padding:16px 0;border-top:1px solid var(--rule)}
+.pl-list>li:last-child{border-bottom:1px solid var(--rule)}
+.pl-list h3{font-size:1.0625rem;font-weight:600;line-height:1.3}
+.pl-list p{margin-top:4px;font-size:.9375rem;line-height:1.5;color:var(--granit)}
+.pl-list ul{margin:6px 0 0;padding-left:1.1em;font-size:.9375rem;line-height:1.5}
+.pl-list a{color:var(--ink);text-underline-offset:3px}
+.pl-date{font-size:.8125rem;font-weight:600;color:var(--red);letter-spacing:.01em}
 .pc-head-r{display:flex}@media (min-width:1360px){.pc-head-r{display:none}}
-.pc-legend{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.8125rem;color:var(--granit)}
-.pc-legend span{display:inline-flex;align-items:center;gap:7px}
-.pc-legend span::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
-
-/* gate matrix */
-.pc-tblw{margin-top:22px;overflow-x:auto;border-radius:var(--r-lg);background:var(--paper)}
-.pc-tbl{width:100%;border-collapse:collapse;font-size:.875rem;min-width:640px}
-.pc-tbl th,.pc-tbl td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
-.pc-tbl thead th{font-weight:500;color:var(--granit);font-size:.8125rem}
-.pc-tbl tbody th{font-weight:500;white-space:nowrap}
-.pc-tbl tr:last-child>*{border-bottom:0}
-.pc-y,.pc-n{display:inline-flex;align-items:center;gap:6px;font-weight:600;white-space:nowrap}
-.pc-y{color:#1E7A46}.pc-n{color:var(--red)}
-.pc-tbl small{display:block;font-weight:400;color:var(--granit);margin-top:2px;white-space:normal}
-
-/* process cards */
-.pc-cards{display:grid;gap:14px;margin-top:22px}
-.pc-card{max-width:60rem;padding:clamp(18px,2.4vw,32px);border-radius:var(--r-lg);background:var(--paper);box-shadow:inset 4px 0 0 var(--c);scroll-margin-top:calc(var(--hh) + var(--inset) + 12px)}
-.pc-card h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.3rem,1.9vw,1.6rem);line-height:1.15;letter-spacing:-.018em}
-.pc-card .s{margin-top:6px;display:inline-flex;align-items:center;gap:7px;font-size:.8125rem;font-weight:600;color:var(--c)}
-.pc-card .s::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
-.pc-card .q{margin-top:10px;font-size:.9375rem;color:var(--granit);max-width:46em}
-.pc-lbl{margin-top:18px;margin-bottom:6px;font-size:.8125rem;font-weight:500;color:var(--granit)}
-.pc-iss{list-style:none;padding:0}
-.pc-iss li{display:grid;grid-template-columns:7.2rem 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--rule);font-size:.9375rem;line-height:1.5}
-.pc-iss li:last-child{border-bottom:1px solid var(--rule)}
-.pc-iss .k{font-size:.8125rem;font-weight:600;color:var(--c)}
-.pc-iss .k.fix{color:var(--red)}.pc-iss .k.open{color:#B26B00}.pc-iss .k.ok{color:#1E7A46}
-@media (max-width:560px){.pc-iss li{grid-template-columns:1fr;gap:2px}}
-.pc-src{list-style:none;padding:0;font-size:.875rem}
-.pc-src li{padding:6px 0;overflow-wrap:anywhere}
-.pc-src a{color:var(--ink);text-underline-offset:3px}
-
-/* release flow */
-.pc-flow{list-style:none;padding:0;margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:12px;counter-reset:g}
-.pc-flow li{position:relative;padding:18px 16px 16px;border-radius:20px;background:var(--paper);counter-increment:g}
-.pc-flow li::before{content:counter(g);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--paper);font-weight:600;font-size:.875rem}
-.pc-flow li.go::before{content:"✓";background:#1E7A46}
-.pc-flow h3{margin-top:10px;font-size:1rem;font-weight:600;line-height:1.25}
-.pc-flow p{margin-top:6px;font-size:.875rem;line-height:1.45;color:var(--granit)}
-.pc-flow code{font-size:.8125rem;background:var(--snow);padding:1px 5px;border-radius:6px;overflow-wrap:anywhere}
-.pc-rule{margin-top:16px;max-width:56rem;padding:14px 16px;border-radius:16px;background:var(--ink);color:var(--paper);font-size:.9375rem;line-height:1.5}
-.pc-list{list-style:none;padding:0;margin-top:16px}
-.pc-list li{padding:12px 0 12px 22px;border-top:1px solid var(--rule);position:relative;line-height:1.5;max-width:54em;font-size:.9375rem}
-.pc-list li:last-child{border-bottom:1px solid var(--rule)}
-.pc-list li::before{content:"";position:absolute;left:3px;top:1.05em;width:8px;height:8px;border-radius:50%;background:rgba(26,37,49,.25)}
-.pc-meth{margin-top:14px;font-size:.875rem;color:var(--granit);max-width:52em;line-height:1.5}
+.pl-note{margin-top:28px;font-size:.875rem;color:var(--granit);line-height:1.5}
 </style>
 </head>
 <body>
@@ -507,7 +438,7 @@ html.dsc-lock{overflow:hidden!important}
 <header class="site-header">
   <a class="brand glass" href="index.html" aria-label="Tell"><svg aria-hidden="true"><use href="#cross"/></svg>Tell</a>
   <nav class="hnav glass" aria-label="Seiten">
-    <a href="frag-tell.html">Frag Tell</a><a href="buergersicht.html">Bürgersicht</a><a href="behoerdensicht.html">Behördensicht</a><a href="projekt.html">Projekt</a><a href="luecken.html">Lücken</a><a href="prozesse.html" aria-current="page">Prozess-Check</a>
+    <a href="frag-tell.html">Frag Tell</a><a href="buergersicht.html">Bürgersicht</a><a href="behoerdensicht.html">Behördensicht</a><a href="projekt.html">Projekt</a><a href="luecken.html">Lücken</a><a href="prozesse.html" aria-current="page">Prozesse</a><a href="neuigkeiten.html">Neuigkeiten</a>
   </nav>
   <p class="notice glass">Konzeptprototyp, keine offizielle Seite</p>
   <div class="head-r glass pc-head-r">
@@ -515,145 +446,457 @@ html.dsc-lock{overflow:hidden!important}
   </div>
 </header>
 <div class="tmenu glass" id="tmenu" hidden role="navigation" aria-label="Seiten">
-  <a href="index.html">Startseite</a><a href="frag-tell.html">Frag Tell</a><a href="buergersicht.html">Bürgersicht</a><a href="behoerdensicht.html">Behördensicht</a><a href="projekt.html">Projekt</a><a href="luecken.html">Lücken</a><a href="prozesse.html" aria-current="page">Prozess-Check</a>
+  <a href="index.html">Startseite</a><a href="frag-tell.html">Frag Tell</a><a href="buergersicht.html">Bürgersicht</a><a href="behoerdensicht.html">Behördensicht</a><a href="projekt.html">Projekt</a><a href="luecken.html">Lücken</a><a href="prozesse.html" aria-current="page">Prozesse</a><a href="neuigkeiten.html">Neuigkeiten</a>
 </div>
 
 <main id="main" tabindex="-1">
   <div class="fq-view">
-    <section class="fq-sheet"><div class="pc-in">
-      <p class="fq-eyebrow">Interne Prüfung · Stand 7. Oktober 2026</p>
-      <h1 class="fq-h">Welcher Prozess stimmt wirklich?</h1>
-      <p class="fq-lead">Tell beantwortet im Chat sechs Prozesse. Jede Antwort wurde Satz für Satz gegen Quellen geprüft, in allen vier Sprachen und auf der Seite «Frag Tell» abgeglichen und auf korrekte Zuordnung getestet. Grün ist nur, was jede Prüfung besteht.</p>
+    <section class="fq-sheet"><div class="pl-in">
+      <h1 class="fq-h">Prozesse</h1>
+      <p class="fq-lead">Was Tell heute sicher beantwortet und was als Nächstes kommt. Stand 7. Oktober 2026.</p>
 
-      <div class="pc-verdict">
-        <div class="pc-big">1<small> / 6</small></div>
-        <div>
-          <h2>Belegt und korrekt: «Arbeitslos melden»</h2>
-          <p>Alle 11 Angaben haben eine Quelle, keine ist widerlegt, die Antwort ist in DE, FR, IT, EN und auf «Frag Tell» identisch, und die Beispielfrage landet in allen Sprachen bei diesem Prozess. Die anderen fünf haben unbelegte, ungenaue oder veraltete Angaben (Details unten).</p>
-        </div>
-      </div>
-
-      <section class="pc-sec" aria-labelledby="hMap">
-        <h2 id="hMap">Übersicht</h2>
-        <p class="pc-sub">Die sechs Prozesse und ihr Status. Antippen führt zum Befund.</p>
-        <div class="pc-map" id="pcMap"></div>
-        <div class="pc-legend"><span class="pc-ok">Geprüft: alles belegt, korrekt, aktuell</span><span class="pc-warn">Lücken: Angaben ohne Beleg</span><span class="pc-bad">Fehler: Angabe falsch, ungenau oder veraltet</span></div>
-      </section>
-
-      <section class="pc-sec" aria-labelledby="hGates">
-        <h2 id="hGates">Die fünf Prüfungen pro Prozess</h2>
-        <p class="pc-sub">Ein Prozess ist erst grün, wenn alle fünf Spalten erfüllt sind.</p>
-        <div class="pc-tblw"><table class="pc-tbl" id="pcTbl"></table></div>
-      </section>
-
-      <section class="pc-sec" aria-labelledby="hCards">
-        <h2 id="hCards">Befunde im Detail</h2>
-        <div class="pc-cards" id="pcCards"></div>
-      </section>
-
-      <section class="pc-sec" aria-labelledby="hFlow">
-        <h2 id="hFlow">So kommt künftig ein Prozess dazu</h2>
-        <p class="pc-sub">Ein Prozess nach dem anderen, und jeder erst live, wenn er alle Schritte bestanden hat.</p>
-        <ol class="pc-flow">
-          <li><h3>Frage festlegen</h3><p>Genau eine Beispielfrage mit Ort und Situation. Die Antwort gilt nur für diesen Fall.</p></li>
-          <li><h3>Jede Angabe belegen</h3><p>Jede Zahl, Frist und Adresse bekommt eine offizielle Quelle mit Abrufdatum. Ohne Quelle fliegt der Satz raus.</p></li>
-          <li><h3>Zweitprüfung</h3><p>Eine zweite Prüfung liest alle Quellen erneut, auch neue Medienmitteilungen (z. B. Rentenanpassung).</p></li>
-          <li><h3>Zuordnung testen</h3><p>Beispielfrage und Abgrenzungen in <code>pruefung/routing.mjs</code> eintragen, Test muss grün sein.</p></li>
-          <li><h3>Sprachen abgleichen</h3><p>DE, FR, IT, EN und «Frag Tell» gleich: <code>node pruefung/konsistenz.mjs</code> muss grün sein.</p></li>
-          <li class="go"><h3>Freigabe mit Ablaufdatum</h3><p>Eintrag auf dieser Seite, mit dem Datum der nächsten bekannten Änderung (z. B. 1. Januar, neue Prämien).</p></li>
-        </ol>
-        <p class="pc-rule">Regel: Nur grüne Prozesse gelten als fertig. Gelbe und rote bleiben als Beispiel sichtbar, bis sie nachgebessert und neu geprüft sind.</p>
-      </section>
-
-      <section class="pc-sec" aria-labelledby="hMore">
-        <h2 id="hMore">Weitere Befunde aus der Analyse</h2>
-        <ul class="pc-list">
-          <li><b>Antworten sind feste Fälle.</b> Wer fragt «Ich ziehe von Basel nach Genf», bekommt die Antwort für Bern → Winterthur. Gleiches gilt für AHV (Mann, Jg. 1962, Thun) und Steuern (Bern). Jede Antwort ist nur für ihre Beispielfrage geprüft.</li>
-          <li><b>Fehlzuordnungen im Chat.</b> «Pensionskasse auszahlen lassen» und «Ich habe eine IV-Rente» landen bei der AHV-Antwort; «Adresse bei der Steuerverwaltung ändern» landet bei der Steuerfrist. «Ich verliere meine Stelle» findet nichts (Fallback, also wenigstens nicht falsch). Alle sind in <code>pruefung/routing.mjs</code> als offen erfasst.</li>
-          <li><b>Bürgersicht und Behördensicht</b> zeigen erfundene Fälle (z. B. Lausanne) und keine geprüften Prozesse. Sie sind hier nicht bewertet.</li>
-          <li><b>Konsistenz ist sauber.</b> Alle 363 Antworttexte aus index.html stehen wortgleich in frag-tell.html, die Quellen-URLs sind identisch, die Zahlen in FR, IT und EN stimmen mit DE überein.</li>
+      <section class="pl-sec pl-plan" id="in-arbeit">
+        <h2><span class="pl-dot"></span>In Arbeit</h2>
+        <ul class="pl-list">
+          <li><h3>Lohnpfändung</h3><p>Wird gerade recherchiert und geprüft.</p></li>
         </ul>
-        <p class="pc-meth">Methode: Jede Angabe wurde am 7.10.2026 gegen Bund, Kantone, Gemeinden und Gesetzestexte geprüft. Weil die Prüfumgebung Behördenseiten nicht direkt laden kann, wurde über die Suchtreffer genau dieser Seiten geprüft. Beim grünen Prozess stammt jeder Beleg von einer Behördenseite (arbeit.swiss/SECO, Kantone Zürich, Aargau, Bern).</p>
       </section>
+
+      <section class="pl-sec pl-ok">
+        <h2><span class="pl-dot"></span>Fertig <span class="n">(83)</span></h2>
+        <ul class="pl-list">
+          <li>
+            <h3>Adoptionsurlaub</h3>
+            <p>2 Wochen für Kinder unter 4 Jahren, Voraussetzungen (9 Monate AHV, 5 Monate Erwerb), Bezug innert 1 Jahr, 80 % bis CHF 220/Tag (max. CHF 3’080), keine Entschädigung bei Stiefkindadoption, Antrag über den Arbeitgeber. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/familie-und-partnerschaft/mutterschaft-und-vaterschaft/adoptionsurlaub/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.bsv.admin.ch/de/eo-bei-adoption" target="_blank" rel="noopener noreferrer">BSV</a> · <a href="https://faq.bsv.admin.ch/de/erwerbsersatz-eo/erwerbsersatz-bei-adoptionsurlaub/wie-hoch-ist-die-adoptionsentschaedigung" target="_blank" rel="noopener noreferrer">BSV FAQ</a></p>
+          </li>
+          <li>
+            <h3>Anwohnerparkkarte</h3>
+            <p>Voraussetzungen, Kosten CHF&nbsp;264 pro Jahr, Gültigkeit, Online-Antrag. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bern.ch/themen/mobilitat-und-verkehr/motorrad-und-auto/parkieren/parkkartenzonen" target="_blank" rel="noopener noreferrer">Stadt Bern</a> · <a href="https://formular.bern.ch/forms/findform?shortname=anwohnerparkkarte&amp;formtecid=3&amp;areashortname=bern-OGP" target="_blank" rel="noopener noreferrer">Webformular</a> · <a href="https://www.bern.ch/mediencenter/medienmitteilungen/aktuell_ptk/parkkarten-neu-online-erstellen-und-bezahlen" target="_blank" rel="noopener noreferrer">Online bezahlen</a></p>
+          </li>
+          <li>
+            <h3>Arbeitslos melden</h3>
+            <p>Anmeldung beim RAV, Höhe und Dauer der Arbeitslosenentschädigung, Ablauf. Beispiel Thun, Regeln des Bundes. Alle Angaben mit Behördenquelle belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.arbeit.swiss/en/jobseekers/signing-on-and-registration" target="_blank" rel="noopener noreferrer">arbeit.swiss (SECO)</a> · <a href="https://www.zh.ch/de/wirtschaft-arbeit/stellensuche-arbeitslosigkeit/arbeitslosenentschaedigung.html" target="_blank" rel="noopener noreferrer">Kanton Zürich</a> · <a href="https://www.weu.be.ch/de/start/themen/wirtschaft-und-arbeit/arbeitslosigkeit/arbeitslosengeld-beantragen.html" target="_blank" rel="noopener noreferrer">Kanton Bern</a> · <a href="https://www.fedlex.admin.ch/eli/cc/1982/2184_2184_2184/de" target="_blank" rel="noopener noreferrer">AVIG</a></p>
+          </li>
+          <li>
+            <h3>Arbeitszeugnis verlangen</h3>
+            <p>Jederzeit (Art. 330a OR), Vollzeugnis oder Arbeitsbestätigung, Verjährung 10 Jahre, Berichtigung. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/arbeit/arbeitszeugnis/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.seco.admin.ch/seco/de/home/Arbeit/Personenfreizugigkeit_Arbeitsbeziehungen/Arbeitsrecht/FAQ_zum_privaten_Arbeitsrecht/arbeitszeugnis.html" target="_blank" rel="noopener noreferrer">SECO FAQ</a></p>
+          </li>
+          <li>
+            <h3>Auswandern</h3>
+            <p>Abmeldepflicht (mehr als 3 Monate, Unterkunft aufgegeben), Webformular Stadt Bern (CHF 20 / gratis), Anmeldung bei der Vertretung innert 90 Tagen, AHV-Varianten, Krankenkasse, Steuern. Ganze Schweiz, Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/ins-ausland-ziehen/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.eda.admin.ch/de/auswandern" target="_blank" rel="noopener noreferrer">EDA</a> · <a href="https://www.bern.ch/themen/zuzug-umzug-wegzug/formular-wegzug-ausland" target="_blank" rel="noopener noreferrer">Stadt Bern</a></p>
+          </li>
+          <li>
+            <h3>Auto einlösen</h3>
+            <p>Unterlagen, Versicherungsnachweis, Gebühren, Nummernschilder, Motorfahrzeugsteuer. Beispiel Kanton Bern, Occasion. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.svsa.sid.be.ch/de/start/fahrzeuge/fahrzeug-anmelden.html" target="_blank" rel="noopener noreferrer">SVSA Bern</a> · <a href="https://www.svsa.sid.be.ch/de/start/fahrzeuge/fahrzeug-anmelden/vorgang-fahrzeug-anmelden.html" target="_blank" rel="noopener noreferrer">Ablauf</a> · <a href="https://www.svsa.sid.be.ch/de/start/fahrzeuge/steuern-gebuehren/fahrzeugsteuer.html" target="_blank" rel="noopener noreferrer">Fahrzeugsteuer</a> · <a href="https://www.ch.ch/de/fahrzeuge-und-verkehr/autos-und-andere-fahrzeuge/fahrzeug-einlosen/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Ausländerausweis verlängern</h3>
+            <p>Verfallsanzeige, Einreichen per E-Mail oder Post, Biometrie, Gültigkeit des Ausweises B. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bern.ch/themen/auslanderinnen-und-auslander/einreise-und-aufenthalt/verlaengerung-von-bewilligungen" target="_blank" rel="noopener noreferrer">Stadt Bern</a> · <a href="https://www.migration.sid.be.ch/de/start/aufenthalt/ausweis-b.html" target="_blank" rel="noopener noreferrer">Kanton Bern: Ausweis B</a> · <a href="https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/sue/polizeiinspektorat/einwohnerdienste-migration-und-fremdenpolizei-emf/" target="_blank" rel="noopener noreferrer">EMF</a></p>
+          </li>
+          <li>
+            <h3>Auto abmelden</h3>
+            <p>Fahrzeugausweis annullieren, Schilder lagern oder entsorgen, Steuer und Versicherung, Kosten. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.svsa.sid.be.ch/de/start/fahrzeuge/fahrzeug-abmelden/vorgang-fahrzeug-abmelden.html" target="_blank" rel="noopener noreferrer">SVSA Bern</a> · <a href="https://www.svsa.sid.be.ch/de/start/fahrzeuge/nummernschilder/nummernschild-depot-wik/nummernschilder-deponieren.html" target="_blank" rel="noopener noreferrer">Schilder deponieren</a> · <a href="https://www.svsa.sid.be.ch/de/start/svsa/news.html?newsID=c442bcc8-8a82-4192-bb51-ccf85181f94a" target="_blank" rel="noopener noreferrer">Lagerung</a> · <a href="https://www.ch.ch/de/fahrzeuge-und-verkehr/autos-und-andere-fahrzeuge/fahrzeug-einlosen/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Ausländischen Führerausweis umtauschen</h3>
+            <p>Frist 12 Monate, Kontrollfahrt und Ausnahmen, Gebühren, Unterlagen, Ablauf. Beispiel Kanton Bern mit deutschem Ausweis. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.svsa.sid.be.ch/de/start/fuehrerausweise/rund-um-fuehrerausweis/umtausch-fuehrerausweis-ausland.html" target="_blank" rel="noopener noreferrer">SVSA Bern</a> · <a href="https://www.svsa.sid.be.ch/de/start/fuehrerausweise/rund-um-fuehrerausweis/gebuehren.html" target="_blank" rel="noopener noreferrer">SVSA Gebühren</a> · <a href="https://www.ch.ch/de/ausweise-und-dokumente/fuhrerausweis/fuhrerausweis-umtauschen/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://blog.astra.admin.ch/umtausch-auslandischer-fuhrerausweise/" target="_blank" rel="noopener noreferrer">ASTRA</a></p>
+          </li>
+          <li>
+            <h3>AHV-Beitragslücken schliessen</h3>
+            <p>Kürzung um 1/44 pro Jahr, Nachzahlung nur für die letzten 5 Jahre, Jugendjahre, kostenloser IK-Auszug, Mindestbeitrag 2026 CHF&nbsp;530. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ahv-iv.ch/de/News-Infos/post/was-tun-bei-beitragsluecken" target="_blank" rel="noopener noreferrer">AHV/IV</a> · <a href="https://www.bsv.admin.ch/de/versicherungs-und-beitragsluecken-in-der-ahv" target="_blank" rel="noopener noreferrer">BSV</a> · <a href="https://www.ch.ch/de/ahv-beitragslucken" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.ahv-iv.ch/de/merkbl%C3%A4tter-formulare/bestellung-kontoauszug" target="_blank" rel="noopener noreferrer">Kontoauszug</a> · <a href="https://www.ahv-iv.ch/p/2.03.d" target="_blank" rel="noopener noreferrer">Merkblatt 2.03</a></p>
+          </li>
+          <li>
+            <h3>AHV-Rente anmelden</h3>
+            <p>Referenzalter, Anmeldung, Vorbezug, Aufschub, Rentenhöhe ab 2027 und 13. Rente. Beispiel Jahrgang 1962, Thun. Alle Angaben belegt, Rentenbeträge nachgeführt auf den Bundesratsbeschluss vom 2.10.2026; geprüft am 7.10.2026.</p>
+            <p><a href="https://www.admin.ch/de/newnsb/BqB41FVYi5FB" target="_blank" rel="noopener noreferrer">Bundesrat (2.10.2026)</a> · <a href="https://www.ahv-iv.ch/p/3.01.d" target="_blank" rel="noopener noreferrer">Merkblatt 3.01</a> · <a href="https://www.akbern.ch/de/Versicherungen/AHV-Leistungen/Altersrente-der-AHV/Altersrente-der-AHV.html" target="_blank" rel="noopener noreferrer">AK Bern</a> · <a href="https://www.ch.ch/de/pensionierung/pensionierung-ab-wann/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>AHV-Rente vorbeziehen</h3>
+            <p>Ab 63 (Übergangsgeneration Frauen ab 62), Teilvorbezug 20–80 %, lebenslange Kürzung 0,6–13,6 % (ab 2027 neue Sätze), Beitragspflicht bis 65, Anmeldung 3–4 Monate vorher, nicht rückwirkend. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ahv-iv.ch/p/3.04.d" target="_blank" rel="noopener noreferrer">Merkblatt 3.04</a> · <a href="https://faq.bsv.admin.ch/de/alters-und-hinterlassenenversicherung-ahv/ahv-leistungen/kann-ich-die-ahv-altersrente-vorbeziehen" target="_blank" rel="noopener noreferrer">BSV FAQ</a> · <a href="https://www.ahv-iv.ch/de/Sozialversicherungen/Glossar/term/rentenvorbezug" target="_blank" rel="noopener noreferrer">Glossar</a></p>
+          </li>
+          <li>
+            <h3>Betreibung einleiten</h3>
+            <p>Betreibungsbegehren, Kostenvorschuss, Zahlungsbefehl mit 20 und 10 Tagen, Rechtsvorschlag, Fortsetzung. Beispiel Kanton Bern, Regeln des Bundes. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/steuern-und-finanzen/schulden--betreibungen-und-konkurs/betreibungen/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.baka.dij.be.ch/" target="_blank" rel="noopener noreferrer">BAKA Bern</a> · <a href="https://www.bj.admin.ch/de/musterformulare-schkg" target="_blank" rel="noopener noreferrer">Musterformulare</a></p>
+          </li>
+          <li>
+            <h3>Betreuungsgutscheine für die Kita</h3>
+            <p>Voraussetzungen, Pensum, Einkommensgrenze 2026/27, Antrag über kiBon, Beginn. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bern.ch/themen/kinder-jugendliche-und-familie/kinderbetreuung/betreuungsgutscheine" target="_blank" rel="noopener noreferrer">Stadt Bern</a> · <a href="https://www.bern.ch/themen/kinder-jugendliche-und-familie/kinderbetreuung/betreuungsgutscheine/faqs-haeufig-gestellte-fragen" target="_blank" rel="noopener noreferrer">FAQ</a> · <a href="https://www.gsi.be.ch/de/start/themen/familie-gesellschaft/kindertagesstaetten-und-tagesfamilien/betreuungsgutscheine.html" target="_blank" rel="noopener noreferrer">Kanton Bern</a></p>
+          </li>
+          <li>
+            <h3>Betreuungsurlaub für krankes Kind</h3>
+            <p>14 Wochen für Eltern schwer kranker oder verunfallter Kinder, Rahmenfrist 18 Monate, 80 % bis CHF 220/Tag, Kündigungsschutz bis 6 Monate, keine Ferienkürzung, Anmeldung mit Arztbestätigung. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bsv.admin.ch/de/eltern-schwer-beeintraechtigte-kind" target="_blank" rel="noopener noreferrer">BSV</a> · <a href="https://faq.bsv.admin.ch/de/betreuung-von-angehoerigen/betreuungsentschaedigung/ab-wann-erhalte-ich-die" target="_blank" rel="noopener noreferrer">BSV FAQ</a> · <a href="https://www.ahv-iv.ch/p/6.10.d" target="_blank" rel="noopener noreferrer">Merkblatt 6.10</a></p>
+          </li>
+          <li>
+            <h3>Betreibungsregisterauszug bestellen</h3>
+            <p>Online-Bestellung, Kosten, Inhalt der letzten 5 Jahre, Auszug bei Umzug, elektronische Zustellung. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.baka.dij.be.ch/de/start/Auszug-bestellen.html" target="_blank" rel="noopener noreferrer">BAKA Bern</a> · <a href="https://www.ch.ch/de/wohnen/miete/betreibungsregisterauszug-bestellen/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Einbürgerung</h3>
+            <p>Wohnsitzfristen, C-Ausweis, Sprachnachweis, Einbürgerungstest, Ablauf, Gebühren von Gemeinde, Kanton und Bund. Beispiel Stadt Bern, ordentliche Einbürgerung. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.einbuergerung.sid.be.ch/de/start/einbuergerung/ordentliche-einbuergerung/aufenthalt.html" target="_blank" rel="noopener noreferrer">Kanton Bern</a> · <a href="https://www.einbuergerung.sid.be.ch/de/start/einbuergerung/ordentliche-einbuergerung/gebuehren.html" target="_blank" rel="noopener noreferrer">Gebühren</a> · <a href="https://www.einbuergerung.sid.be.ch/de/start/einbuergerung/ordentliche-einbuergerung/sprachnachweis.html" target="_blank" rel="noopener noreferrer">Sprachnachweis</a> · <a href="https://www.sem.admin.ch/sem/en/home/integration-einbuergerung/schweizer-werden/ordentlich.html" target="_blank" rel="noopener noreferrer">SEM</a></p>
+          </li>
+          <li>
+            <h3>Einsprache gegen Steuerveranlagung</h3>
+            <p>30 Tage, nicht erstreckbar, schriftlich oder BE-Login, begründet mit Unterlagen, kostenlos, Rekurs an die Steuerrekurskommission innert 30 Tagen. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.sv.fin.be.ch/de/start/themen/steuern-bezahlen/einsprache-gegen-veranlagungsverfuegung-erheben.html" target="_blank" rel="noopener noreferrer">Steuerverwaltung Bern</a> · <a href="https://www.wegleitung.sv.fin.be.ch/de/start/np2023/allgemeine-informationen/einsprache.html" target="_blank" rel="noopener noreferrer">Wegleitung</a></p>
+          </li>
+          <li>
+            <h3>Einzelfirma gründen</h3>
+            <p>AHV-Anmeldung als Selbstständige, Beiträge, Handelsregister, Mehrwertsteuer, Gebühr, EasyGov. Beispiel Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.kmu.admin.ch/de/rechtsform-einzelunternehmen" target="_blank" rel="noopener noreferrer">KMU-Portal</a> · <a href="https://www.hra.dij.be.ch/content/dam/hra_dij/dokumente/de/merkbl%C3%A4tter/HRA_Merkblatt_Neueintragung_Einzelunternehmen_de.pdf" target="_blank" rel="noopener noreferrer">Handelsregisteramt Bern</a> · <a href="https://www.akbern.ch/de/Versicherungen/AHV-Beitrage/Selbstandigerwerbende/Selbstaendigerwerbende.html" target="_blank" rel="noopener noreferrer">AK Bern</a> · <a href="https://www.ahv-iv.ch/p/2.02.d" target="_blank" rel="noopener noreferrer">Merkblatt 2.02</a> · <a href="https://www.estv.admin.ch/de/mwst-steuerpflicht" target="_blank" rel="noopener noreferrer">ESTV</a> · <a href="https://sole-proprietorship.easygov.swiss/" target="_blank" rel="noopener noreferrer">EasyGov</a></p>
+          </li>
+          <li>
+            <h3>Erbenschein beantragen</h3>
+            <p>Testament an die Gemeinde, Erbenschein von Gemeinde oder Notariat (ab CHF&nbsp;200), Einsprachefrist 30 Tage, Ausschlagung innert 3 Monaten. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.rsta.dij.be.ch/de/start/themen/erbrecht/testament-erbvertrag-erbenschein.html" target="_blank" rel="noopener noreferrer">Erbenschein</a> · <a href="https://www.rsta.dij.be.ch/content/dam/rsta_dij/dokumente/de/themen/erbrecht/RSTA_Checkliste_Erben_de.pdf" target="_blank" rel="noopener noreferrer">Checkliste Erben</a> · <a href="https://www.rsta.dij.be.ch/de/start/themen/erbrecht/erbschaftsausschlagung.html" target="_blank" rel="noopener noreferrer">Ausschlagung</a> · <a href="https://www.belex.sites.be.ch/app/de/texts_of_law/169.81" target="_blank" rel="noopener noreferrer">Notariatsgebühren</a> · <a href="https://www.rsta.dij.be.ch/de/start/ueber-uns/regierungsstatthalteraemter.html" target="_blank" rel="noopener noreferrer">Regierungsstatthalterämter</a></p>
+          </li>
+          <li>
+            <h3>Ergänzungsleistungen beantragen</h3>
+            <p>Vermögensgrenze, Lebensbedarf ab 2027, Anmeldung über die AHV-Zweigstelle, Entscheid der Ausgleichskasse. Beispiel Thun, Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.akbern.ch/de/Versicherungen/EL/Erganzungsleistungen/Ergaenzungsleistungen.html" target="_blank" rel="noopener noreferrer">AK Bern</a> · <a href="https://www.ahv-iv.ch/p/5.01.d" target="_blank" rel="noopener noreferrer">Merkblatt 5.01</a> · <a href="https://www.admin.ch/de/newnsb/BqB41FVYi5FB" target="_blank" rel="noopener noreferrer">Bundesrat (2.10.2026)</a></p>
+          </li>
+          <li>
+            <h3>Erwerbsersatz im Militär und Zivildienst</h3>
+            <p>EO zusätzlich zum Sold: 80 %, mind. CHF 69, max. CHF 220/Tag, Rekruten CHF 69, Kinderzulage CHF 22/Tag, Formular vom Rechnungsführer, Anspruch erlischt nach 5 Jahren (Stand 2026). Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bsv.admin.ch/de/eo-dienstleistende-militaer" target="_blank" rel="noopener noreferrer">BSV</a> · <a href="https://faq.bsv.admin.ch/de/erwerbsersatz-eo/erwerbsersatz-bei-militaer-und-zivildienst/wie-muss-ich-den-anspruch-auf-eo" target="_blank" rel="noopener noreferrer">BSV FAQ Anmeldung</a> · <a href="https://faq.bsv.admin.ch/de/erwerbsersatz-eo/erwerbsersatz-bei-militaer-und-zivildienst/habe-ich-anspruch-auf-die-kinderzulage" target="_blank" rel="noopener noreferrer">BSV FAQ Kinderzulage</a></p>
+          </li>
+          <li>
+            <h3>Familienzulagen beantragen</h3>
+            <p>Höhe der Kinder- und Ausbildungszulage, Antrag über Arbeitgeber, rückwirkend 5 Jahre, eine Zulage pro Kind. Beispiel Kanton Bern, Stand 2026. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.fambe.sites.be.ch/familienthemen/finanzen/kinder-und-ausbildungszulagen" target="_blank" rel="noopener noreferrer">Familienportal Bern</a> · <a href="https://www.ch.ch/de/arbeit/familie-und-arbeit/familienzulagen/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.ahv-iv.ch/p/6.08.d" target="_blank" rel="noopener noreferrer">Merkblatt 6.08</a> · <a href="https://www.akbern.ch/de/Versicherungen/FZ/Familienzulagen/Familienzulagen.html" target="_blank" rel="noopener noreferrer">AK Bern</a></p>
+          </li>
+          <li>
+            <h3>Ferienanspruch</h3>
+            <p>4 Wochen, bis 20 Jahre 5 Wochen (Art. 329a OR), 2 Wochen am Stück, kein Auszahlen während der Anstellung, Krankheit in den Ferien, Verjährung 5 Jahre. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.seco.admin.ch/seco/de/home/Arbeit/Personenfreizugigkeit_Arbeitsbeziehungen/Arbeitsrecht/FAQ_zum_privaten_Arbeitsrecht/ferien.html" target="_blank" rel="noopener noreferrer">SECO FAQ</a> · <a href="https://www.ch.ch/de/arbeit/arbeitszeit/ferien--feiertage-und-arbeitsabwesenheiten/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Fischerpatent lösen</h3>
+            <p>Patentarten und Preise, Hegebeitrag, Sachkunde-Nachweis, Kauf online, per App oder in Agenturen. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatente-preise.html" target="_blank" rel="noopener noreferrer">Patente und Preise</a> · <a href="https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html" target="_blank" rel="noopener noreferrer">Patent beziehen</a> · <a href="https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/faq-angelfischerei.html" target="_blank" rel="noopener noreferrer">FAQ</a> · <a href="https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischerei-app.html" target="_blank" rel="noopener noreferrer">App</a></p>
+          </li>
+          <li>
+            <h3>Fundbüro</h3>
+            <p>Verlust online melden, Abholung, Aufbewahrung ein Jahr, Finderlohn, Öffnungszeiten. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bern.ch/themen/personliches/fundburo" target="_blank" rel="noopener noreferrer">Fundbüro Stadt Bern</a> · <a href="https://www.bern.ch/themen/personliches/fundburo/bern-web-addressblock/addressblock_detail_view" target="_blank" rel="noopener noreferrer">Kontakt</a> · <a href="https://stadtrecht.bern.ch/dgn-lex_559_51" target="_blank" rel="noopener noreferrer">Fundsachenverordnung</a> · <a href="https://www.ch.ch/de/sicherheit-und-recht/polizei/fundgegenstande/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Gartenhaus: Baubewilligung nötig?</h3>
+            <p>Bewilligungsfreie Kleinbauten (Masse, Bedingungen), Vorschriften, Ausnahme ausserhalb der Bauzone, Baugesuch über eBau. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.belex.sites.be.ch/app/de/texts_of_law/725.1" target="_blank" rel="noopener noreferrer">Baubewilligungsdekret</a> · <a href="https://www.bern.ch/themen/planen-und-bauen/baubewilligung/baubewilligung" target="_blank" rel="noopener noreferrer">Stadt Bern</a></p>
+          </li>
+          <li>
+            <h3>Grundbuchauszug bestellen</h3>
+            <p>GRUDIS public (kostenlos), öffentlicher und vollständiger Auszug, Berechtigung, Gebühren, Online-Bestellung. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.gba.dij.be.ch/de/start/dienstleistungen/bestellungen.html" target="_blank" rel="noopener noreferrer">Bestellungen</a> · <a href="https://www.gba.dij.be.ch/de/start/dienstleistungen/online-abfragen/grudis-public.html" target="_blank" rel="noopener noreferrer">GRUDIS public</a> · <a href="https://www.gba.dij.be.ch/de/start/grundbuch/faq.html" target="_blank" rel="noopener noreferrer">FAQ</a> · <a href="https://www.gba.dij.be.ch/de/start/dienstleistungen/online-abfragen/eigentumsauskunft.html" target="_blank" rel="noopener noreferrer">Eigentumsauskunft</a></p>
+          </li>
+          <li>
+            <h3>Heiraten</h3>
+            <p>Voraussetzungen, Reservation, Ehevorbereitung, Fristen, Kosten, Trauzeugen. Beispiel Stadt Zürich, beide mit Schweizer Pass. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.stadt-zuerich.ch/de/lebenslagen/einwohner-services/heiraten/hochzeitstermin-schweizer-pass/hochzeitstermin-schweizer-wohnort-zuerich.html" target="_blank" rel="noopener noreferrer">Stadt Zürich</a> · <a href="https://www.stadt-zuerich.ch/de/lebenslagen/einwohner-services/heiraten/ehevorbereitung.html" target="_blank" rel="noopener noreferrer">Ehevorbereitung</a> · <a href="https://www.stadt-zuerich.ch/de/lebenslagen/einwohner-services/heiraten/faq.html" target="_blank" rel="noopener noreferrer">FAQ Zürich</a> · <a href="https://www.ch.ch/de/familie-und-partnerschaft/heirat--konkubinat--partenariat/heiraten/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Geburt melden</h3>
+            <p>Frist drei Tage, wer meldet, Namen des Kindes, Geburtsurkunde. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/geburt.html" target="_blank" rel="noopener noreferrer">Zivilstand Bern</a> · <a href="https://www.zivilstand.sid.be.ch/content/dam/zivilstand_sid/dokumente/de/dienstleistungen-de/Geburtsmeldung-de.pdf" target="_blank" rel="noopener noreferrer">Formular</a> · <a href="https://www.ch.ch/de/familie-und-partnerschaft/mutterschaft-und-vaterschaft/schwangerschaft-und-geburt/geburt-meines-kindes-anmelden/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Hilflosenentschädigung</h3>
+            <p>Hilflosigkeit leicht/mittel/schwer, Voraussetzungen (AHV-Rente oder EL, 6 Monate), Beträge 2026 CHF 252/630/1’008 pro Monat, Anmeldung bei der Ausgleichskasse. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ahv-iv.ch/p/3.01.d" target="_blank" rel="noopener noreferrer">Merkblatt 3.01</a> · <a href="https://www.ahv-iv.ch/de/Sozialversicherungen/Alters-und-Hinterlassenenversicherung-AHV/Hilflosenentsch%C3%A4digungen" target="_blank" rel="noopener noreferrer">AHV/IV</a> · <a href="https://www.bsv.admin.ch/dam/de/sd-web/sAgdISSXenMT/d_Betr%C3%A4ge%202026.pdf" target="_blank" rel="noopener noreferrer">BSV Beträge 2026</a></p>
+          </li>
+          <li>
+            <h3>Hund anmelden</h3>
+            <p>Anmeldung bei der Gemeinde, AMICUS, Halterwechsel, Mikrochip, Hundetaxe. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bern.ch/themen/umwelt-natur-und-energie/tiere/hunde" target="_blank" rel="noopener noreferrer">Stadt Bern</a> · <a href="https://www.amicus.ch/Content/News/Flyer_DE.pdf" target="_blank" rel="noopener noreferrer">AMICUS</a> · <a href="https://www.ch.ch/de/hundesteuer/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Bei der IV anmelden</h3>
+            <p>Früherfassung, Anmeldung, Eingliederung vor Rente, frühester Rentenbeginn 6 Monate nach Anmeldung. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ivbe.ch/de/prozesse/anmeldung.html" target="_blank" rel="noopener noreferrer">IV-Stelle Bern: Anmeldung</a> · <a href="https://www.ivbe.ch/de/prozesse/eingliederung.html" target="_blank" rel="noopener noreferrer">Eingliederung</a> · <a href="https://www.ahv-iv.ch/p/4.04.d" target="_blank" rel="noopener noreferrer">Merkblatt 4.04</a> · <a href="https://www.ch.ch/de/arbeit/invalidenversicherung/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Kind anerkennen</h3>
+            <p>Zeitpunkt, Ablauf beim Zivilstandsamt, gemeinsame elterliche Sorge, Kosten. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/kindesanerkennung.html" target="_blank" rel="noopener noreferrer">Zivilstand Bern</a> · <a href="https://www.ch.ch/de/familie-und-partnerschaft/mutterschaft-und-vaterschaft/ein-kind-anerkennen/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.kesb.dij.be.ch/de/start/Kinder-Jugendliche/vaterschaft-und-anerkennung.html" target="_blank" rel="noopener noreferrer">KESB Bern</a></p>
+          </li>
+          <li>
+            <h3>Kind in den Kindergarten anmelden</h3>
+            <p>Stichtag 31. Juli, zwei Jahre Kindergarten, späterer Eintritt, Anmeldeformular der Gemeinde. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bkd.be.ch/de/start/themen/bildung-im-kanton-bern/kindergarten-und-volksschule/die-volksschule/eintritt-in-die-volksschule.html" target="_blank" rel="noopener noreferrer">BKD Bern</a> · <a href="https://www.bkd.be.ch/content/dam/bkd/dokumente/de/themen/bildung/kindergarten-und-volksschule/die-volksschule/media-center/deutsch/Elterninformationen-Kindergarten-Deutsch-d.pdf" target="_blank" rel="noopener noreferrer">Elterninformation</a> · <a href="https://www.bern.ch/themen/bildung/schule" target="_blank" rel="noopener noreferrer">Stadt Bern</a></p>
+          </li>
+          <li>
+            <h3>Kirchenaustritt</h3>
+            <p>Form des Austritts, Adresse, Zeitpunkt der Wirkung, Kirchensteuer pro rata. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.belex.sites.be.ch/data/410.141/de" target="_blank" rel="noopener noreferrer">Verordnung BSG 410.141</a> · <a href="https://www.taxinfo.sv.fin.be.ch/taxinfo/8fb87c2a-97dc-4069-8f8b-60c8c2c5c9b3" target="_blank" rel="noopener noreferrer">TaxInfo Kirchensteuer</a> · <a href="https://www.kathbern.ch/bern-sued/was-tun-wenn/seelsorge-1" target="_blank" rel="noopener noreferrer">kathbern.ch</a></p>
+          </li>
+          <li>
+            <h3>Kündigung durch Vermieter anfechten</h3>
+            <p>Amtliches Formular, mind. 3 Monate Frist, Recht auf Begründung, Anfechtung bei Verstoss gegen Treu und Glauben, Erstreckung bis 4 Jahre, Schlichtungsgesuch innert 30 Tagen. Ganze Schweiz, Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/kundigung-mietvertrag-durch-vermieter/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.zsg.justice.be.ch/de/start/themen/zivilrecht/mietrecht/beendigung-mietvertrag/mieter-in-vorgehen-gegen-kuendigung.html" target="_blank" rel="noopener noreferrer">Kanton Bern</a></p>
+          </li>
+          <li>
+            <h3>Kündigungsfristen im Job</h3>
+            <p>Probezeit (7 Tage), gesetzliche Fristen 1/2/3 Monate, Sperrfristen bei Krankheit 30/90/180 Tage, Schwangerschaft, Nichtigkeit (Art. 336c OR). Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.seco.admin.ch/de/faq-kuendigung" target="_blank" rel="noopener noreferrer">SECO FAQ</a> · <a href="https://www.seco.admin.ch/dam/seco/de/dokumente/Arbeit/Personenfreizuegigkeit/Arbeitsrecht/merkblatt_kuendigung.pdf.download.pdf/merkblatt_kuendigung_010595_d.pdf" target="_blank" rel="noopener noreferrer">SECO Merkblatt</a> · <a href="https://www.ch.ch/de/arbeit/kundigung-arbeitsvertrag/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Kontrolluntersuchung ab 75</h3>
+            <p>Verkehrsmedizinische Untersuchung alle 2 Jahre ab 75 (seit 2019), Ärztin oder Arzt Stufe 1 (medtraffic.ch), automatische Einladung mit Zugangscode, keine Fristverlängerung. Ganze Schweiz, Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.svsa.sid.be.ch/de/start/fuehrerausweise/gesundheitspruefung/verkehrsmedizinische-kontrolle.html" target="_blank" rel="noopener noreferrer">SVSA Bern</a> · <a href="https://www.astra.admin.ch/astra/de/home/dokumentation/medienmitteilungen/anzeige-meldungen.msg-id-71133.html" target="_blank" rel="noopener noreferrer">ASTRA</a></p>
+          </li>
+          <li>
+            <h3>Krankenkasse wechseln</h3>
+            <p>Kündigungsfrist, Franchise, Wechsel Mitte Jahr, offene Prämien, Zusatzversicherung. Ganze Schweiz (KVG). Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.priminfo.admin.ch/de/faq" target="_blank" rel="noopener noreferrer">Priminfo FAQ</a> · <a href="https://www.priminfo.admin.ch/de/zahlen-und-fakten/wechsel" target="_blank" rel="noopener noreferrer">Priminfo Wechsel</a> · <a href="https://www.bag.admin.ch/de/krankenversicherung-wahlfranchisen" target="_blank" rel="noopener noreferrer">BAG Wahlfranchisen</a> · <a href="https://www.fedlex.admin.ch/eli/cc/1995/1328_1328_1328/de" target="_blank" rel="noopener noreferrer">KVG</a></p>
+          </li>
+          <li>
+            <h3>Lärm von Nachbarn</h3>
+            <p>Ruhezeiten 22–6 Uhr, Gespräch, Verwaltung schriftlich, Polizei 117, Lärm als Mangel, Schlichtung. Ganze Schweiz, Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/nachbarschaftsrecht/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.bern.ch/themen/umwelt-natur-und-energie/larm/larmarten/alltagslaerm" target="_blank" rel="noopener noreferrer">Stadt Bern Alltagslärm</a> · <a href="https://www.bern.ch/themen/umwelt-natur-und-energie/larm/larmarten/hausintern" target="_blank" rel="noopener noreferrer">Stadt Bern hausintern</a></p>
+          </li>
+          <li>
+            <h3>Lernfahrausweis beantragen</h3>
+            <p>Mindestalter, Sehtest, Nothelferkurs, Gesuch, Basistheorieprüfung, Gebühren, 12 Monate Lernphase unter 20. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.svsa.sid.be.ch/de/start/lernfahrer/lernfahrausweis.html" target="_blank" rel="noopener noreferrer">SVSA Bern</a> · <a href="https://www.svsa.sid.be.ch/de/start/lernfahrer/gebuehren.html" target="_blank" rel="noopener noreferrer">Gebühren</a> · <a href="https://www.svsa.sid.be.ch/de/start/lernfahrer/wissenswertes-lernfahrer.html" target="_blank" rel="noopener noreferrer">Wissenswertes</a> · <a href="https://www.astra.admin.ch/astra/de/home/themen/fuehrerausweis-ausbildung/revision-fuehrerausweisvorschriften/fragen-antworten.html" target="_blank" rel="noopener noreferrer">ASTRA</a></p>
+          </li>
+          <li>
+            <h3>Lohn bei Krankheit</h3>
+            <p>Lohnfortzahlung nach Art. 324a OR (3 Wochen im 1. Dienstjahr, Skalen), Krankentaggeld 80&nbsp;% während 720/730 Tagen, Arztzeugnis, Vertrauensarzt. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.seco.admin.ch/de/faq-verhinderung-des-arbeitnehmers-an-der-arbeitsleistung" target="_blank" rel="noopener noreferrer">SECO FAQ</a> · <a href="https://www.ch.ch/de/arbeit/arbeitsunfahigkeit/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Mängel in der Mietwohnung</h3>
+            <p>Sofort melden, kleine Mängel selbst, eingeschriebene Mängelrüge mit Frist, Hinterlegung des Mietzinses, Schlichtungsbehörde. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://ch.ch/de/mangel-wohnung" target="_blank" rel="noopener noreferrer">ch.ch: Mängel</a> · <a href="https://www.ch.ch/de/wohnen/miete/larm--mangel--mietzins/" target="_blank" rel="noopener noreferrer">ch.ch: Lärm, Mängel, Mietzins</a> · <a href="https://bwo.admin.ch/bwo/de/home/mietrecht/schlichtungsbehoerden.html" target="_blank" rel="noopener noreferrer">BWO Schlichtungsbehörden</a></p>
+          </li>
+          <li>
+            <h3>Mietkaution zurückfordern</h3>
+            <p>Höchstens drei Monatsmieten, Sperrkonto auf den Namen der Mieter, Freigabe durch beide oder Urteil/Zahlungsbefehl, Rückzahlung nach einem Jahr (Art. 257e OR). Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bwo.admin.ch/dam/de/sd-web/OXUZGVbBFgsD/mietzinsdepots.pdf" target="_blank" rel="noopener noreferrer">BWO Merkblatt</a> · <a href="https://www.bwo.admin.ch/de/portal-mietrecht" target="_blank" rel="noopener noreferrer">BWO Mietrecht</a> · <a href="https://ch.ch/de/mietvertrag-abschliessen" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Mietzinserhöhung anfechten</h3>
+            <p>Amtliches Formular, Begründung, 10 Tage vor Kündigungsfrist, Nichtigkeit, Gründe (Referenzzins +0,25 = 3 %, Teuerung 40 %), Anfechtung innert 30 Tagen (Art. 269/269a OR). Ganze Schweiz, Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/wohnen/miete/larm--mangel--mietzins/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.zsg.justice.be.ch/de/start/themen/zivilrecht/mietrecht/mietzins-nebenkosten.html" target="_blank" rel="noopener noreferrer">Kanton Bern</a> · <a href="https://www.bwo.admin.ch/de/referenzzinssatz" target="_blank" rel="noopener noreferrer">BWO</a></p>
+          </li>
+          <li>
+            <h3>Mietzinssenkung verlangen</h3>
+            <p>Referenzzinssatz 1,25&nbsp;% (Stand 2.9.2026), welcher Satz gilt, 2,91&nbsp;% pro 0,25 Punkte, Termin, Fristen 30/60 Tage. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/wohnen/miete/larm--mangel--mietzins/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.bwo.admin.ch/de/referenzzinssatz" target="_blank" rel="noopener noreferrer">BWO Referenzzinssatz</a> · <a href="https://www.bwo.admin.ch/de/newnsb/-yNZ1tD0lWovYtv7X5YWp" target="_blank" rel="noopener noreferrer">BWO 2.9.2026</a> · <a href="https://www.bwo.admin.ch/de/newnsb/XAQAzjeJ5vT1zHSTJBRak" target="_blank" rel="noopener noreferrer">BWO 2.9.2025</a></p>
+          </li>
+          <li>
+            <h3>Militärdienst verschieben</h3>
+            <p>Gründe, Frist 14 Wochen vor Dienstbeginn, Bestätigungen, Dienstmanager, Einrückungspflicht bis zur Bewilligung. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.armee.ch/de/militaerdienst-dienstverschiebung" target="_blank" rel="noopener noreferrer">Armee: Dienstverschiebung</a> · <a href="https://www.armee.ch/de/dienstverschiebung-urlaub" target="_blank" rel="noopener noreferrer">Verschiebung und Urlaub</a> · <a href="https://www.ch.ch/de/sicherheit-und-recht/militardienst-und-zivildienst/militardienst/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.armee.ch/de/militaerdienst-kantonale-militaerbehoerde-adressen" target="_blank" rel="noopener noreferrer">Kantonale Militärbehörden</a></p>
+          </li>
+          <li>
+            <h3>Mofa oder schnelles E-Bike einlösen</h3>
+            <p>Wer ein Kontrollschild braucht, Unterlagen, Kosten (Schild CHF&nbsp;10, Vignette mit Versicherung CHF&nbsp;32), jährliche Vignette. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.svsa.sid.be.ch/de/start/fahrzeuge/mofa/mofa-anmelden.html" target="_blank" rel="noopener noreferrer">Anmelden</a> · <a href="https://www.svsa.sid.be.ch/de/start/fahrzeuge/mofa/vignette-erneuern.html" target="_blank" rel="noopener noreferrer">Vignette</a> · <a href="https://www.svsa.sid.be.ch/de/start/fahrzeuge/mofa/informationen-mofa.html" target="_blank" rel="noopener noreferrer">Informationen</a> · <a href="https://www.svsa.sid.be.ch/de/start/svsa/news.html?newsID=c497abb6-af51-491f-8063-917020436ad3" target="_blank" rel="noopener noreferrer">Vignetten 2026</a></p>
+          </li>
+          <li>
+            <h3>Mutterschaftsentschädigung</h3>
+            <p>Anspruch, Höhe (80&nbsp;%, höchstens CHF&nbsp;220 pro Tag), Dauer 14 Wochen, Antrag bei der AHV-Ausgleichskasse. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bsv.admin.ch/de/eo-bei-mutterschaft" target="_blank" rel="noopener noreferrer">BSV</a> · <a href="https://www.ahv-iv.ch/p/6.02.d" target="_blank" rel="noopener noreferrer">Merkblatt 6.02</a> · <a href="https://faq.bsv.admin.ch/de/erwerbsersatz-eo/erwerbsersatz-bei-mutterschaftsurlaub/wann-habe-ich-anspruch-auf" target="_blank" rel="noopener noreferrer">BSV-FAQ</a> · <a href="https://www.ch.ch/de/arbeit/familie-und-arbeit/mutterschaftsurlaub/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Namen nach Scheidung ändern</h3>
+            <p>Namenserklärung für den Ledignamen, keine Frist, Zivilstandsamt, Kosten. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/namenserklaerung.html" target="_blank" rel="noopener noreferrer">Namenserklärung</a> · <a href="https://www.ch.ch/de/name-nach-scheidung/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/namensaenderung.html" target="_blank" rel="noopener noreferrer">Namensänderung</a></p>
+          </li>
+          <li>
+            <h3>Nebenkostenabrechnung prüfen</h3>
+            <p>Nur vertraglich vereinbarte Nebenkosten (Art. 257a OR), Pauschale oder Akonto, jährliche Abrechnung, Belege einsehen (Art. 257b OR), Nachzahlung, Schlichtung. Ganze Schweiz, Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.zsg.justice.be.ch/de/start/themen/zivilrecht/mietrecht/mietzins-nebenkosten.html" target="_blank" rel="noopener noreferrer">Kanton Bern</a> · <a href="https://www.bwo.admin.ch/de/wohnen-und-energiemangel" target="_blank" rel="noopener noreferrer">BWO</a> · <a href="https://www.ch.ch/de/wohnen/miete/mietvertrag-und-pachtvertrag/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Ordnungsbusse bezahlen oder anfechten</h3>
+            <p>Bedenkfrist 30 Tage, ganzer Betrag, keine Abarbeitung, Übertretungsanzeige, ordentliches Verfahren mit Kostenrisiko, Bussen bis CHF&nbsp;300. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.police.be.ch/de/start/themen/verkehr/bussen.html" target="_blank" rel="noopener noreferrer">Kantonspolizei Bern</a> · <a href="https://ch.ch/de/verkehrsregeln" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.blog.police.be.ch/2024/08/23/die-fast-neue-bussen-app/" target="_blank" rel="noopener noreferrer">Bussen-App</a></p>
+          </li>
+          <li>
+            <h3>Parkfeld für Umzug reservieren</h3>
+            <p>Zufahrts- und Parkbewilligung (kostenlos, 8 Arbeitstage vorher), Bedingungen, Parkverbot-Signale, Kontakt. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bern.ch/themen/zuzug-umzug-wegzug/umzugstipps/parkverbot-fuer-umzug" target="_blank" rel="noopener noreferrer">Stadt Bern</a> · <a href="https://formular.bern.ch/forms/findform?shortname=anz_whgumzug&amp;formtecid=3&amp;areashortname=bern-OGP" target="_blank" rel="noopener noreferrer">Online-Gesuch</a> · <a href="https://www.bern.ch/themen/umzug/umzugstipps" target="_blank" rel="noopener noreferrer">Umzugstipps</a></p>
+          </li>
+          <li>
+            <h3>Pass &amp; ID</h3>
+            <p>Antrag, Termin, Kosten, Gültigkeit, Lieferung, neue biometrische ID ab 2. November 2026. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.fedpol.admin.ch/de/preise-gueltigkeit-und-lieferfristen" target="_blank" rel="noopener noreferrer">fedpol</a> · <a href="https://www.admin.ch/de/newnsb/aKCjZsaUbIe8" target="_blank" rel="noopener noreferrer">Bundesrat (26.8.2026)</a> · <a href="https://www.pass-id.sid.be.ch/de/start/themen/ausweise.html" target="_blank" rel="noopener noreferrer">Kanton Bern</a> · <a href="https://www.pass-id.sid.be.ch/de/start/dienstleistungen/neuer-pass-id.html" target="_blank" rel="noopener noreferrer">Antrag Bern</a></p>
+          </li>
+          <li>
+            <h3>Pass oder ID verloren</h3>
+            <p>Verlustmeldung bei Polizei oder Ausweiszentrum, Kosten, Ungültigkeit, neuer Ausweis. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.pass-id.sid.be.ch/de/start/themen/verlust-id-pass.html" target="_blank" rel="noopener noreferrer">Kanton Bern</a> · <a href="https://www.ch.ch/de/reisen-und-auswandern/ins-ausland-reisen/pass-und-identitatskarte/pass-oder-identitatskarte-verloren-oder-gestohlen/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.fedpol.admin.ch/de/verlust-von-ausweisdokumenten" target="_blank" rel="noopener noreferrer">fedpol</a></p>
+          </li>
+          <li>
+            <h3>Pensionskasse bei Stellenwechsel</h3>
+            <p>Freizügigkeitsleistung an die neue Pensionskasse, Freizügigkeitskonto oder -police bei Unterbruch, Auffangeinrichtung nach 6 Monaten bis 2 Jahren, Zentralstelle 2. Säule. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://faq.bsv.admin.ch/de/berufliche-vorsorge-und-3-saeule/ich-wechsle-meine-stelle-was-mache-ich-mit-meiner" target="_blank" rel="noopener noreferrer">BSV FAQ</a> · <a href="https://faq.bsv.admin.ch/de/berufliche-vorsorge-und-3-saeule/ich-trete-nach-einem-unterbruch-eine-neue-stelle-was-geschieht-mit" target="_blank" rel="noopener noreferrer">BSV FAQ Unterbruch</a> · <a href="https://www.bsv.admin.ch/dam/de/sd-web/cwZHEQJEqC2o/bsv-merkblatt-stellenwechsel-de.pdf" target="_blank" rel="noopener noreferrer">BSV Merkblatt</a></p>
+          </li>
+          <li>
+            <h3>Prämienverbilligung</h3>
+            <p>Einkommensgrenzen 2026, automatische Prüfung, wann ein Antrag nötig ist, Auszahlung an die Krankenkasse. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.asv.dij.be.ch/de/start/themen/pv/pv_anrecht-auf-pv.html" target="_blank" rel="noopener noreferrer">ASV Bern</a> · <a href="https://www.asv.dij.be.ch/de/start/themen/pv/pv_besondere-personengruppen.html" target="_blank" rel="noopener noreferrer">Antrag</a> · <a href="https://www.asv.dij.be.ch/content/dam/asv_dij/dokumente/de/pr%C3%A4mienverbilligung--informationen/Informationsblatt%202026_de.pdf" target="_blank" rel="noopener noreferrer">Informationsblatt 2026</a></p>
+          </li>
+          <li>
+            <h3>Quellensteuer: nachträgliche Veranlagung</h3>
+            <p>Wer Quellensteuer zahlt, freiwillige und obligatorische NOV (CHF&nbsp;120’000 / 150’000 / 3’000), Frist 31. März, kein Rückzug. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.taxinfo.sv.fin.be.ch/taxinfo/0f9796b7-81dc-4504-95cc-8a31400e94f4" target="_blank" rel="noopener noreferrer">NOV auf Antrag</a> · <a href="https://www.taxinfo.sv.fin.be.ch/taxinfo/1ddebd20-de30-4181-9913-0cb49aeea127" target="_blank" rel="noopener noreferrer">Obligatorische NOV</a> · <a href="https://www.taxinfo.sv.fin.be.ch/taxinfo/d195bd1f-4e68-4447-98e5-95918c71c55b" target="_blank" rel="noopener noreferrer">Quellensteuerpflichtige</a> · <a href="https://www.sv.fin.be.ch/content/dam/sv_fin/dokumente/de/formulare/quellensteuer/aktuelles_steuerjahr/form_qst_antrag-nov-ansaessig_de.pdf" target="_blank" rel="noopener noreferrer">Formular</a> · <a href="https://www.ch.ch/de/quellensteuer/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Rechtsvorschlag erheben</h3>
+            <p>Frist 10 Tage, Form, kostenlos, Wirkung, Gesuch um Nichtbekanntgabe (CHF&nbsp;40, Regel seit 1.1.2026). Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/zahlungsbefehl/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.bj.admin.ch/de/newnsb/sHF2EibRd2sd-4OGxij9_" target="_blank" rel="noopener noreferrer">BJ: mehr Schutz</a> · <a href="https://www.bj.admin.ch/dam/bj/de/data/wirtschaft/schkg/musterformulare/form/02-fak.pdf.download.pdf/02-fak-d.pdf" target="_blank" rel="noopener noreferrer">Formular Nichtbekanntgabe</a> · <a href="https://www.zsg.justice.be.ch/de/start/themen/zivilrecht/betreibung-konkurs.html" target="_blank" rel="noopener noreferrer">Kanton Bern</a></p>
+          </li>
+          <li>
+            <h3>Strafregisterauszug bestellen</h3>
+            <p>Bestellung online oder am Postschalter, Kosten, Dauer, Sonderprivatauszug. Ganze Schweiz (Bund). Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.e-service.admin.ch/crex/cms/content/strafregister/privatauszug_de" target="_blank" rel="noopener noreferrer">Bundesamt für Justiz</a> · <a href="https://www.e-service.admin.ch/crex/cms/content/faq/privat" target="_blank" rel="noopener noreferrer">FAQ</a> · <a href="https://www.ch.ch/de/sicherheit-und-recht/strafregisterauszug/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Säule 3a</h3>
+            <p>Wer einzahlen kann, Höchstbeträge 2026 (CHF 7’258 / 36’288) und 2027 (CHF 7’373 / 36’864), Nachzahlen bis 10 Jahre ab 2025, Bezug ab 5 Jahre vor Referenzalter und Ausnahmen. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.estv.admin.ch/de/newnsb/6ck3kzVxBNQ4" target="_blank" rel="noopener noreferrer">ESTV 2027</a> · <a href="https://www.ch.ch/de/pensionierung/altersvorsorge/3-saule--private-vorsorge-/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://faq.bsv.admin.ch/de/berufliche-vorsorge-und-3-saeule/wann-ist-eine-auszahlung-der-leistungen-meiner-saeule-3a-moeglich" target="_blank" rel="noopener noreferrer">BSV Auszahlung</a> · <a href="https://faq.bsv.admin.ch/de/3-saeule/einkaeufe-saeule-3a/wie-hoch-ist-der-maximale-einkaufsbetrag-die-saeule-3a" target="_blank" rel="noopener noreferrer">BSV Einkauf</a></p>
+          </li>
+          <li>
+            <h3>Scheidung einreichen</h3>
+            <p>Gemeinsames Begehren mit Scheidungsvereinbarung, Klage nach 2 Jahren Getrenntleben, Regionalgericht ohne Schlichtung, Gebühren nach Nettoeinkommen. Ganze Schweiz, Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/familie-und-partnerschaft/scheidung/scheidungsverfahren/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.zsg.justice.be.ch/de/start/themen/zivilrecht/familienrecht/scheidung.html" target="_blank" rel="noopener noreferrer">Kanton Bern</a></p>
+          </li>
+          <li>
+            <h3>Sozialhilfe beantragen</h3>
+            <p>Anmeldung beim Sozialdienst, Unterlagen, Bemessung nach SKOS, Rückerstattung. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bern.ch/themen/gesundheit-alter-und-soziales/sozialhilfe/ablaufderanmeldung" target="_blank" rel="noopener noreferrer">Stadt Bern: Anmeldung</a> · <a href="https://www.bern.ch/themen/gesundheit-alter-und-soziales/sozialhilfe/sozialhilferechner" target="_blank" rel="noopener noreferrer">Sozialhilferechner</a></p>
+          </li>
+          <li>
+            <h3>Sperrgut entsorgen</h3>
+            <p>Kleinsperrgut mit Marke, Entsorgungshöfe, Abholdienst mit Kosten und Anmeldefrist. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bern.ch/themen/abfall/entsorgungs-abc-was-entsorge-ich-wie/sperrgut" target="_blank" rel="noopener noreferrer">Sperrgut</a> · <a href="https://www.bern.ch/themen/abfall/abholdienst-sperrgut" target="_blank" rel="noopener noreferrer">Abholdienst</a> · <a href="https://www.bern.ch/themen/abfall/entsorgungs-abc/kleinsperrgut" target="_blank" rel="noopener noreferrer">Kleinsperrgut</a> · <a href="https://www.bern.ch/themen/abfall/entsorgungshoefe" target="_blank" rel="noopener noreferrer">Entsorgungshöfe</a></p>
+          </li>
+          <li>
+            <h3>Steuern in Raten zahlen</h3>
+            <p>Ratenrechnungen und Fälligkeiten, Zahlungserleichterung, Verzugszins, Steuererlass. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.sv.fin.be.ch/de/start/themen/steuern-bezahlen/zahlungserleichterungen.html" target="_blank" rel="noopener noreferrer">Zahlungserleichterungen</a> · <a href="https://www.sv.fin.be.ch/de/start/themen/steuern-bezahlen.html" target="_blank" rel="noopener noreferrer">Steuern bezahlen</a> · <a href="https://www.sv.fin.be.ch/de/start/themen/steuern-bezahlen/steuererlass.html" target="_blank" rel="noopener noreferrer">Steuererlass</a></p>
+          </li>
+          <li>
+            <h3>Steuererklärung, Frist verlängern</h3>
+            <p>Fristen, Gebühren, Verlängerung online, Ausnahme 30.11.2026, Mahnung. Beispiel Kanton Bern, dazu Zürich und Genf. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.sv.fin.be.ch/de/start/themen/frist-verlaengern/fristverlaengerung-privatpersonen.html" target="_blank" rel="noopener noreferrer">Kanton Bern: Frist verlängern</a> · <a href="https://www.taxinfo.sv.fin.be.ch/taxinfo/1cce120a-05da-45e8-8968-b66ae236fee5" target="_blank" rel="noopener noreferrer">TaxInfo Bern</a> · <a href="https://www.sv.fin.be.ch/de/start/themen/steuererklaerung/steuererklaerung-ausfuellen-privatpersonen/nach-ausfuellen-steuererklaerung.html" target="_blank" rel="noopener noreferrer">Einreichen</a> · <a href="https://www.zh.ch/de/steuern-finanzen/steuern/steuern-natuerliche-personen/steuererklaerung-natuerliche-personen.html" target="_blank" rel="noopener noreferrer">Zürich</a> · <a href="https://www.ge.ch/remplir-ma-declaration-impot-tant-que-particulier/demander-delai-ma-declaration-impot" target="_blank" rel="noopener noreferrer">Genf</a></p>
+          </li>
+          <li>
+            <h3>Stipendien beantragen</h3>
+            <p>Wer kann, Eingabetermine (30. Juni / 31. Dezember), StipBE-Online, Freigabequittung per Post, keine rückwirkenden Beiträge. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bkd.be.ch/de/start/dienstleistungen/foerderung-und-unterstuetzung/ausbildungsbeitraege/stipendien.html" target="_blank" rel="noopener noreferrer">Stipendien</a> · <a href="https://www.bkd.be.ch/de/start/dienstleistungen/foerderung-und-unterstuetzung/ausbildungsbeitraege/fragen-und-antworten-zu-stipbe-online.html" target="_blank" rel="noopener noreferrer">FAQ StipBE-Online</a> · <a href="https://www.bkd.be.ch/de/start/dienstleistungen/foerderung-und-unterstuetzung/ausbildungsbeitraege.html" target="_blank" rel="noopener noreferrer">Ausbildungsbeiträge</a> · <a href="https://www.bkd.be.ch/de/start/dienstleistungen/foerderung-und-unterstuetzung/ausbildungsbeitraege/darlehen.html" target="_blank" rel="noopener noreferrer">Darlehen</a></p>
+          </li>
+          <li>
+            <h3>Todesfall melden</h3>
+            <p>Ärztliche Todesbescheinigung, Meldung innert 2 Tagen, Unterlagen, Bestattungsamt, unentgeltliche Bestattung. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/todesfall.html" target="_blank" rel="noopener noreferrer">Zivilstand Kanton Bern</a> · <a href="https://www.bern.ch/themen/personliches/todesfall/anmeldung-eines-todesfalls" target="_blank" rel="noopener noreferrer">Stadt Bern</a> · <a href="https://www.bern.ch/themen/personliches/todesfall/unentgeltliche-bestattung" target="_blank" rel="noopener noreferrer">Unentgeltliche Bestattung</a> · <a href="https://www.ch.ch/de/familie-und-partnerschaft/todesfall/todesfall-checkliste/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Überstunden</h3>
+            <p>Zuschlag mindestens 25&nbsp;%, Kompensation mit Freizeit, schriftlicher Ausschluss möglich, Überzeit über 45/50 Stunden nicht wegbedingbar. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.seco.admin.ch/de/faq-ueberstunden" target="_blank" rel="noopener noreferrer">SECO FAQ</a> · <a href="https://www.seco.admin.ch/dam/seco/de/dokumente/Publikationen_Dienstleistungen/Publikationen_Formulare/Arbeit/Arbeitsbedingungen/Broschueren/Arbeit%20und%20Gesundheit%20-%20Arbeits-%20und%20Ruhezeiten.pdf.download.pdf/Arbeit%20und%20Gesundheit%20-%20Arbeits-%20und%20Ruhezeiten.pdf" target="_blank" rel="noopener noreferrer">SECO Arbeits- und Ruhezeiten</a></p>
+          </li>
+          <li>
+            <h3>Umzug melden</h3>
+            <p>Ab- und Anmeldung, Frist, Kosten, eUmzugCH, Steuerpflicht. Beispiel Bern nach Winterthur. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.eumzug.swiss/eumzugngx/global" target="_blank" rel="noopener noreferrer">eUmzugCH</a> · <a href="https://stadt.winterthur.ch/themen/leben-in-winterthur/wohnen-und-umzug/adressaenderung/neu-in-winterthur" target="_blank" rel="noopener noreferrer">Winterthur</a> · <a href="https://www.bern.ch/themen/zuzug-umzug-wegzug/" target="_blank" rel="noopener noreferrer">Stadt Bern</a></p>
+          </li>
+          <li>
+            <h3>Unfall melden</h3>
+            <p>UVG über den Arbeitgeber, Freizeitunfälle ab 8 Std./Woche, Meldung an den Arbeitgeber, Heilungskosten ohne Franchise, Taggeld 80 % ab dem 3. Tag, Unfalldeckung über die Krankenkasse. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/arbeit/unfallversicherung/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.suva.ch/de-ch/unfall/schadenabwicklung/fuer-versicherte-personen" target="_blank" rel="noopener noreferrer">Suva</a> · <a href="https://www.bag.admin.ch/de/geldleistungen-der-unfallversicherung" target="_blank" rel="noopener noreferrer">BAG</a></p>
+          </li>
+          <li>
+            <h3>Untermiete</h3>
+            <p>Zustimmung der Vermieterschaft (Art. 262 OR), drei Ablehnungsgründe, Untermietvertrag, Airbnb, Gewinnherausgabe (Art. 423 OR), Verschärfung am 24.11.2024 abgelehnt. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/wohnen/miete/mietvertrag-und-pachtvertrag/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.bwo.admin.ch/bwo/de/home/Wohnungsmarkt/buchungsplattformen/themen/mietrecht.html" target="_blank" rel="noopener noreferrer">BWO</a> · <a href="https://www.admin.ch/gov/de/start/dokumentation/abstimmungen/20241124/untermiete.html" target="_blank" rel="noopener noreferrer">Bundesrat</a></p>
+          </li>
+          <li>
+            <h3>Vaterschaftsurlaub</h3>
+            <p>Anspruch, 2 Wochen innert 6 Monaten, Höhe (80&nbsp;%, höchstens CHF&nbsp;220 pro Tag), Antrag über Arbeitgeber oder Ausgleichskasse. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bsv.admin.ch/de/eo-bei-vaterschaft" target="_blank" rel="noopener noreferrer">BSV</a> · <a href="https://www.ahv-iv.ch/p/6.04.d" target="_blank" rel="noopener noreferrer">Merkblatt 6.04</a> · <a href="https://faq.bsv.admin.ch/de/erwerbsersatz-eo/erwerbsersatz-bei-vaterschaftsurlaub-bzw-urlaub-des-anderen-elternteils/wann-habe" target="_blank" rel="noopener noreferrer">BSV-FAQ</a> · <a href="https://www.ch.ch/de/familie-und-partnerschaft/mutterschaft-und-vaterschaft/vaterschaftsurlaub--urlaub-des-anderen-elternteils/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Velo gestohlen melden</h3>
+            <p>Online-Anzeige über Suisse ePolice, nötige Angaben, Fahndung, Polizeiwache. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.police.be.ch/de/start/dienstleistungen/online-wache/anzeigen.html" target="_blank" rel="noopener noreferrer">Kapo Bern: Anzeigen</a> · <a href="https://www.police.be.ch/de/start/themen/vergehen---verbrechen/vermoegensdelikte/diebstahl-und-raub.html" target="_blank" rel="noopener noreferrer">Diebstahl</a> · <a href="https://www.suisse-epolice.ch/" target="_blank" rel="noopener noreferrer">Suisse ePolice</a> · <a href="https://www.ch.ch/de/sicherheit-und-recht/anzeige-erstatten/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Vorsorgeauftrag hinterlegen</h3>
+            <p>Form (handschriftlich oder beurkundet), Eintrag des Hinterlegungsorts beim Zivilstandsamt, Kosten. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/vorsorgeauftrag.html" target="_blank" rel="noopener noreferrer">Zivilstand Bern</a> · <a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/bestellung-dokumente/vorsorgeauftraghinterlegen.html" target="_blank" rel="noopener noreferrer">Hinterlegungsort eintragen</a> · <a href="https://www.kesb.dij.be.ch/de/start/Erwachsene/vorsorgeauftrag-und-patientenverfuegung.html" target="_blank" rel="noopener noreferrer">KESB Bern</a></p>
+          </li>
+          <li>
+            <h3>Waffenerwerbsschein beantragen</h3>
+            <p>Voraussetzungen, Gesuch über Suisse ePolice oder Formular, Kosten CHF&nbsp;50, höchstens 3 Waffen pro Schein. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.police.be.ch/de/start/dienstleistungen/online-wache/waffen.html" target="_blank" rel="noopener noreferrer">Kantonspolizei Bern</a> · <a href="https://www.fedpol.admin.ch/de/haeufige-fragen-betreffend-das-waffenrecht" target="_blank" rel="noopener noreferrer">fedpol FAQ</a> · <a href="https://www.ch.ch/de/sicherheit-und-recht/waffen-besitzen-in-der-schweiz/" target="_blank" rel="noopener noreferrer">ch.ch</a> · <a href="https://www.fedpol.admin.ch/dam/fedpol/de/data/sicherheit/waffen/waffenverordnung/erlaeuterungen-waffenrichtlinie-d.pdf.download.pdf/erlaeuterungen-waffenrichtlinie-d.pdf" target="_blank" rel="noopener noreferrer">Erläuterungen WV</a></p>
+          </li>
+          <li>
+            <h3>Wehrpflichtersatz</h3>
+            <p>Höhe, Dauer, Reduktion bei Zivilschutz, Befreiung, Rückerstattung. Beispiel Kanton Bern, Regeln des Bundes. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.estv.admin.ch/estv/de/home/bundesabgaben/wehrpflichtersatzabgabe/wpe-erklaert.html" target="_blank" rel="noopener noreferrer">ESTV</a> · <a href="https://www.bsm.sid.be.ch/de/start/themen/militaer/wehrpflichtersatz.html" target="_blank" rel="noopener noreferrer">BSM Bern</a> · <a href="https://www.bsm.sid.be.ch/de/start/themen/militaer/wehrpflichtersatz/rueckerstattung-wehrpflichtersatzabgabe.html" target="_blank" rel="noopener noreferrer">Rückerstattung</a> · <a href="https://www.ch.ch/de/sicherheit-und-recht/militardienst-und-zivildienst/wehrpflichtersatzabgabe/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Wochenaufenthalt anmelden</h3>
+            <p>Wer gilt als Wochenaufenthalter, Frist 14 Tage, Heimatausweis (Übergangsregel), Steuerfrage, Online-Formular. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bern.ch/themen/arbeit-und-steuern/steuern/wochenaufenthalt/" target="_blank" rel="noopener noreferrer">Stadt Bern</a> · <a href="https://formular.bern.ch/forms/findform?shortname=bern_zuzug_wo_auf&amp;formtecid=3&amp;areashortname=bern-EMF" target="_blank" rel="noopener noreferrer">Online-Anmeldung</a> · <a href="https://formular.bern.ch/forms/findform?shortname=bern_verlae_wo_auf&amp;formtecid=3&amp;areashortname=bern-EMF" target="_blank" rel="noopener noreferrer">Verlängerung</a> · <a href="https://www.bern.ch/themen/zuzug-umzug-wegzug/" target="_blank" rel="noopener noreferrer">Zuzug</a></p>
+          </li>
+          <li>
+            <h3>Wohnung kündigen</h3>
+            <p>Mindestens 3 Monate auf Termin, schriftlich ohne Begründung, alle Mietenden unterschreiben, Zustimmung bei Familienwohnung, Nachmieter bei früherem Auszug (Art. 264 OR). Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.ch.ch/de/kundigung-mietvertrag-durch-mieter/" target="_blank" rel="noopener noreferrer">ch.ch: Mieter</a> · <a href="https://www.ch.ch/de/kundigung-mietvertrag-durch-vermieter/" target="_blank" rel="noopener noreferrer">ch.ch: Vermieter</a> · <a href="https://www.bwo.admin.ch/de/portal-mietrecht" target="_blank" rel="noopener noreferrer">BWO Mietrecht</a></p>
+          </li>
+          <li>
+            <h3>Wohnsitzbestätigung bestellen</h3>
+            <p>Online-Bestellung oder Schalter, Kosten CHF&nbsp;20, Öffnungszeiten. Beispiel Stadt Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.bern.ch/themen/zuzug-umzug-wegzug/wohnsitzbescheinigung" target="_blank" rel="noopener noreferrer">Stadt Bern</a> · <a href="https://formular.bern.ch/forms/findform?shortname=bern_wohnsitz_besch&amp;formtecid=3&amp;areashortname=bern-EMF" target="_blank" rel="noopener noreferrer">Online-Bestellung</a> · <a href="https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/sue/polizeiinspektorat/einwohnerdienste-migration-und-fremdenpolizei-emf/addressblock/addressblock_detail_view" target="_blank" rel="noopener noreferrer">Kontakt</a></p>
+          </li>
+          <li>
+            <h3>Zivildienst beantragen</h3>
+            <p>Voraussetzungen, Gesuch über ZiviConnect (AGOV), Einführungstag innert 3 Monaten, Bestätigung innert 2 Wochen, Militärdienst in der Zwischenzeit. Ganze Schweiz. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.zivi.admin.ch/de/zulassung" target="_blank" rel="noopener noreferrer">ZIVI: Zulassung</a> · <a href="https://www.zivi.admin.ch/de/faq" target="_blank" rel="noopener noreferrer">FAQ</a> · <a href="https://www.zivi.admin.ch/de/ziviconnect-de" target="_blank" rel="noopener noreferrer">ZiviConnect</a> · <a href="https://www.ch.ch/de/sicherheit-und-recht/militardienst-und-zivildienst/zivildienst/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+          <li>
+            <h3>Zivilstandsdokument bestellen</h3>
+            <p>Zuständiges Amt (Heimatort oder Wohnort), Personenstandsausweis, Heimatschein, Familienausweis, Familienstand, Kosten, Zustellung an Dritte. Beispiel Kanton Bern. Alle Angaben belegt, geprüft am 7.10.2026.</p>
+            <p><a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/bestellung-dokumente.html" target="_blank" rel="noopener noreferrer">Online bestellen</a> · <a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/bestellung-dokumente/personenstand.html" target="_blank" rel="noopener noreferrer">Personenstandsausweis</a> · <a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/bestellung-dokumente/familienstand.html" target="_blank" rel="noopener noreferrer">Familienstand</a> · <a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/bestellung-dokumente/familienausweis.html" target="_blank" rel="noopener noreferrer">Familienausweis</a> · <a href="https://www.zivilstand.sid.be.ch/de/start/dienstleistungen/bestellung-dokumente/heimatschein.html" target="_blank" rel="noopener noreferrer">Heimatschein</a> · <a href="https://www.ch.ch/de/ausweise-und-dokumente/zivilstandsdokumente/" target="_blank" rel="noopener noreferrer">ch.ch</a></p>
+          </li>
+        </ul>
+      </section>
+
+      <p class="pl-note">Ein Prozess kommt erst zu «Fertig», wenn jede Angabe eine offizielle Quelle hat, nichts veraltet ist und die Prüfskripte grün sind. Was neu dazukommt, steht unter <a href="neuigkeiten.html">Neuigkeiten</a>.</p>
     </div></section>
   </div>
 </main>
 
 <footer class="tfoot">
   <ul class="tfoot-links">
-    <li><a href="index.html">Startseite</a></li><li><a href="frag-tell.html">Frag Tell</a></li><li><a href="projekt.html">Projekt</a></li><li><a href="luecken.html">Lücken</a></li><li><a href="prozesse.html" aria-current="page">Prozess-Check</a></li>
+    <li><a href="index.html">Startseite</a></li><li><a href="frag-tell.html">Frag Tell</a></li><li><a href="projekt.html">Projekt</a></li><li><a href="luecken.html">Lücken</a></li><li><a href="prozesse.html" aria-current="page">Prozesse</a></li><li><a href="neuigkeiten.html">Neuigkeiten</a></li>
   </ul>
   <p class="tfoot-sender">Privates Konzept von Bilal Simsek, Bern. Kein Angebot einer Behörde.</p>
-  <p class="tfoot-legal">Interne Prüfseite des Prototyps. Massgebend sind immer die zuständigen Stellen.</p>
+  <p class="tfoot-legal">Konzeptprototyp. Massgebend sind immer die zuständigen Stellen.</p>
 </footer>
 
-<script>
-(()=>{
-const ST={ok:['pc-ok','Geprüft'],warn:['pc-warn','Lücken'],bad:['pc-bad','Fehler']};
-/* gates: [Beispielfrage trifft, 4 Sprachen + Frag Tell gleich, alle Angaben belegt, nichts falsch, aktuell] */
-const P=[
- {id:'alv',t:'Arbeitslos melden',st:'ok',side:'l',short:'11 von 11 Angaben belegt',
-  q:'«Ich wohne in Thun und verliere Ende Monat meine Stelle. Wo und wann muss ich mich melden, und wie bekomme ich Arbeitslosengeld?»',
-  g:[1,1,[1,'11/11'],1,1],
-  iss:[['ok','Anmeldung beim RAV spätestens am 1. Tag, online im Job-Room (Art. 17 Abs. 2 AVIG).'],['ok','70 %, 80 % bei Kindern unter 25, Verdienst bis CHF 3’797 oder IV-Rente ab 40 %.'],['ok','12 Monate Beitragszeit in 2 Jahren, 260 Taggelder, 10 Wartetage bei CHF 6’500 (Art. 9, 13, 18, 27 AVIG).'],['ok','Stellensuche schon in der Kündigungsfrist (Art. 17 Abs. 1 AVIG), Anzahl legt das RAV fest.'],['open','Empfohlene Ergänzung, kein Fehler: Nachweis der Arbeitsbemühungen bis zum 5. Tag des Folgemonats (Art. 26 AVIV), siehe Seite «Lücken».']],
-  src:[['arbeit.swiss (SECO): Anmeldung und Registrierung','https://www.arbeit.swiss/en/jobseekers/signing-on-and-registration'],['arbeit.swiss (SECO): Leitfaden für Versicherte, Ausgabe 2026','https://arbeit.swiss/dam/secoalv/de/dokumente/publikationen/broschueren/stellensuchende/Info-Services/SECO_716%20200_d_2019_web.pdf.download.pdf/SECO_716%20200_d_2019_web.pdf'],['Kanton Zürich: Arbeitslosenentschädigung (Taggeld, Wartetage)','https://www.zh.ch/de/wirtschaft-arbeit/stellensuche-arbeitslosigkeit/arbeitslosenentschaedigung.html'],['Kanton Aargau: Arbeitslosenentschädigung (70/80 %, 3’797)','https://www.ag.ch/de/themen/wirtschaft-arbeit/stellensuche-arbeitslosigkeit/arbeitslosenentschaedigung'],['Kanton Bern: Arbeitslosengeld beantragen','https://www.weu.be.ch/de/start/themen/wirtschaft-und-arbeit/arbeitslosigkeit/arbeitslosengeld-beantragen.html'],['Fedlex: AVIG (SR 837.0)','https://www.fedlex.admin.ch/eli/cc/1982/2184_2184_2184/de']]}},
- {id:'tax',t:'Steuererklärung, Frist',st:'warn',side:'l',short:'14 von 17 belegt',
-  q:'«Ich wohne in Bern und schaffe meine Steuererklärung nicht bis Mitte März. Wie verlängere ich die Frist und was kostet das?»',
-  g:[1,1,[0,'14/17'],1,1],
-  iss:[['open','«oder ausgedruckt bei der Wohnsitzgemeinde abgeben»: Papierabgabe belegt, Abgabeort nicht.'],['open','«nach abgelaufener Mahnfrist ist keine Verlängerung mehr möglich»: nur aus Gerichtsentscheiden anderer Kantone, keine Berner Quelle.'],['open','Hinweis «veranlagt auch die direkte Bundessteuer im Auftrag des Bundes»: nicht geprüft.'],['ok','Fristen, Gebühren (gratis/20/40, schriftlich 20/40/60), 30.11.2026 wegen IT-Unterbruch, ZH und GE: belegt.']]},
- {id:'move',t:'Umzug melden',st:'warn',side:'l',short:'11 von 14 belegt',
-  q:'«Ich ziehe von Bern nach Winterthur: Wie und bis wann melde ich mich ab und an?»',
-  g:[1,1,[0,'11/14'],1,1],
-  iss:[['open','«Online ca. 10 Minuten»: nur eine Thurgauer Gemeinde nennt das, weder Bern noch Winterthur.'],['open','«Winterthur erhält die neue Adresse automatisch» (Steueramt): auf Winterthurs Seite nicht gefunden.'],['open','Hinweis zur Steuerhoheit Kanton Zürich / Stadt Winterthur: nicht geprüft.'],['ok','14 Tage (Art. 11 RHG), CHF 40 in Winterthur, eUmzugCH, Krankenkassennachweis, Steuerpflicht ab 1. Januar: belegt.']]},
- {id:'passport',t:'Pass & ID',st:'warn',side:'r',short:'12 von 16 belegt, neue ID fehlt',
-  q:'«Ich wohne in Bern und brauche einen neuen Pass und eine Identitätskarte. Wie und wo bestelle ich die?»',
-  g:[1,1,[0,'12/16'],1,[0,'ab 2.11.']],
-  iss:[['fix','Ab 2. November 2026 gibt es die biometrische Identitätskarte, und der provisorische Pass heisst «Notpass». Die Antwort erwähnt das nicht und ist in vier Wochen unvollständig.'],['open','«Mitnehmen am Schalter geht nicht»: für Bern nicht belegt (Bern stellt provisorische Pässe aus).'],['open','«bei Pass Fingerabdrücke»: für den Pass belegt, aber mit neuer ID ab November nicht mehr nur beim Pass.'],['open','«E-Mail zur Terminwahl nach der Prüfung» und Hinweis zum Amt für Bevölkerungsdienste: nicht belegt.'],['ok','Preise 70/145/158 und 35/65/78, Gültigkeit, 10 Arbeitstage, Laupenstrasse 18A, Tel. 031 635 40 00, 7 Ausweiszentren: belegt.']]},
- {id:'kk',t:'Krankenkasse wechseln',st:'bad',side:'r',short:'11 von 14 belegt, 2 ungenau',
-  q:'«Bis wann kann ich meine Krankenkasse wechseln und wie geht das?»',
-  g:[1,1,[0,'11/14'],[0,'ungenau'],1],
-  iss:[['fix','«Wer gemahnte Prämien offen hat, kann nicht wechseln» ist zu hart: Die Kündigung wirkt nur nicht, wenn die bis 30.11. gemahnten Beträge nicht bis 31.12. bezahlt sind. Wer zahlt, kann wechseln.'],['fix','Quelle nennt «KVG Art. 7 und 64», richtig ist Art. 64a.'],['open','Zusatzversicherung «Fristen bis zu sechs Monate»: gefunden wurde «in der Regel 3 Monate».'],['open','Höhere Franchise «spätestens Mitte Dezember (Empfehlung)»: steht laut Seite «Lücken» in der Priminfo-FAQ, die Verordnung nennt den 31. Dezember. Beides nennen.'],['ok','Kündigung bis Montag 30.11.2026 (Eingang zählt), Prämien 2027 auf priminfo, Aufnahmepflicht, Franchisen, Wechsel per 1. Juli: belegt.']]},
- {id:'ahv',t:'AHV-Rente anmelden',st:'bad',side:'r',short:'Rentenbeträge veraltet',
-  q:'«Ich bin Jahrgang 1962 und wohne in Thun: Wann und wo melde ich meine AHV-Rente an?»',
-  g:[1,1,[0,'12/13'],[0,'1 falsch'],[0,'seit 2.10.']],
-  iss:[['fix','Der Bundesrat hat am 2. Oktober 2026 die Renten per 1.1.2027 um rund 1,59 % erhöht: Minimalrente CHF 1’280 statt 1’260, Maximalrente 2’560 statt 2’520, Ehepaar höchstens 3’840 statt 3’780. Die Beispielperson bekommt ihre Rente ab April 2027, also gelten die neuen Beträge.'],['ok','Referenzalter, Rentenbeginn im Folgemonat, Anmeldung 3–4 Monate vorher, Formular 318.370, Vorbezug −6,8 %, Aufschub +5,2 bis +31,5 %, 13. Rente ab Dezember 2026, Auszahlung AK Bern: belegt.']],
-  src:[['admin.ch: Bundesrat passt AHV/IV-Renten per 1.1.2027 an (2.10.2026)','https://www.admin.ch/de/newnsb/BqB41FVYi5FB']]}
-];
-const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-/* mind map */
-const map=document.getElementById('pcMap');
-let h='<svg class="pc-wires" aria-hidden="true"></svg><div class="pc-hub"><b>Tell</b><span>6 Prozesse<br>1 geprüft</span></div>';
-let li=0,ri=0;
-P.forEach(p=>{const row=p.side==='l'?++li:++ri;
-  h+=`<a class="pc-node ${p.side} ${ST[p.st][0]}" style="grid-row:${row}" href="#p-${p.id}" data-id="${p.id}"><div class="t">${esc(p.t)}</div><div class="s">${ST[p.st][1]}</div><div class="d">${esc(p.short)}</div></a>`;});
-map.innerHTML=h;
-function wires(){
-  const svg=map.querySelector('svg'), hub=map.querySelector('.pc-hub'), R=map.getBoundingClientRect(), H=hub.getBoundingClientRect();
-  const cx=H.left+H.width/2-R.left, cy=H.top+H.height/2-R.top;
-  svg.setAttribute('viewBox',`0 0 ${R.width} ${R.height}`);
-  svg.innerHTML=[...map.querySelectorAll('.pc-node')].map(n=>{
-    const b=n.getBoundingClientRect(), l=n.classList.contains('l');
-    const x=(l?b.right:b.left)-R.left, y=b.top+b.height/2-R.top, hx=cx+(l?-H.width/2:H.width/2)*.92, mx=(x+hx)/2;
-    return `<path d="M${x} ${y} C${mx} ${y} ${mx} ${cy} ${hx} ${cy}" stroke="${getComputedStyle(n).getPropertyValue('--c')||'#999'}" opacity=".7"/>`;}).join('');
-}
-wires(); addEventListener('resize',wires); if(document.fonts)document.fonts.ready.then(wires);
-
-/* gate table */
-const G=['Beispielfrage trifft','4 Sprachen + Frag Tell gleich','Alle Angaben belegt','Nichts falsch','Aktuell'];
-const cell=v=>{const ok=Array.isArray(v)?v[0]:v, note=Array.isArray(v)?v[1]:'';return `<td><span class="${ok?'pc-y':'pc-n'}">${ok?'✓ ja':'✗ nein'}</span>${note?`<small>${esc(note)}</small>`:''}</td>`;};
-document.getElementById('pcTbl').innerHTML='<thead><tr><th scope="col">Prozess</th>'+G.map(g=>`<th scope="col">${g}</th>`).join('')+'</tr></thead><tbody>'+
-  P.map(p=>`<tr><th scope="row">${esc(p.t)}</th>${p.g.map(cell).join('')}</tr>`).join('')+'</tbody>';
-
-/* cards */
-const K={ok:['ok','Belegt'],open:['open','Offen'],fix:['fix','Korrigieren']};
-document.getElementById('pcCards').innerHTML=P.map(p=>`<article class="pc-card ${ST[p.st][0]}" id="p-${p.id}">
-  <h3>${esc(p.t)}</h3><div class="s">${ST[p.st][1]} · ${esc(p.short)}</div><p class="q">Geprüft für die Frage ${esc(p.q)}</p>
-  <p class="pc-lbl">Befund</p><ul class="pc-iss">${p.iss.map(([k,t])=>`<li><span class="k ${K[k][0]}">${K[k][1]}</span><span>${esc(t)}</span></li>`).join('')}</ul>
-  ${p.src?`<p class="pc-lbl">Quellen der Prüfung</p><ul class="pc-src">${p.src.map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noopener noreferrer">${esc(t)}</a></li>`).join('')}</ul>`:''}
-</article>`).join('');
-})();
-</script>
 <!-- tell-shared:js:start -->
 <script>
 (function(){

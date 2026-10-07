@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#EEE9E0">
+<title>Neuigkeiten – Tell (privates Konzept, Prototyp)</title>
+<meta name="description" content="Was bei Tell zuletzt dazugekommen ist, mit Datum. Keine offizielle Seite.">
+<!-- tell-shared:head:start -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tell (Konzeptprototyp)">
+<meta property="og:title" content="Neuigkeiten – Tell (privates Konzept, Prototyp)">
+<meta property="og:description" content="Was bei Tell zuletzt dazugekommen ist, mit Datum. Keine offizielle Seite.">
+<meta property="og:url" content="https://bx25.github.io/tell-prototype/neuigkeiten.html">
+<meta property="og:image" content="https://bx25.github.io/tell-prototype/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bundeshaus Bern, Konzeptprototyp Tell (privates Konzept, keine offizielle Seite)">
+<meta property="og:locale" content="de_CH">
+<meta property="og:locale:alternate" content="fr_CH">
+<meta property="og:locale:alternate" content="it_CH">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Neuigkeiten – Tell (privates Konzept, Prototyp)">
+<meta name="twitter:description" content="Was bei Tell zuletzt dazugekommen ist, mit Datum. Keine offizielle Seite.">
+<meta name="twitter:image" content="https://bx25.github.io/tell-prototype/assets/og-image.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<script>window.TELL_CONTACT="bxsk25@pm.me";</script>
+<style id="tell-fonts">
+@font-face{font-family:"Switzer";src:url("assets/fonts/Switzer-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url("assets/fonts/Switzer-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Switzer";src:url("assets/fonts/Switzer-600.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+</style>
+<!-- tell-shared:head:end -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23D8001A'/%3E%3Cpath fill='%23fff' d='M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#EEE9E0;
+  --snow:#FBF9F5;
+  --ink:#1A2531;
+  --granit:#59636D;
+  --red:#D8001A;
+  --red-d:#B00015;
+  --rule:rgba(26,37,49,.13);
+  --inset:clamp(8px,1.1vw,16px);
+  --pad:clamp(20px,4vw,64px);
+  --r-xl:clamp(26px,3vw,44px);
+  --r-lg:24px;
+  --sh:0 1px 2px rgba(26,37,49,.05),0 28px 64px -28px rgba(26,37,49,.34);
+  --sec:clamp(88px,12vw,200px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --ease-io:cubic-bezier(.76,0,.24,1);
+  --serif:"Gambetta","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  font-family:"Switzer","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+[hidden]{display:none!important}
+html{background:var(--paper);color:var(--ink);-webkit-text-size-adjust:100%}
+body{font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;background:var(--paper)}
+button,input{font:inherit;color:inherit}
+a{color:inherit}
+svg{display:block}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.skip{position:absolute;left:var(--pad);top:-80px;z-index:100;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:999px;transition:top .2s}
+.skip:focus{top:12px}
+
+/* glass */
+.glass{background:rgba(251,249,245,.66);-webkit-backdrop-filter:blur(20px) saturate(1.25);backdrop-filter:blur(20px) saturate(1.25);border:1px solid rgba(255,255,255,.6);box-shadow:0 10px 32px -14px rgba(26,37,49,.3)}
+
+/* header */
+.site-header{position:fixed;z-index:60;top:calc(var(--inset) + 10px);left:calc(var(--inset) + 12px);right:calc(var(--inset) + 12px);display:flex;align-items:center;justify-content:space-between;gap:12px;pointer-events:none}
+.site-header>*{pointer-events:auto}
+.brand{display:inline-flex;align-items:center;gap:10px;padding:7px 18px 7px 8px;border-radius:999px;text-decoration:none;font-family:var(--serif);font-weight:500;font-size:1.5rem;line-height:1;letter-spacing:-.02em}
+.brand svg{width:30px;height:30px}
+.notice{padding:9px 16px;border-radius:999px;font-size:.8125rem;line-height:1.2;color:var(--granit);text-align:center;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.site-header.past .notice{opacity:0;pointer-events:none}
+.head-r{display:flex;align-items:center;gap:8px;padding:5px;border-radius:999px}
+.lang{display:flex;gap:2px}
+.lang button{border:0;background:transparent;border-radius:999px;padding:8px 12px;font-size:.8125rem;font-weight:500;color:var(--granit);cursor:pointer;transition:background .3s,color .3s}
+.lang button:hover{color:var(--ink)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn.head-ask{visibility:hidden;padding:.65em 0;font-size:.875rem;opacity:0;transform:scale(.9);pointer-events:none;width:0;padding-inline:0;margin:0 -4px 0 0;overflow:hidden;transition:opacity .4s var(--ease),transform .4s var(--ease),width .45s var(--ease),padding .45s var(--ease)}
+.btn.head-ask.show{visibility:visible;opacity:1;transform:none;pointer-events:auto;width:auto;padding-inline:1.1em}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;padding:.95em 1.5em;background:var(--ink);color:var(--paper);border:0;border-radius:999px;font-weight:500;font-size:.9375rem;line-height:1.1;cursor:pointer;overflow:hidden;isolation:isolate;text-decoration:none;white-space:nowrap;transition:transform .3s var(--ease),color .3s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--red);border-radius:inherit;transform:scale(0);transform-origin:var(--ox,50%) var(--oy,50%);transition:transform .6s var(--ease);z-index:-1}
+.btn:hover::before,.btn:focus-visible::before{transform:scale(1.6)}
+.btn:active{transform:scale(.96)}
+.btn[disabled]{cursor:default;opacity:.7}
+.btn[disabled]::before{transform:scale(0)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(26,37,49,.2)}
+.btn.ghost:hover,.btn.ghost:focus-visible{color:#fff;box-shadow:none}
+
+
+.ask{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;background:#fff;border:1px solid rgba(26,37,49,.1);border-radius:999px;padding:6px;box-shadow:0 2px 0 rgba(26,37,49,.02),0 14px 30px -18px rgba(26,37,49,.3);transition:box-shadow .4s,border-color .3s}
+.ask:focus-within{border-color:rgba(26,37,49,.45);box-shadow:0 0 0 5px rgba(216,0,26,.14),0 14px 30px -18px rgba(26,37,49,.3)}
+.ask.nudge{animation:nudge .45s var(--ease)}
+@keyframes nudge{20%{transform:translateX(-6px)}50%{transform:translateX(5px)}80%{transform:translateX(-2px)}}
+.ask-field{position:relative;min-width:0}
+.ask input{width:100%;height:58px;border:0;background:transparent;padding:0 clamp(16px,1.8vw,26px);font-size:clamp(1rem,1.35vw,1.2rem);letter-spacing:-.01em;outline:none}
+.ph{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.ph span{position:absolute;left:clamp(16px,1.8vw,26px);right:8px;top:50%;margin-top:-.7em;font-size:clamp(1rem,1.35vw,1.2rem);letter-spacing:-.01em;color:var(--granit);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;transform:translateY(60%);opacity:0;transition:transform .7s var(--ease),opacity .5s}
+.ph span.on{transform:none;opacity:1}
+.ph span.off{transform:translateY(-160%);opacity:0}
+.ask.has-value .ph{opacity:0}
+.send{width:58px;height:58px;border-radius:50%;background:var(--red);color:#fff;border:0;cursor:pointer;display:grid;place-items:center;overflow:hidden;transition:background .3s,transform .3s var(--ease)}
+.send svg{width:24px;height:24px;transition:transform .45s var(--ease)}
+.send:hover,.send:focus-visible{background:var(--red-d)}
+.send:hover svg{transform:translateX(4px)}
+.send:active{transform:scale(.92)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:rgba(255,255,255,.7);border:1px solid rgba(26,37,49,.1);border-radius:999px;padding:.62em 1.05em;font-size:.9rem;cursor:pointer;transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease)}
+.chip:hover,.chip:focus-visible{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip:active{transform:scale(.96)}
+
+/* answer */
+.answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .9s var(--ease)}
+.answer.open{grid-template-rows:1fr}
+.answer-in{overflow:hidden;min-height:0}
+.a-body{padding:34px clamp(6px,.8vw,12px) 6px}
+.a-q{font-size:.9375rem;color:var(--granit);margin-bottom:16px}
+.think{display:flex;align-items:center;gap:14px;color:var(--granit);font-size:.9375rem}
+.think svg{width:28px;height:28px}
+.think rect{fill:var(--red);transform-box:fill-box;transform-origin:center}
+.think .v{animation:growv 1.1s var(--ease-io) infinite alternate}
+.think .h{animation:growh 1.1s var(--ease-io) .25s infinite alternate}
+@keyframes growv{from{transform:scaleY(.1)}to{transform:scaleY(1)}}
+@keyframes growh{from{transform:scaleX(.1)}to{transform:scaleX(1)}}
+.a-text{font-family:var(--serif);font-size:clamp(1.15rem,1.6vw,1.45rem);line-height:1.32;letter-spacing:-.012em;max-width:34em}
+.sw{opacity:0;transition:opacity .35s}
+.sw.in{opacity:1}
+.a-glance{margin-top:24px}
+.a-glance .who-lbl{margin-bottom:6px}
+.a-facts{margin:0;padding:0}
+.a-facts>div{display:grid;grid-template-columns:minmax(5.6rem,7.6rem) 1fr;column-gap:clamp(12px,2vw,20px);padding:11px 0;border-top:1px solid var(--rule);opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.a-facts>div:last-child{border-bottom:1px solid var(--rule)}
+.a-facts>div.in{opacity:1;transform:none}
+.a-facts dt{font-size:.8125rem;font-weight:500;letter-spacing:.01em;color:var(--granit);padding-top:.16em}
+.a-facts dd{margin:0;font-size:.9375rem;line-height:1.4;min-width:0;overflow-wrap:anywhere}
+@media (max-width:560px){.a-facts>div{grid-template-columns:1fr;row-gap:2px;padding:10px 0}.a-facts dt{padding-top:0}}
+.a-steps{list-style:none;padding:0;margin-top:26px;counter-reset:s}
+.a-glance+.a-steps{margin-top:22px}
+.a-steps li{display:grid;grid-template-columns:44px 1fr;padding:15px 0;border-top:1px solid var(--rule);opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.a-steps li:last-child{border-bottom:1px solid var(--rule)}
+.a-steps li::before{counter-increment:s;content:counter(s);color:var(--red);font-weight:500;font-feature-settings:"tnum"}
+.a-steps li.in{opacity:1;transform:none}
+.a-who{margin-top:28px}
+.who-lbl{font-size:.9375rem;color:var(--granit);margin-bottom:10px}
+.who-row{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0}
+.who-row li{display:inline-flex;align-items:center;gap:10px;padding:.65em 1.1em;border-radius:999px;font-weight:500;font-size:.9375rem;box-shadow:inset 0 0 0 1px rgba(26,37,49,.14);color:var(--granit);transition:background .6s var(--ease),color .6s var(--ease),box-shadow .6s}
+.who-row li::before{content:"";width:8px;height:8px;border-radius:50%;background:rgba(26,37,49,.2);transition:background .6s}
+.who-row li.on{background:var(--ink);color:var(--paper);box-shadow:none}
+.who-row li.on::before{background:var(--red)}
+.who-note{margin-top:12px;font-size:.9375rem;color:var(--granit)}
+.a-src{margin-top:26px}
+.a-src ul{list-style:none;padding:0}
+.a-src li a{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--rule);text-decoration:none;font-size:.9375rem;transition:padding .35s var(--ease),color .25s}
+.a-src li:last-child a{border-bottom:1px solid var(--rule)}
+.a-src li a:hover{padding-left:8px;color:var(--red)}
+.a-src li a svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(--granit);transition:color .25s}
+.a-src li a:hover svg{color:var(--red)}
+.a-src li a span{min-width:0;overflow-wrap:anywhere}
+.a-stand{margin-top:12px;font-size:.8125rem;line-height:1.45;color:var(--granit)}
+.a-src,.a-who,#newQ{opacity:0;transition:opacity .7s var(--ease)}
+.a-src.in,.a-who.in,#newQ.in{opacity:1}
+#newQ{margin-top:26px}
+
+
+
+/* ============ Frag Tell ============ */
+body{background:var(--paper)}
+main{outline:none}
+:root{--hh:84px}
+.fq-home{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;padding:calc(var(--inset) + clamp(96px,17svh,170px)) var(--pad) 0;overflow:clip}
+.fq-greet{font-family:var(--serif);font-weight:400;font-size:clamp(2.5rem,6.6vw,5.8rem);line-height:1;letter-spacing:-.035em;text-align:center;text-wrap:balance;animation:fqUp .9s var(--ease) both}
+.fq-sub{margin-top:clamp(12px,1.4vw,20px);color:var(--granit);font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.35;text-align:center;max-width:32em;text-wrap:balance;animation:fqUp .9s .12s var(--ease) both}
+.fq-card{margin-top:clamp(26px,4vw,48px);width:min(100%,720px);padding:clamp(16px,2vw,26px);border-radius:var(--r-xl);background:rgba(251,249,245,.82);-webkit-backdrop-filter:blur(26px) saturate(1.2);backdrop-filter:blur(26px) saturate(1.2);border:1px solid rgba(255,255,255,.7);box-shadow:var(--sh);animation:fqUp .9s .24s var(--ease) both;position:relative;z-index:2}
+.fq-home.answering .fq-card{background:rgba(251,249,245,.96)}
+.fq-card .chips{justify-content:center}
+.chip.more{border-style:dashed;background:transparent}
+.fq-note{margin-top:16px;max-width:36em;text-align:center;font-size:.8125rem;line-height:1.45;color:var(--granit);position:relative;z-index:2}
+.fq-sky{margin-top:auto;padding-top:clamp(28px,5vw,64px);width:100%;display:flex;justify-content:center;pointer-events:none;transition:opacity .6s var(--ease)}
+.fq-sky img{display:block;width:auto;max-width:min(980px,100%);height:auto;max-height:min(44svh,500px);object-fit:contain;filter:drop-shadow(0 14px 22px rgba(26,37,49,.2));margin-bottom:-2px}
+.fq-home.answering .fq-sky{opacity:.18}
+@keyframes fqUp{from{opacity:0;transform:translateY(14px)}}
+
+.fq-view{margin:calc(var(--inset) + var(--hh)) var(--inset) var(--inset)}
+.fq-sheet{border-radius:var(--r-xl);background:var(--snow);padding:clamp(40px,6vw,96px) var(--pad) clamp(48px,7vw,110px);min-height:60svh}
+.fq-in{max-width:68rem;margin-inline:auto}
+.fq-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8125rem;font-weight:500;color:var(--granit);margin-bottom:18px}
+.fq-eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
+.fq-h{font-family:var(--serif);font-weight:400;font-size:clamp(2.3rem,5.2vw,4.6rem);line-height:1.04;letter-spacing:-.03em;text-wrap:balance;outline:none}
+.fq-lead{margin-top:20px;max-width:40em;font-size:clamp(1.0625rem,1.5vw,1.25rem);line-height:1.5;color:var(--granit)}
+.fq-b{margin-top:clamp(36px,5vw,68px)}
+.fq-b>h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.55rem,2.5vw,2.2rem);line-height:1.1;letter-spacing:-.02em}
+.fq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px;margin-top:22px}
+.fq-tile{display:flex;flex-direction:column;gap:10px;padding:clamp(18px,2vw,26px);border-radius:var(--r-lg);background:var(--paper)}
+.fq-tile h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.12;letter-spacing:-.015em}
+.fq-tile p{color:var(--granit);font-size:.9375rem;line-height:1.45}
+.fq-tile .fq-meta{font-size:.8125rem;font-weight:500;color:var(--ink);display:inline-flex;align-items:center;gap:8px}
+.fq-tile .fq-meta::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}
+.fq-tile .btn{margin-top:auto;align-self:flex-start;font-size:.875rem;padding:.8em 1.25em}
+.fq-tile .fq-gap{flex:1}
+.fq-list{list-style:none;padding:0;margin-top:18px}
+.fq-list li{padding:14px 0 14px 26px;border-top:1px solid var(--rule);position:relative;line-height:1.5;max-width:52em}
+.fq-list li:last-child{border-bottom:1px solid var(--rule)}
+.fq-list li::before{content:"";position:absolute;left:4px;top:1.15em;width:8px;height:8px;border-radius:50%;background:rgba(26,37,49,.22)}
+.fq-note2{margin-top:12px;font-size:.875rem;color:var(--granit)}
+.fq-day{display:grid;grid-template-columns:minmax(8.5rem,14rem) 1fr;gap:12px clamp(16px,3vw,40px);padding:clamp(22px,3vw,34px) 0;border-top:1px solid var(--rule)}
+.fq-day:last-child{border-bottom:1px solid var(--rule)}
+.fq-day time{font-family:var(--serif);font-size:clamp(1.25rem,1.9vw,1.7rem);letter-spacing:-.015em;line-height:1.15}
+.fq-day h3{font-size:.8125rem;font-weight:500;color:var(--granit);letter-spacing:.01em;margin:0 0 6px}
+.fq-day h3:not(:first-child){margin-top:18px}
+.fq-day ul{list-style:none;padding:0}
+.fq-day li{padding:3px 0;max-width:46em;line-height:1.5}
+.fq-ph{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:22px;counter-reset:ph}
+.fq-ph article{padding:clamp(18px,2vw,26px);border-radius:var(--r-lg);background:var(--paper);display:flex;flex-direction:column;gap:8px}
+.fq-ph .n{font-family:var(--serif);font-size:2.2rem;line-height:1;color:var(--red);letter-spacing:-.03em}
+.fq-ph h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.12;letter-spacing:-.015em}
+.fq-ph .e{font-size:.8125rem;font-weight:500;color:var(--granit)}
+.fq-ph p{font-size:.9375rem;line-height:1.45;color:var(--ink)}
+.fq-links{list-style:none;padding:0;margin-top:18px}
+.fq-links li a{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--rule);text-decoration:none;transition:padding .35s var(--ease),color .25s}
+.fq-links li:last-child a{border-bottom:1px solid var(--rule)}
+.fq-links li a:hover,.fq-links li a:focus-visible{padding-left:8px;color:var(--red)}
+.fq-links li a svg{width:18px;height:18px;flex:none;margin-top:3px}
+.hnav a[aria-current="page"]{background:rgba(26,37,49,.08);color:var(--ink)}
+.tfoot#tfoot{padding-bottom:clamp(28px,4vw,48px)}
+.tfoot-links+.tfoot-links{margin-top:2px}
+.tfoot-h{margin-top:14px;font-size:.8125rem;color:rgba(238,233,224,.6)}
+.tfoot a[aria-current="page"]{text-decoration:underline;text-underline-offset:4px}
+.tfoot-credit{margin-top:10px;max-width:64em;font-size:.8125rem;color:rgba(238,233,224,.5);overflow-wrap:anywhere}
+
+/* responsive (aus index.html übernommen) */
+@media (max-width:900px){
+  .notice{order:3;flex:1 0 100%;max-width:none;padding:7px 12px;font-size:.75rem}
+  .site-header{flex-wrap:wrap;row-gap:8px}
+  :root{--hh:112px}
+  .fq-home{padding-top:calc(var(--inset) + 128px)}
+}
+@media (max-width:700px){
+  .brand{font-size:1.3rem}
+  .head-r{padding:4px}
+  .lang button{padding:7px 9px}
+  .ask input{height:52px}
+  .send{width:52px;height:52px}
+  .fq-day{grid-template-columns:1fr}
+  .fq-greet{font-size:clamp(2.3rem,11vw,3.4rem)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;transition-delay:0s!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+</style>
+
+<!-- tell-shared:css:start -->
+<style>
+/* ---- nav menu button + panel ---- */
+.menubtn{display:none;align-items:center;justify-content:center;flex:none;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:transparent;color:var(--ink,#1A2531);cursor:pointer;transition:background .3s,color .3s,transform .25s}
+.menubtn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;display:block}
+.menubtn:hover,.menubtn[aria-expanded="true"]{background:var(--ink,#1A2531);color:var(--paper,#EEE9E0)}
+.menubtn:active{transform:scale(.94)}
+.tmenu{position:fixed;z-index:65;right:calc(var(--inset,12px) + 12px);top:76px;min-width:230px;max-width:calc(100vw - 24px);padding:8px;border-radius:26px;display:grid;gap:2px}
+.tmenu{background:rgba(251,249,245,.96)}
+.tmenu[hidden]{display:none!important}
+.tmenu a{display:flex;align-items:center;min-height:44px;padding:0 16px;border-radius:18px;text-decoration:none;color:var(--ink,#1A2531);font-size:.9375rem;font-weight:500;transition:background .25s,color .25s}
+.tmenu a:hover,.tmenu a:focus-visible{background:var(--ink,#1A2531);color:var(--paper,#EEE9E0)}
+.tmenu a[aria-current="page"]{background:rgba(26,37,49,.07);color:var(--granit,#59636D)}
+/* ---- shared footer (pages without their own footer) ---- */
+.tfoot{margin:var(--inset,12px);padding:clamp(28px,4vw,48px) var(--pad,24px) 112px;border-radius:var(--r-xl,32px);background:var(--ink,#1A2531);color:rgba(238,233,224,.74);font-size:.9375rem;line-height:1.55}
+.tfoot a{color:var(--paper,#EEE9E0)}
+.tfoot :focus-visible{outline-color:var(--paper,#EEE9E0)}
+.tfoot-links{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:0 22px}
+.tfoot-links a{display:inline-flex;align-items:center;min-height:40px;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 calc(50% + 11px)/0 1px no-repeat;transition:background-size .4s}
+.tfoot-links a:hover,.tfoot-links a:focus-visible{background-size:100% 1px}
+.tfoot-sender{margin-top:10px;color:var(--paper,#EEE9E0);font-weight:500}
+.tfoot-sender a{text-underline-offset:3px;overflow-wrap:anywhere}
+.tfoot-legal{margin-top:10px;max-width:64em;font-size:.8125rem;color:rgba(238,233,224,.6)}
+/* ---- index footer additions ---- */
+.f-sender{grid-column:1/-1;color:var(--paper,#EEE9E0);font-weight:500;margin:0}
+.f-sender a{text-underline-offset:3px;overflow-wrap:anywhere}
+.f-credit{overflow-wrap:anywhere}
+.f-legal{grid-column:1/-1;color:rgba(238,233,224,.6);font-size:.8125rem;max-width:64em;margin:0}
+/* ---- index header nav ---- */
+.hnav{display:none;align-items:center;gap:2px;padding:5px;border-radius:999px}
+.hnav a{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;font-size:.8125rem;font-weight:500;color:var(--granit,#59636D);text-decoration:none;white-space:nowrap;transition:background .3s,color .3s}
+.hnav a:hover,.hnav a:focus-visible{background:var(--ink,#1A2531);color:var(--paper,#EEE9E0)}
+.site-header .menubtn{display:inline-flex}
+@media (min-width:901px){.site-header .notice{position:static;transform:none;margin:0 auto;flex:0 1 auto}}
+@media (min-width:1360px){.hnav{display:flex}.site-header .menubtn{display:none}}
+/* ---- pages with .top header: pills collapse into the menu on narrower screens ---- */
+@media (max-width:1180px){.top .pl-nav{display:none!important}.top .menubtn{display:inline-flex}}
+/* ---- tap targets (>= 40px) on small screens ---- */
+@media (max-width:900px){
+  .lang button{min-height:40px;display:inline-flex;align-items:center;justify-content:center}
+  .site-header .lang button{padding:0 9px}
+  .top .lang button{padding:0 6px;min-width:34px}
+  .pillbtn{min-height:40px;justify-content:center}
+  .chip,.rt-tab,.tp{min-height:40px}
+  .f-links a{display:inline-flex;align-items:center;min-height:40px}
+}
+/* ---- chat greeting bubble never auto-covers content on small screens ---- */
+.tbub .x{width:28px;height:28px;top:-10px;left:-10px}
+@media (max-width:560px){.tbub{display:none!important}}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,3vw,36px)}
+.hero-ctas .hero-cta{margin-top:0}
+.hero-cta2{background:rgba(251,249,245,.55);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(26,37,49,.24);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.hero-cta2:hover,.hero-cta2:focus-visible{color:#fff;box-shadow:none}
+</style>
+<!-- tell-shared:css:end -->
+<style>
+/* ============ einfache Listen (Prozesse, Neuigkeiten) ============ */
+.pl-in{max-width:52rem;margin-inline:auto}
+.pl-sec{margin-top:clamp(36px,5vw,64px)}
+.pl-sec>h2{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.1;letter-spacing:-.02em}
+.pl-sec>h2 .n{font-family:inherit;font-size:.7em;color:var(--granit)}
+.pl-dot{width:12px;height:12px;border-radius:50%;flex:none;background:var(--c)}
+.pl-ok{--c:#1E7A46}.pl-plan{--c:#B26B00}
+.pl-list{list-style:none;padding:0;margin-top:14px}
+.pl-list>li{padding:16px 0;border-top:1px solid var(--rule)}
+.pl-list>li:last-child{border-bottom:1px solid var(--rule)}
+.pl-list h3{font-size:1.0625rem;font-weight:600;line-height:1.3}
+.pl-list p{margin-top:4px;font-size:.9375rem;line-height:1.5;color:var(--granit)}
+.pl-list ul{margin:6px 0 0;padding-left:1.1em;font-size:.9375rem;line-height:1.5}
+.pl-list a{color:var(--ink);text-underline-offset:3px}
+.pl-date{font-size:.8125rem;font-weight:600;color:var(--red);letter-spacing:.01em}
+.pc-head-r{display:flex}@media (min-width:1360px){.pc-head-r{display:none}}
+.pl-note{margin-top:28px;font-size:.875rem;color:var(--granit);line-height:1.5}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="cross" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#D8001A"/><path fill="#fff" d="M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<!-- tell-shared:gate:start -->
+<!-- Hinweis: privates Konzept, keine offizielle Seite -->
+<style>
+html.dsc-lock{overflow:hidden!important}
+.dsc{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:clamp(12px,3vw,32px);background:rgba(238,233,224,.62);-webkit-backdrop-filter:blur(16px) saturate(1.1);backdrop-filter:blur(16px) saturate(1.1);font-family:Switzer,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:#1A2531;animation:dscBg .5s ease both;transition:opacity .5s ease,backdrop-filter .5s ease,-webkit-backdrop-filter .5s ease}
+.dsc.out{opacity:0;pointer-events:none}
+.dsc *{box-sizing:border-box}
+.dsc-card{position:relative;width:min(560px,100%);max-height:calc(100svh - 24px);overflow:auto;padding:clamp(22px,4vw,36px);border-radius:clamp(26px,4vw,36px);background:rgba(251,249,245,.97);box-shadow:0 44px 90px -40px rgba(26,37,49,.5),0 0 0 1px rgba(255,255,255,.8) inset,0 0 0 1px rgba(26,37,49,.06);animation:dscCard .55s cubic-bezier(.2,.8,.2,1) both;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.dsc.out .dsc-card{transform:translateY(-12px) scale(.98);opacity:0}
+.dsc-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dsc-mark{display:inline-flex;align-items:center;gap:10px;font-family:Gambetta,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-weight:500;font-size:1.375rem;line-height:1;letter-spacing:-.02em}
+.dsc-mark svg{width:28px;height:28px;display:block}
+.dsc-lang{display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(26,37,49,.06)}
+.dsc-lang button{border:0;background:transparent;border-radius:999px;min-height:40px;min-width:40px;padding:0 10px;font:inherit;font-size:.8125rem;font-weight:500;color:#5A6674;cursor:pointer;transition:background .3s,color .3s}
+.dsc-lang button:hover{color:#1A2531}
+.dsc-lang button[aria-pressed="true"]{background:#1A2531;color:#EEE9E0}
+.dsc h2{margin:clamp(20px,3.4vw,28px) 0 0;font-family:Gambetta,"Iowan Old Style","Palatino Linotype",Georgia,serif;font-weight:500;font-size:clamp(1.75rem,5.4vw,2.5rem);line-height:1.08;letter-spacing:-.025em;text-wrap:balance}
+.dsc-lead{margin:14px 0 0;font-size:clamp(1rem,2.2vw,1.0625rem);line-height:1.55;color:#2B3846}
+.dsc-go{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:48px;margin-top:clamp(20px,3vw,26px);padding:.9em 1.6em;border:0;border-radius:999px;background:#1A2531;color:#EEE9E0;font:inherit;font-size:1rem;font-weight:500;cursor:pointer;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.dsc-go::before{content:"";position:absolute;inset:0;background:#D8001A;border-radius:inherit;transform:scale(0);transform-origin:var(--ox,50%) var(--oy,50%);transition:transform .6s cubic-bezier(.2,.8,.2,1);z-index:-1}
+.dsc-go:hover::before,.dsc-go:focus-visible::before{transform:scale(1.6)}
+.dsc-go:active{transform:scale(.97)}
+.dsc-go:focus-visible,.dsc-lang button:focus-visible,.dsc-foot a:focus-visible{outline:2px solid #D8001A;outline-offset:3px}
+.dsc-go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.dsc-go:hover svg{transform:translateX(4px)}
+.dsc-foot{margin:16px 0 0;font-size:.875rem;line-height:1.5;color:#4A5663}
+.dsc-foot a{color:inherit;text-underline-offset:3px}
+.dsc-rise{animation:dscRise .8s calc(.25s + var(--i,0)*.07s) cubic-bezier(.2,.8,.2,1) both}
+@keyframes dscBg{from{opacity:0}}
+@keyframes dscCard{from{opacity:0;transform:translateY(24px) scale(.97)}}
+@keyframes dscRise{from{opacity:0;transform:translateY(12px)}}
+@media (prefers-reduced-motion:reduce){.dsc,.dsc-card,.dsc-rise{animation:none!important}.dsc,.dsc-card{transition-duration:.01s}}
+@media (max-width:520px){.dsc{padding:10px}.dsc-go{width:100%}}
+</style>
+<script>
+(function(){
+  var KEY='tellDisclaimerSeen';
+  try{if(sessionStorage.getItem(KEY)==='1')return}catch(e){}
+  var C={"de": {"h": "Privates Konzept, keine offizielle Seite", "lead": "Tell ist ein Konzeptprototyp von Bilal Simsek. Es steht in keiner Verbindung zu Bund, Kantonen oder Gemeinden. Die Fallbeispiele (Personen, Dokumente, Beträge) sind frei erfunden; die Kennzahlen auf der Projektseite stammen aus öffentlichen Quellen und sind dort belegt.", "go": "Verstanden, weiter", "foot": "Offizielle Informationen finden Sie auf ", "aria": "Wichtiger Hinweis"}, "fr": {"h": "Concept privé, pas un site officiel", "lead": "Tell est un prototype conceptuel de Bilal Simsek. Il n'a aucun lien avec la Confédération, les cantons ou les communes. Les cas d'exemple (personnes, documents, montants) sont entièrement fictifs ; les chiffres clés de la page Projet proviennent de sources publiques et y sont référencés.", "go": "Compris, continuer", "foot": "Vous trouverez les informations officielles sur ", "aria": "Avis important"}, "it": {"h": "Concetto privato, non un sito ufficiale", "lead": "Tell è un prototipo concettuale di Bilal Simsek. Non ha alcun legame con la Confederazione, i Cantoni o i Comuni. I casi d'esempio (persone, documenti, importi) sono del tutto inventati; i dati chiave nella pagina Progetto provengono da fonti pubbliche e vi sono documentati.", "go": "Ho capito, continua", "foot": "Le informazioni ufficiali si trovano su ", "aria": "Avviso importante"}, "en": {"h": "Private concept, not an official website", "lead": "Tell is a concept prototype by Bilal Simsek. It has no connection to the Confederation, the cantons or the municipalities. The case examples (people, documents, amounts) are entirely fictional; the key figures on the project page come from public sources and are referenced there.", "go": "Understood, continue", "foot": "Official information is available at ", "aria": "Important notice"}};
+  var L=['de','fr','it','en'],q=new URLSearchParams(location.search).get('lang');
+  var pageLang=L.indexOf(q)>-1?q:'de';
+  var nav=(navigator.language||'de').slice(0,2).toLowerCase();
+  var cur=L.indexOf(q)>-1?q:(L.indexOf(nav)>-1?nav:'de');
+  var ARW='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var MARK='<svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#D8001A"/><path fill="#fff" d="M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z"/></svg>';
+  var esc=function(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var root=document.createElement('div');root.className='dsc';root.setAttribute('data-notr','');root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');
+  var card=document.createElement('div');card.className='dsc-card';root.appendChild(card);
+  var inerted=[],closed=false;
+  function paint(l,first){
+    var t=C[l];cur=l;root.setAttribute('aria-labelledby','dscH');root.setAttribute('aria-describedby','dscD');
+    root.lang=l==='de'?'de-CH':l==='fr'?'fr-CH':l==='it'?'it-CH':'en';
+    var r=first?' dsc-rise':'';
+    var langbar='<div class="dsc-lang'+r+'" style="--i:1" role="group" aria-label="Language">'+L.map(function(x){return '<button type="button" data-l="'+x+'" lang="'+x+'" aria-pressed="'+(x===l)+'">'+x.toUpperCase()+'</button>'}).join('')+'</div>';
+    card.innerHTML='<div class="dsc-top"><span class="dsc-mark'+r+'" style="--i:0">'+MARK+'Tell</span>'+langbar+'</div>'+
+      '<h2 id="dscH" class="'+r.trim()+'" style="--i:2">'+esc(t.h)+'</h2>'+
+      '<p id="dscD" class="dsc-lead'+r+'" style="--i:3">'+esc(t.lead)+'</p>'+
+      '<button class="dsc-go'+r+'" style="--i:4" type="button" id="dscGo"><span>'+esc(t.go)+'</span>'+ARW+'</button>'+
+      '<p class="dsc-foot'+r+'" style="--i:5">'+esc(t.foot)+'<a href="https://www.ch.ch" target="_blank" rel="noopener noreferrer">ch.ch</a></p>';
+  }
+  function close(){
+    closed=true;
+    try{sessionStorage.setItem(KEY,'1')}catch(e){}
+    if(cur!==pageLang){var u=new URL(location.href);u.searchParams.set('lang',cur);location.replace(u.toString());return}
+    root.classList.add('out');
+    inerted.forEach(function(n){n.inert=false});
+    var mn=document.getElementById('main')||document.querySelector('main');if(mn){try{mn.focus({preventScroll:true})}catch(e){}}
+    document.documentElement.classList.remove('dsc-lock');
+    setTimeout(function(){root.remove()},700);
+  }
+  root.addEventListener('click',function(e){
+    var b=e.target.closest('.dsc-lang button');
+    if(b){paint(b.dataset.l,false);var nb=root.querySelector('.dsc-lang [data-l="'+b.dataset.l+'"]');if(nb)nb.focus({preventScroll:true});return}
+    var g=e.target.closest('#dscGo');
+    if(g){var rc=g.getBoundingClientRect();g.style.setProperty('--ox',(e.clientX-rc.left)+'px');g.style.setProperty('--oy',(e.clientY-rc.top)+'px');close()}
+  });
+  root.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){e.preventDefault();e.stopPropagation();return}   /* the notice cannot be dismissed with Escape */
+    if(e.key!=='Tab')return;
+    var f=[].filter.call(root.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])'),function(x){return !x.disabled});
+    if(!f.length)return;var a=f[0],z=f[f.length-1],act=document.activeElement;
+    if(!root.contains(act)){e.preventDefault();a.focus();return}
+    if(e.shiftKey&&act===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&act===z){e.preventDefault();a.focus()}
+  });
+  paint(cur,true);
+  document.documentElement.classList.add('dsc-lock');
+  document.body.appendChild(root);
+  function lockBg(){if(closed)return;[].forEach.call(document.body.children,function(n){if(n!==root&&n.tagName!=='SCRIPT'&&n.tagName!=='STYLE'&&!n.inert){n.inert=true;inerted.push(n)}})}
+  lockBg();if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',lockBg);
+  var go=root.querySelector('#dscGo');if(go)go.focus({preventScroll:true});
+})();
+</script>
+<!-- tell-shared:gate:end -->
+
+<header class="site-header">
+  <a class="brand glass" href="index.html" aria-label="Tell"><svg aria-hidden="true"><use href="#cross"/></svg>Tell</a>
+  <nav class="hnav glass" aria-label="Seiten">
+    <a href="frag-tell.html">Frag Tell</a><a href="buergersicht.html">Bürgersicht</a><a href="behoerdensicht.html">Behördensicht</a><a href="projekt.html">Projekt</a><a href="luecken.html">Lücken</a><a href="prozesse.html">Prozesse</a><a href="neuigkeiten.html" aria-current="page">Neuigkeiten</a>
+  </nav>
+  <p class="notice glass">Konzeptprototyp, keine offizielle Seite</p>
+  <div class="head-r glass pc-head-r">
+    <button class="menubtn" id="tmenuBtn" type="button" aria-expanded="false" aria-controls="tmenu" aria-label="Menü"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<div class="tmenu glass" id="tmenu" hidden role="navigation" aria-label="Seiten">
+  <a href="index.html">Startseite</a><a href="frag-tell.html">Frag Tell</a><a href="buergersicht.html">Bürgersicht</a><a href="behoerdensicht.html">Behördensicht</a><a href="projekt.html">Projekt</a><a href="luecken.html">Lücken</a><a href="prozesse.html">Prozesse</a><a href="neuigkeiten.html" aria-current="page">Neuigkeiten</a>
+</div>
+
+<main id="main" tabindex="-1">
+  <div class="fq-view">
+    <section class="fq-sheet"><div class="pl-in">
+      <h1 class="fq-h">Neuigkeiten</h1>
+      <p class="fq-lead">Was wir zuletzt hinzugefügt haben. Neuestes zuerst.</p>
+      <section class="pl-sec"><ul class="pl-list"><li><p class="pl-date">7. Oktober 2026</p><ul><li><b>Neu:</b> «Kontrolluntersuchung ab 75» als 83. Thema im Chat (DE/FR/IT/EN): wie oft, Arzt, Einladung, Frist. Ganze Schweiz, Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Hilflosenentschädigung» als 82. Thema im Chat (DE/FR/IT/EN): Voraussetzungen, Beträge 2026, Anmeldung. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Erwerbsersatz im Militär und Zivildienst» als 81. Thema im Chat (DE/FR/IT/EN): Höhe, Kinderzulage, Anmeldung. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Scheidung einreichen» als 80. Thema im Chat (DE/FR/IT/EN): gemeinsames Begehren, Klage, Gericht, Kosten. Ganze Schweiz, Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Betreuungsurlaub für krankes Kind» als 79. Thema im Chat (DE/FR/IT/EN): 14 Wochen, Höhe, Kündigungsschutz. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Adoptionsurlaub» als 78. Thema im Chat (DE/FR/IT/EN): Anspruch, Dauer, Höhe, Antrag. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Unfall melden» als 77. Thema im Chat (DE/FR/IT/EN): wer versichert ist, Meldung, Taggeld. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Säule 3a» als 76. Thema im Chat (DE/FR/IT/EN): Höchstbeträge 2026 und 2027, Nachzahlen, Bezug. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Pensionskasse bei Stellenwechsel» als 75. Thema im Chat (DE/FR/IT/EN): Übertragung, Freizügigkeitskonto, vergessene Guthaben. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «AHV-Rente vorbeziehen» als 74. Thema im Chat (DE/FR/IT/EN): ab 63, Teilvorbezug, Kürzung, Anmeldung. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Einsprache gegen Steuerveranlagung» als 73. Thema im Chat (DE/FR/IT/EN): 30-Tage-Frist, Form, Weiterzug. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Auswandern» als 72. Thema im Chat (DE/FR/IT/EN): Abmeldung, Vertretung, AHV, Krankenkasse. Ganze Schweiz, Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Kündigung durch Vermieter anfechten» als 71. Thema im Chat (DE/FR/IT/EN): Formular, Anfechtung, Erstreckung, 30-Tage-Frist. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Mietzinserhöhung anfechten» als 70. Thema im Chat (DE/FR/IT/EN): Formular, Nichtigkeit, 30-Tage-Frist. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Untermiete» als 69. Thema im Chat (DE/FR/IT/EN): Zustimmung, Ablehnungsgründe, Airbnb. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Nebenkostenabrechnung prüfen» als 68. Thema im Chat (DE/FR/IT/EN): was verrechnet werden darf, Belege, Nachzahlung. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Lärm von Nachbarn» als 67. Thema im Chat (DE/FR/IT/EN): Ruhezeiten, Verwaltung, Polizei, Mietmangel. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Mängel in der Mietwohnung» als 66. Thema im Chat (DE/FR/IT/EN): melden, Mängelrüge, Hinterlegung. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Wohnung kündigen» als 65. Thema im Chat (DE/FR/IT/EN): Frist, Form, Nachmieter. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Kündigungsfristen im Job» als 64. Thema im Chat (DE/FR/IT/EN): Probezeit, Fristen, Sperrfristen. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Überstunden» als 63. Thema im Chat (DE/FR/IT/EN): Zuschlag, Freizeit, Überzeit. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Ferienanspruch» als 62. Thema im Chat (DE/FR/IT/EN): Mindestferien, Auszahlung, Krankheit. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Lohn bei Krankheit» als 61. Thema im Chat (DE/FR/IT/EN): Dauer, Taggeldversicherung, Arztzeugnis. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Arbeitszeugnis verlangen» als 60. Thema im Chat (DE/FR/IT/EN): Vollzeugnis, Arbeitsbestätigung, Frist. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Mietkaution zurückfordern» als 59. Thema im Chat (DE/FR/IT/EN): Höhe, Freigabe, Ein-Jahres-Regel. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Ordnungsbusse bezahlen oder anfechten» als 58. Thema im Chat (DE/FR/IT/EN): Frist, Zahlung, ordentliches Verfahren. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Zivildienst beantragen» als 57. Thema im Chat (DE/FR/IT/EN): Voraussetzungen, Gesuch, Einführungstag. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Militärdienst verschieben» als 56. Thema im Chat (DE/FR/IT/EN): Gründe, Frist 14 Wochen, Form. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «AHV-Beitragslücken schliessen» als 55. Thema im Chat (DE/FR/IT/EN): Auswirkung, Nachzahlung, Kontoauszug. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Parkfeld für Umzug reservieren» als 54. Thema im Chat (DE/FR/IT/EN): Bewilligung, Frist, Signale. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Erbenschein beantragen» als 53. Thema im Chat (DE/FR/IT/EN): Testament abgeben, Erbenschein, Ausschlagung. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Quellensteuer: nachträgliche Veranlagung» als 52. Thema im Chat (DE/FR/IT/EN): wer, freiwillig oder obligatorisch, Frist. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Mietzinssenkung verlangen» als 51. Thema im Chat (DE/FR/IT/EN): Referenzzinssatz, Höhe, Fristen. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Stipendien beantragen» als 50. Thema im Chat (DE/FR/IT/EN): wer kann, Eingabetermin, StipBE-Online. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Waffenerwerbsschein beantragen» als 49. Thema im Chat (DE/FR/IT/EN): Voraussetzungen, Gesuch, Kosten. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Mofa oder schnelles E-Bike einlösen» als 48. Thema im Chat (DE/FR/IT/EN): wer muss, Kosten, Vignette. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Rechtsvorschlag erheben» als 47. Thema im Chat (DE/FR/IT/EN): Frist, Wirkung, Nichtbekanntgabe. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Zivilstandsdokument bestellen» als 46. Thema im Chat (DE/FR/IT/EN): zuständiges Amt, Dokumente, Kosten. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Grundbuchauszug bestellen» als 45. Thema im Chat (DE/FR/IT/EN): GRUDIS public, Auszugsarten, Gebühren. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Fischerpatent lösen» als 44. Thema im Chat (DE/FR/IT/EN): Patente, Preise, Sachkunde-Nachweis. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Geburt melden» als 43. Thema im Chat (DE/FR/IT/EN): Frist, wer meldet, Geburtsurkunde. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Kind anerkennen» als 42. Thema im Chat (DE/FR/IT/EN): Ablauf, gemeinsame Sorge, Kosten. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Kind in den Kindergarten anmelden» als 41. Thema im Chat (DE/FR/IT/EN): Stichtag, Dauer, Anmeldung. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Steuern in Raten zahlen» als 40. Thema im Chat (DE/FR/IT/EN): Raten, Zahlungserleichterung, Verzugszins. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Namen nach Scheidung ändern» als 39. Thema im Chat (DE/FR/IT/EN): Namenserklärung, Frist, Kosten. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Ausländerausweis verlängern» als 38. Thema im Chat (DE/FR/IT/EN): Verfallsanzeige, Unterlagen, Biometrie. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Vorsorgeauftrag hinterlegen» als 37. Thema im Chat (DE/FR/IT/EN): Form, Hinterlegungsort, Kosten. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Velo gestohlen melden» als 36. Thema im Chat (DE/FR/IT/EN): Online-Anzeige, Angaben, Polizeiwache. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Kirchenaustritt» als 35. Thema im Chat (DE/FR/IT/EN): Form, Wirkung, Kirchensteuer. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Wochenaufenthalt anmelden» als 34. Thema im Chat (DE/FR/IT/EN): Frist, Heimatausweis, Steuern. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Auto abmelden» als 33. Thema im Chat (DE/FR/IT/EN): Fahrzeugausweis, Schilder, Steuer. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Betreibung einleiten» als 32. Thema im Chat (DE/FR/IT/EN): Begehren, Kosten, Zahlungsbefehl, Rechtsvorschlag. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Fundbüro» als 31. Thema im Chat (DE/FR/IT/EN): Verlust melden, abholen, Finderlohn. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Sperrgut entsorgen» als 30. Thema im Chat (DE/FR/IT/EN): Kleinsperrgut, Entsorgungshof, Abholdienst. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Anwohnerparkkarte» als 29. Thema im Chat (DE/FR/IT/EN): Voraussetzungen, Kosten, Antrag. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Todesfall melden» als 28. Thema im Chat (DE/FR/IT/EN): Todesbescheinigung, Meldung, Bestattung. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Wohnsitzbestätigung bestellen» als 27. Thema im Chat (DE/FR/IT/EN): Bestellung, Kosten, Schalter. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Lernfahrausweis beantragen» als 26. Thema im Chat (DE/FR/IT/EN): Sehtest, Nothelfer, Theorieprüfung, Kosten. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Vaterschaftsurlaub» als 25. Thema im Chat (DE/FR/IT/EN): Anspruch, Dauer, Höhe, Antrag. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Mutterschaftsentschädigung» als 24. Thema im Chat (DE/FR/IT/EN): Anspruch, Höhe, Dauer, Antrag. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Bei der IV anmelden» als 23. Thema im Chat (DE/FR/IT/EN): Früherfassung, Anmeldung, Eingliederung vor Rente. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Ergänzungsleistungen beantragen» als 22. Thema im Chat (DE/FR/IT/EN): Vermögensgrenze, Lebensbedarf 2027, Anmeldung. Beispiel Thun, alle Angaben belegt.</li><li><b>Neu:</b> «Sozialhilfe beantragen» als 21. Thema im Chat (DE/FR/IT/EN): Anmeldung, Unterlagen, Bemessung. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Betreuungsgutscheine für die Kita» als zwanzigstes Thema im Chat (DE/FR/IT/EN): Voraussetzungen, Einkommen, Antrag über kiBon. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Pass oder ID verloren» als neunzehntes Thema im Chat (DE/FR/IT/EN): Verlustmeldung, Kosten, neuer Ausweis. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Gartenhaus: Baubewilligung nötig?» als achtzehntes Thema im Chat (DE/FR/IT/EN): bewilligungsfreie Kleinbauten, Vorschriften, eBau. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Wehrpflichtersatz» als siebzehntes Thema im Chat (DE/FR/IT/EN): Höhe, Dauer, Rückerstattung. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Prämienverbilligung» als sechzehntes Thema im Chat (DE/FR/IT/EN): Einkommensgrenzen 2026, automatische Prüfung, Antrag. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Einbürgerung» als fünfzehntes Thema im Chat (DE/FR/IT/EN): Voraussetzungen, Sprache, Test, Kosten. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Auto einlösen» als vierzehntes Thema im Chat (DE/FR/IT/EN): Unterlagen, Kosten, Steuer. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Verbessert:</b> Startseite zeigt 6 Themen und «Weitere Themen»; in Frag Tell erscheinen neue Themen jetzt auch unter «Weitere Themen».</li><li><b>Neu:</b> «Strafregisterauszug bestellen» als dreizehntes Thema im Chat (DE/FR/IT/EN): Bestellung, Kosten, Dauer. Ganze Schweiz, alle Angaben belegt.</li><li><b>Neu:</b> «Betreibungsregisterauszug bestellen» als zwölftes Thema im Chat (DE/FR/IT/EN): Bestellung, Kosten, Inhalt. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Familienzulagen beantragen» als elftes Thema im Chat (DE/FR/IT/EN): Höhe, Antrag, rückwirkende Zahlung. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Hund anmelden» als zehntes Thema im Chat (DE/FR/IT/EN): Anmeldung, AMICUS, Mikrochip, Hundetaxe. Beispiel Stadt Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Heiraten» als neuntes Thema im Chat (DE/FR/IT/EN): Voraussetzungen, Ehevorbereitung, Fristen, Kosten. Beispiel Stadt Zürich, alle Angaben belegt.</li><li><b>Neu:</b> «Ausländischen Führerausweis umtauschen» als achtes Thema im Chat (DE/FR/IT/EN): Frist, Kontrollfahrt, Kosten, Ablauf. Beispiel Kanton Bern, alle Angaben belegt.</li><li><b>Neu:</b> «Einzelfirma gründen» als siebtes Thema im Chat (DE/FR/IT/EN): AHV-Anmeldung, Handelsregister, Mehrwertsteuer, Kosten. Beispiel Bern, alle Angaben belegt.</li><li><b>Fertig:</b> «Umzug melden»: unbelegte Zeitangabe entfernt, restliche Angaben belegt. Damit sind alle sechs Chat-Themen geprüft.</li><li><b>Fertig:</b> «Steuererklärung, Frist verlängern»: alle Angaben mit Quellen des Kantons Bern belegt.</li><li><b>Fertig:</b> «Pass &amp; ID»: neue biometrische ID ab 2. November 2026 und «Notpass» ergänzt, unbelegte Sätze entfernt.</li><li><b>Fertig:</b> «Krankenkasse wechseln»: Regel bei offenen Prämien präzisiert (Art. 64a KVG), Franchise-Frist und Zusatzversicherung korrigiert.</li><li><b>Fertig:</b> «AHV-Rente anmelden»: Rentenbeträge auf 2027 nachgeführt (CHF 1’280 bis 2’560, Ehepaar höchstens 3’840), in allen vier Sprachen.</li><li><b>Neu:</b> Seite «Prozesse»: Liste der fertigen und der geplanten Prozesse.</li><li><b>Neu:</b> Seite «Neuigkeiten» (diese Seite).</li><li><b>Geprüft:</b> «Arbeitslos melden» ist der erste vollständig belegte Prozess.</li><li><b>Neu:</b> Seite «Lücken»: 8 Beobachtungen, wo offizielle Angaben Lücken oder Abweichungen zeigen.</li><li><b>Neu:</b> Seite «Frag Tell» mit Chat-Einstieg, Abdeckung, Für Behörden und Mitmachen.</li><li><b>Neues Thema:</b> Krankenkasse wechseln (Quellen BAG und KVG).</li><li><b>Verbessert:</b> Startseite: Bundeshaus grösser, blendet beim Scrollen aus.</li></ul></li><li><p class="pl-date">5. Oktober 2026</p><ul><li><b>Verbessert:</b> Kopfbild der Startseite: Bundeshaus frontal und grösser.</li></ul></li><li><p class="pl-date">4. Oktober 2026</p><ul><li><b>Neu:</b> Chatbox mit fünf Themen: Umzug, Pass &amp; ID, Steuern, AHV, Arbeitslosigkeit.</li><li><b>Verbessert:</b> Kopfbild: Matterhorn mit Bundeshaus.</li><li><b>Online:</b> Tell geht als privater Konzeptprototyp online: Startseite, Bürgersicht, Behördensicht, Projekt.</li></ul></li></ul></section>
+    </div></section>
+  </div>
+</main>
+
+<footer class="tfoot">
+  <ul class="tfoot-links">
+    <li><a href="index.html">Startseite</a></li><li><a href="frag-tell.html">Frag Tell</a></li><li><a href="projekt.html">Projekt</a></li><li><a href="luecken.html">Lücken</a></li><li><a href="prozesse.html">Prozesse</a></li><li><a href="neuigkeiten.html" aria-current="page">Neuigkeiten</a></li>
+  </ul>
+  <p class="tfoot-sender">Privates Konzept von Bilal Simsek, Bern. Kein Angebot einer Behörde.</p>
+  <p class="tfoot-legal">Konzeptprototyp. Massgebend sind immer die zuständigen Stellen.</p>
+</footer>
+
+
+<!-- tell-shared:js:start -->
+<script>
+(function(){
+  var b=document.getElementById('tmenuBtn'),m=document.getElementById('tmenu');
+  if(!b||!m)return;
+  function set(o){
+    if(o){var h=document.querySelector('.site-header,.top');if(h){m.style.top=(h.getBoundingClientRect().bottom+8)+'px'}}
+    m.hidden=!o;b.setAttribute('aria-expanded',o?'true':'false');
+  }
+  b.addEventListener('click',function(e){e.stopPropagation();set(m.hidden)});
+  document.addEventListener('click',function(e){if(!m.hidden&&!m.contains(e.target)&&!b.contains(e.target))set(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden){set(false);b.focus()}});
+  addEventListener('resize',function(){if(!m.hidden)set(false)});
+})();
+</script>
+<!-- tell-shared:js:end -->
+</body>
+</html>
