@@ -154,6 +154,10 @@ const FAELLE = [
   ['Mia madre ha 82 anni e ogni giorno ha bisogno di aiuto per vestirsi e mangiare. Riceve soldi dall’AVS?', 'he'],
   ['My mother is 82 and needs help every day with dressing and eating. Can she get money from OASI?', 'he'],
   ['Wie viel Hilflosenentschädigung gibt es bei mittlerer Hilflosigkeit?', 'he'],
+  ['Mein Vater wird 75. Muss er jetzt zum Arzt, damit er weiter Auto fahren darf?', 'f75'],
+  ['Mon père aura 75 ans. Doit-il voir un médecin pour continuer à conduire ?', 'f75'],
+  ['Mio padre compie 75 anni. Deve andare dal medico per continuare a guidare?', 'f75'],
+  ['My father is turning 75. Does he have to see a doctor to keep driving?', 'f75'],
   // Abgrenzungen, die heute stimmen
   ['Nachtruhestörung melden', 'lae'],
   ['tapage nocturne', 'lae'],
@@ -379,7 +383,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk', 'um', 'mze', 'mvk', 'ausw', 'stein', 'ahvv', 'fzk', 's3a', 'unf', 'adop', 'bue', 'sch', 'eod', 'he'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk', 'um', 'mze', 'mvk', 'ausw', 'stein', 'ahvv', 'fzk', 's3a', 'unf', 'adop', 'bue', 'sch', 'eod', 'he', 'f75'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
