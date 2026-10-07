@@ -525,7 +525,7 @@ const hero=$('#hero'), hdr=$('.site-header'), form=$('#askForm'), input=$('#q'),
 const answerEl=$('#answer'), aQ=$('#aQ'), think=$('#think'), aText=$('#aText'), aSteps=$('#aSteps');
 const aGlance=$('#aGlance'), aFacts=$('#aFacts'), aStand=$('#aStand');
 const aWho=$('#aWho'), whoRow=$('#whoRow'), whoNote=$('#whoNote'), aSrc=$('#aSrc'), srcList=$('#srcList'), newQ=$('#newQ'), sr=$('#sr');
-const ORDER=[0,1,2,5,3,4];   /* Chip-Reihenfolge: Umzug, Pass & ID, Steuer, Krankenkasse, dann AHV, Arbeitslos */
+const ORDER=[0,1,2,5,3,4];   /* Chip-Reihenfolge: Umzug, Pass & ID, Steuer, Krankenkasse, dann AHV, Arbeitslos, dann alle neueren Themen */
 const MARKS={move:0,passport:1,tax:2,ahv:3,alv:4,kk:5,biz:6,drv:7,wed:8,dog:9,fam:10,debt:11,crim:12};
 const VIEWS={'':'home',abdeckung:'abdeckung',neuigkeiten:'neuigkeiten',behoerden:'behoerden',mitmachen:'mitmachen'};
 const HASH={home:'',abdeckung:'abdeckung',neuigkeiten:'neuigkeiten',behoerden:'behoerden',mitmachen:'mitmachen'};
@@ -642,8 +642,8 @@ function buildGreet(){
 }
 function buildChips(){
   chipsEl.textContent='';
-  const C=T().chips, vis=showAll?C.length:4;
-  ORDER.slice(0,vis).forEach(i=>{
+  const C=T().chips, vis=showAll?C.length:4, O=ORDER.concat(C.map((_,i)=>i).filter(i=>!ORDER.includes(i)));
+  O.slice(0,vis).forEach(i=>{
     const c=C[i], b=el('button','chip',c.l); b.type='button';
     b.addEventListener('click',()=>{input.value=tx(c.q); form.classList.add('has-value'); form.requestSubmit();});
     chipsEl.append(b);
