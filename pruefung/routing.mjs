@@ -49,7 +49,10 @@ const FAELLE = [
   ['Ich wohne in der Stadt Bern und mein B-Ausweis läuft bald ab. Wie verlängere ich ihn?', 'aus'],
   ['Ich bin geschieden, wohne in Bern und will wieder meinen ledigen Namen tragen. Wie geht das?', 'nam'],
   ['Ich wohne in Bern und kann meine Steuerrechnung nicht auf einmal bezahlen. Kann ich in Raten zahlen?', 'rat'],
+  ['Unser Sohn wird im Mai vier und wir wohnen in der Stadt Bern. Wann kommt er in den Kindergarten und wie melden wir ihn an?', 'kg'],
   // Abgrenzungen, die heute stimmen
+  ['Chindsgi Anmeldung', 'kg'],
+  ['Kita-Platz für unser Baby', 'kita'],
   ['Zahlungserleichterung Steuern', 'rat'],
   ['Steuererklärung Frist verlängern', 'tax'],
   ['facilités de paiement impôts', 'rat'],
@@ -154,7 +157,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
