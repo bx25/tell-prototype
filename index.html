@@ -1625,7 +1625,7 @@ function buildFooter(){
   const l=$('#fLinks'); l.textContent='';
   const q=lang==='de'?'':'?lang='+lang, C=window.TELL_CONTACT||'';
   const hrefs=['mailto:'+C,'behoerdensicht.html'+q,'buergersicht.html'+q,'projekt.html'+q];
-  T().f_links.concat(['Frag Tell',T().f_luecken,'Prozess-Check']).forEach((t,i)=>{const li=document.createElement('li'); const a=document.createElement('a'); a.href=i<hrefs.length?hrefs[i]:(['frag-tell.html','luecken.html','prozesse.html'][i-hrefs.length])+q; a.textContent=t; li.append(a); l.append(li);});
+  T().f_links.concat(['Frag Tell',T().f_luecken,'Prozesse','Neuigkeiten']).forEach((t,i)=>{const li=document.createElement('li'); const a=document.createElement('a'); a.href=i<hrefs.length?hrefs[i]:(['frag-tell.html','luecken.html','prozesse.html','neuigkeiten.html'][i-hrefs.length])+q; a.textContent=t; li.append(a); l.append(li);});
   const sd=$('#fSender'); if(sd){const p=T().f_sender.split('{c}'); sd.textContent=''; sd.append(p[0]); const a=document.createElement('a'); a.href='mailto:'+C; a.textContent=C; sd.append(a); if(p[1])sd.append(p[1]);}
 }
 function resetAnswer(){
