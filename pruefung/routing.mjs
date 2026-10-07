@@ -59,7 +59,12 @@ const FAELLE = [
   ['Ich habe ein schnelles E-Bike gekauft und wohne im Kanton Bern. Brauche ich ein Nummernschild und was kostet das?', 'mof'],
   ['Ich wohne im Kanton Bern und will eine Pistole kaufen. Wie bekomme ich einen Waffenerwerbsschein und was kostet er?', 'waf'],
   ['Ich beginne im August ein Studium, meine Eltern wohnen im Kanton Bern. Wie beantrage ich ein Stipendium und bis wann?', 'sti'],
+  ['Meine Miete beruht auf einem Referenzzinssatz von 1,5 %. Kann ich eine Senkung verlangen und wie?', 'miet'],
   // Abgrenzungen, die heute stimmen
+  ['Mietzinssenkung verlangen', 'miet'],
+  ['demander une baisse de loyer', 'miet'],
+  ['riduzione della pigione', 'miet'],
+  ['Can I ask for a rent reduction?', 'miet'],
   ['Stipendien beantragen', 'sti'],
   ['demander une bourse d’études', 'sti'],
   ['borsa di studio', 'sti'],
@@ -206,7 +211,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
