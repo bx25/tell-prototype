@@ -30,6 +30,7 @@ const FAELLE = [
   ['Ich wohne in Bern und habe meine Identitätskarte verloren. Was muss ich tun und was kostet das?', 'lost'],
   ['Wir wohnen in der Stadt Bern und wollen unser Kind in die Kita geben. Bekommen wir Betreuungsgutscheine und wie beantragen wir sie?', 'kita'],
   ['Ich wohne in der Stadt Bern und komme mit meinem Geld nicht mehr durch. Wie beantrage ich Sozialhilfe?', 'soz'],
+  ['Ich bin pensioniert, wohne in Thun und meine AHV-Rente reicht nicht. Kann ich Ergänzungsleistungen beantragen?', 'el'],
   // Abgrenzungen, die heute stimmen
   ['Hundesteuer bezahlen', 'dog'],
   ['Bekomme ich als Selbstständige Kinderzulagen?', 'fam'],
@@ -50,6 +51,7 @@ const FAELLE = [
   ['Ich brauche einen neuen Pass', 'passport'],
   ['Kinderzulage für mein Kind in der Kita', 'fam'],
   ['Anmeldung beim Sozialdienst', 'soz'],
+  ['EL zur IV beantragen', 'el'],
   ['Ich ziehe mit meinem Hund um', 'dog'],
   ['Ich ziehe um, muss ich die Krankenkasse informieren?', 'move'],
   ['Ich will eine Firma gründen', 'biz'],
@@ -88,7 +90,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
