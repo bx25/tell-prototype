@@ -115,6 +115,11 @@ const FAELLE = [
   ['Posso anticipare la rendita AVS a 63 anni e di quanto viene ridotta?', 'ahvv'],
   ['Can I draw my OASI pension early at 63, and how much less do I get?', 'ahvv'],
   ['Ich möchte mit 64 in Frühpension gehen. Wie geht das bei der AHV?', 'ahvv'],
+  ['Ich wechsle die Stelle. Was passiert mit meinem Geld in der Pensionskasse?', 'fzk'],
+  ['Je change d’emploi. Que devient mon argent de la caisse de pension ?', 'fzk'],
+  ['Cambio lavoro. Cosa succede ai miei soldi della cassa pensione?', 'fzk'],
+  ['I’m changing jobs. What happens to my pension fund money?', 'fzk'],
+  ['Wo finde ich vergessene Guthaben aus der Pensionskasse?', 'fzk'],
   // Abgrenzungen, die heute stimmen
   ['Nachtruhestörung melden', 'lae'],
   ['tapage nocturne', 'lae'],
@@ -340,7 +345,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk', 'um', 'mze', 'mvk', 'ausw', 'stein', 'ahvv'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk', 'um', 'mze', 'mvk', 'ausw', 'stein', 'ahvv', 'fzk'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
