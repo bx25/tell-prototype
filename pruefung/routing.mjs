@@ -71,7 +71,12 @@ const FAELLE = [
   ['Ich habe gekündigt und mein Chef gibt mir kein Arbeitszeugnis. Habe ich ein Recht darauf?', 'zeug'],
   ['Ich bin seit zwei Wochen krank. Muss mein Arbeitgeber mir weiter den Lohn zahlen und wie lange?', 'krl'],
   ['Wie viele Wochen Ferien stehen mir zu, und darf mein Chef mir die Ferien auszahlen statt sie zu gewähren?', 'fer'],
+  ['Ich mache jede Woche Überstunden. Muss mein Arbeitgeber sie bezahlen, und mit Zuschlag?', 'ueb'],
   // Abgrenzungen, die heute stimmen
+  ['Überzeit Zuschlag', 'ueb'],
+  ['heures supplémentaires', 'ueb'],
+  ['ore straordinarie', 'ueb'],
+  ['Is overtime paid?', 'ueb'],
   ['Ferienanspruch mit 19', 'fer'],
   ['droit aux vacances', 'fer'],
   ['vacanze non godute', 'fer'],
@@ -275,7 +280,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
