@@ -36,7 +36,11 @@ const FAELLE = [
   ['Ich bin angestellt und werde im Frühling Vater. Wie lange ist der Vaterschaftsurlaub und wie bekomme ich die Entschädigung?', 'pat'],
   ['Ich bin 17, wohne in Bern und will Auto fahren lernen. Wie bekomme ich den Lernfahrausweis?', 'lfa'],
   ['Ich wohne in der Stadt Bern und brauche eine Wohnsitzbestätigung. Wo bekomme ich sie und was kostet sie?', 'wsb'],
+  ['Meine Mutter ist zu Hause in der Stadt Bern gestorben. Was muss ich jetzt tun und wo melde ich den Todesfall?', 'tod'],
   // Abgrenzungen, die heute stimmen
+  ['Bestattung organisieren', 'tod'],
+  ['annoncer un décès', 'tod'],
+  ['Mein Mann ist gestorben. Bekomme ich eine AHV-Witwenrente?', 'ahv'],
   ['Wohnsitzbescheinigung bestellen', 'wsb'],
   ['attestation de domicile', 'wsb'],
   ['Neuen Wohnsitz anmelden', 'move'],
@@ -108,7 +112,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
