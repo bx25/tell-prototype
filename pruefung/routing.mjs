@@ -8,17 +8,27 @@ const route = new Function(src + '\nreturn route;')();
 
 // [Frage, erwarteter Prozess oder null = Fallback "noch keine Antwort"]
 const FAELLE = [
-  // Die sechs Beispielfragen (Chips) müssen exakt treffen
+  // Die sieben Beispielfragen (Chips) müssen exakt treffen
   ['Ich ziehe von Bern nach Winterthur: Wie und bis wann melde ich mich ab und an?', 'move'],
   ['Ich wohne in Bern und brauche einen neuen Pass und eine Identitätskarte. Wie und wo bestelle ich die?', 'passport'],
   ['Ich wohne in Bern und schaffe meine Steuererklärung nicht bis Mitte März. Wie verlängere ich die Frist und was kostet das?', 'tax'],
   ['Ich bin Jahrgang 1962 und wohne in Thun: Wann und wo melde ich meine AHV-Rente an?', 'ahv'],
   ['Ich wohne in Thun und verliere Ende Monat meine Stelle. Wo und wann muss ich mich melden, und wie bekomme ich Arbeitslosengeld?', 'alv'],
   ['Bis wann kann ich meine Krankenkasse wechseln und wie geht das?', 'kk'],
+  ['Ich wohne in Bern und mache mich mit einer Einzelfirma selbstständig. Was muss ich wo anmelden?', 'biz'],
   // Abgrenzungen, die heute stimmen
   ['Hundesteuer bezahlen', null],
   ['Ich ziehe um, muss ich die Krankenkasse informieren?', 'move'],
-  ['Ich will eine Firma gründen', null],
+  ['Ich will eine Firma gründen', 'biz'],
+  ['Brauche ich einen Eintrag im Handelsregister?', 'biz'],
+  ['Ab wann muss ich Mehrwertsteuer abrechnen?', 'biz'],
+  ['Welche AHV-Beiträge zahle ich als Selbstständiger?', 'biz'],
+  ['Steuererklärung als Selbstständige: Frist verlängern', 'tax'],
+  ['AHV-Rente anmelden, ich war selbstständig', 'ahv'],
+  ['Selbstständig nach Kündigung, muss ich zum RAV?', 'alv'],
+  ['Muss ich mein Gewerbe anmelden?', 'biz'],
+  ['Je deviens indépendant, que faire ?', 'biz'],
+  ['Registering as self-employed in Switzerland', 'biz'],
   ['Mir wurde gekündigt, was nun?', 'alv'],
   ['Wie melde ich mich beim RAV an?', 'alv'],
 ];
@@ -34,11 +44,11 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
-while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % 6]]);
-if (n !== 24) { console.log(`FEHLER: ${n} statt 24 Beispielfragen gefunden`); process.exit(1); }
+while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
+if (n !== 4 * KEYS.length) { console.log(`FEHLER: ${n} statt ${4 * KEYS.length} Beispielfragen gefunden`); process.exit(1); }
 
 let fehler = 0;
 for (const [frage, soll] of FAELLE) {
