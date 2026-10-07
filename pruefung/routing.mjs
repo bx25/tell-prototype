@@ -21,11 +21,13 @@ const FAELLE = [
   ['Ich wohne in der Stadt Bern und habe einen Hund übernommen. Wo melde ich ihn an und was kostet das?', 'dog'],
   ['Ich bin in Bern angestellt und habe ein Baby bekommen. Wie bekomme ich Kinderzulagen und wie viel gibt es?', 'fam'],
   ['Ich wohne in Bern und brauche für eine neue Wohnung einen Betreibungsregisterauszug. Wo bestelle ich ihn und was kostet er?', 'debt'],
+  ['Ich brauche für eine neue Stelle einen Strafregisterauszug. Wie bestelle ich ihn und wie lange dauert es?', 'crim'],
   // Abgrenzungen, die heute stimmen
   ['Hundesteuer bezahlen', 'dog'],
   ['Bekomme ich als Selbstständige Kinderzulagen?', 'fam'],
   ['Ausbildungszulage für meine Tochter', 'fam'],
   ['Betreibungsauszug nach Umzug bestellen', 'debt'],
+  ['Leumundszeugnis für den Arbeitgeber', 'crim'],
   ['Ich ziehe mit meinem Hund um', 'dog'],
   ['Ich ziehe um, muss ich die Krankenkasse informieren?', 'move'],
   ['Ich will eine Firma gründen', 'biz'],
@@ -64,7 +66,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
