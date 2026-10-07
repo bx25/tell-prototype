@@ -981,7 +981,7 @@ html.dsc-lock{overflow:hidden!important}
 <!-- tell-shared:iheader:start -->
 <header class="site-header">
   <a class="brand glass" id="brandLink" href="index.html" aria-label="Tell"><svg aria-hidden="true"><use href="#cross"/></svg>Tell</a>
-  <nav class="hnav glass" id="hnav" aria-label="Seiten"><a href="buergersicht.html">Bürgersicht</a><a href="behoerdensicht.html">Behördensicht</a><a href="projekt.html">Projekt</a></nav>
+  <nav class="hnav glass" id="hnav" aria-label="Seiten"><a href="buergersicht.html">Bürgersicht</a><a href="behoerdensicht.html">Behördensicht</a><a href="projekt.html">Projekt</a><a href="frag-tell.html" id="ftLink">Frag Tell</a></nav>
   <p class="notice glass" data-i="banner_s">Konzeptprototyp, keine offizielle Seite</p>
   <div class="head-r glass">
     <button class="btn head-ask" id="headAsk" type="button" data-i="ask_cta">Frage stellen</button>
@@ -1614,9 +1614,9 @@ function softNote(msg){let n=$('#softnote');if(!n){n=document.createElement('div
 function buildNav(){
   const N=T().nav, q=lang==='de'?'':'?lang='+lang;
   const hrefs=['buergersicht.html'+q,'behoerdensicht.html'+q,'projekt.html'+q];
-  $$('#hnav a').forEach((a,i)=>{a.textContent=N[i]; a.href=hrefs[i];});
+  $$('#hnav a:not(#ftLink)').forEach((a,i)=>{a.textContent=N[i]; a.href=hrefs[i];}); $('#ftLink').href='frag-tell.html'+q;
   const m=$('#tmenu'); m.textContent='';
-  [['index.html'+q,N[3]]].concat(hrefs.map((h,i)=>[h,N[i]])).forEach(([h,t])=>{const a=document.createElement('a'); a.href=h; a.textContent=t; m.append(a);});
+  [['index.html'+q,N[3]]].concat(hrefs.map((h,i)=>[h,N[i]])).concat([['frag-tell.html'+q,'Frag Tell']]).forEach(([h,t])=>{const a=document.createElement('a'); a.href=h; a.textContent=t; m.append(a);});
   m.setAttribute('aria-label',N[5]); $('#hnav').setAttribute('aria-label',N[5]); $('#tmenuBtn').setAttribute('aria-label',N[4]);
   $('#brandLink').href='index.html'+q;
   const pc=$('#projCta'); if(pc) pc.href='projekt.html'+q;
@@ -1625,7 +1625,7 @@ function buildFooter(){
   const l=$('#fLinks'); l.textContent='';
   const q=lang==='de'?'':'?lang='+lang, C=window.TELL_CONTACT||'';
   const hrefs=['mailto:'+C,'behoerdensicht.html'+q,'buergersicht.html'+q,'projekt.html'+q];
-  T().f_links.forEach((t,i)=>{const li=document.createElement('li'); const a=document.createElement('a'); a.href=hrefs[i]; a.textContent=t; li.append(a); l.append(li);});
+  T().f_links.concat(['Frag Tell']).forEach((t,i)=>{const li=document.createElement('li'); const a=document.createElement('a'); a.href=i<hrefs.length?hrefs[i]:'frag-tell.html'+q; a.textContent=t; li.append(a); l.append(li);});
   const sd=$('#fSender'); if(sd){const p=T().f_sender.split('{c}'); sd.textContent=''; sd.append(p[0]); const a=document.createElement('a'); a.href='mailto:'+C; a.textContent=C; sd.append(a); if(p[1])sd.append(p[1]);}
 }
 function resetAnswer(){
