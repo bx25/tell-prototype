@@ -53,7 +53,13 @@ const FAELLE = [
   ['Wir sind nicht verheiratet, wohnen in Bern und erwarten ein Kind. Wie anerkenne ich das Kind und was kostet das?', 'ank'],
   ['Unser Baby kommt bald in Bern zur Welt. Wer meldet die Geburt und was müssen wir tun?', 'geb'],
   ['Ich wohne im Kanton Bern und will an der Aare fischen. Welches Patent brauche ich und was kostet es?', 'fis'],
+  ['Ich brauche einen Grundbuchauszug für mein Haus im Kanton Bern. Wie bestelle ich ihn und was kostet er?', 'gba'],
   // Abgrenzungen, die heute stimmen
+  ['Wem gehört dieses Grundstück? Grundbuch', 'gba'],
+  ['extrait du registre foncier', 'gba'],
+  ['estratto del registro fondiario', 'gba'],
+  ['How do I get a land register extract?', 'gba'],
+  ['Ich brauche einen Betreibungsauszug', 'debt'],
   ['Tagespatent Fischen', 'fis'],
   ['permis de pêche', 'fis'],
   ['Geburtsurkunde bestellen', 'geb'],
@@ -168,7 +174,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
