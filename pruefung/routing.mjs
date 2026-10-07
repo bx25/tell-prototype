@@ -81,6 +81,11 @@ const FAELLE = [
   ['Ho ricevuto un conguaglio delle spese accessorie molto alto. Cosa posso fare?', 'nk'],
   ['I got a service charge statement with a big extra payment for my flat. What can I do?', 'nk'],
   ['Darf die Verwaltung Hauswart-Nebenkosten verrechnen, wenn sie nicht im Mietvertrag stehen?', 'nk'],
+  ['Darf ich ein Zimmer meiner Mietwohnung untervermieten?', 'um'],
+  ['Puis-je sous-louer une chambre de mon appartement ?', 'um'],
+  ['Posso subaffittare una camera del mio appartamento in affitto?', 'um'],
+  ['Can I sublet a room in my rented flat?', 'um'],
+  ['Darf ich meine Wohnung im Sommer auf Airbnb anbieten?', 'um'],
   // Abgrenzungen, die heute stimmen
   ['Nachtruhestörung melden', 'lae'],
   ['tapage nocturne', 'lae'],
@@ -306,7 +311,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk', 'um'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
