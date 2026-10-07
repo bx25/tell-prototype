@@ -38,7 +38,10 @@ const FAELLE = [
   ['Ich wohne in der Stadt Bern und brauche eine Wohnsitzbestätigung. Wo bekomme ich sie und was kostet sie?', 'wsb'],
   ['Meine Mutter ist zu Hause in der Stadt Bern gestorben. Was muss ich jetzt tun und wo melde ich den Todesfall?', 'tod'],
   ['Ich wohne in der Stadt Bern und habe ein Auto. Wie bekomme ich eine Anwohnerparkkarte und was kostet sie?', 'pk'],
+  ['Ich wohne in der Stadt Bern und will ein altes Sofa loswerden. Wie entsorge ich Sperrgut und was kostet das?', 'spg'],
   // Abgrenzungen, die heute stimmen
+  ['Sperrgut nach dem Umzug abholen lassen', 'spg'],
+  ['déchetterie horaires', 'spg'],
   ['Parkkarte nach Umzug', 'pk'],
   ['carte de stationnement résidents', 'pk'],
   ['Bestattung organisieren', 'tod'],
@@ -115,7 +118,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
