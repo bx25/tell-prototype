@@ -76,6 +76,11 @@ const FAELLE = [
   ['Ich will meine Mietwohnung kündigen. Welche Frist gilt, und brauche ich einen Nachmieter?', 'mkue'],
   ['In meiner Mietwohnung ist Schimmel und der Vermieter reagiert nicht. Was kann ich tun?', 'mae'],
   ['Meine Nachbarn machen fast jede Nacht nach 22 Uhr Lärm. Was kann ich tun?', 'lae'],
+  ['Ich habe eine Nebenkostenabrechnung mit hoher Nachzahlung bekommen. Was kann ich tun?', 'nk'],
+  ['J’ai reçu un décompte de charges avec un gros montant à payer en plus. Que puis-je faire ?', 'nk'],
+  ['Ho ricevuto un conguaglio delle spese accessorie molto alto. Cosa posso fare?', 'nk'],
+  ['I got a service charge statement with a big extra payment for my flat. What can I do?', 'nk'],
+  ['Darf die Verwaltung Hauswart-Nebenkosten verrechnen, wenn sie nicht im Mietvertrag stehen?', 'nk'],
   // Abgrenzungen, die heute stimmen
   ['Nachtruhestörung melden', 'lae'],
   ['tapage nocturne', 'lae'],
@@ -301,7 +306,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
