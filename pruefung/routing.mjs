@@ -41,7 +41,11 @@ const FAELLE = [
   ['Ich wohne in der Stadt Bern und will ein altes Sofa loswerden. Wie entsorge ich Sperrgut und was kostet das?', 'spg'],
   ['Ich habe in der Stadt Bern mein Portemonnaie verloren. Wie melde ich das beim Fundbüro?', 'fund'],
   ['Ein Kunde in Bern zahlt meine Rechnung über CHF 2\'000 nicht. Wie leite ich eine Betreibung ein?', 'bet'],
+  ['Ich wohne im Kanton Bern und verkaufe mein Auto. Wie melde ich es ab und was passiert mit den Nummernschildern?', 'abm'],
   // Abgrenzungen, die heute stimmen
+  ['Nummernschilder deponieren', 'abm'],
+  ['Auto abmelden', 'abm'],
+  ['Nummernschilder für mein neues Auto', 'car'],
   ['Ich habe einen Zahlungsbefehl erhalten', 'bet'],
   ['commandement de payer', 'bet'],
   ['Betreibungsauszug für die Wohnungssuche', 'debt'],
@@ -126,7 +130,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
