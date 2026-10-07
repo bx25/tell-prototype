@@ -8,7 +8,7 @@ const route = new Function(src + '\nreturn route;')();
 
 // [Frage, erwarteter Prozess oder null = Fallback "noch keine Antwort"]
 const FAELLE = [
-  // Die sieben Beispielfragen (Chips) müssen exakt treffen
+  // Die Beispielfragen (DE) (Chips) müssen exakt treffen
   ['Ich ziehe von Bern nach Winterthur: Wie und bis wann melde ich mich ab und an?', 'move'],
   ['Ich wohne in Bern und brauche einen neuen Pass und eine Identitätskarte. Wie und wo bestelle ich die?', 'passport'],
   ['Ich wohne in Bern und schaffe meine Steuererklärung nicht bis Mitte März. Wie verlängere ich die Frist und was kostet das?', 'tax'],
@@ -16,6 +16,7 @@ const FAELLE = [
   ['Ich wohne in Thun und verliere Ende Monat meine Stelle. Wo und wann muss ich mich melden, und wie bekomme ich Arbeitslosengeld?', 'alv'],
   ['Bis wann kann ich meine Krankenkasse wechseln und wie geht das?', 'kk'],
   ['Ich wohne in Bern und mache mich mit einer Einzelfirma selbstständig. Was muss ich wo anmelden?', 'biz'],
+  ['Ich wohne seit einigen Monaten in Bern und habe einen deutschen Führerausweis. Muss ich ihn umtauschen, und wie?', 'drv'],
   // Abgrenzungen, die heute stimmen
   ['Hundesteuer bezahlen', null],
   ['Ich ziehe um, muss ich die Krankenkasse informieren?', 'move'],
@@ -27,6 +28,12 @@ const FAELLE = [
   ['AHV-Rente anmelden, ich war selbstständig', 'ahv'],
   ['Selbstständig nach Kündigung, muss ich zum RAV?', 'alv'],
   ['Muss ich mein Gewerbe anmelden?', 'biz'],
+  ['Wie tausche ich meinen Führerschein aus den USA um?', 'drv'],
+  ['Führerausweis: neue Adresse nach Umzug melden', 'move'],
+  ['Ich brauche einen Lernfahrausweis', null],
+  ['Muss ich mit meinem Führerausweis aus Brasilien eine Kontrollfahrt machen?', 'drv'],
+  ['Échanger mon permis de conduire étranger', 'drv'],
+  ['How do I exchange my foreign driving licence?', 'drv'],
   ['Je deviens indépendant, que faire ?', 'biz'],
   ['Registering as self-employed in Switzerland', 'biz'],
   ['Mir wurde gekündigt, was nun?', 'alv'],
@@ -44,7 +51,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
