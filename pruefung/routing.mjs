@@ -75,7 +75,12 @@ const FAELLE = [
   ['Ich arbeite seit drei Jahren in derselben Firma. Welche Kündigungsfrist gilt, und darf man mir kündigen, wenn ich krank bin?', 'kue'],
   ['Ich will meine Mietwohnung kündigen. Welche Frist gilt, und brauche ich einen Nachmieter?', 'mkue'],
   ['In meiner Mietwohnung ist Schimmel und der Vermieter reagiert nicht. Was kann ich tun?', 'mae'],
+  ['Meine Nachbarn machen fast jede Nacht nach 22 Uhr Lärm. Was kann ich tun?', 'lae'],
   // Abgrenzungen, die heute stimmen
+  ['Nachtruhestörung melden', 'lae'],
+  ['tapage nocturne', 'lae'],
+  ['rumore dei vicini', 'lae'],
+  ['noisy neighbours', 'lae'],
   ['Mängelrüge schreiben', 'mae'],
   ['moisissure dans mon appartement', 'mae'],
   ['muffa in casa', 'mae'],
@@ -296,7 +301,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
