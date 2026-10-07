@@ -92,6 +92,13 @@ const FAELLE = [
   ['My landlord is raising my rent by 6 %. Can I challenge it?', 'mze'],
   ['Mietzinserhöhung wegen höherem Referenzzinssatz: ist das erlaubt?', 'mze'],
   ['Der Referenzzinssatz ist gesunken. Kann ich eine Mietzinssenkung verlangen?', 'miet'],
+  ['Mein Vermieter hat mir die Wohnung gekündigt. Kann ich mich wehren?', 'mvk'],
+  ['Mon bailleur a résilié mon bail. Puis-je contester ?', 'mvk'],
+  ['Il locatore mi ha disdetto l’appartamento. Posso contestare?', 'mvk'],
+  ['My landlord has terminated my lease. Can I fight it?', 'mvk'],
+  ['Kann ich eine Erstreckung des Mietverhältnisses verlangen?', 'mvk'],
+  ['Kündigung durch Vermieter anfechten', 'mvk'],
+  ['Ich will meine Wohnung kündigen. Welche Frist gilt?', 'mkue'],
   // Abgrenzungen, die heute stimmen
   ['Nachtruhestörung melden', 'lae'],
   ['tapage nocturne', 'lae'],
@@ -317,7 +324,7 @@ const OFFEN = [
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk', 'um', 'mze'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'biz', 'drv', 'wed', 'dog', 'fam', 'debt', 'crim', 'car', 'nat', 'pv', 'wpe', 'bau', 'lost', 'kita', 'soz', 'el', 'iv', 'mse', 'pat', 'lfa', 'wsb', 'tod', 'pk', 'spg', 'fund', 'bet', 'abm', 'wa', 'kir', 'dieb', 'vor', 'aus', 'nam', 'rat', 'kg', 'ank', 'geb', 'fis', 'gba', 'zst', 'rv', 'mof', 'waf', 'sti', 'miet', 'qst', 'erb', 'upk', 'ahl', 'mdv', 'zivi', 'obu', 'kau', 'zeug', 'krl', 'fer', 'ueb', 'kue', 'mkue', 'mae', 'lae', 'nk', 'um', 'mze', 'mvk'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
