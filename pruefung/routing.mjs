@@ -74,24 +74,76 @@ const FAELLE = [
   ['Wann kann ich meine AHV-Rente im Ausland beziehen?', 'ahv'],
   ['Ich ziehe von Bern nach Winterthur', 'move'],
   ['Ich ziehe nach Bern, wo melde ich mich an?', 'move'],
+  // Thema «Arbeitslos melden» (alv): neue Wendungen für Stellenverlust und Kündigung (T3)
+  ['Ich verliere meine Stelle', 'alv'],
+  ['Stellensuche nach Kündigung', 'alv'],
+  ['Ich habe die Kündigung erhalten, was muss ich tun?', 'alv'],
+  ['Wie viele Wartetage habe ich bei der Arbeitslosenversicherung?', 'alv'],
+  ['Wie viele Taggelder bekomme ich?', 'alv'],
+  ['Ich verliere meine Stelle und ziehe ins Ausland', 'alv'],
+  ['Je perds mon emploi, que dois-je faire ?', 'alv'],
+  ['Je vais perdre mon emploi à la fin du mois', 'alv'],
+  ['Perdo il lavoro alla fine del mese, cosa devo fare?', 'alv'],
+  ['I am losing my job at the end of the month', 'alv'],
+  ['I lose my job next week, who do I contact?', 'alv'],
+  ['I am looking for a job after my dismissal', 'alv'],
+  // Thema «Zuzug aus dem Ausland» (zuz)
+  ['Ich ziehe aus dem Ausland in die Schweiz, wo melde ich mich an?', 'zuz'],
+  ['Zuzug aus dem Ausland: Was muss ich tun?', 'zuz'],
+  ['Ich komme aus Deutschland in die Schweiz zum Arbeiten', 'zuz'],
+  ['Ich wandere in die Schweiz ein', 'zuz'],
+  ['Ich bin Schweizerin und kehre aus dem Ausland zurück', 'zuz'],
+  ['Ich ziehe zurück in die Schweiz', 'zuz'],
+  ['Wie bekomme ich eine Aufenthaltsbewilligung?', 'zuz'],
+  ['Wie lange darf ich ohne Aufenthaltsbewilligung in der Schweiz bleiben?', 'zuz'],
+  ['Bis wann muss ich mich nach dem Zuzug aus dem Ausland krankenversichern?', 'zuz'],
+  ['Ich ziehe aus dem Ausland in die Schweiz, was muss ich mit der Krankenkasse tun?', 'zuz'],
+  ['Ich bin neu in der Schweiz, was muss ich anmelden?', 'zuz'],
+  ['Je viens m’installer en Suisse, que dois-je faire ?', 'zuz'],
+  ['J’arrive de l’étranger : dans quel délai dois-je m’annoncer à la commune ?', 'zuz'],
+  ['Comment obtenir un permis de séjour ?', 'zuz'],
+  ['Mi trasferisco in Svizzera dall’estero, come mi annuncio?', 'zuz'],
+  ['Come ottengo il permesso di dimora?', 'zuz'],
+  ['Arrivo in Svizzera: entro quando devo assicurarmi?', 'zuz'],
+  ['I am moving to Switzerland from abroad', 'zuz'],
+  ['How do I get a residence permit?', 'zuz'],
+  ['I just arrived in Switzerland, what do I need to do?', 'zuz'],
+  ['I am a Swiss citizen returning to Switzerland', 'zuz'],
+  // Abgrenzung Zuzug / Umzug innerhalb der Schweiz / Wegzug
+  ['Ich ziehe von Bern nach Winterthur', 'move'],
+  ['Ich ziehe innerhalb der Schweiz um, wo melde ich mich ab?', 'move'],
+  ['Ich ziehe nach Zürich, wo melde ich mich an?', 'move'],
+  ['Je déménage de Berne à Winterthour', 'move'],
+  ['Mi trasferisco da Berna a Winterthur', 'move'],
+  ['I am moving from Bern to Winterthur', 'move'],
+  ['Ich ziehe aus der Schweiz weg', 'wegz'],
+  ['Ich ziehe ins Ausland', 'wegz'],
+  ['Ich ziehe von der Schweiz nach Deutschland', 'wegz'],
+  ['Wegzug aus der Schweiz: Was passiert mit der Krankenkasse?', 'wegz'],
+  ['I am leaving Switzerland to live abroad', 'wegz'],
+  ['I am moving abroad from Switzerland', 'wegz'],
+  ['Je quitte la Suisse pour vivre à l’étranger', 'wegz'],
+  ['Lascio la Svizzera per vivere all’estero', 'wegz'],
+  // Abgrenzung zu «zuz»: Steuer-, AHV-, Pass- und Gewerbe-Wörter behalten ihr Thema
+  ['Ich ziehe aus dem Ausland in die Schweiz, muss ich eine Steuererklärung machen?', 'tax'],
+  ['Ich komme aus dem Ausland und brauche einen neuen Pass', 'passport'],
+  ['Ich ziehe aus dem Ausland in die Schweiz und mache mich selbständig', 'gew'],
+  ['I moved to Switzerland from abroad, do I need a tax return?', 'tax'],
+  ['Ich bin aus dem Ausland zurückgekehrt und arbeitslos', 'alv'],
   ['Stimmrecht für Auslandschweizer', null],
   ['Je m’installe dans la Suisse romande, où dois-je m’annoncer ?', null],
 ];
 
-// Bekannte offene Fehler (Stand 7.10.2026). Werden angezeigt, brechen den Test aber nicht ab.
+// Bekannte offene Fehler (Stand 11.10.2026). Werden angezeigt, brechen den Test aber nicht ab.
 // Wer einen davon behebt, verschiebt ihn nach oben in FAELLE.
 const OFFEN = [
   ['Pensionskasse auszahlen lassen', null],               // landet bei AHV (2. statt 1. Säule)
   ['Ich habe eine IV-Rente', null],                       // landet bei AHV
   ['Ich möchte meine Adresse bei der Steuerverwaltung ändern', 'move'], // landet bei Steuerfrist
-  ['Ich verliere meine Stelle', 'alv'],                   // kein Treffer, Fallback
-  ['Stellensuche nach Kündigung', 'alv'],                 // kein Treffer, Fallback
-  ['Ich verliere meine Stelle und ziehe ins Ausland', 'alv'],           // landet bei «Wegzug ins Ausland» (alv erkennt «verliere meine Stelle» noch nicht)
-  ['Ich ziehe aus dem Ausland in die Schweiz, wo melde ich mich an?', null], // Zuzug aus dem Ausland: landet bei «Umzug» (Bern→Winterthur)
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'gew', 'wegz'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'gew', 'wegz', 'zuz'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
 while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
