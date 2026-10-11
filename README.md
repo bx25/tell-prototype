@@ -9,5 +9,5 @@ Bildnachweis:
 - Schrift Switzer, Indian Type Foundry (Fontshare), ITF Free Font License.
 
 Prozess-Check (`prozesse.html`): zeigt, welche Chat-Prozesse belegt, korrekt und aktuell sind. Prüfskripte:
-- `node pruefung/routing.mjs`: Fragen landen beim richtigen Prozess (alle 24 Beispielfragen plus Abgrenzungen).
+- `node pruefung/routing.mjs`: Fragen landen beim richtigen Prozess (alle 24 Beispielfragen, Freitext-Fragen zu «Gewerbe / Einzelfirma» in vier Sprachen, Abgrenzungen).
 - `node pruefung/konsistenz.mjs`: Antworten in index.html und frag-tell.html sind in allen Sprachen gleich.

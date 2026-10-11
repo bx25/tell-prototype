@@ -21,6 +21,32 @@ const FAELLE = [
   ['Ich will eine Firma gründen', null],
   ['Mir wurde gekündigt, was nun?', 'alv'],
   ['Wie melde ich mich beim RAV an?', 'alv'],
+  // Thema «Gewerbe / Einzelfirma anmelden» (gew): kein Beispiel-Chip, nur per Freitext
+  ['Wie melde ich eine Einzelfirma an?', 'gew'],
+  ['Ich mache mich selbständig, was muss ich tun?', 'gew'],
+  ['Ich möchte mich selbstständig machen', 'gew'],
+  ['Gewerbe anmelden', 'gew'],
+  ['Muss ich mich ins Handelsregister eintragen?', 'gew'],
+  ['Ab wann bin ich mehrwertsteuerpflichtig?', 'gew'],
+  ['Als Einzelunternehmer bei der Ausgleichskasse anmelden', 'gew'],
+  ['Comment créer mon entreprise individuelle ?', 'gew'],
+  ['Je veux me mettre à mon compte, que dois-je faire ?', 'gew'],
+  ['Quand faut-il s’inscrire au registre du commerce ?', 'gew'],
+  ['Comment devenir indépendant en Suisse ?', 'gew'],
+  ['Come apro una ditta individuale?', 'gew'],
+  ['Voglio mettermi in proprio: cosa devo fare?', 'gew'],
+  ['Quando devo iscrivermi al registro di commercio?', 'gew'],
+  ['How do I register as a sole proprietor?', 'gew'],
+  ['I want to become self-employed in Switzerland', 'gew'],
+  ['When do I have to register for VAT?', 'gew'],
+  // Abgrenzungen zu «gew»: die anderen Themen behalten Vorrang
+  ['Wie gründe ich eine GmbH?', null],
+  ['Mehrwertsteuer auf einer Restaurantrechnung', null],
+  ['Ich bin selbständig und brauche eine Fristverlängerung für die Steuererklärung', 'tax'],
+  ['Je suis indépendant, comment prolonger le délai de ma déclaration d’impôt ?', 'tax'],
+  ['Mir wurde gekündigt, ich will mich selbständig machen', 'alv'],
+  ['Wann kann ich als Selbständiger meine AHV-Rente anmelden?', 'ahv'],
+  ['I am self-employed, when can I claim my AHV pension?', 'ahv'],
 ];
 
 // Bekannte offene Fehler (Stand 7.10.2026). Werden angezeigt, brechen den Test aber nicht ab.
