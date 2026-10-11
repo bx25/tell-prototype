@@ -20,4 +20,28 @@ for (const lang of ['de', 'fr', 'it', 'en']) {
   console.log(`${fehlt.length ? 'FEHLER' : 'OK    '} ${lang}: ${texte.length - fehlt.length}/${texte.length} Texte gleich`);
   fehlt.slice(0, 3).forEach(t => console.log('   fehlt:', t.slice(0, 120)));
 }
+
+// route() ist in beiden Seiten wörtlich gleich
+const route = h => h.match(/function route\(q\)\{.*?\n\}\n/s)?.[0];
+if (!route(a) || route(a) !== route(b)) { fehler++; console.log('FEHLER route() in index.html und frag-tell.html unterscheidet sich'); }
+else console.log('OK     route() in beiden Seiten gleich');
+
+// Zahl der Themen: eine Quelle der Wahrheit (I18N[lang].tnames); Antworten, Beispielfragen und Karten müssen dazu passen
+const iStart = a.indexOf('const SRC_URL='), iEnd = a.indexOf('\n(()=>{', iStart);
+const { I18N } = new Function(a.slice(iStart, iEnd) + '\nreturn { I18N };')();
+const pStart = b.indexOf('const PAGE='), PAGE = JSON.parse(b.slice(pStart + 11, b.indexOf('\n', pStart) - 1));
+const SRC = new Function(srcUrl(a).replace('const SRC_URL=', 'return ') + ';')(), urlKeys = Object.keys(SRC);
+for (const lang of ['de', 'fr', 'it', 'en']) {
+  const L = I18N[lang], n = L.tnames.length, antworten = Object.keys(L.ans);
+  const karten = PAGE[lang].views.abdeckung.blocks.find(x => x.type === 'topics').items.length;
+  const probleme = [];
+  if (antworten.length !== n) probleme.push(`${antworten.length} Antworten`);
+  if (L.chips.length !== n) probleme.push(`${L.chips.length} Beispielfragen`);
+  if (karten !== n) probleme.push(`${karten} Karten in Frag Tell`);
+  if (urlKeys.length !== n || urlKeys.some(k => !antworten.includes(k))) probleme.push('Quellen-URLs passen nicht zu den Antworten');
+  if (!L.nw[n]) probleme.push('Zahlwort fehlt');
+  if (antworten.some(k => L.ans[k].src.length !== SRC[k]?.length)) probleme.push('Zahl der Quellen passt nicht zu den URLs');
+  fehler += probleme.length;
+  console.log(`${probleme.length ? 'FEHLER' : 'OK    '} ${lang}: ${n} Themen in tnames, Antworten, Beispielfragen, Karten${probleme.length ? ' (' + probleme.join(', ') + ')' : ''}`);
+}
 process.exit(fehler ? 1 : 0);

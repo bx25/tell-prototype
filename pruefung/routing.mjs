@@ -8,7 +8,7 @@ const route = new Function(src + '\nreturn route;')();
 
 // [Frage, erwarteter Prozess oder null = Fallback "noch keine Antwort"]
 const FAELLE = [
-  // Die sechs Beispielfragen (Chips) müssen exakt treffen
+  // Die Beispielfragen (Chips) müssen exakt treffen; unten kommen alle Chips in DE/FR/IT/EN dazu
   ['Ich ziehe von Bern nach Winterthur: Wie und bis wann melde ich mich ab und an?', 'move'],
   ['Ich wohne in Bern und brauche einen neuen Pass und eine Identitätskarte. Wie und wo bestelle ich die?', 'passport'],
   ['Ich wohne in Bern und schaffe meine Steuererklärung nicht bis Mitte März. Wie verlängere ich die Frist und was kostet das?', 'tax'],
@@ -47,6 +47,35 @@ const FAELLE = [
   ['Mir wurde gekündigt, ich will mich selbständig machen', 'alv'],
   ['Wann kann ich als Selbständiger meine AHV-Rente anmelden?', 'ahv'],
   ['I am self-employed, when can I claim my AHV pension?', 'ahv'],
+  // Thema «Wegzug ins Ausland» (wegz)
+  ['Wie melde ich mich bei einem Wegzug ins Ausland ab?', 'wegz'],
+  ['Ich ziehe ins Ausland, was muss ich tun?', 'wegz'],
+  ['Umzug ins Ausland: Bis wann muss ich mich abmelden?', 'wegz'],
+  ['Abmeldung ins Ausland', 'wegz'],
+  ['Ich wandere nach Kanada aus', 'wegz'],
+  ['Ich verlasse Ende Jahr die Schweiz', 'wegz'],
+  ['Ich ziehe nach Deutschland, was muss ich in der Schweiz erledigen?', 'wegz'],
+  ['Ich ziehe ins Ausland. Was passiert mit meiner Krankenkasse?', 'wegz'],
+  ['Ich ziehe ins Ausland. Muss ich noch eine Steuererklärung machen?', 'wegz'],
+  ['Ich bin selbständig und ziehe ins Ausland', 'wegz'],
+  ['Je pars vivre à l’étranger : comment annoncer mon départ ?', 'wegz'],
+  ['Je quitte la Suisse pour l’Allemagne', 'wegz'],
+  ['Je déménage à l’étranger, quand dois-je me désinscrire ?', 'wegz'],
+  ['Je veux émigrer au Canada', 'wegz'],
+  ['Mi trasferisco all’estero, come mi annuncio?', 'wegz'],
+  ['Voglio lasciare la Svizzera', 'wegz'],
+  ['Parto per l’estero: entro quando devo annunciare la partenza?', 'wegz'],
+  ['I am moving abroad, how do I deregister?', 'wegz'],
+  ['How do I leave Switzerland for good?', 'wegz'],
+  ['I want to emigrate from Switzerland', 'wegz'],
+  // Abgrenzungen zu «wegz»: Wörter wie «Ausland» allein genügen nicht, andere Themen und Inlandumzüge bleiben unberührt
+  ['Ich brauche im Ausland einen neuen Pass', 'passport'],
+  ['Ich wohne im Ausland und muss eine Steuererklärung abgeben', 'tax'],
+  ['Wann kann ich meine AHV-Rente im Ausland beziehen?', 'ahv'],
+  ['Ich ziehe von Bern nach Winterthur', 'move'],
+  ['Ich ziehe nach Bern, wo melde ich mich an?', 'move'],
+  ['Stimmrecht für Auslandschweizer', null],
+  ['Je m’installe dans la Suisse romande, où dois-je m’annoncer ?', null],
 ];
 
 // Bekannte offene Fehler (Stand 7.10.2026). Werden angezeigt, brechen den Test aber nicht ab.
@@ -57,14 +86,16 @@ const OFFEN = [
   ['Ich möchte meine Adresse bei der Steuerverwaltung ändern', 'move'], // landet bei Steuerfrist
   ['Ich verliere meine Stelle', 'alv'],                   // kein Treffer, Fallback
   ['Stellensuche nach Kündigung', 'alv'],                 // kein Treffer, Fallback
+  ['Ich verliere meine Stelle und ziehe ins Ausland', 'alv'],           // landet bei «Wegzug ins Ausland» (alv erkennt «verliere meine Stelle» noch nicht)
+  ['Ich ziehe aus dem Ausland in die Schweiz, wo melde ich mich an?', null], // Zuzug aus dem Ausland: landet bei «Umzug» (Bern→Winterthur)
 ];
 
 // Alle Beispielfragen (Chips) in DE/FR/IT/EN müssen ihren Prozess treffen
-const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk'];
+const KEYS = ['move', 'passport', 'tax', 'ahv', 'alv', 'kk', 'gew', 'wegz'];
 const chipRe = /\{"?l"?:\s*"([^"]+)",\s*"?q"?:\s*"([^"]+)"\}/g;
 let m, n = 0;
-while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % 6]]);
-if (n !== 24) { console.log(`FEHLER: ${n} statt 24 Beispielfragen gefunden`); process.exit(1); }
+while ((m = chipRe.exec(html))) FAELLE.push([m[2], KEYS[n++ % KEYS.length]]);
+if (n !== 4 * KEYS.length) { console.log(`FEHLER: ${n} statt ${4 * KEYS.length} Beispielfragen gefunden`); process.exit(1); }
 
 let fehler = 0;
 for (const [frage, soll] of FAELLE) {
